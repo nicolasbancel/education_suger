@@ -1,0 +1,69 @@
+\ProvidesPackage{macros}[2024/09/02 Custom macros]
+
+\usepackage{mypackages}
+
+
+\newcommand{\question}[3]{%
+    \noindent\textbf{#1} \\[0.5em] % Print the question in bold, with some spacing after
+    \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+        % If \WITH_CORRECTION is NO, print lines for answers
+        \foreach \i in {1,...,#2} {%
+            \noindent\makebox[\linewidth]{\dotfill}%
+            \ifnum\i<#2\\[0.5em] \fi % Add spacing after the line except for the last one
+        }
+    }{%
+        % If \WITH_CORRECTION is YES, print the answer
+        \noindent\parbox{\linewidth}{#3}
+    }%
+}
+
+
+\newcommand{\ans}[3]{
+  % 1st argument is the answer
+  % 2nd argument is the # of lines for the blank answer
+  % 3rd argument is whether the lines should be filled with blanks or dots
+  \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+    \ifthenelse{\equal{#3}{TRUE}}{
+      \foreach \i in {1,...,#2} {%
+      \noindent\makebox[\linewidth]{\dotfill}%
+      \ifnum\i<#2\\[0.5em] \fi
+      }
+    }
+    {% FALSE statement of the IF for dots
+    \foreach \i in {1,...,#2} {%
+    \noindent\makebox[\linewidth]{} % Leaves the box empty
+    \ifnum\i<#2\\[0.5em] \fi
+    }
+    }
+  }{% If \WITH_CORRECTION is YES, print the answer
+  \noindent\parbox{\linewidth}{#1}
+  }
+}
+
+
+\newcommand{\answer}[2]{
+\ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+    % If \WITH_CORRECTION is NO, print lines for answers
+    \foreach \i in {1,...,#1} {%
+        \noindent\makebox[\linewidth]{\dotfill}%
+        \ifnum\i<#2\\[0.5em] \fi % Add spacing after the line except for the last one
+    }
+}{%
+    % If \WITH_CORRECTION is YES, print the answer
+    \noindent\parbox{\linewidth}{#2}
+}%
+
+\newcommand{\character}[1]{%
+    \foreach \i in {1,...,#1} {%
+        .%
+    }%
+}
+}
+
+\newcommand{\trou}[2]{%
+    \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+        \noindent\character{#1}
+    }{%
+        \noindent#2 % Print the answer
+    }%
+}
