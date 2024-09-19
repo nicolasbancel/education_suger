@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% Variable de correction
+\newif\ifWITHCORRECTION
+\WITHCORRECTIONtrue % Mettre \WITHCORRECTIONfalse pour la version élève
+
+% Commandes pour masquer du texte en fonction de la version
+\newcommand{\corrige}[2]{\ifWITHCORRECTION #1 \else \underline{\hspace{#2}} \fi}
+
+\title{Cours de Physique-Chimie : Les Matériaux Organiques}
+\author{Professeur}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% Rappels de 2nde
+\section{Rappels de 2nde}
+\subsection{Couches électroniques et électrons de valence}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  \corrige{Les couches électroniques sont des niveaux d'énergie dans lesquels se répartissent les électrons autour du noyau. Les électrons de valence sont les électrons situés sur la couche externe.}{6cm}
+\end{tcolorbox}
+
+\subsection{Formation des ions et des molécules}
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Application]
+  \corrige{L'ion sodium Na$^+$ se forme en perdant un électron, tandis que l'ion chlorure Cl$^-$ se forme en en gagnant un. Ensemble, ils forment une molécule de chlorure de sodium (NaCl).}{7cm}
+\end{tcolorbox}
+
+% Programme de 1ère
+\section{Les Matériaux Organiques}
+
+\subsection{Les chaînes carbonées}
+\subsubsection{L'atome de carbone}
+\begin{itemize}[noitemsep]
+    \item L'atome de carbone est tétravalent.
+    \item Les composés organiques contiennent du carbone.
+    \item Chaînes saturées, insaturées, linéaires, ramifiées ou cycliques.
+\end{itemize}
+
+\subsubsection{Modélisation des molécules}
+\begin{itemize}[noitemsep]
+    \item \corrige{Formule brute : CH$_4$}{2cm}
+    \item \corrige{Formule développée : H--C--H}{2cm}
+\end{itemize}
+
+\subsection{Hydrocarbures et Groupes Caractéristiques}
+\subsubsection{Les alcanes}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  \corrige{Les alcanes sont des hydrocarbures saturés ne comportant que des liaisons simples entre les atomes de carbone.}{7cm}
+\end{tcolorbox}
+
+% Exemple de tableau
+\subsubsection{Groupes caractéristiques}
+\begin{tabular}{p{5cm}p{5cm}p{5cm}}
+  \toprule
+  Groupe fonctionnel & Exemple de molécule & Formule \\
+  \midrule
+  Alcool & \corrige{Éthanol}{2cm} & \ce{C2H5OH} \\
+  Aldéhyde & \corrige{Formaldéhyde}{2cm} & \ce{CH2O} \\
+  \bottomrule
+\end{tabular}
+
+\section{Les Polymères}
+\subsection{Définition et propriétés}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  \corrige{Un polymère est une macromolécule formée par la répétition d'unités monomères.}{6cm}
+\end{tcolorbox}
+
+% Plastiques, élastomères, et fibres
+\section{Plastiques, élastomères et fibres}
+\subsection{Les plastiques}
+\begin{itemize}[noitemsep]
+    \item \corrige{Les plastiques sont des polymères synthétiques.}{4cm}
+\end{itemize}
+
+\end{document}

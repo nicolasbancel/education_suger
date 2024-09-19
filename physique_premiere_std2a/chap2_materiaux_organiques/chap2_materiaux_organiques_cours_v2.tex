@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage{../../mypackages}
+
+% Variable de correction
+\newif\ifWITHCORRECTION
+\WITHCORRECTIONtrue % Mettre \WITHCORRECTIONfalse pour la version élève
+
+% Commandes pour masquer du texte en fonction de la version
+\newcommand{\corrige}[2]{\ifWITHCORRECTION #1 \else \underline{\hspace{#2}} \fi}
+
+\title{Cours de Physique-Chimie : Les Matériaux Organiques}
+\author{Professeur}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+% Rappels de 2nde
+\section{Rappels de 2nde}
+\subsection{Couches électroniques et électrons de valence}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  \corrige{Les couches électroniques sont des niveaux d'énergie dans lesquels se répartissent les électrons autour du noyau. Les électrons de valence sont les électrons situés sur la couche externe.}{6cm}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Application : Structure électronique]
+  Exemple de l'atome d'oxygène (O) : \\
+  Sa configuration électronique est : 1s$^2$ 2s$^2$ 2p$^4$. \\
+  Cela signifie :
+  \begin{itemize}[noitemsep]
+    \item 2 électrons dans la première couche (1s$^2$)
+    \item 2 électrons dans la sous-couche s de la deuxième couche (2s$^2$)
+    \item 4 électrons dans la sous-couche p de la deuxième couche (2p$^4$)
+  \end{itemize}
+  Il possède donc 6 électrons de valence (2s$^2$ 2p$^4$).
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Application : Autres configurations électroniques]
+  \begin{itemize}[noitemsep]
+    \item Hydrogène (H) : 1s$^1$
+    \item Carbone (C) : 1s$^2$ 2s$^2$ 2p$^2$
+    \item Sodium (Na) : 1s$^2$ 2s$^2$ 2p$^6$ 3s$^1$
+  \end{itemize}
+\end{tcolorbox}
+
+\subsection{Formation des ions et des molécules}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  Un ion est un atome ou une molécule qui a gagné ou perdu des électrons, devenant ainsi chargé positivement ou négativement.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Exemple : Ions courants]
+  \begin{itemize}[noitemsep]
+    \item L'ion sodium (Na$^+$) : Perd un électron pour atteindre une configuration stable (1s$^2$ 2s$^2$ 2p$^6$).
+    \item L'ion chlorure (Cl$^-$) : Gagne un électron pour compléter sa couche externe (1s$^2$ 2s$^2$ 2p$^6$ 3s$^2$ 3p$^6$).
+  \end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Application : Règle de l'octet et du duet]
+  La règle de l'octet stipule que les atomes cherchent à obtenir une couche externe remplie de 8 électrons (ou 2 électrons pour les plus petits éléments comme l'hydrogène).
+  \begin{itemize}[noitemsep]
+    \item Exemple : Le fluor (F) gagne 1 électron pour atteindre 8 électrons sur sa dernière couche et forme un ion F$^-$.
+    \item L'hydrogène (H) suit la règle du duet et cherche à obtenir 2 électrons sur sa couche externe en formant une liaison.
+  \end{itemize}
+\end{tcolorbox}
+
+\subsection{Le tableau périodique de Mendeleïev}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  Le tableau périodique classe les éléments chimiques en fonction de leur numéro atomique et de leurs propriétés chimiques similaires.
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Application : Position des éléments]
+  \begin{itemize}[noitemsep]
+    \item Les éléments dans une même colonne (groupe) ont des propriétés chimiques similaires et le même nombre d'électrons de valence.
+    \item Exemple : Les éléments du groupe 1, comme le sodium (Na) et le potassium (K), ont un seul électron de valence.
+  \end{itemize}
+\end{tcolorbox}
+
+% Programme de 1ère
+\section{Les Matériaux Organiques}
+
+\subsection{Les chaînes carbonées}
+\subsubsection{L'atome de carbone}
+\begin{itemize}[noitemsep]
+    \item L'atome de carbone est tétravalent.
+    \item Les composés organiques contiennent du carbone.
+    \item Chaînes saturées, insaturées, linéaires, ramifiées ou cycliques.
+\end{itemize}
+
+\subsubsection{Modélisation des molécules}
+\begin{itemize}[noitemsep]
+    \item \corrige{Formule brute : CH$_4$}{2cm}
+    \item \corrige{Formule développée : H--C--H}{2cm}
+\end{itemize}
+
+\subsection{Hydrocarbures et Groupes Caractéristiques}
+\subsubsection{Les alcanes}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  \corrige{Les alcanes sont des hydrocarbures saturés ne comportant que des liaisons simples entre les atomes de carbone.}{7cm}
+\end{tcolorbox}
+
+% Exemple de tableau
+\subsubsection{Groupes caractéristiques}
+\begin{tabular}{p{5cm}p{5cm}p{5cm}}
+  \toprule
+  Groupe fonctionnel & Exemple de molécule & Formule \\
+  \midrule
+  Alcool & \corrige{Éthanol}{2cm} & \ce{C2H5OH} \\
+  Aldéhyde & \corrige{Formaldéhyde}{2cm} & \ce{CH2O} \\
+  \bottomrule
+\end{tabular}
+
+\section{Les Polymères}
+\subsection{Définition et propriétés}
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : ]
+  \corrige{Un polymère est une macromolécule formée par la répétition d'unités monomères.}{6cm}
+\end{tcolorbox}
+
+% Plastiques, élastomères, et fibres
+\section{Plastiques, élastomères et fibres}
+\subsection{Les plastiques}
+\begin{itemize}[noitemsep]
+    \item \corrige{Les plastiques sont des polymères synthétiques.}{4cm}
+\end{itemize}
+
+\end{document}
