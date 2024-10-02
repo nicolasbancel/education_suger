@@ -207,6 +207,7 @@ f(x) = ax^3 + bx^2 + cx + d
 
 où $a$, $b$, $c$ et $d$ sont des réels et $a$ est non nul.
 
+\vspace{1em}
 \textbf{\textcolor{blue}{Exemple}} \par
 
 La fonction $f(x) = 5x^3 + 4x^2 + 3$ est une fonction polynôme de degré 3.
@@ -220,6 +221,8 @@ f(x) = a(x - x_1)(x - x_2)(x - x_3)
 \]
 
 avec $a$, $x_1$, $x_2$ et $x_3$ des nombres réels et $a$ est non nul.
+
+\vspace{1em}
 
 \textbf{\textcolor{blue}{Exemple}} \par
 
@@ -246,7 +249,81 @@ On appelle racines d’un polynôme de degré 3 les solutions de l’équation :
 
 \subsection*{Tableau de signes de $a(x - x_1)(x - x_2)(x - x_3)$}
 
-Dans le cas où la fonction polynôme de degré 3 a trois racines, son tableau de signes sera :
+Dans le cas où la fonction polynôme de degré 3 a trois racines, son tableau de signes sera : \par
+\vspace{1em}
+
+\begin{tikzpicture}
+  \tkzTabInit{$x$ / 1 , $f(x)$ / 1}{$-\infty$, $x_1$, $x_2$, $x_3$, $+\infty$}
+  \tkzTabLine{, \text{signe de } -a, z, \text{signe de } a, z, \text{signe de } -a, z, \text{signe de } a}
+\end{tikzpicture}
+
+\subsection*{Inéquations de degré 3}
+
+Même principe que inéquations de degré 2 : on utilise un tableau de signe (si le polynôme est factorisable)
+
+\vspace{1em}
+\textbf{\textcolor{blue}{Exemple}} \par
+\vspace{1em}
+Résoudre l'inéquation
+
+\[
+ 4(x - 1)(x + 7)(x - 1) > 0
+\]
+
+\section*{Résolution d'équations du type \(X^N = C\)}
+
+\subsection*{Résolution de \(X^2 = A\)}
+
+Les solutions de l’équation \(x^2 = a\) ,où \(a\) est un nombre réel positif sont \(\sqrt{a}\) et \(- \sqrt{a}\) \par 
+\vspace{1em}
+\textbf{\textcolor{blue}{Exemple}} \par
+\vspace{1em}
+Résoudre $x^2 = 16$. A quoi cette équation correspond-elle d'un point de vue graphique, en utilisant la fonction carrée ?
+\vspace{1em}
+\vspace{1em}
+
+
+
+Les solutions de l'équation sont 
+\[
+  \begin{cases}
+    x = \sqrt(16) = 4 \\
+    x = - \sqrt(16) = - 4
+  \end{cases}
+\]
+
+\subsection*{Résolution de \(X^3 = C\)}
+
+Soit $c$ un réel positif, alors l'équation 
+\[
+  x^3 = c
+\]
+admet pour unique solution : 
+
+\[
+  x = c^{1/3} = \sqrt[3]{c}
+\]
+
+\section*{Exercices}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Exemples - Application]
+  \textbf{Correction d'exercices}
+  
+  \begin{itemize}[noitemsep]
+    \item N°13
+    \item N°39
+    \item N°42
+    \item N°47 page 170
+  \end{itemize}
+
+  \textbf{A faire pour préparer le contrôle}
+  \begin{itemize}[noitemsep]
+    \item \href{https://www.kwyk.fr/devoirs-prof/#tab=.planned-homeworks;classe=77251}{Exercices Kwyk}
+    \item Autres exercices sur le livre
+  \end{itemize}
+\end{tcolorbox}
+
+
 
 \end{document}
 

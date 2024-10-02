@@ -3,6 +3,8 @@
 \usepackage{mypackages}
 
 
+\setlength\parindent{0pt}
+
 \newcommand{\question}[3]{%
     \noindent\textbf{#1} \\[0.5em] % Print the question in bold, with some spacing after
     \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
@@ -16,6 +18,94 @@
         \noindent\parbox{\linewidth}{#3}
     }%
 }
+
+
+
+\DeclareRobustCommand{\hlgray}[1]{{\sethlcolor{lightgray}\hl{#1}}}
+
+
+% USE THIS ONE 
+
+\newcommand{\trou}[3]{%
+\ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+        % If WITH_CORRECTION is NO, insert either vertical or horizontal blank spaces
+        \ifthenelse{\equal{#1}{v}}{
+            \vspace{#2em} % Vertical blank space 
+        }
+        {
+          \ifthenelse{\equal{#1}{h}}{
+            \hspace{#2em} % Horizontal blank space 
+          }
+          {}
+        }%
+        %
+      }
+    {%
+    %\textbf{Answer:begin} #3 \textbf{Answer:end}
+    \textbf{\__} #3 \textbf{\__}
+    }%
+}
+
+\newcommand{\trouoldold}[3]{
+    % First argument is the answer
+    % 2nd argument is the vertical space
+    % 3nd argument is the horizontal space (filled with blank)
+    \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+    \ifthenelse{\isempty{#2}{}}{
+    % This is when we're not giving any vertical space
+      \foreach \i in {1,...,#3} {%
+        \ifnum\i<#3\\hspace{1em} \fi
+        }}
+        {
+    % This is when we're supposed to provide a vertical space
+        \foreach \i in {1,...,#2} {%
+        \ifnum\i<#2\\vspace{1em} \fi
+    }}}
+      % This is the place where to print the actual answer
+      {
+        \noindent\parbox{\linewidth}{#1}
+    }
+}
+
+\newcommand{\trounew}[3]{%
+    \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+        % If WITH_CORRECTION is NO, insert either vertical or horizontal blank spaces
+        \ifblank{#2}{}{%
+            \vspace{#2\baselineskip} % Vertical blank space (if #2 is filled)
+        }%
+        \ifblank{#2}{%
+            \ifblank{#3}{}{%
+                \hspace{#3em} % Horizontal blank space (if #3 is filled and #2 is empty)
+            }%
+        }{}%
+    }{%
+        % If WITH_CORRECTION is YES, show the answer
+        #1%
+    }%
+}
+
+
+
+\newcommand{\trouchatgpt}[3]{%
+    \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+        % If WITH_CORRECTION is NO, insert blank spaces
+        \ifblank{#2}{}{%
+            \vspace{#2\baselineskip} % Vertical blank space
+        }%
+        \ifblank{#3}{}{%
+            \hspace{#3em} % Horizontal blank space
+        }%
+    }{%
+        % If WITH_CORRECTION is YES, show the answer
+        #1%
+    }%
+}
+
+
+% Set this to either YES or NO
+
+
+
 
 
 \newcommand{\ans}[3]{
@@ -60,7 +150,7 @@
 }
 }
 
-\newcommand{\trou}[2]{%
+\newcommand{\trouold}[2]{%
     \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
         \noindent\character{#1}
     }{%
