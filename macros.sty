@@ -26,7 +26,24 @@
 
 % USE THIS ONE 
 
-\newcommand{\trou}[3]{%
+
+\newcommand\ndots[1][3]{%
+  \@tempdima=\dimexpr#1ex+1ex\relax%
+  \hbox to \@tempdima{\dotfill}%
+}
+
+\newcommand{\trou}[2]{%
+\ifthenelse{\equal{\WITH_CORRECTION}{YES}}{%
+        % If WITH_CORRECTION is NO, insert either vertical or horizontal blank spaces
+       #1
+        }%
+    {%
+    #2
+    }%
+}
+
+
+\newcommand{\trouuuuuuuuuu}[3]{%
 \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
         % If WITH_CORRECTION is NO, insert either vertical or horizontal blank spaces
         \ifthenelse{\equal{#1}{v}}{
