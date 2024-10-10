@@ -93,6 +93,53 @@ La masse des électrons est négligeable par rapport à la masse du noyau
   \bottomrule
 \end{tabular}
 
+\vspace{1em}
+\textbf{Ratio entre la masse d'un nucléon et celle d'un électron} \par 
+\vspace{1em}
+Le rapport entre la masse d'un nucléon et celle d'un électron peut être calculé en prenant le quotient des deux valeurs fournies dans le tableau précédent. On rappelle les valeurs des masses :
+\[
+m_e = 9.1 \times 10^{-31} \, \si{kg}, \quad m_n = 1.7 \times 10^{-27} \, \si{kg}
+\]
+
+Le ratio \(\frac{m_n}{m_e}\) est donc :
+\[
+\frac{m_n}{m_e} = \frac{1.7 \times 10^{-27}}{9.1 \times 10^{-31}}
+\]
+
+Utilisons les propriétés des puissances de 10. Lorsqu'on divise deux puissances de 10, on soustrait leurs exposants :
+\[
+\frac{10^{-27}}{10^{-31}} = 10^{(-27 - (-31))} = 10^{4}
+\]
+
+Le ratio des coefficients est calculé séparément :
+\[
+\frac{1.7}{9.1} \approx 0.187
+\]
+
+Le produit final est donc :
+\[
+\frac{m_n}{m_e} = 0.187 \times 10^4 = 1.87 \times 10^3
+\]
+
+Ce résultat montre que la masse d'un nucléon est environ \(1.87 \times 10^3\) fois plus grande que celle d'un électron. Cependant, pour simplifier l'ordre de grandeur, on arrondit souvent ce ratio à 2000 :
+\[
+\frac{m_n}{m_e} \approx 2000
+\]
+
+\paragraph{Rappel mathématique : opérations sur les puissances de 10}
+
+Lorsque vous multipliez des puissances de 10 :
+\[
+10^x \times 10^y = 10^{x + y}
+\]
+
+Et lorsque vous divisez des puissances de 10 :
+\[
+\frac{10^x}{10^y} = 10^{x - y}
+\]
+
+Ces règles sont essentielles pour manipuler des ordres de grandeur dans des calculs scientifiques.
+
 \subsubsection{Volume}
 
 Volume : Occupation de l'espace : L'atome est essentiellement composé de vide. 
@@ -177,22 +224,33 @@ La formule chimique d'une molécule indique le symbole des atomes présents dans
 
 \subsection{Les équations chimiques}
 
-\textit{Lavoisier : Rien ne se crée, rien ne se perd, tout se transforme}
+\textit{Lavoisier : Rien ne se crée, rien ne se perd, tout se transforme} \par 
 \vspace{1em}
 Une transformation chimique est modélisée par une équation de réaction qui traduit la conservation 
 \begin{itemize}[noitemsep]
-  \item des éléments (il doit y avoir le même nombre d'atomes de part et d'autre de l'équation)
-  \item des charges électriques (il doit y avoir le même nombre de charges de part et d'autre de l'équation)
+  \item des éléments (\textcolor{blue}{il doit y avoir le même nombre d'atomes de part et d'autre de l'équation})
+  \item des charges électriques (\textcolor{blue}{il doit y avoir le même nombre de charges de part et d'autre de l'équation})
 \end{itemize}
 
-Enjeu quand on connaît les corps purs impliqués dans une réaction chimique : connaître le \# d'atomes ou de molécules qui réagissent entre elles, pour garantir qu'on conserve bien la charge, et la masse. \par
-On dit qu'on cherche à \textbf{équilibrer} l'équation.
+Enjeu quand on connaît les corps purs impliqués dans une réaction chimique :
 
-\vspace{1em}
+\begin{itemize}[noitemsep]
+  \item connaître le \# d'atomes qui réagissent entre eux, pour garantir qu'on conserve bien la charge, et la masse.
+  \item On dit qu'on cherche à \textbf{équilibrer} l'équation.
+\end{itemize} \par
 
 Autrement dit, équilibrer une équation revient à déterminer les proportions dans lesquelles les réactifs réagissent et les produits se forment. \par
-Il est interdit de toucher aux formules des molécules : on cherche les coefficients par lesquels il faut multiplier les molécules pour équilibrer l'équation. \par
-Ces coefficients sont appelés les coefficients stoechiométriques
+
+\begin{itemize}[noitemsep]
+  \item Il est interdit de toucher aux formules des molécules : on cherche les coefficients par lesquels il faut multiplier les molécules pour équilibrer l'équation.
+  \item Ces coefficients sont appelés les coefficients stoechiométriques
+\end{itemize}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\linewidth]{reaction_chimique.jpg}
+  \caption{\label{} Réaction Chimique}
+\end{figure}
 
 \begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Exemples - Application]
   Combustion du méthane dans le dioxygène. L'équation du dessous est-elle équilibrée ?
@@ -219,7 +277,7 @@ Ces coefficients sont appelés les coefficients stoechiométriques
   \textbf{Exemples bonus} : quelques équations chimiques supplémentaires
 
   \begin{enumerate}[noitemsep]
-    \item \ce{2 C6H12O6 -> 2 C2H5OH + 2 CO2} (Fermentation du glucose pour former l'éthanol et du dioxyde de carbone)
+    \item \ce{C6H12O6 -> 2 C2H5OH + 2 CO2} (Fermentation du glucose pour former l'éthanol et du dioxyde de carbone)
     \item \ce{2 Fe + 3 Cl2 -> 2 FeCl3}
   \end{enumerate}
 

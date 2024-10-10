@@ -36,9 +36,7 @@
     \item La masse : \si{kg} (kilogramme)
     \item La longueur : \si{m} (mètre)
     \item Le temps : \si{s} (seconde)
-    \item La température : \si{K} (kelvin)
     \item L'intensité électrique : \si{A} (ampère)
-    \item La quantité de matière : \si{mol} (mole)
     \item L'énergie : \si{J} (joule)
     \item La force : \si{N} (newton)
   \end{itemize}
@@ -60,15 +58,15 @@
     \item Si l'on dispose de la valeur du volume $V$ et de la masse volumique $\rho$, la masse $m$ est donnée par :
     \[
     m = \rho \times V
-    \]
+    \] \par
     Exemple : Si un volume de \SI{2}{m^3} d'eau a une masse volumique de \SI{1000}{kg/m^3}, alors la masse de l'eau est :
     \[
     m = 1000 \times 2 = 2000\,\si{kg}
     \]
-    \item Si l'on dispose de la masse $m$ et de la masse volumique $\rho$, le volume $V} est donné par :
+    \item Si l'on dispose de la masse $m$ et de la masse volumique $\rho$, le volume $V$ est donné par :
     \[
     V = \frac{m}{\rho}
-    \]
+    \] \par
     Exemple : Pour une masse de \SI{500}{kg} de plomb avec une masse volumique de \SI{11340}{kg/m^3}, le volume est :
     \[
     V = \frac{500}{11340} \approx 0.044\,\si{m^3}
@@ -78,27 +76,58 @@
   \question[2] \textbf{La masse volumique du sable est de \SI{1850}{kg/m^3} en moyenne. Pour un chantier, une entreprise de maçonnerie a besoin de \SI{50}{tonnes} de sable.}
 
   \begin{itemize}
-    \item Peut-elle les transporter dans un camion benne de \SI{21}{m^3} ? Pourquoi ?
+    \item \textcolor{blue}{\textbf{Indication :} $\frac{50}{18.5} \approx 2.702$ et $\frac{60.2}{21} \approx 2.866$}
+    
+    \item \textbf{Peut-elle transporter tout le sable dans un camion benne de \SI{21}{m^3} ? Pourquoi ?}
 
     La masse volumique étant de \SI{1850}{kg/m^3}, le volume nécessaire pour transporter \SI{50}{tonnes} (ou \SI{50000}{kg}) est :
+
     \[
-    V = \frac{50000}{1850} \approx 27.03\,\si{m^3}
+    V = \frac{50000}{1850}
     \]
-    Le volume nécessaire est donc supérieur à la capacité du camion (\SI{21}{m^3}), ce qui signifie que le camion ne pourra pas transporter tout le sable en un seul voyage.
 
+    En divisant par 100 en haut et en bas, on s'aperçoit que :
+
+    \[
+    V = \frac{500}{18.5} = \frac{50}{18.5} \times 10
+    \]
+
+    La valeur de \(\frac{50}{18.5}\) nous est donnée dans l'énoncé, donc :
+
+    \[
+    V \approx 2.702 \times 10 = 27.02\,\si{m^3}
+    \]
+
+    Ainsi, le volume nécessaire est environ \SI{27.02}{m^3}, ce qui est supérieur à la capacité du camion (\SI{21}{m^3}). Un seul camion ne suffit donc pas à transporter tout le sable.
     \item Si l'on suppose que le 1er camion a été intégralement rempli de sable, quel est le \% de remplissage du 2ème camion ?
-
+    
     Si le premier camion est rempli à \SI{21}{m^3}, le volume restant à transporter est :
     \[
-    V_{\text{reste}} = 27.03 - 21 = 6.03\,\si{m^3}
+    V_{\text{reste}} = 27.02 - 21 = 6.02\,\si{m^3}
     \]
     Si le deuxième camion a une capacité de \SI{21}{m^3}, le pourcentage de remplissage du 2ème camion sera :
     \[
-    \text{\% remplissage} = \frac{6.03}{21} \times 100 \approx 28.71\%
+    \text{\% remplissage} = \frac{6.02}{21} = \frac{6.02}{21} \times \frac{10}{10} = \frac{60.2}{21} \times \frac{1}{10}
     \]
+    
+    La valeur de \(\frac{60}{21}\) nous est donnée dans l'énoncé, donc :
+
+    \[
+      \text{\% remplissage} = \frac{2.8666}{10} \approx 0.2871 
+    \]
+
+    Le 2ème camion est donc rempli à $\approx 28.71\%$
+    
   \end{itemize}
 
   \question[2] \textbf{Effectuer les conversions suivantes :}
+
+  Dans cette question sur les conversions, il est important de faire 2 choses :
+
+  \begin{enumerate}
+    \item Quand c'est possible, remettre ces dimensions dans le contexte de la vie réelle : une canette de coca fait 33cL, on voit cette unité au quotidien. Il est facile de se dire que 3 canettes font 1L. Ce sont des ordres de grandeur auxquels nous sommes habitués.
+    \item Quand on travaille avec des unités sous forme de fraction (type $kg/m^3$), on raisonne aussi avec les fractions pour faire les conversions
+  \end{enumerate}
 
   \begin{itemize}
     \item \SI{1}{kg} = \SI{1000}{g}
@@ -106,6 +135,12 @@
     \item \SI{1}{m^3} = \SI{1000}{dm^3} = \SI{1000}{L}
     \item \SI{1}{kg/m^3} = \SI{1}{g/L}
   \end{itemize}
+
+Justification pour la conversion de $kg/m^3$ à $g/L$ : $1 kg = 1000 g$ et $1 m^3 = 1000 L$ donc 
+
+\[
+  \SI{1}{kg/m^3} = \frac{\SI{1}{\kilogram}}{\SI{1}{\cubic\meter}} = \frac{\SI{1000}{g}}{\SI{1000}{L}} = \SI{1}{g/L}
+\]
 
 \end{questions}
 
@@ -140,6 +175,36 @@
     \item $A$ : Nombre de masse (nombre total de protons et de neutrons)
     \item $Z$ : Numéro atomique (nombre de protons)
   \end{itemize}
+
+  \begin{itemize}
+    \item \textbf{Hydrogène} : $_{1}^{1}\text{H}$
+    \begin{itemize}
+        \item $X = \text{H}$ (symbole de l'élément)
+        \item $A = 1$ (nombre de masse, 1 proton)
+        \item $Z = 1$ (numéro atomique, 1 proton)
+    \end{itemize}
+
+    \item \textbf{Carbone} : $_{6}^{12}\text{C}$
+    \begin{itemize}
+        \item $X = \text{C}$ (symbole de l'élément)
+        \item $A = 12$ (6 protons et 6 neutrons)
+        \item $Z = 6$ (numéro atomique, 6 protons)
+    \end{itemize}
+
+    \item \textbf{Oxygène} : $_{8}^{16}\text{O}$
+    \begin{itemize}
+        \item $X = \text{O}$ (symbole de l'élément)
+        \item $A = 16$ (nombre de masse, 8 protons et 8 neutrons)
+        \item $Z = 8$ (numéro atomique, 8 protons)
+    \end{itemize}
+
+    \item \textbf{Uranium} : $_{92}^{238}\text{U}$
+    \begin{itemize}
+        \item $X = \text{U}$ (symbole de l'élément)
+        \item $A = 238$ (nombre de masse, 92 protons et 146 neutrons)
+        \item $Z = 92$ (numéro atomique, 92 protons)
+    \end{itemize}
+\end{itemize}
 
   \question[1] \textbf{Comment détermine-t-on le nombre de neutrons dans un atome ?}
 

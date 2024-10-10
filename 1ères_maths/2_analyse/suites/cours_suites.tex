@@ -188,17 +188,100 @@ u_n = \ldots u_{n-1} \ldots
 
   \trou{
   Pour calculer $u_1$
-  $u(1) = 4u(0) + 7 = 4 \times (-1) + 7 = 3$
-
+  \[
+  u(1) = 4u(0) + 7 = 4 \times (-1) + 7 = 3
+\]
   Maintenant que l’on connaît $u_1$, on peut calculer $u_2$ : \\
-  $u(2) = 4u(1) + 7 = 4 \times 3 + 7 = 19$
+  \[
+  u(2) = 4u(1) + 7 = 4 \times 3 + 7 = 19
+  \]
 
   }
   {\vspace{6em}}
-
-
-  \textbf{Faire les exercices 66 et 68. Conjecturer le sens de variation }
+  \textbf{Faire l'exercice 66. Conjecturer le sens de variation}
 \end{tcolorbox}
 
+\section*{Sens de variation}
+
+\begin{itemize}
+\item Une suite est \textbf{croissante} si un terme de la suite est toujours plus grand que son précédent : 
+\[
+u(n + 1) \geq u(n), \quad \text{pour tout } n \in \mathbb{N}.
+\]
+
+\item Une suite est \textbf{décroissante} si : 
+\[
+u(n + 1) \leq u(n), \quad \text{pour tout } n \in \mathbb{N}.
+\]
+\end{itemize}
+
+\section*{Définition d'une suite arithmétique}
+
+Une suite est dite \textit{arithmétique} lorsque l'on passe d'un terme au suivant en ajoutant toujours le même nombre. Ainsi, pour tout $n$ :
+
+\[
+u(n + 1) = u(n) + r
+\]
+
+Le nombre $r$ est appelé \textit{raison} de la suite arithmétique.
+
+\subsubsection*{Exemples}
+
+\begin{itemize}[noitemsep]
+    \item La suite définie par $u(n + 1) = u(n) + 4$ est une suite arithmétique de raison 4.
+    \item La suite définie par $u(n) = u(n - 1) + 12$ est une suite arithmétique de raison 12.
+\end{itemize}
+
+\subsubsection*{Monotonie / Sens de variation}
+
+\begin{itemize}[noitemsep]
+    \item Si $r > 0$, la suite est strictement croissante.
+    \item Si $r < 0$, la suite est strictement décroissante.
+    \item Si $r = 0$, la suite est constante.
+\end{itemize}
+
+\subsubsection*{Exemple}
+
+La suite définie par $u(n + 1) = u(n) - 4$ est une suite décroissante.
+
+\subsection*{Reconnaître une suite arithmétique}
+
+\subsubsection*{Suite définie explicitement}
+
+Une suite donnée sous forme explicite peut être une suite arithmétique. Par exemple, la suite $(u_n)$ définie pour tout entier naturel $n$ par :
+
+\[
+u(n) = n + 4
+\]
+
+est une suite arithmétique. Comment le prouver ?
+
+\begin{enumerate}[noitemsep]
+    \item Exprimer $u(n + 1)$.
+    \item Calculer $u(n + 1) - u(n)$.
+    \item Si le résultat est une constante, c'est-à-dire s'il ne dépend pas de la variable $n$, alors la suite est arithmétique.
+\end{enumerate}
+
+\trou{
+\vspace{1em}
+\textbf{Réponses}
+
+\begin{enumerate}[noitemsep]
+    \item $u(n + 1) = (n + 1) + 4 = n + 1 + 4 = n + 5$
+    \item $u(n + 1) - u(n) = (n + 5) - (n + 4) = n + 5 - n - 4 = 1$
+    \item Comme le résultat de $u(n + 1) - u(n)$ est une constante ($1$), la suite est arithmétique de raison $1$.
+\end{enumerate}
+
+On peut donc réécrire $u$ sous la forme :
+
+\[
+u(n + 1) = u(n) + 1
+\]
+}
+{\vspace{6em}}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Exercices]
+  Exercice N°89, N°95, N°97, N°100 page 129-130
+\end{tcolorbox}
 
 \end{document}
