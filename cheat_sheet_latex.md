@@ -23,9 +23,27 @@
 \end{figure}
 ```
 
+## Conversions
+
+```latex
+% with units
+\SI{5.0e4}{kg}
+% without units
+\num{1e-10}
+```
+
 ## Tables
 
 Way to control automatically the width 
+
+\begin{tabular}{SS}
+  \toprule
+  {Constituant} & {Masse (en \si{kg})} \\
+  \midrule
+  {Electron} & {\(9.1 \times 10^{-31}\)} \\
+  {Nucléon (Proton et Neutron)} & {\(1.7 \times 10^{-27}\)} \\
+  \bottomrule
+\end{tabular}
 
 
 

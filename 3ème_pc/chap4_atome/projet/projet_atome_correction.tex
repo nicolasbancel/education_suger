@@ -1,0 +1,47 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+\usetikzlibrary{shapes.geometric, arrows}
+
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+\title{Chapitre 4 : L'atome - Projet de fin de chapitre - CORRECTION}
+\author{N. Bancel}
+\date{Septembre 2024}
+\maketitle
+
+\tikzstyle{startstop} = [rectangle, rounded corners, 
+minimum width=3cm, 
+minimum height=1cm,
+text centered, 
+draw=black, 
+fill=red!30]
+
+\tikzstyle{process} = [rectangle, 
+minimum width=3cm, 
+minimum height=1cm, 
+text centered, 
+text width=3cm, 
+draw=black, 
+fill=orange!30]
+
+
+\section*{Méthode}
+
+Dans ce genre de problème, il faut se créer ses questions intermédiaires soi-même, \textbf{en commençant par la fin}. Puis reprendre le sujet en entier et répondre aux questions une par une.
+
+
+
+\begin{tikzpicture}[node distance=2cm]
+  \node (start) [startstop] {1. $Volume_{\text{petits cubes qui rassemblent les atomes de l'univers}} < Volume_{\text{dé à coudre}}$ ?};
+  \node (step2) [process, below of=start] {Relation entre $Volume_{\text{petits cubes qui rassemblent les atomes de l'univers}}$ et $Volume_{\text{atomes de l'univers}}$};
+  \node (step3) [process, below of=step2] {Relation entre $Volume_{\text{atomes de l'univers}}$ et $Volume_{\text{petits cubes}}$};
+  \node (stop) [startstop, below of=step3] {Stop};
+\end{tikzpicture}
+
+
+
+\end{document}

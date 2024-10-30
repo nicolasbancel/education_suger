@@ -19,9 +19,27 @@
 
 \def\WITH_CORRECTION{YES}
 
+\section*{Notions à maîtriser à la fin du chapitre}
+
+\begin{tcolorbox}[colback=gray!10, colframe=gray!50, title=Notions à maîtriser]
+  \begin{enumerate}[noitemsep]
+      \item Savoir calculer les termes d'une suite (d'une suite définie de manière fonctionnelle, et définie de manière récurrente)
+      \item Connaître les définitions d'une suite géométrique, et d'une suite arithmétique. 
+      \item Reconnaître une suite arithmétique, ou une suite géométrique : montrer qu'une suite peut s'écrire sous la forme $U_{(n+1)} = U_{(n)} + r$ ou $U_{(n+1)} = q \times U_{(n)}$
+      \item Etre capable de démontrer qu'une suite est croissante, ou décroissante
+        \begin{itemize}[noitemsep] 
+          \item Dans le cas général : évaluer le signe de $U_{(n+1)} - U_{(n)}$
+          \item Dans le cas d'une suite arithmétique : évaluer le signe de la raison $r$
+          \item Dans le cas d'une suite géométrique : évaluer si la raison $q$ est comprise entre 0 et 1, ou est supérieure à 1
+        \end{itemize}
+      \item Comprendre comment représenter une suite graphiquement (dessiner le nuage de points)
+  \end{enumerate}
+  \end{tcolorbox}
+
+
 \section*{Qu'est ce qu'une suite ?}
 
-\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition : xxx]
+\begin{tcolorbox}[colback=green!10!white, colframe=green!75!black, title=Définition d'une suite]
   Une suite numérique est une \trou{\textcolor{blue}{fonction}}{\ndots[10]} qui, à tout entier naturel $n$ (n = 0, 1, 2) associe un nombre réel noté $U(n)$ ou $U_n$.
   On parle du \trou{\textcolor{blue}{terme}}{\ndots[10]} de \trou{\textcolor{blue}{rang / d'indice $n$}}{\ndots[10]} de la suite.  Une suite est une liste ordonnée d'élements
 \trou{
@@ -43,7 +61,7 @@ u(4) = 8
 
 \vspace{1em}
 
-Dans certains cas on comptera les positions à partir de 0, dans d’autres à partir de 1 (l’énoncé dira quelle convention utiliser). \par
+Dans certains cas on comptera les positions à partir de 0, dans d'autres à partir de 1 (l'énoncé dira quelle convention utiliser). \par
 \vspace{1em}
 Par exemple dans la suite $u$ ci-dessus :
 \begin{itemize}[noitemsep]
@@ -51,15 +69,15 @@ Par exemple dans la suite $u$ ci-dessus :
   \item $u(2)= \trou{7}{\ndots[4]}$ si on compte les positions à partir de 0.
 \end{itemize}
 
-Si l’énoncé dit "pour tout entier naturel $n$" ou "pour $n \in \mathbb{N}$" , cela voudra dire que l’on compte à partir de 0.
-De façon générale, on peut commencer notre suite à n’importe quel rang $n \geq 0$.
+Si l'énoncé dit "pour tout entier naturel $n$" ou "pour $n \in \mathbb{N}$" , cela voudra dire que l'on compte à partir de 0.
+De façon générale, on peut commencer notre suite à n'importe quel rang $n \geq 0$.
 
 \subsection*{Exemples}
 
 Soit $v$ la suite des nombres impairs. Donner $v(5)$ en supposant que les indices débutent à 0. \par
 \vspace{1em}
 \trou{
-  Réponse: $v = \{1;3;5;7;9;11;...\}$, d’où $v(5) = 11$.
+  Réponse: $v = \{1;3;5;7;9;11;...\}$, d'où $v(5) = 11$.
 }
 {\vspace{2em}}
 
@@ -71,8 +89,8 @@ Soit $v$ la suite des nombres impairs. Donner $v(5)$ en supposant que les indice
 \section*{Représentation graphique d'une suite}
 \vspace{1em}
 
-La représentation graphique d’une suite $u$ sera un nuage de points. Ces points auront pour coordonnées $(n ; U_n)$.
-En reprenant l’exemple de la suite u des multiples de 2, la représentation graphique de u est :
+La représentation graphique d'une suite $u$ sera un nuage de points. Ces points auront pour coordonnées $(n ; U_n)$.
+En reprenant l'exemple de la suite u des multiples de 2, la représentation graphique de u est :
 
 \trou{
   \begin{figure}[H]
@@ -86,7 +104,7 @@ En reprenant l’exemple de la suite u des multiples de 2, la représentation gr
 \section*{Suite définie comme une fonction}
 \vspace{1em}
 
-Plutôt que de donner chacun des termes d’une suite, on peut la définir à l’aide d’une formule. La première façon de définir une suite est à l’aide d’une \trou{\textbf{fonction du rang n}}{\ndots[20]}.
+Plutôt que de donner chacun des termes d'une suite, on peut la définir à l'aide d'une formule. La première façon de définir une suite est à l'aide d'une \trou{\textbf{fonction du rang n}}{\ndots[20]}.
 On dit que la suite est définie \trou{\textbf{de façon explicite / fonctionnelle.}}{\ndots[20]}
 
 \begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Exercices]
@@ -126,15 +144,15 @@ C'est comme si on échantillonait une fonction (c'est-à-dire qu'on ne sélectio
 
 \section*{Expression de $U_{N-1}$, $U_{N+1}$, $U_{2N}$, ...}
 
-Si l’expression de $U_n$ est donnée, on peut donner celle de $U_{n+1}$ en remplaçant $n$ par $n + 1$ (en n'oubliant pas les parenthèses).
-De même on peut donner l’expression de $U_{2n}$ en remplaçant $n$ par $2n$. \par
+Si l'expression de $U_n$ est donnée, on peut donner celle de $U_{n+1}$ en remplaçant $n$ par $n + 1$ (en n'oubliant pas les parenthèses).
+De même on peut donner l'expression de $U_{2n}$ en remplaçant $n$ par $2n$. \par
 \vspace{1em}
 \textcolor{blue}{Exemple} : Soit la suite $u$ définie pour tout entier naturel par
 \[
   U_n = 7n + 5
 \] \par
 
-Donner l’expression de $U_{n+1}$ et de $U_{2n}$
+Donner l'expression de $U_{n+1}$ et de $U_{2n}$
 
 \trou{\vspace{5em}}{\vspace{5em}}
 
@@ -162,7 +180,7 @@ Et aussi que :
 \end{itemize}
 
 
-La seconde façon de définir une suite est par récurrence. Dans ce cas, pour calculer la valeur d’un terme de la suite, on a besoin d’un ou plusieurs termes précédents. Ainsi, on aura par exemple une formule du type :
+La seconde façon de définir une suite est par récurrence. Dans ce cas, pour calculer la valeur d'un terme de la suite, on a besoin d'un ou plusieurs termes précédents. Ainsi, on aura par exemple une formule du type :
 \[
 u_{n+1} = \ldots u_n \ldots
 \]
@@ -191,7 +209,7 @@ u_n = \ldots u_{n-1} \ldots
   \[
   u(1) = 4u(0) + 7 = 4 \times (-1) + 7 = 3
 \]
-  Maintenant que l’on connaît $u_1$, on peut calculer $u_2$ : \\
+  Maintenant que l'on connaît $u_1$, on peut calculer $u_2$ : \\
   \[
   u(2) = 4u(1) + 7 = 4 \times 3 + 7 = 19
   \]
@@ -283,5 +301,56 @@ u(n + 1) = u(n) + 1
 \begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Exercices]
   Exercice N°89, N°95, N°97, N°100 page 129-130
 \end{tcolorbox}
+
+\section*{Définition d'une suite géométrique}
+
+\begin{tcolorbox}[colback=green!5!white, colframe=green!75!black, title=\textbf{Définition}]
+  On dit qu'une suite est \textbf{géométrique} quand on passe d'un terme au suivant en multipliant toujours par le même nombre. Ainsi, pour tout $n$ :
+  \[
+  u(n+1) = u(n) \times q
+  \]
+  On appelle ce nombre $q$ la \textbf{raison} de la suite géométrique.
+  \end{tcolorbox}
+  
+\subsection*{Exemples}
+
+  \begin{itemize}[noitemsep]
+      \item La suite $u(n+1) = u(n) \times 7$ est une suite géométrique dont la raison est 7.
+      \item La suite $u(n) = -6 \times u(n-1)$ est une suite géométrique dont la raison est $-6$.
+  \end{itemize}
+
+  \subsection*{Monotonie}  
+
+  \begin{itemize}[noitemsep]
+      \item Si $q > 1$, la suite est strictement croissante.
+      \item Si $0 < q < 1$, la suite est strictement décroissante.
+  \end{itemize}
+  
+  \subsection*{Autres exemples}
+
+  La suite $u$ définie par tout entier naturel par $u(n+1) = 5u(n)$ est une suite croissante. \par
+  La suite $v$ définie par tout entier naturel par $v(n+1) = \frac{1}{2} v(n)$ est une suite décroissante. \par
+  
+  \vspace{1em}
+  Une suite donnée sous forme explicite peut être une suite géométrique. Par exemple, la suite $(u_n)$ définie pour tout entier naturel $n$ par $u(n) = 4^n$ est une suite géométrique. \\
+  Comment le prouver ?
+  \vspace{1em}
+  \begin{enumerate}[noitemsep]
+      \item Exprimer $u(n+1)$.
+      \item Calculer $\frac{u(n+1)}{u(n)}$.
+      \item Si le résultat est une constante, alors la suite est géométrique.
+  \end{enumerate}
+  
+  
+
+  Montrons que la suite $(u_n)$ définie pour tout entier naturel $n$ par $u(n) = 4^n$ est une suite géométrique.
+  \[
+  \frac{u(n+1)}{u(n)} = \frac{4^{n+1}}{4^n} = 4^{n+1 - n} = 4^1 = 4.
+  \]
+  Comme le résultat de $\frac{u(n+1)}{u(n)}$ est une constante (4), la suite est géométrique de raison 4. On peut donc réécrire $u$ sous la forme :
+  \[
+  u(n+1) = 4 \cdot u(n).
+  \]
+  
 
 \end{document}
