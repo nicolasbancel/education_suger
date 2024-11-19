@@ -1,0 +1,106 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\title{Contrôle N°1 - Suites numériques}
+\author{N. Bancel}
+\date{Novembre 2024}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1ères STD2A} \par
+
+{\let\newpage\relax\maketitle}
+
+\begin{center}
+\textbf{\textcolor{red}{Durée : 30 minutes. La calculatrice n'est pas autorisée}} \\
+\textbf{\textcolor{red}{Une réponse donnée sans justification sera considérée comme fausse.}} \\
+\end{center}
+
+\section*{Partie 1 : Cours (2 points)}
+
+\begin{questions}
+  \question[0.5] Donner la définition d'une suite arithmétique
+  \question[0.5] A quelles conditions une suite arithmétique est-elle croissante ou décroissante ?
+  \question[0.5] Donner la définition d'une suite géométrique
+  \question[0.5] A quelles conditions une suite géométrique est-elle croissante ou décroissante ?
+
+\end{questions} 
+
+\section*{Partie 2 : Suites définies de manière fonctionnelle et récurrente (5 points)}
+
+\begin{questions}
+  \question[2.5] Soit la suite $(U_n)$ définie pour tout $n \geq 0$ par la relation suivante :
+  
+  \[
+    \left\{
+      \begin{array}{ll}
+            U_{n+1} = U_n + n \\
+            U_0 = 2 
+        \end{array}
+      \right.
+    \]
+  
+  \begin{parts}
+    \part[1] Calculer les trois premiers termes de la suite $(U_n)$.
+    \part[1] Calculer $U_{n+1} - U_{n}$
+    \part[0.5] Cette suite est-elle croissante ou décroissante ? Justifier
+  \end{parts}
+
+  \question[3] Soit la suite \((V_n)\) définie par la relation fonctionnelle :
+  \[
+  V_n = 5 \times 2^n.
+  \]
+  \begin{parts}
+    \part[1] Calculer les termes $V_0$, $V_1$ et $V_2$.
+    \part[1] Calculer le rapport $\frac{V_{n+1}}{V_n}$
+    \part[0.5] Déterminer si la suite $(V_n)$ est géométrique, et préciser sa raison. Cette suite est-elle croissante ou décroissante ? Justifier
+  \end{parts}
+
+\end{questions}
+
+\section*{Partie 3 : Suites arithmétiques et géométriques (3 points)}
+
+\begin{questions}
+  \question[1.5] Soit la suite \((W_n)\) définie par la relation suivante :
+  
+  \[
+    \left\{
+      \begin{array}{ll}
+        W_{n+1} = W_n + 4 \\
+        W_1 = 6
+        \end{array}
+      \right.
+    \]
+
+  \begin{parts}
+    \part[0.5] La suite est-elle arithmétique ? Géométrique ? Si oui, quelle est sa raison ?
+    \part[1] Calculer $W_4$ et $W_6$ 
+  \end{parts}
+
+  \question[1.5] Soit la suite \((X_n)\) définie par la relation suivante :
+  
+  \[
+    \left\{
+      \begin{array}{ll}
+        X_{n+1} = 2 X_{n} \\
+        X_1 = 3
+        \end{array}
+      \right.
+  \]
+  
+  \begin{parts}
+    \part[0.5] La suite est-elle arithmétique ? Géométrique ? Si oui, quelle est sa raison ?
+    \part[1] Calculer $X_3$ et $X_5$.
+  \end{parts}
+
+
+\end{questions}
+
+\end{document}

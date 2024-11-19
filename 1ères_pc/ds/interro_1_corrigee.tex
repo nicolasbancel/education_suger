@@ -1,0 +1,141 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+\usepackage{xcolor}
+
+\title{Corrigé - Interro N°1 : Chimie organique}
+\author{N. Bancel}
+\date{Novembre 2024}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1ères STD2A} \par
+
+{\let\newpage\relax\maketitle}
+
+\section*{Partie 1 : Cours sur les hydrocarbures (6.5 points)}
+
+\begin{questions}
+  \question[1] \textbf{Justification du nombre de doublets non-liants pour l'atome de carbone ($Z = 6$) :}
+  
+  \begin{itemize}[noitemsep]
+    \item Le carbone a un numéro atomique \( Z = 6 \), ce qui signifie qu'il possède 6 électrons.
+    \item Les électrons se répartissent selon les couches électroniques : 2 électrons sur la couche interne (1s) et 4 sur la couche externe (2s et 2p).
+    \item La couche externe contient donc 4 électrons de valence. Pour respecter la règle de l'octet, le carbone a besoin de former 4 liaisons covalentes afin de "récupérer" / se lier avec 4 autres électrons
+  \end{itemize}
+
+  \textcolor{blue}{Ainsi, le carbone n'a pas de doublets non-liants, car tous ses électrons de valence sont impliqués dans des liaisons covalentes.}
+
+  \question[1] \textbf{Définitions des hydrocarbures :}
+  \begin{parts}
+    \part[0.5] \textbf{Alcane :} 
+    \begin{itemize}[noitemsep]
+      \item Les alcanes sont des hydrocarbures saturés.
+      \item Leur formule générale est \( \ce{C_nH_{2n+2}} \).
+      \item Ils contiennent uniquement des liaisons simples (\ce{C-C} et \ce{C-H}).
+    \end{itemize}
+
+    \textcolor{blue}{Exemples d'alcanes : 
+    \begin{itemize}
+      \item Pour $n=1$ : \ce{C_{1}H_{1*2+2}} cad \ce{CH4}
+      \item Pour $n=2$ : \ce{C_{2}H_{2*2+2}} cad \ce{C2H6}
+      \item Pour $n=3$ : \ce{C_{3}H_{3*2+2}} cad \ce{C3H8}
+    \end{itemize}
+    }
+
+    \part[0.5] \textbf{Alcène :}
+    \begin{itemize}[noitemsep]
+      \item Les alcènes sont des hydrocarbures insaturés.
+      \item Leur formule générale est \( \ce{C_nH_{2n}} \).
+      \item Ils contiennent au moins une double liaison \ce{C=C}.
+    \end{itemize}
+
+    \textcolor{blue}{Exemples d'alcènes : 
+    \begin{itemize}
+      \item Pour $n=2$ : \ce{C_{2}H_{2*2}} cad \ce{C2H4}
+      \item Pour $n=3$ : \ce{C_{3}H_{3*2}} cad \ce{C3H6}
+      \item Pour $n=4$ : \ce{C_{4}H_{4*2}} cad \ce{C4H8}
+    \end{itemize}
+    }
+
+
+  \end{parts}
+
+  \question[1] \textbf{Identification des familles de composés associés aux groupes caractéristiques :}
+
+  \begin{itemize}[noitemsep]
+    \item \ce{-OH} : Famille des alcools.
+    \item \ce{-COOH} : Famille des acides carboxyliques.
+    \item \ce{-COOR1} : Famille des esters.
+  \end{itemize}
+
+  \question[3.5] \textbf{Compléter le tableau :}
+
+  \begin{center}
+  \begin{tabular}{|| >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{5cm} | >{\centering\arraybackslash}p{4cm} | >{\centering\arraybackslash}p{4cm} ||}
+    \toprule
+    {Formule brute} & {Formule développée} & {Formule semi-développée} & {Formule topologique} \\
+    \midrule
+    \ce{C3H8} & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-H}} & \ce{CH3-CH2-CH3} & \chemfig{[:-30]--[:30]} \\[4em]
+    \ce{C2H6} & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-H}} & \ce{CH3-CH3} & \chemfig{--[:0]} \\[4em]
+    \ce{C2H4O2} & {\chemfig{H-C(-[2]H)(-[6]H)-C(=[:30]O)(-[:-30]OH)}} & \ce{CH3-COOH} & \chemfig{-[:0](=[:45]O)(-[:-45]OH)} \\[4em]
+    \ce{C3H8O} & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-OH}} & \ce{CH3-CH2-CH2-OH} & {\chemfig{[:30]--[:-30]-([:30]OH)}} \\[4em]
+    \ce{C3H6O3} & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]OH)(-[6]H)-C(-[:30]OH)(=[:-30]O)}} & {\chemfig{CH3-CH(-[6]OH)-COOH}} & {\chemfig{HO-[:-45](-[:-135])-[:0](=[:-45]O)(-[:45])}} \\[4em]
+  \bottomrule
+  \end{tabular}
+  \end{center}
+
+\end{questions}
+
+\section*{Partie 2 : Les polymères (3.5 points)}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{interro1_02.jpg}
+  \caption{Groupes caractéristiques}
+\end{figure} 
+
+\begin{questions}
+  \question[3.5] \textbf{Questions sur le polyamide 11 :}
+
+  \begin{parts}
+    \part[0.5] \textbf{Définition de "biosourcé" :} \\
+    \textcolor{blue}{Un matériau est dit "biosourcé" lorsqu'il est produit à partir de ressources naturelles renouvelables, comme les plantes.}
+
+    \part[0.5] \textbf{Motif du nylon 11 et sa formule brute :}
+    \begin{itemize}[noitemsep]
+      \item Le motif du nylon 11 est l'élément qui est répété dans le polymère, il s'agit donc de \ce{-(CH2)10-CONH-}
+      \item Sa formule brute est \ce{C11H21NO}. \textcolor{red}{Pour compter le nombre d'atomes : l'indice 10 à côté de \ce{CH2} indique que le motif \ce{CH2} est répété 10 fois, donc qu'il y a 10 atomes de carbones, et 20 atomes d'hydrogène. Pour déterminer la formule brute de la molécule globale, on ajoute les atomes restants : \ce{CONH}}
+    \end{itemize}
+
+    \part[0.5] \textbf{Groupe caractéristique dans le motif et famille associée :}
+    \begin{itemize}[noitemsep]
+      \item Groupe caractéristique : \ce{-CONH-}.
+      \item Famille associée : \textcolor{red}{Amides : Cela était indiqué dans la section "Aides"}.
+    \end{itemize}
+
+    \part[0.5] \textbf{Autres groupes caractéristiques et familles associées :} \\ 
+    On peut identifier d'autres groupes caractéristiques dans la réaction chimique 
+    \begin{itemize}[noitemsep]
+      \item \ce{-COOH} : Acides carboxyliques (ça, c'était à connaître dans le cours).
+      \item \ce{-NH2} : Amines primaires (ça, c'était indiqué dans la section "Aides")
+    \end{itemize}
+
+    \part[0.5] \textbf{Polyaddition ou polycondensation :} \\
+    \textcolor{red}{Le polyamide 11 est synthétisé par polycondensation, car il libère des molécules d'eau (\ce{H2O}) au cours de la réaction chimique. En l'occurence, il en libère autant que l'indice de polymérisation $n$. Si l'indice de polymérisation est 27, il y a 27 molécules d'eau produites au cours de la réaction de polymérisation}
+
+    \part[1] \textbf{Définition d'un polymère et de l'indice de polymérisation :}
+    \begin{itemize}[noitemsep]
+      \item \textbf{Polymère :} Un polymère est une macromolécule formée par l'enchaînement répété d'unités monomères.
+      \item \textbf{Indice de polymérisation :} C'est le nombre de motifs monomères présents dans une chaîne polymère.
+    \end{itemize}
+  \end{parts}
+\end{questions}
+
+\end{document}

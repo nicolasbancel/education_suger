@@ -1,0 +1,353 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\title{Corrigé - Contrôle N°1 : Suites numériques}
+\author{N. Bancel}
+\date{Novembre 2024}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1ères STD2A} \par
+
+{\let\newpage\relax\maketitle}
+
+\section*{Partie 1 : Cours (2 points)}
+
+\begin{questions}
+  \question[0.5] \textbf{Définition d'une suite arithmétique} :
+  Une suite $(u_n)$ est dite \textbf{arithmétique} si, pour tout $n \in \mathbb{N}$, il existe un nombre réel $r$ tel que :
+  \[
+  u_{n+1} = u_n + r.
+  \]
+  Le nombre $r$ est appelé la raison de la suite.
+
+  \question[0.5] \textbf{Conditions pour qu'une suite arithmétique soit croissante ou décroissante} :
+  \begin{itemize}[noitemsep]
+    \item La suite $(u_n)$ est \textbf{croissante} si $r > 0$.
+    \item La suite $(u_n)$ est \textbf{décroissante} si $r < 0$.
+    \item La suite est \textbf{constante} si $r = 0$.
+  \end{itemize}
+
+  \textbf{Justification :}
+
+Soit une suite arithmétique \((u_n)\) définie par la relation \( u_{n+1} = u_n + r \), où \( r \) est la raison de la suite. 
+
+\begin{itemize}
+    \item Si \( r > 0 \) :
+    \begin{itemize}
+        \item Pour tout \( n \in \mathbb{N} \), on a \( u_{n+1} - u_n = r \).
+        \item Comme \( r > 0 \), cela implique que \( u_{n+1} > u_n \). \textcolor{blue}{Concrètement, cela signifie que pour tout \( n \in \mathbb{N} \) le terme suivant (qui est d'indice $n+1$) est plus grand que le terme précédent (qui est d'indice $n$), donc la suite croît (les valeurs de la suite / les termes sont de plus en plus grands)}
+        \item Ainsi, la suite \((u_n)\) est \textbf{strictement croissante}.
+    \end{itemize}
+
+    \item Si \( r < 0 \) :
+    \begin{itemize}
+        \item Pour tout \( n \in \mathbb{N} \), on a également \( u_{n+1} - u_n = r \).
+        \item Comme \( r < 0 \), cela implique que \( u_{n+1} < u_n \). \textcolor{blue}{Concrètement, cela signifie que pour tout \( n \in \mathbb{N} \) le terme suivant (qui est d'indice $n+1$) est plus petit que le terme précédent (qui est d'indice $n$), donc la suite croît (les valeurs de la suite / les termes sont de plus en plus petits)}
+        \item Par conséquent, la suite \((u_n)\) est \textbf{strictement décroissante}.
+    \end{itemize}
+
+    \item Si \( r = 0 \) :
+    \begin{itemize}
+        \item Dans ce cas, \( u_{n+1} - u_n = r = 0 \), ce qui signifie que \( u_{n+1} = u_n \) pour tout \( n \in \mathbb{N} \). \textcolor{blue}{Concrètement, cela signifie que pour tout \( n \in \mathbb{N} \) le terme suivant (qui est d'indice $n+1$) est égal au terme précédent (qui est d'indice $n$), donc la suite ne varie pas (les valeurs de la suite / les termes sont toujours les mêmes)}
+        \item La suite est donc \textbf{constante}.
+    \end{itemize}
+\end{itemize}
+
+\textbf{Conclusion} : Le signe de \( r \) détermine la variation de la suite arithmétique :
+\begin{itemize}
+    \item Si \( r > 0 \), la suite est croissante.
+    \item Si \( r < 0 \), la suite est décroissante.
+    \item Si \( r = 0 \), la suite est constante.
+
+\end{itemize}
+
+\textcolor{red}{Attention à ne donc pas confondre l'étude de la monotonie d'une suite (est-ce qu'elle est croissante ou décroissante) avec son signe (est-ce qu'elle est positive ou négative). Une suite croissante peut tout à fait être positive, tout comme elle peut être négative.}
+
+  \question[0.5] \textbf{Définition d'une suite géométrique} :
+  Une suite $(v_n)$ est dite \textbf{géométrique} si, pour tout $n \in \mathbb{N}$, il existe un nombre réel $q$ tel que :
+  \[
+  v_{n+1} = q \cdot v_n.
+  \]
+  Le nombre $q$ est appelé la raison de la suite.
+
+
+  \question[0.5] \textbf{Conditions pour qu'une suite géométrique soit croissante ou décroissante} :
+  \begin{itemize}[noitemsep]
+    \item La suite $(v_n)$ est \textbf{croissante} si $q > 1$ et $v_n > 0$.
+   \item La suite $(v_n)$ est \textbf{décroissante} si $0 < q < 1$ et $v_n > 0$.
+  \item Si $q = 1$, la suite est \textbf{constante}.
+\end{itemize}
+
+  \textbf{Justification :}
+
+  Soit une suite géométrique \((v_n)\) définie par la relation \( v_{n+1} = q \cdot v_n \), où \( q \) est la raison de la suite. Analysons la variation de la suite en fonction de la valeur de \( q \) et de \( v_n \).
+  
+  \begin{itemize}
+      \item Si \( q > 1 \) et \( v_n > 0 \) :
+      \begin{itemize}
+          \item Pour tout \( n \in \mathbb{N} \), on a \( v_{n+1} = q \cdot v_n \), et donc \( v_{n+1} > v_n \), car \( q > 1 \) multiplie un terme positif \( v_n \).
+          \item La suite est alors \textbf{strictement croissante}.
+      \end{itemize}
+  
+      \item Si \( 0 < q < 1 \) et \( v_n > 0 \) :
+      \begin{itemize}
+          \item Dans ce cas, \( q \) est un nombre entre 0 et 1. Lorsque \( v_{n+1} = q \cdot v_n \), cela réduit la valeur de \( v_n \), car \( q < 1 \).
+          \item On a donc \( v_{n+1} < v_n \), et la suite est \textbf{strictement décroissante}.
+      \end{itemize}
+  
+      \item Si \( q = 1 \) :
+      \begin{itemize}
+          \item Pour tout \( n \in \mathbb{N} \), \( v_{n+1} = q \cdot v_n = 1 \cdot v_n = v_n \).
+          \item La suite est alors \textbf{constante}, car chaque terme est égal au précédent.
+      \end{itemize}
+  
+  \end{itemize}
+
+  \textbf{Conclusion} : Le comportement de la suite géométrique dépend de la valeur de \( q \) et de \( v_n \) :
+  \begin{itemize}
+      \item Si \( q > 1 \) et \( v_n > 0 \), la suite est croissante.
+      \item Si \( 0 < q < 1 \) et \( v_n > 0 \), la suite est décroissante.
+      \item Si \( q = 1 \), la suite est constante.
+  \end{itemize}
+
+\end{questions}
+
+\section*{Partie 2 : Suites définies de manière fonctionnelle et récurrente (5 points)}
+
+\begin{questions}
+  \question[2.5] Soit $(U_n)$ définie par :
+  \[
+    \left\{
+      \begin{array}{ll}
+        U_{n+1} = U_n + n \\
+        U_0 = 2
+      \end{array}
+    \right.
+  \]
+
+  \begin{parts}
+    \part[1] \textbf{Calcul des quatre premiers termes :} \\
+    \textcolor{red}{Attention : dans cette partie, 2 notions sont mixées : la notion d'indice ($n$) et de terme ($U_n$). A chaque calcul d'un nouveau terme : le terme précédent $U_n$ ainsi que l'indice lui même $n$ entrent en jeu}
+    \[
+    U_0 = 2.
+    \]
+    Pour $n = 0$ :
+    \[
+    U_1 = U_0 + 0 = 2 + 0 = 2.
+    \]
+    Pour $n = 1$ :
+    \[
+    U_2 = U_1 + 1 = 2 + 1 = 3.
+    \]
+    Pour $n = 2$ :
+    \[
+    U_3 = U_2 + 2 = 3 + 2 = 5.
+    \]
+    Donc, les quatre premiers termes sont : $U_0 = 2$, $U_1 = 2$, $U_2 = 3$, $U_3 = 5$. \\
+    Que l'on peut aussi écrire : $\left\{2, 2, 3, 5, ...\right\}$
+
+    \part[1] \textbf{Calcul de $U_{n+1} - U_n$ :}
+    Par définition 
+    \[
+    U_{n+1} = U_n + n
+    \]
+    donc 
+    \[
+   \begin{aligned}
+    U_{n+1} - U_n &= (U_n + n) - U_n \\
+                 &= n.
+   \end{aligned} 
+   \] \\ 
+
+   \textcolor{red}{Cela pouvait se vérifier rapidement avec quelques exemples : }
+
+   Pour $n = 0$
+   \[
+    \begin{aligned}
+    U_{n+1} - U_n &= U_1 - U_0 \\
+      \text{or} \quad U_1 = 2 \quad \text{et} & \quad U_0 = 2 \\ 
+      \text{donc} \quad U_{n+1} - U_n &= 2 - 2 \\
+                  &= 0
+  \end{aligned} 
+  \]
+  Ce qui correspond bien à la valeur de $n$ ($n=0$)
+
+  Pour $n = 1$
+  \[
+   \begin{aligned}
+   U_{n+1} - U_n &= U_2 - U_1 \\
+     \text{or} \quad U_1 = 3 \quad \text{et} & \quad U_1 = 2 \\ 
+     \text{donc} \quad U_{n+1} - U_n &= 3 - 2 \\
+                 &= 1
+ \end{aligned} 
+ \]
+ Ce qui correspond bien à la valeur de $n$ ($n=1$)
+
+
+    \part[0.5] \textbf{La suite est-elle croissante ou décroissante ?} \\
+    D'après la question précédente, $U_{n+1} - U_n = n$ \\ 
+    Or on sait que n est toujours positif : $n \geq 0$.
+    
+    \[
+      \begin{aligned}
+      U_{n+1} - U_n &= n \\
+        \text{or} \quad n &\geq 0 \\
+        \text{donc} \quad U_{n+1} - U_n &= n \geq 0 \\
+        U_{n+1} - U_n & \geq 0
+    \end{aligned} 
+    \]
+    
+    La suite $(U_n)$ est donc \textbf{strictement croissante}.
+  \end{parts}
+
+  \question[3] Soit $(V_n)$ définie par :
+  \[
+  V_n = 5 \times 2^n.
+  \]
+
+  \begin{parts}
+    \part[1] \textbf{Calcul des termes $V_0$, $V_1$, et $V_2$ :}
+    \[
+    V_0 = 5 \times 2^0 = 5 \times 1 = 5.
+    \]
+    \[
+    V_1 = 5 \times 2^1 = 5 \times 2 = 10.
+    \]
+    \[
+    V_2 = 5 \times 2^2 = 5 \times 4 = 20.
+    \]
+    Donc, $V_0 = 5$, $V_1 = 10$, $V_2 = 20$.
+
+    \part[1] \textbf{Calcul du rapport $\frac{V_{n+1}}{V_n}$ :}
+    \[
+    \frac{V_{n+1}}{V_n} = \frac{5 \times 2^{n+1}}{5 \times 2^n} 
+    = \frac{2^{n+1}}{2^n}
+    = \frac{2^n \times 2}{2^n}
+    = 2.
+    \]
+
+    \part[0.5] \textbf{La suite est-elle géométrique ? Si oui, quelle est sa raison ?} \\
+    Oui, $(V_n)$ est une suite géométrique, car $\frac{V_{n+1}}{V_n}$ est constant et vaut $2$. La raison est $q = 2$. \\
+    D'après le cours, la suite $(V_n)$ est \textbf{strictement croissante}, car $q > 1$ et $V_n > 0$.
+  \end{parts}
+\end{questions}
+
+\section*{Partie 3 : Suites arithmétiques et géométriques (3 points)}
+
+\begin{questions}
+  \question[1.5] Soit $(W_n)$ définie par :
+  \[
+    \left\{
+      \begin{array}{ll}
+        W_{n+1} = W_n + 4 \\
+        W_1 = 6
+      \end{array}
+    \right.
+  \]
+
+  \begin{parts}
+    \part[0.5] \textbf{La suite est-elle arithmétique ou géométrique ?}
+    La suite $(W_n)$ est \textbf{arithmétique} avec une raison $r = 4$, car elle est définie sous la forme 
+    
+    \[
+    W_{n+1} = W_n + r
+    \]
+
+    où $r$ est une constante ($r$ vaut 4)
+
+    \part[1] \textbf{Calcul de $W_4$ et $W_6$ :}
+    Pour calculer $W_4$, nous procédons en calculant chaque terme de la suite jusqu'à $W_4$ :
+
+\[
+W_1 = 6 \quad \text{(donné dans l'énoncé)}.
+\]
+\[
+W_2 = W_1 + 4 = 6 + 4 = 10.
+\]
+\[
+W_3 = W_2 + 4 = 10 + 4 = 14.
+\]
+\[
+W_4 = W_3 + 4 = 14 + 4 = 18.
+\]
+
+Ainsi, \( W_4 = 18 \).
+
+---
+
+Pour calculer $W_6$, nous continuons à partir des termes précédents jusqu'à $W_6$ :
+
+\[
+W_5 = W_4 + 4 = 18 + 4 = 22.
+\]
+\[
+W_6 = W_5 + 4 = 22 + 4 = 26.
+\]
+
+Ainsi, \( W_6 = 26 \).
+
+\textbf{Conclusion :} En calculant chaque terme successivement, nous obtenons :
+\[
+W_4 = 18 \quad \text{et} \quad W_6 = 26.
+\]
+  \end{parts}
+
+  \question[1.5] Soit $(X_n)$ définie par :
+  \[
+    \left\{
+      \begin{array}{ll}
+        X_{n+1} = 2 X_n \\
+        X_1 = 3
+      \end{array}
+    \right.
+  \]
+
+  \begin{parts}
+    \part[0.5] \textbf{La suite est-elle arithmétique ou géométrique ?} \\
+    La suite $(X_n)$ est \textbf{géométrique} avec une raison $q = 2$, car car elle est définie sous la forme 
+    \[
+    X_{n+1} = q \cdot X_n
+    \]
+    où $q$ est une constante, positive et vaut $2$
+
+    \part[1] \textbf{Calcul de $X_3$ et $X_5$ :}
+
+    Pour calculer $X_3$, nous procédons étape par étape :
+
+\[
+X_1 = 3 \quad \text{(donné dans l'énoncé)}.
+\]
+\[
+X_2 = 2 \cdot X_1 = 2 \cdot 3 = 6.
+\]
+\[
+X_3 = 2 \cdot X_2 = 2 \cdot 6 = 12.
+\]
+
+Ainsi, \( X_3 = 12 \).
+
+Pour calculer $X_5$, nous continuons étape par étape à partir de $X_3$ :
+
+\[
+X_4 = 2 \cdot X_3 = 2 \cdot 12 = 24.
+\]
+\[
+X_5 = 2 \cdot X_4 = 2 \cdot 24 = 48.
+\]
+
+\textbf{Conclusion :} En calculant chaque terme successivement, nous obtenons :
+\[
+X_3 = 12 \quad \text{et} \quad X_5 = 48.
+\]
+  \end{parts}
+\end{questions}
+
+\end{document}

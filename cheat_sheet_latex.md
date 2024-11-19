@@ -1,6 +1,10 @@
 # Cheat Sheet - LaTex
 
 
+## Alignement in equations
+
+
+
 ## Boxes
 
 ```latex
