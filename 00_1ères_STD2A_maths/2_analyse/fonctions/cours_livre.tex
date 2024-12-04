@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+
+\usepackage{pgfplots}
+    \pgfplotsset{
+    compat=1.11,
+  }
+
+
+\begin{document}
+
+\title{Fonctions - Rappels de 2nde}
+\author{N. Bancel}
+
+\section*{Bases}
+\subsection*{Définition}
+Une \textbf{fonction} modélise la dépendance d'une quantité vis-à-vis d'une autre.
+
+On note \( f(x) \) cette fonction où \( x \) est la variable dont dépend la quantité étudiée.
+
+\subsection*{Exemple}
+On s'intéresse à la trajectoire d'un ballon dans l'air lors d'un lancer franc au basketball :
+\[
+f(x) = -x^2 + 4x + 12
+\]
+On s'aperçoit que sa hauteur dépend de la distance par rapport au lanceur. On peut modéliser cela par une fonction \( f \) qui associe la hauteur \( z \) à la distance par rapport au lanceur. Ici, cette fonction sera :
+\[
+f(x) = -x^2 + 4x + 12
+\]
+Que l'on pourra noter également sous la forme :
+\[
+f : x \mapsto -x^2 + 4x + 12
+\]
+
+\section*{Image, antécédent et représentation graphique}
+\subsection*{Vocabulaire}
+En prenant une valeur réelle et en calculant \( f(a) \), on obtient l'\textbf{image} de \( a \) par la fonction \( f \). On dit que \( a \) est un \textbf{antécédent}.
+
+\subsection*{Exemple}
+Dans l'exemple précédent, comme \( f(2) = 16 \), on dit que 16 est l'image de 2. Et que 2 est l'antécédent de 16 par la fonction \( f \).
+
+\subsection*{Propriétés}
+Pour calculer une image, on substitue \( x \) par la valeur donnée dans \( f(x) \). Pour trouver un antécédent, on doit résoudre une équation.
+
+\subsection*{Exemple}
+Pour calculer l'image de 2 par la fonction \( f(x) = -x^2 + 4x + 12 \), on remplace \( x \) par 2 :
+\[
+f(2) = -2^2 + 4 \times 2 + 12 = -4 + 8 + 12 = 16
+\]
+L'image de 2 est donc 16. \par
+Pour trouver l'antécédent de 8 par la fonction \( g(x) = 3x - 7 \), on résout :
+\[
+3x - 7 = 8
+\]
+\[
+3x = 8 + 7
+\]
+\[
+3x = 15
+\]
+\[
+x = \frac{15}{3}
+\]
+\[
+x = 5
+\]
+
+\section*{Représentation graphique}
+Pour tracer la représentation graphique de la fonction \( f \), que l'on nomme \textbf{courbe représentative de} \( f \), ou tout simplement \( Cf \) :
+\begin{enumerate}
+    \item On prend plusieurs valeurs de \( x \) (dans le domaine de définition de \( f \)).
+    \item Pour chacune de ces valeurs, on calcule l'image \( f(x) \).
+    \item Les points de coordonnées \( (x ; f(x)) \) seront les points de la représentation graphique de \( f \). Il suffit de les placer et de les relier pour obtenir \( Cf \).
+\end{enumerate}
+
+\subsection*{Exemple}
+Dans l'exemple précédent, tracer la représentation graphique de \( f(x) = -x^2 + 4x + 12 \).
+
+\textbf{Réponse} : On construit un tableau de valeurs :
+\[
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+x & 0 & 1 & 2 & 3 & 4 \\
+\hline
+f(x) & 12 & 15 & 16 & 15 & 12 \\
+\hline
+\end{array}
+\]
+
+\end{document}

@@ -1,0 +1,90 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage[utf8]{inputenc}
+\usepackage{../../../../mypackages}
+\usepackage{../../../../macros}
+% \usepackage{lmodern}
+
+\begin{document}
+
+\section*{Correction de l'exercice : Modélisation de la Gateway Arch}
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!50!black, title=Méthodes générales]
+1. \textbf{Analyse du signe du coefficient \(a\)} : Pour déterminer le signe de \(a\), on analyse la concavité de la parabole. Si la courbe a un sommet vers le haut (maximum), alors \(a < 0\).
+
+2. \textbf{Utilisation d'un point pour trouver \(b\)} : Si la courbe passe par un point donné, on remplace les coordonnées dans l'équation \(f(x) = ax^2 + b\) pour en déduire \(b\).
+
+3. \textbf{Résolution d'équation pour \(a\)} : Utiliser la largeur de l'arche (soit la valeur de \(x\) lorsque \(f(x) = 0\)) pour écrire une équation à résoudre et déterminer \(a\).
+
+4. \textbf{Validation de la modélisation} : Comparer les valeurs théoriques de la fonction \(f(x)\) avec les données expérimentales pour vérifier si la modélisation est adéquate.
+\end{tcolorbox}
+
+\subsection*{a. Signe de \(a\)}
+La courbe de l’arche de Saint-Louis est une parabole ouverte vers le bas, car elle a un maximum au sommet. Cela signifie que le coefficient \(a\) est négatif. Donc, \(a < 0\).
+
+\subsection*{b. Valeur de \(b\)}
+La courbe atteint son maximum en \(x = 0\), où la hauteur maximale est donnée comme étant 192 mètres. Ainsi, on peut écrire :
+\[
+f(0) = a(0)^2 + b = 192
+\]
+Ce qui donne \(b = 192\). La fonction prend donc la forme \(f(x) = ax^2 + 192\).
+
+\subsection*{c. Justification de l'équation}
+La largeur de l’arche est de 192 mètres, ce qui signifie que la distance entre les pieds de l’arche au sol est de 192 mètres. Ainsi, les pieds de l’arche sont situés à \(x = 96\) et \(x = -96\), où la hauteur est nulle, c'est-à-dire \(f(96) = 0\) et \(f(-96) = 0\). En remplaçant dans l'équation de la fonction :
+\[
+0 = a(96)^2 + 192
+\]
+On obtient l’équation à résoudre :
+\[
+0 = a \times 96^2 + 192
+\]
+Ce qui nous donne \(0 = 9216a + 192\).
+
+\subsection*{d. Résolution de l'équation}
+Nous résolvons maintenant l’équation pour trouver \(a\) :
+\[
+9216a + 192 = 0
+\]
+\[
+9216a = -192
+\]
+\[
+a = \frac{-192}{9216} = -\frac{1}{48}
+\]
+La fonction représentant l’arche est donc :
+\[
+f(x) = -\frac{1}{48}x^2 + 192
+\]
+
+\subsection*{e. Comparaison des hauteurs}
+
+Les valeurs données pour la hauteur de l’arche en fonction de la distance au centre sont les suivantes :
+
+\[
+\begin{array}{|c|c|}
+\hline
+x (\text{m}) & h (\text{m}) \\
+\hline
+-96 & 0 \\
+-40 & 128.0 \\
+-10 & 145.9 \\
+0 & 192 \\
+10 & 145.9 \\
+40 & 128.0 \\
+96 & 0 \\
+\hline
+\end{array}
+\]
+
+Calculons maintenant les valeurs de \( f(x) \) pour ces mêmes \( x \), avec la fonction \( f(x) = -\frac{1}{48}x^2 + 192 \).
+
+\begin{itemize}[noitemsep]
+    \item Pour \( x = 96 \), on a \( f(96) = -\frac{1}{48} \times 96^2 + 192 = 0 \), ce qui est correct.
+    \item Pour \( x = 40 \), on a \( f(40) = -\frac{1}{48} \times 40^2 + 192 = 158{,}67 \), ce qui est différent de 128.
+    \item Pour \( x = 10 \), on a \( f(10) = -\frac{1}{48} \times 10^2 + 192 = 187{,}92 \), ce qui est plus élevé que 145{,}9.
+\end{itemize}
+
+Ainsi, bien que la modélisation par la fonction \( f(x) = -\frac{1}{48}x^2 + 192 \) soit assez proche pour certaines valeurs, elle ne correspond pas exactement à toutes les données. Il serait donc intéressant d’envisager une forme différente pour améliorer la précision, comme une chaînette renversée, qui modélise mieux la forme réelle de l’arche.
+
+\end{document}

@@ -1,0 +1,236 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{positioning}
+
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+\title{Chapitre 4 : L'atome - Projet de fin de chapitre - CORRECTION}
+\author{N. Bancel}
+\date{Septembre 2024}
+\maketitle
+
+\tikzstyle{startstop} = [rectangle, rounded corners, 
+minimum width=3cm, 
+minimum height=1cm,
+text centered, 
+draw=black, 
+fill=red!30]
+
+\tikzstyle{process} = [rectangle, 
+minimum width=3cm, 
+minimum height=1cm, 
+text centered, 
+text width=3cm, 
+draw=black, 
+fill=orange!30]
+
+
+\section*{Méthode}
+
+Dans ce genre de problème, il faut se créer ses questions intermédiaires soi-même, \textbf{en commençant par la fin}. Puis reprendre le sujet en entier et répondre aux questions une par une.
+
+
+\begin{tikzpicture}[
+  box/.style={rectangle, draw=black, fill=orange!30, minimum width=6cm, text centered, text width=6cm, minimum height=2cm, font=\small},
+  explanation/.style={anchor=west, align=left, font=\small, text width=9cm},
+  node distance=3.5cm and 1cm  % Adjusted node distance to increase vertical spacing
+]
+
+% Define nodes with text and explanation text
+\node (box1) [box] {$V_{\text{tous\_les\_cubes}}$ et $V_{\text{dé\_à\_coudre}}$};
+\node[right=1cm of box1] (exp1) [explanation] {On groupe tous les atomes de l'univers dans des petits cubes qui contiennent 8 atomes. Il faut déterminer le volume de tous ces petits cubes (cela correspond à la place que prennent tous les atomes de l'univers) et comparer ce volume au volume d'un dé à coudre};
+
+\node (box2) [box, below of=box1] {$V_{\text{1\_cube}}$ et $N_{\text{cubes}}$};
+\node[right=1cm of box2] (exp2) [explanation] {Pour déterminer $V_{\text{cubes}}$, il faut calculer le volume d'un cube, puis le multiplier par le nombre total de cubes.};
+
+\node (box3) [box, below of=box2] {$V_{\text{1 cube}}$ (en fonction du volume d'un atome) \\
+nombre de cubes = nombre total d'atomes $\times$ 8};
+\node[right=1cm of box3] (exp3) [explanation] {On sait que dans un petit cube, on peut placer 8 atomes.};
+
+\node (box4) [box, below of=box3] {Nombre total d'atomes en fonction du nombre d'êtres humains};
+\node[right=1cm of box4] (exp4) [explanation] {Le nombre total d'atomes dans l'univers est calculé comme le nombre d'atomes dans un être humain multiplié par le nombre d'êtres humains sur Terre.};
+
+% Draw arrows between boxes
+\draw[->, thick] (box1) -- (box2);
+\draw[->, thick] (box2) -- (box3);
+\draw[->, thick] (box3) -- (box4);
+
+\end{tikzpicture}
+
+\section*{Réponse}
+
+\subsection{\textcolor{blue}{Combien y a-t-il d'atomes dans le corps humain ?}}
+
+\subsubsection*{\textcolor{orange}{Raisonnement}}
+
+\vspace{1em} 
+On procède par type d'atome (Carbone, Oxygène, Hydrogène, Azote) \par
+\vspace{1em} 
+$N_{\text{atomes de carbone}} = \frac{m_{\text{carbone dans le corps}}}{m_{\text{atome de carbone}}}$ \par
+\vspace{1em} 
+$m_{\text{atome de carbone}}$ nous est donné dans l'énoncé : $m_{\text{atome de carbone}} = \SI{20e-27}{kg}$ \par 
+\vspace{1em} 
+Il faut donc trouver la masse de carbone que nous avons dans le corps. On connaît la masse du corps d'un humain (on la note $m_{humain}$, et elle vaut 50kg en moyenne d'après l'énoncé) et on sait aussi que 20\% de cette masse est composée de carbone (d'après l'énoncé aussi : on note cette variable $perc\_massique_{carbone}$). On en déduit que \par
+\vspace{1em} 
+$m_{\text{carbone dans le corps}} = m_{humain} \times perc\_massique_{carbone}$
+
+
+\begin{align*}
+  N_{\text{atomes de carbone}} & = \frac{m_{\text{carbone dans le corps}}}{m_{\text{atome de carbone}}} \\
+                               & = \frac{m_{\text{humain}} \times perc\_massique_{\text{carbone}}}{m_{\text{atome de carbone}}} \\ 
+  \intertext{On fait la même chose avec les autres types d'atomes}
+  N_{\text{atomes d'oxygène}} & = \frac{m_{\text{oxygène dans le corps}}}{m_{\text{atome d'oxygène}}} \\
+                              & = \frac{m_{\text{humain}} \times perc\_massique_{\text{oxygène}}}{m_{\text{atome d'oxygène}}} \\
+  N_{\text{atomes d'hydrogène}} & = \frac{m_{\text{hydrogène dans le corps}}}{m_{\text{atome de hydrogène}}} \\
+                              & = \frac{m_{\text{humain}} \times perc\_massique_{\text{hydrogène}}}{m_{\text{atome d'hydrogène}}} \\
+  N_{\text{atomes d'azote}} & = \frac{m_{\text{azote dans le corps}}}{m_{\text{atome de azote}}} \\
+                              & = \frac{m_{\text{humain}} \times perc\_massique_{\text{azote}}}{m_{\text{atome d'azote}}} \\
+  \intertext{Le nombre total d'atomes dans le corps humain s'exprime par}
+  N_{\text{total\_atome\_par\_humain}} & = N_{\text{atomes de carbone}} + N_{\text{atomes d'oxygène}} + N_{\text{atomes d'hydrogène}} + N_{\text{atomes d'azote}}
+\end{align*}
+
+\subsubsection*{\textcolor{orange}{Application numérique}}
+
+
+\[
+N_{\text{atomes de carbone}} = \frac{50 \times 0.2}{20 \times 10^{-27}} = \frac{10}{20 \times 10^{-27}} = 5.0 \times 10^{26}
+\]
+
+\[
+N_{\text{atomes d'oxygène}} = \frac{50 \times 0.67}{27 \times 10^{-27}} = \frac{33.5}{27 \times 10^{-27}} = 1.24 \times 10^{27}
+\]
+
+\[
+N_{\text{atomes d'hydrogène}} = \frac{50 \times 0.1}{1.7 \times 10^{-27}} = \frac{5.0}{1.7 \times 10^{-27}} = 2.94 \times 10^{27}
+\]
+
+\[
+N_{\text{atomes d'azote}} = \frac{50 \times 0.03}{23 \times 10^{-27}} = \frac{1.5}{23 \times 10^{-27}} = 6.5 \times 10^{25}
+\]
+
+\begin{align*}
+N_{\text{total\_atome\_par\_humain}} &= N_{\text{atomes de carbone}} + N_{\text{atomes d'oxygène}} + N_{\text{atomes d'hydrogène}} + N_{\text{atomes d'azote}} \\
+& = 5.0 \times 10^{26} + 1.24 \times 10^{27} + 2.94 \times 10^{27} + 6.5 \times 10^{25} \\
+N_{\text{total\_atome\_par\_humain}} &= 4.73 \times 10^{27}
+\end{align*}
+
+\subsubsection*{\textcolor{orange}{Conclusion / Interprétation}}
+
+Il y a donc en moyenne $4.73 \times 10^{27}$ atome dans le corps humain.
+
+\subsection{\textcolor{blue}{Combien y a-t-il d'atomes dans l'humanité ?}}
+
+\subsubsection*{\textcolor{orange}{Raisonnement}}
+
+Pour connaître le nombre d'atomes dans l'humanité, il suffit de multiplier le nombre d'atomes dans le corps humain par le nombre d'humains sur terre.
+D'après la question précédente, il y a $N_{\text{total\_atome\_par\_humain}} = 4.73 \times 10^{27}$. 
+Et une recherche sur Google nous dit que la terre compte 8.2 milliards ($8.2 \times 10^9$) d'être humains en 2024 (source : \href{https://www.ined.fr/fr/tout-savoir-population/memos-demo/focus/2024-les-nations-unies-publient-de-nouvelles-projections-de-population-mondiale/#:~:text=La%20plan%C3%A8te%20compte%208%2C2,autres%20voient%20leur%20population%20diminuer.}{INED}).
+
+\[
+N_{\text{atomes\_humanité}} = N_{\text{total\_atome\_par\_humain}} \times N_{\text{humains\_sur\_terre}}
+\]
+
+\subsubsection*{\textcolor{orange}{Application numérique}}
+
+\begin{align*}
+  N_{\text{atomes\_humanité}} &= 4.73 \times 10^{27} \times 8.2 \times 10^9 \\
+  N_{\text{atomes\_humanité}} &= 3.88 \times 10^{37}
+\end{align*}
+
+\subsubsection*{\textcolor{orange}{Conclusion / Interprétation}}
+
+Il y a donc $3.88 \times 10^{37}$ atomes dans l'humanité.
+
+\subsection{\textcolor{blue}{Combien y a-t-il de petits cubes ?}}
+
+\subsubsection*{\textcolor{orange}{Raisonnement}}
+
+On peut placer 8 atomes par petit cube, donc 
+
+\[
+N_{cubes} = \frac{N_{\text{atomes\_humanité}}}{8}
+\]
+
+\subsubsection*{\textcolor{orange}{Application numérique}}
+
+\begin{align*}
+  N_{cubes} &= \frac{3.88 \times 10^{37}}{8} \\
+  N_{cubes} &= 4.85 \times 10^{36}
+\end{align*}
+
+\subsubsection*{\textcolor{orange}{Conclusion / Interprétation}}
+
+Tous les atomes de l'humanité peuvent donc être groupés dans $4.85 \times 10^{36}$ petits cubes comme ceux du schéma de l'énoncé.
+
+\subsection{\textcolor{blue}{Quel volume tous ces cubes prend-il ?}}
+
+\subsubsection*{\textcolor{orange}{Raisonnement}}
+
+On connaît le nombre de petits cubes qui permettent de regrouper tous les atomes de l'humanité ($N_{cubes}$). Il faut donc déterminer le volume de chacun des cubes ($V_{\text{1\_cube}}$) pour déterminer le volume total occupé par les atomes de l'humanité ($V_{\text{total\_atomes\_humanité}}$
+
+\[
+V_{\text{total\_atomes\_humanité}} = N_{cubes} \times V_{\text{1\_cube}}
+\]
+
+On peut exprimer le volume d'un cube en fonction du rayon de l'atome (qui est une donnée qui est connue dans la littérature scientifique). Un côté du cube fait tenir 2 atomes, donc correspond à 2 diamètres de l'atome.
+L'arrête du cube fait donc $2 \times d_{\text{noyau\_atome}}$ où $d_{\text{noyau\_atome}}$ est le diamètre du noyau de l'atome. On peut donc dire que : 
+
+\begin{align*}
+  V_{\text{1\_cube}} &= (2 \times d_{\text{noyau\_atome}})^3 \\
+                     &= 2^3 \times d_{\text{noyau\_atome}}^3 \\
+  V_{\text{1\_cube}} &= 8 \times d_{\text{noyau\_atome}}^3 \\ 
+  \intertext{On peut donc dire que} \\
+  V_{\text{total\_atomes\_humanité}} = 8 \times N_{cubes} \times d_{\text{noyau\_atome}}^3
+\end{align*}
+
+\subsubsection*{\textcolor{orange}{Application numérique}}
+
+On sait que $d_{\text{noyau\_atome}} = 10^{-15} m$, donc 
+
+\begin{align*}
+  V_{\text{total\_atomes\_humanité}} &= 8 \times 4.85 \times 10^{36} \times \left(10^{-15}\right)^3  \\
+  &= 8 \times 4.85 \times 10^{36} \times 10^{-45} \\
+  &= 3.88 \times 10^{-8} \, \text{m}^3
+\end{align*}
+
+\subsection{\textcolor{blue}{Tous ces petits cubes rentrent-t-il dans un dé à coudre ?}}
+
+\subsubsection*{\textcolor{orange}{Raisonnement}}
+
+Autrement dit, le volume occupé par tous les petits cubes qui enferment tous les noyaux d'atomes de l'humanité est-il inférieur au volume d'un dé à coudre ?
+Pour cela, on a simplement à déterminer si l'inéquation suivante est correcte : 
+
+\[
+  V_{\text{total\_atomes\_humanité}} \leq V_{\text{dé\_à\_coudre}}
+\]
+
+\subsubsection*{\textcolor{orange}{Application numérique}}
+
+En cherchant sur Internet, on trouve que le volume d'un dé à coudre est d'environ $25 \, \text{mL}$. En convertissant en $\text{m}^3$, cela correspond à $2.5 \times 10^{-5} \, \text{m}^3$.
+
+\begin{align*}
+  V_{\text{total\_atomes\_humanité}} &= 3.88 \times 10^{-8} \, \text{m}^3
+  V_{\text{dé\_à\_coudre}} &= 2.5 \times 10^{-5} m^3
+  \intertext{donc}
+  V_{\text{total\_atomes\_humanité}} \leq V_{\text{dé\_à\_coudre}}
+\end{align*}
+
+\subsubsection*{\textcolor{orange}{Conclusion / Interprétation}}
+
+On en conclut que tous les noyaux d'atome de l'humanité peuvent bien rentrer dans le volume d'un dé à coudre
+
+%\begin{tikzpicture}[node distance=2cm]
+%  \node (start) [startstop] {1. $Volume_{\text{petits cubes qui rassemblent les atomes de l'univers}} < Volume_{\text{dé à coudre}}$ ?};
+%  \node (step2) [process, below of=start] {Relation entre $Volume_{\text{petits cubes qui rassemblent les atomes de l'univers}}$ et $Volume_{\text{atomes de l'univers}}$};
+%  \node (step3) [process, below of=step2] {Relation entre $Volume_{\text{atomes de l'univers}}$ et $Volume_{\text{petits cubes}}$};
+%  \node (stop) [startstop, below of=step3] {Stop};
+% \end{tikzpicture}
+
+
+
+\end{document}

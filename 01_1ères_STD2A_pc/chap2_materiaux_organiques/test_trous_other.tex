@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\usepackage{comment}
+\usepackage{calc} % For calculations with lengths
+
+\newlength{\localwidth}%
+\newlength{\localheight}%
+
+% Define a new command to measure the paragraph width and height
+\newcommand{\measureparagraph}[1]{%
+    \setlength{\localwidth}{\widthof{#1}}%
+    \settototalheight{\localheight}{#1}%
+    {#1} \par
+    \noindent The width of the paragraph is: \the\localwidth \par %
+    \noindent The height of the paragraph is: \the\localheight \par
+
+
+}
+
+\setlength{\parindent}{0pt}
+
+% Paragraph content
+\newcommand{\myparagraph}{%
+    Hello, how are you doing today? 
+    \begin{itemize}[noitemsep]
+    \item I'm doing well at position: 
+    \item What about you?
+    \end{itemize}
+}
+
+\newcommand{\newparagrah}{%
+    Hello, how are you doing today? There's no bullet point here.
+}
+
+\def\WITH_CORRECTION{NO}
+
+
+\newcommand{\trouici}[3]{%
+    \ifthenelse{\equal{\WITH_CORRECTION}{NO}}{%
+        % If WITH_CORRECTION is NO, insert either vertical or horizontal blank spaces
+        \ifthenelse{\equal{#1}{v}}{
+            \vspace{#2em} % Vertical blank space 
+        }
+        {
+          \ifthenelse{\equal{#1}{h}}{
+            \hspace{#2em} % Horizontal blank space 
+          }
+          {}
+        }%
+        %
+      }
+    {%
+        % If WITH_CORRECTION is YES, show the answer
+        #3%
+    }%
+}
+
+
+
+\begin{document}
+
+\excludecomment{longversion}
+% Or \includecomment{longversion}. Both versions define the environment "longversion".
+Now is the time
+\begin{longversion}
+for all good men
+\end{longversion}
+to come to the help of their party.
+
+% Define a new length to store the position
+\newlength{\myposition}
+
+% Define a command to get the current position and store it
+\newcommand{\getposition}{%
+    \setlength{\myposition}{\the\topskip}%
+}
+
+% Define a command to print the stored position
+\newcommand{\printposition}{%
+    The current position is: \the\myposition
+}
+
+Hello, how are you doing today? 
+\begin{itemize}
+\item I'm doing well at position: \getposition \printposition
+\item What about you?
+\end{itemize}
+
+% Measure and print dimensions using a box
+\measureparagraph{\parbox{\linewidth}{\myparagraph}}
+
+\vspace{1em}
+
+% Measure and print dimensions using a box
+\measureparagraph{\parbox{\linewidth}{\newparagrah}}
+
+
+
+Quelle est la formule de la blablabla ?
+
+\trouici{v}{4}
+{
+\vspace{1em}
+La formule c'est blablablable \par
+\vspace{1em}
+}
+
+Hello this is the end of the sentence / paragraph
+
+\end{document}
