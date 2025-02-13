@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[french]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\title{Fiche d'exercice : Masse volumique}
+\author{N. Bancel}
+\date{Février 2025}
+
+\maketitle
+
+\section{Exercice 1}
+
+\subsection{Problème}
+
+\begin{tcolorbox}[colback=gray!10, colframe=black, title=\textbf{Exercice 1}]
+Une entreprise de transport routier possède un poids lourd dont les dimensions utiles de la remorque sont :
+\begin{itemize}
+    \item Longueur : 13,70 m
+    \item Largeur : 2,48 m
+    \item Hauteur : 2,45 m
+\end{itemize}
+La charge maximale autorisée est de 26 tonnes.
+
+On dispose de plusieurs types de bois avec des masses volumiques différentes (exprimées en kg/m$^3$). 
+
+\textbf{Question :} Peut-on charger la remorque au maximum avec n'importe quel bois ?
+\end{tcolorbox}
+
+\subsection{Solution}
+
+\textbf{Étape 1 : Calcul du volume de la remorque}
+
+Le volume utile de la remorque est donné par :
+\[
+V = \text{longueur} \times \text{largeur} \times \text{hauteur}
+\]
+\[
+V = 13,70 \times 2,48 \times 2,45
+\]
+\[
+V = 83,1544 \text{ m}^3
+\]
+
+\textbf{Étape 2 : Calcul de la masse de bois maximale supportée}
+
+La masse maximale autorisée étant de 26 tonnes (soit 26000 kg), la masse volumique limite que peut supporter la remorque est :
+\[
+\rho_{\max} = \frac{\text{masse maximale}}{\text{volume}}
+\]
+\[
+\rho_{\max} = \frac{26000}{83,1544} \approx 312.6 \text{ kg/m}^3
+\]
+
+\textbf{Étape 3 : Comparaison avec les masses volumiques des bois}
+
+On compare cette densité limite avec celles des bois disponibles :
+\begin{itemize}
+    \item Balsa : 140 kg/m$^3$ (ok)
+    \item Chêne : 610-980 kg/m$^3$ (trop lourd)
+    \item Chêne (cœur) : 1170 kg/m$^3$ (trop lourd)
+    \item Contreplaqué : 440-880 kg/m$^3$ (trop lourd)
+    \item Ébène : 1150 kg/m$^3$ (trop lourd)
+    \item Hêtre : 800 kg/m$^3$ (trop lourd)
+    \item Pin : 500 kg/m$^3$ (trop lourd)
+    \item Sapin : 450 kg/m$^3$ (trop lourd)
+    \item Teck : 860 kg/m$^3$ (trop lourd)
+\end{itemize}
+
+\textbf{Conclusion :} Seul le bois de \textbf{balsa} respecte la contrainte de masse. Pour tous les autres types de bois, la charge maximale de la remorque serait dépassée.
+
+\end{document}
