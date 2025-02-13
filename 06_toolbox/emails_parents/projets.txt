@@ -1,0 +1,16 @@
+Chers élèves (vos parents sont aussi en copie cachée),
+
+Comme discuté en début d'année, je vais plus régulièrement vous donner des projets sur lesquels travailler (un tous les 1 ou 2 chapitres).
+Ils seront souvent sous la forme de questions assez larges et ce sera à vous d'en définir les contours, et modéliser mathématiquement et physiquement le problème (dernier en date : ce qui est le plus écologique entre un bain et une douche)
+
+Voici le barème que j'utiliserai
+1. [5 points] Anticipation / Ponctualité : si votre devoir est rendu à l'heure + si vous avez itéré *avec moi* et *en avance* sur votre devoir. Ils seront compliqués à réaliser seul, j'attends que vous me posiez des questions quand vous voudrez éclaircir des points. (eg : vous perdrez des points en vous y prenant à la dernière minute et en ne me sollicitant pas)
+2. [3 points] Formules / Modélisation : J'attends que vous modélisiez mathématiquement les problèmes, avec des formules.
+3. [2 points] Unités / Conversions : Vos variables doivent avoir une unité, qu'elles soient cohérentes (on ne multiplie pas des km/h avec des nombres de minutes), et dans le système international.
+4. [3 points] Sources : les valeurs que vous prenez pour vos données doivent être justifiées (site web utilisé / expérience personnelle ?)
+5. [3 points] Qualité de la rédaction
+6. [4 points] Bon sens / "jugeotte" : votre capacité à interpréter vos résultats, vous demander si votre conclusion semble cohérente avec ce que vous observez dans la vraie vie.
+
+N'hésitez pas si vous avez des questions. Bonne soirée,
+
+Nicolas Bancel

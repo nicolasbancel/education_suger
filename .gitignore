@@ -2,5 +2,8 @@
 *.log
 *.fdb_latexmk
 *.out
+*.jpg
+*.png
+*.jpeg
 *.fls
 *.synctex.gz

@@ -1,0 +1,458 @@
+\documentclass[answers]{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\setlength{\parindent}{0pt}
+
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\title{DST N°2 - Oxydo-réduction + Révisions}
+\author{N. Bancel}
+\date{11 Décembre 2024}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1ère STD2A} \par
+
+{\let\newpage\relax\maketitle}
+
+
+\begin{center}
+  \textbf{\textcolor{blue}{Durée du devoir : 2 heures}} \par
+  \vspace{1em}
+  \textbf{\textcolor{red}{La calculatrice EST autorisée. Total des points : 21 points}} \par
+  \vspace{1em}
+\end{center}
+
+\begin{tcolorbox}[colback=gray!10!white, colframe=gray, title=Note importante]
+  \itshape{Toutes les réponses doivent être justifiées.
+  La qualité et la précision de la rédaction seront prises en compte dans la notation des copies.
+  Il est permis d'admettre le résultat de certaines questions pour ne pas rester bloqué, en prenant soin d'indiquer sur la copie les résultats admis. \par
+  }
+\end{tcolorbox}
+
+\section*{Exercice 1 - Cours (6 points)}
+
+
+\begin{questions} 
+  \question[1] Compléter le schéma ci-dessous (trouver les légendes de (1), (2), (3) et (4)). 
+
+  \begin{center}
+    \ce{\text{......(1)......} + \text{n} e- <=>[\text{......(2)......}][\text{......(3)......}] \text{......(4)......}}
+  \end{center}
+
+  \begin{solution}
+
+    \begin{center}
+      \ce{\text{Oxydant} + \text{n} e- <=>[\text{Réduction}][\text{Oxydation}] \text{Réducteur}}
+    \end{center}
+  
+  \end{solution}
+
+\question[2] Ecrire les demi-équations électroniques des couples Oxydant/Réducteur suivants
+\begin{parts}
+  \part[0.5] \ce{Cu^{2+}/Cu}
+  \begin{solution}
+    La demi-équation électronique pour le couple \ce{Cu^{2+}/Cu} s'écrit :
+    \[
+    \ce{Cu^{2+} + 2e- -> Cu}
+    \]
+    \textcolor{blue}{\textbf{Explication importante :}} Dans cette réaction, l'ion cuivre \ce{Cu^{2+}} (oxydant) capte deux électrons pour se transformer en cuivre métal (réducteur).
+  \end{solution}
+
+  \part[0.75] \ce{I2 / I^{-}}
+  \begin{solution}
+    La demi-équation électronique pour le couple \ce{I2 / I^-} s'écrit :
+    \[
+    \ce{I2 + 2e- -> 2I-}
+    \]
+    \textcolor{blue}{\textbf{Explication importante :}} Une molécule de diiode \ce{I2} (oxydant) capte deux électrons pour donner deux ions iodure \ce{I^-} (réducteur).
+  \end{solution}
+
+  \part[0.75] \ce{H+/H2}
+  \begin{solution}
+    La demi-équation électronique pour le couple \ce{H+/H2} s'écrit :
+    \[
+    \ce{2H+ + 2e- -> H2}
+    \]
+    \textcolor{blue}{\textbf{Explication importante :}} Deux ions hydrogène \ce{H+} (oxydant) captent deux électrons pour former une molécule de dihydrogène \ce{H2} (réducteur).
+  \end{solution}
+\end{parts}
+
+\question[2] \ce{MnO4^- / Mn^{2+}}. Pour ce couple Oxydant/Réducteur, on rappelle qu'il est possible de rajouter des molécules d'eau \ce{H2O} et des ions \ce{H+} d'un côté ou de l'autre de l'équation pour s'assurer de la conservation de la masse et de la conservation de la charge. Si vous n'arrivez pas à mener le raisonnement au bout, à minima : justifiez.
+\begin{solution}
+  \textbf{Étapes pour équilibrer la demi-équation :}
+  \begin{itemize}[noitemsep]
+    \item \textcolor{red}{\textbf{Conservation des atomes d'oxygène :}} Ajouter 4 molécules d'eau \ce{H2O} à droite car il y a 4 atomes d'oxygène dans \ce{MnO4^-}.
+    \item \textcolor{red}{\textbf{Conservation des atomes d'hydrogène :}} Ajouter 8 ions \ce{H+} à gauche pour compenser les 8 hydrogènes dans \ce{H2O}.
+    \item \textbf{Conservation des charges :} \ce{MnO4^-} porte une charge \ce{-1}.  Et \ce{H+} est porteur d'une charge +, multipliée 8 fois puisqu'il y a 8 ions \ce{H+}. Donc la charge totale à gauche est de $7+$. Elle est de $2+$ à gauche. Il faut donc ajouter 5 électrons à gauche pour équilibrer les charges, et avoir $5+$ de charge de châque côté.
+  \end{itemize}
+
+  La demi-équation électronique équilibrée est donc :
+  \[
+  \ce{MnO4^- + 8H+ + 5e- -> Mn^{2+} + 4H2O}
+  \]
+  \textcolor{blue}{\textbf{Note :}} Cette équation assure la conservation de la masse (nombre d'atomes) et de la charge.
+\end{solution}
+
+\question[1] On donne les 2 équations d'oxydo-réduction suivantes : 
+\begin{align}
+  \ce{Fe^{3+} + 3e- &<=> Fe} \\
+  \ce{2H3O^{+} + 2e- &<=> 2H2O + H2}
+\end{align}  
+Donner l'équation bilan de la réaction chimique d'oxydoréduction entre le Fer (\ce{Fe}) et l'ion \ce{H3O+}.
+\begin{solution}
+  \textbf{Étapes pour équilibrer l'équation bilan :}
+  \begin{itemize}[noitemsep]
+    \item \textcolor{blue}{\textbf{Identifier l'oxydant et le réducteur :}} 
+      \begin{itemize}[noitemsep]
+        \item \ce{Fe^{3+}/Fe} : \ce{Fe^{3+}} est l'oxydant.
+        \item \ce{H3O^{+}/H2} : \ce{H3O^{+}} est l'oxydant ; \ce{H2} est le réducteur.
+      \end{itemize}
+    \item \textbf{Ajuster les électrons pour que les transferts soient égaux :}
+      \begin{align*}
+        &\text{Pour \ce{Fe^{3+} + 3e- -> Fe}, 3 électrons sont nécessaires.} \\
+        &\text{Pour \ce{2H3O^{+} + 2e- -> 2H2O + H2}, 2 électrons sont nécessaires.}
+      \end{align*}
+      On veut qu'il y ait le même nombre d'électrons dans les deux demi équations pour pouvoir les faire disparaître dans le l'équation bilan finale. Le plus petit commun multiple de 3 et 2 est 6. \\ 
+      On multiplie donc la première demi équation par 2 (pour avoir 6 électrons dans celle du Fer)
+      On multiplie la 2ème par 3 (pour avoir 6 électrons dans celle avec \ce{H3O^{+}})
+      \begin{align*}
+        \ce{2Fe^{3+} + 6e- &-> 2Fe} \\
+        \ce{6H3O^{+} + 6e- &-> 6H2O + 3H2}
+      \end{align*}
+    \item \textbf{Ajouter les deux équations pour obtenir l'équation bilan :}
+      \[
+      \ce{2Fe^{3+} + 6H3O^{+} -> 2Fe + 6H2O + 3H2}
+      \]
+  \end{itemize}
+  \textcolor{blue}{\textbf{Note :}} L'équation est équilibrée en termes de masse et de charge.
+\end{solution}
+
+\end{questions}
+
+\section*{Exercice 1 - Le naufrage du titanic (10 points)}
+
+\textit{Extrait du BAC 2014 - Métropole}
+
+\begin{tcolorbox}[colback=white, colframe=gray, coltitle=black, title=\textbf{Document 2}]
+  Le RMS Titanic est un paquebot transatlantique britannique de la White Star Line, construit en 1907.  
+  Lors de son voyage inaugural, de Southampton à New York, il heurte un iceberg et il coule.  
+  Plusieurs causes expliquent le naufrage. On peut notamment citer la mauvaise qualité de l'acier utilisé pour les poutres métalliques de la coque du navire. En effet, cet alliage qui contenait trop de soufre (chose courante pour l'époque) le rendait mécaniquement trop fragile. La rupture de ces poutres a entraîné la création de voies d'eau qui ont contribué à faire couler le navire.  
+  Le zinc est un réducteur très fort, plus sensible à la corrosion que la majorité des métaux.
+  \textit{D'après \href{http://www.le-titanic.fr}{http://www.le-titanic.fr}}
+  \end{tcolorbox}
+  
+  \begin{tcolorbox}[colback=white, colframe=gray, coltitle=black, title=\textbf{Document 3}]
+  L'épave du Titanic est localisée le 1er septembre 1985 par le professeur Robert Ballard.  
+  Elle gît à 3 843 mètres de profondeur à 650 km au sud-est de Terre-Neuve. Cette épave est en train de disparaître, détruite petit à petit par la corrosion. Cependant, la faible teneur en dioxygène de l'eau à cette profondeur et l'absence quasi-totale de lumière ralentissent cette destruction, ce qui a permis à cette épave d'être observable un siècle après son naufrage.  
+  
+  \textit{D'après \href{http://www.le-titanic.fr}{http://www.le-titanic.fr}, \href{http://www.bibleetnombres.online.fr}{www.bibleetnombres.online.fr}, \href{http://www.allboatsavenue.com}{www.allboatsavenue.com}, \href{http://www.memoclic.com}{www.memoclic.com}}
+  \end{tcolorbox}
+  
+  \begin{tcolorbox}[colback=white, colframe=gray, coltitle=black, title=\textbf{Document 4}]
+  De nombreux objets ont été remontés à la surface depuis la découverte de l'épave du Titanic.  
+  On peut notamment citer de la porcelaine, de la faïence, des bronzes, des pièces de monnaie en or et en argent, des objets en fer et en acier. Cependant, aucun objet en zinc n'a été retrouvé. On sait pourtant que beaucoup d'objets de la vie courante comme des baignoires, des peignes ou des supports de miroir étaient faits en zinc et se trouvaient sur le Titanic.
+  \vspace{1em}
+  \textit{D'après \href{http://titanic.pagesperso-orange.fr/}{http://titanic.pagesperso-orange.fr/}}
+  \end{tcolorbox}
+
+  \subsection*{Structure métallique de la coque}
+
+  \begin{questions}
+  \question[0.5] Quelle est la différence entre le fer et l'acier ?
+
+  \begin{solution}
+    Le fer est un élément chimique pur, tandis que l'acier est un alliage contenant principalement du fer, avec une petite quantité de carbone (généralement moins de 2 \%). \textcolor{blue}{\textbf{Note :}} C'est la présence de carbone qui confère à l'acier ses propriétés mécaniques supérieures par rapport au fer pur.
+    \end{solution}
+    
+
+  \question[0.5] Pourquoi les poutres en acier n'ont-elles pas résisté à la collision avec l'iceberg ?
+
+  \begin{solution}
+    Les poutres en acier du Titanic étaient fabriquées à partir d'un alliage contenant une teneur élevée en soufre. \textcolor{red}{Cette composition rendait l'acier fragile, surtout à basse température, ce qui a favorisé la rupture sous l'impact.}
+    \end{solution}
+
+  \question[0.5] À quel type de réaction chimique correspond la corrosion d'un métal ?
+  \begin{solution}
+    La corrosion d'un métal est une réaction d'oxydoréduction. \textcolor{blue}{\textbf{Important :}} Le métal subit une oxydation, perdant des électrons, tandis qu'un autre élément, souvent l'oxygène dissous dans l'eau, est réduit.
+    \end{solution}
+
+  \question[1] La corrosion du fer entraîne une réaction chimique mettant en jeu le couple d'oxydoréduction \ce{Fe^2+/Fe}.
+  \begin{parts}
+    \part[0.5] Écrire la demi-équation électronique correspondante.
+
+    \begin{solution}
+      La demi-équation électronique est :
+      \[
+      \ce{Fe -> Fe^{2+} + 2e-}
+      \]
+      \textcolor{blue}{\textbf{Note :}} Dans cette réaction, le fer métallique \ce{Fe} est oxydé en ion ferreux \ce{Fe^{2+}} en libérant deux électrons.
+      \end{solution}
+    
+
+    \part[0.5] Dans ce couple, le fer est-il l'oxydant ou le réducteur ?
+
+    \begin{solution}
+      Dans le couple \ce{Fe^2+/Fe}, le fer métallique \ce{Fe} est le \textcolor{red}{réducteur}, car il cède des électrons.
+      \end{solution}
+
+  \end{parts}
+  \question[1] L'autre demi-équation électronique mise en jeu est :  
+  \[
+  \ce{O2 + 4 H+ + 4 e- = 2 H2O}.
+  \]
+  \begin{parts}
+    \part[0.5] Quel est le couple d'oxydoréduction correspondant à cette équation ?
+
+    \begin{solution}
+      Le couple d'oxydoréduction correspondant est \ce{O2 /H2O}.
+      \end{solution}
+
+    \part[0.5] Dans ce couple, le dioxygène est-il l'oxydant ou le réducteur ?
+
+    \begin{solution}
+      Dans le couple \ce{O2 /H2O}, le dioxygène \ce{O2} est l'\textcolor{red}{oxydant}, car il capte des électrons.
+      \end{solution}
+  \end{parts}
+  \question[1] Écrire l'équation bilan de la réaction chimique d'oxydoréduction entre le fer et le dioxygène. Justifier.
+
+  \begin{solution}
+    \textbf{Étapes :}
+    \begin{itemize}[noitemsep]
+      \item \textbf{Demi-équation pour le fer :} \ce{Fe -> Fe^{2+} + 2e-}.
+      \item \textbf{Demi-équation pour le dioxygène :} \ce{O2 + 4H+ + 4e- -> 2H2O}.
+      \item \textbf{Équilibrer les électrons :} Multiplier la première équation par 2 pour obtenir un transfert égal à 4 électrons.
+    \end{itemize}
+    
+    Équations ajustées :
+    \begin{align*}
+    \ce{2Fe &-> 2Fe^{2+} + 4e-} \\
+    \ce{O2 + 4H+ + 4e- &-> 2H2O}
+    \end{align*}
+    
+    Addition des deux demi-équations :
+    \[
+    \ce{2Fe + O2 + 4H+ -> 2Fe^{2+} + 2H2O}
+    \]
+    \textcolor{blue}{\textbf{Justification :}} L'équation respecte la conservation des masses et des charges.
+    \end{solution}
+
+  \question[2] De nos jours, on utilise plutôt des aciers inoxydables pour éviter ce phénomène de corrosion.
+  \begin{parts}
+    \part[0.5] Quel élément est ajouté à cet acier pour le rendre inoxydable ?
+
+    \begin{solution}
+      L'acier est un mélange de Fer, et d'un peu de carbone (~2\%). Pour le rendre inoxydable, on  L'élément ajouté est le \textbf{chrome} (\ce{Cr}) (à une proportion d'environ 10\%). On appelle couramment ce métale l'inox ou acier inox. Le crhome est très peu sensible à la corrosion et ne se dérage pas en rouille. 
+      \end{solution}
+
+    
+    \part[0.5] Par quel phénomène un acier inoxydable est-il protégé de la corrosion ?
+    \begin{solution}
+      L'acier inoxydable est protégé par la formation d'une \textbf{couche d'oxyde de chrome} (\ce{Cr2O3}) à sa surface, qui agit comme une barrière contre la corrosion.
+      \end{solution}
+
+  \end{parts}
+  \question[0.5] D'après le document 3, dans le cas du Titanic, la corrosion est considérée comme lente. Expliquer.
+
+  \begin{solution}
+    On a vu dans la réaction bilan d'oxydoréduction du dessus que le Fer se dégradait en \ce{Fe^{2+}} en présence de dioxygène \ce{O2}. L'épave se trouve à grande profondeur (\textbf{3 843 mètres}), où la teneur en dioxygène est faible et où l'absence de lumière limite les réactions favorisant la corrosion. IL y a donc très peu de \ce{O2} disponible pour que la réaction puisse avoir lieu. 
+    \end{solution}
+
+\end{questions}
+
+\subsection*{Les objets témoins du naufrage}
+
+\begin{questions}
+  \question[0.5] Comment peut-on expliquer la disparition de tout objet en zinc ?
+  \begin{solution}
+  La disparition des objets en zinc s'explique par la forte réactivité chimique du zinc en milieu marin. Le zinc, étant un réducteur puissant, s'oxyde facilement au contact de l'eau de mer et de l'oxygène dissous. Cette oxydation produit des ions \ce{Zn^{2+}} solubles qui se dispersent dans l'eau, entraînant ainsi la disparition complète des objets en zinc sur l'épave.
+  \end{solution}
+
+  \question[1] Citer deux facteurs responsables de la formation de la rouille.
+  \begin{solution}
+  Deux facteurs responsables de la formation de la rouille sont :
+  \begin{itemize}
+    \item \textbf{La présence d'eau (H2O)} : Elle agit comme un électrolyte, favorisant le transport des ions nécessaires aux réactions de corrosion.
+    \item \textbf{La présence de dioxygène (\ce{O2})} : Il est indispensable pour l'oxydation du fer en ions \ce{Fe^{2+}} et \ce{Fe^{3+}}, qui réagissent ensuite pour former de la rouille (\ce{Fe2O3 \cdot nH2O}).
+  \end{itemize}
+  \end{solution}
+
+  \question[0.5] De nos jours, on place des plaques de zinc contre les coques de bateau pour les protéger de la corrosion. Justifier l'utilisation de ces plaques.
+  \begin{solution}
+  Les plaques de zinc agissent comme \textbf{anodes sacrificielles}. Étant donné que le zinc est plus réactif que le fer, il s'oxyde préférentiellement en libérant des électrons, protégeant ainsi la coque en acier. Ce processus électrochimique repose sur la différence de potentiel redox entre le zinc et le fer : le zinc, en se corrodant, empêche l'oxydation du fer.
+  \end{solution}
+
+  \question[0.5] Qu'est-ce qu'un métal noble ? Citer un métal noble retrouvé sur l'épave du Titanic.
+  \begin{solution}
+  Un métal noble est un métal naturellement résistant à la corrosion et à l'oxydation, même dans des conditions humides ou corrosives. Un exemple de métal noble retrouvé sur l'épave du Titanic est l'\textbf{or}, présent sous forme de pièces de monnaie.
+  \end{solution}
+
+  \question[0.5] À quelle famille de matériaux appartiennent les faïences et les porcelaines ?
+  \begin{solution}
+  Les faïences et les porcelaines appartiennent à la famille des \textbf{céramiques}. Ces matériaux, constitués principalement d'argile cuite et d'autres minéraux, sont non métalliques et présentent une grande résistance à la chaleur, à l'humidité et à la corrosion.
+  \end{solution}
+\end{questions}
+
+\section*{Exercice 3 - La grotte de Lascaux... encore elle (2 points)}
+
+
+Lascaux IV est un bâtiment semi-enterré à la façade vitrée de longueur égale à 150 m.  
+Il s'intègre parfaitement au paysage car l'arrière du bâtiment disparaît dans la forêt. \par
+\vspace{1em}
+
+Les architectes ont choisi de n'utiliser qu'un seul type de béton pour les sols, les parois, la toiture et la façade du bâtiment
+afin de conférer à l'ensemble un aspect de grosse pierre et recréer au plus près la grotte d'origine.
+
+\begin{tcolorbox}[colback=white, colframe=gray, coltitle=black, title=\textbf{Document 1 - Un chantier complexe}]
+  Pour soutenir le bâtiment, dont la surface atteint $9000 m^2$, sur le sol peu stable et l'arrimer à la colline, il a fallu planter près de 550 pieux, certains jusqu'à la profondeur de 12 m.
+  Près de 730 tonnes d'acier à béton ont été nécessaires. \\
+  
+  À l'intérieur du bâtiment, la réalisation de murs dont l'inclinaison peut atteindre la valeur de 9 degrés et dont la hauteur la plus importante prend la valeur de 12 m, reste une prouesse technique.
+  Ils ont été coulés sur place avec un béton très fluide dans lequel ont été incorporés des gravillons.
+  L'ensemble a dû ensuite être étayé de nombreux piliers. \\
+  
+  Ces grandes parois lisses penchées, avec des lignes horizontales paraissant gravées, rappellent aux visiteurs des roches sédimentaires qui plongent au centre de la Terre. \\
+
+  L'autre défi technique a été la façade vitrée en forme de faille. Le vitrage, de longueur égale à 150 m, d'un seul tenant, est accroché par une structure métallique située en arrière.
+  Le verre produit, avec le béton, une série d'effets de contraste : opacité/transparence ; pénombre/lumière ; brut/sophistiqué ; rugueux/lisse.
+  \end{tcolorbox}
+
+  \begin{questions}
+
+    \question[1] Sachant que la masse volumique de l'acier est de \SI{7800}{kg/m^3}, et que $ \SI{1}{t} = \SI{1000}{kg}$, quel est le volume d'acier utilisé pour créer les pieux ?
+    \begin{solution}
+      \textcolor{blue}{\textbf{Formule utilisée :}}
+      \[
+      V = \frac{m}{\rho}
+      \]
+      où :
+      \begin{addmargin}[4em]{1em}
+        \begin{itemize}[noitemsep]
+            \item \( V \) représente le volume d'acier en m$^3$
+            \item \( m \) représente la masse d'acier en kg
+            \item \( \rho \) représente la masse volumique de l'acier en kg/m$^3$
+        \end{itemize}
+      \end{addmargin}
+      \vspace{1em}
+  
+      On commence par convertir la masse d'acier en kilogrammes :  
+      \[
+      m = 730 \ \text{t} = 730 \times 1000 = 730000 \ \text{kg}
+      \]
+  
+      \textbf{Application numérique :}
+      \begin{align*}
+        V &= \frac{m}{\rho} \\
+        V &= \frac{730000}{7800} \\
+        V &\approx 93.6
+      \end{align*}
+  
+      \textbf{Le volume d'acier utilisé pour créer les pieux est donc d'environ \SI{93.6}{m^3}.}
+    \end{solution}
+  
+    \question[1] On considère que cet acier a pu être acheminé dans des camions de \SI{25}{m^3}. Combien a-t-il fallu de camions pour transporter l'acier ? Et quel est le pourcentage de remplissage du dernier camion qui n'était pas rempli ?
+    \begin{solution}
+      \textcolor{blue}{\textbf{1. Calcul du nombre de camions nécessaires :}}
+  
+      Pour déterminer le nombre total de camions, on utilise la division :  
+      \[
+      N_{\text{camions}} = \frac{V_{\text{total}}}{V_{\text{camion}}}
+      \]
+      où :
+      \begin{addmargin}[4em]{1em}
+        \begin{itemize}[noitemsep]
+            \item \( N_{\text{camions}} \) représente le nombre de camions nécessaires
+            \item \( V_{\text{total}} \) est le volume total d'acier, soit \( 93.6 \ \text{m}^3 \)
+            \item \( V_{\text{camion}} \) est le volume d'un camion, soit \( 25 \ \text{m}^3 \)
+        \end{itemize}
+      \end{addmargin}
+  
+      \textbf{Application numérique :}
+      \begin{align*}
+        N_{\text{camions}} &= \frac{93.6}{25} \\
+        N_{\text{camions}} &= 3.744
+      \end{align*}
+  
+      Cela signifie qu'il faut \( 3 \) camions complets et un dernier camion partiellement rempli.  
+      \vspace{1em}
+  
+      \textcolor{blue}{\textbf{2. Calcul du volume restant dans le dernier camion :}}  
+  
+      Le volume transporté par les 3 premiers camions est :  
+      \[
+      V_{\text{transporté}} = 3 \times 25 = 75 \ \text{m}^3
+      \]
+      Le volume restant est donc :  
+      \[
+      V_{\text{restant}} = V_{\text{total}} - V_{\text{transporté}}
+      \]
+      \textbf{Application numérique :}
+      \begin{align*}
+        V_{\text{restant}} &= 93.6 - 75 \\
+        V_{\text{restant}} &= 18.6 \ \text{m}^3
+      \end{align*}
+  
+      \textcolor{blue}{\textbf{3. Pourcentage de remplissage du dernier camion :}}
+  
+      On utilise la formule suivante :  
+      \[
+      \text{Pourcentage} = \left( \frac{V_{\text{restant}}}{V_{\text{camion}}} \right) \times 100
+      \]
+      \textbf{Application numérique :}
+      \begin{align*}
+        \text{Pourcentage} &= \left( \frac{18.6}{25} \right) \times 100 \\
+        \text{Pourcentage} &= 74.4
+      \end{align*}
+  
+      \textcolor{red}{\textbf{Il a donc fallu 4 camions pour transporter l'acier, et le dernier camion était rempli à 74.4 \%.}}
+    \end{solution}
+  
+  \end{questions}
+  
+\section*{Exercice 4 - Les molécules (3 points)}
+
+\begin{questions}
+  \question[3] Compléter le tableau ci-dessous
+  \end{questions}
+
+\begin{center}
+  \begin{tabular}{|| >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{5cm} | >{\centering\arraybackslash}p{4cm} ||}
+    \toprule
+    {Formule brute} & {Formule développée} & {Formule semi-développée} \\
+    \midrule
+    \ce{C3H8} & $\cdots$ & $\cdots$ \\[4em]
+    $\cdots$ & $\cdots$ & \ce{CH3-CH3}  \\[4em]
+    $\cdots$ & $\cdots$ & \ce{CH3-COOH} \\[4em]
+    $\cdots$ & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-OH}} & $\cdots$ \\[4em]
+  \bottomrule
+  \end{tabular}
+  \end{center}
+
+
+  \begin{solution}
+    
+    \begin{center}
+      \begin{tabular}{|| >{\centering\arraybackslash}p{2cm} | >{\centering\arraybackslash}p{5cm} | >{\centering\arraybackslash}p{4cm} ||}
+        \toprule
+        {Formule brute} & {Formule développée} & {Formule semi-développée} \\
+        \midrule
+        \ce{C3H8} & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-H}} & \ce{CH3-CH2-CH3}  \\[4em]
+        \ce{C2H6} & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-H}} & \ce{CH3-CH3}  \\[4em]
+        \ce{C2H4O2} & {\chemfig{H-C(-[2]H)(-[6]H)-C(=[:30]O)(-[:-30]OH)}} & \ce{CH3-COOH} \\[4em]
+        \ce{C3H8O} & {\chemfig{H-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-C(-[2]H)(-[6]H)-OH}} & \ce{CH3-CH2-CH2-OH} \\[4em]
+      \bottomrule
+      \end{tabular}
+      \end{center}
+
+  \end{solution}
+
+
+\end{document}

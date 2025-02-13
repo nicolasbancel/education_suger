@@ -1,0 +1,183 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+\title{Projet - Petit exercice sur l'écologie}
+\author{N. Bancel}
+\date{Decembre 2024}
+\maketitle
+
+\section*{Le bain ou la douche ?}
+
+%colback=green!10!white, colframe=green!75!black
+
+\begin{tcolorbox}[colback=gray!30, colframe=black]
+  \textbf{Notes} : Cet exercice est volontairement peu guidé, il nécessite de formuler un problème de manière indépendante. Pour autant : ne pas hésiter à solliciter un/une camarade de classe, ou me solliciter directement. \par
+  \vspace{1em}
+  Notions abordées / Compétences à mettre en place :
+  \begin{itemize}[noitemsep]
+    \item Formules
+    \item Poser un problème / Définir les variables qui permettent sa résolution
+    \item Faire des estimations / Formuler des hypothèses
+    \item Interpréter des résultats
+  \end{itemize}
+  \end{tcolorbox}
+
+\subsection*{Enoncé}
+
+\textcolor{blue}{\textbf{En utilisant des nombres, justifier ce qui est le plus écologique entre prendre une douche ou prendre un bain.}} \par
+\vspace{1em}
+Il n'est pas autorisé de simplement faire une recherche internet qui donne la réponse. Il faut passer par des formules qui permettent d'estimer des grandeurs. \par
+\vspace{1em}
+Pour déterminer le moyen le plus écologique de se laver, on ne comparera PAS les consommations d'électricité. La comparaison d'une autre grandeur (à trouver) est attendue.
+
+\subsection*{Hypothèses - Informations}
+
+\begin{itemize}[noitemsep]
+  \item Pour la douche, il est suggéré d'utiliser la notion de débit. On peut faire une hypothèse en regardant les propriétés de la pomme de douche de son appartement, ou en cherchant des estimations de valeurs sur Internet.
+  \item Pour le bain, il est utile d'essayer de dimensionner une baignoire. Vous pouvez la modéliser par un parallélépipède rectangle.
+\end{itemize}
+\vspace{1em}
+
+
+\subsection*{Question supplémentaire}
+
+\begin{itemize}[noitemsep]
+  \item Vous avez à priori fait une hypothèse sur la valeur du débit dans la question précédente. Quelle expérience permettrait de déterminer le débit de votre douche chez vous ?
+  \item Réalisez cette expérience et documentez là en prenant des photos ou une vidéo 
+\end{itemize}
+
+\subsection*{Modélisation du volume d'une baignoire}
+
+\textbf{\textcolor{blue}{Formules}} 
+
+\vspace{1em}
+On modélise la baignoire par un parallélépipède rectangle. Son volume total est donné par :
+\begin{equation}
+    V_{\text{total}} = L \times l \times h
+\end{equation}
+
+On considère que lorsque l'on prend un bain, la baignoire est remplie d'eau à 40\% pour ne pas qu'elle déborde (cette hypothèse est une hypothèse non vérifiée)
+
+\begin{align}
+  V_{\text{bain}} &= 40\% \times V_{\text{total}} \\
+  V_{\text{bain}} &= 0.4 \times L \times l \times h
+\end{align}
+
+\vspace{1em}
+
+\textbf{\textcolor{blue}{Variables et conversions}}
+
+\vspace{1em}
+
+D'après \href{https://www.leroymerlin.fr/comment-choisir/comment-choisir-sa-baignoire.html#quelle-est-la-bonne-taille-pour-une-baignoire-?}{Leroy Merlin}, les dimensions typiques d'une baignoire standard sont environ :
+\begin{compactitem}
+    \item Longueur : $L = 150$ cm
+    \item Largeur : $l = 70$ cm
+    \item Hauteur : $h = 55$ cm
+\end{compactitem}
+
+\textbf{\textcolor{blue}{Application numérique}} : 
+
+\vspace{1em}
+
+Substituons les valeurs :
+\begin{align}
+    V_{\text{bain}} &= 0.4 \times 170 \times 70 \times 55 \\
+    &= 231 000 \text{cm$^3$}
+\end{align}
+
+Convertissons en litres ($1$ L = $1000$ cm$^3$) :
+\begin{equation}
+    V_{\text{bain}} = 231 \text{ L}
+\end{equation}
+
+\subsection*{Modélisation du volume d'une douche}
+
+\textbf{\textcolor{blue}{Formules}} 
+\vspace{1em}
+On modélise le volume d'eau consommé pour une douche par la relation suivante : 
+
+\vspace{1em}
+
+\begin{equation}
+    V_{\text{douche}} = \text{débit} \times \text{durée}
+\end{equation}
+
+\textbf{\textcolor{blue}{Variables et conversions}}
+\vspace{1em}
+\begin{compactitem}
+  \item Selon \href{https://www.leroymerlin.fr/comment-choisir/comment-choisir-son-pommeau-de-douche.html}{Leroy Merlin}, le débit moyen d'une douche est d'environ $10$ L/min. 
+  \item D'après \href{https://www.ladepeche.fr/2023/01/16/combien-de-temps-doit-durer-une-douche-pour-preserver-son-budget-et-lenvironnement-10929452.php#:~:text=Aux%20Etats%2DUnis%2C%20l',en%20moyenne%20pour%20les%20Fran%C3%A7ais.}{La Dépêche} et \href{https://www.20minutes.fr/societe/1616727-20150527-francais-passent-moyenne-9-minutes-sous-douche}{20 Minutes}, un Français prend en moyenne des douches de $9$ minutes.
+\end{compactitem}
+
+
+\textbf{\textcolor{blue}{Application numérique}} : 
+\vspace{1em}
+Substituons les valeurs :
+
+\begin{align}
+  V_{\text{douche}} &= 10 \times 9 \\
+  V_{\text{douche}} &= 90 \text{ L}
+\end{align}
+
+\subsection*{Comparaison des volumes}
+
+Comparons les volumes d'eau consommés :
+\begin{itemize}[noitemsep]
+    \item Volume d'un bain : $231$ L
+    \item Volume d'une douche : $90$ L
+\end{itemize}
+
+On observe que la consommation d'un bain est environ :
+
+\begin{equation}
+    \frac{231}{90} \approx 2.57
+\end{equation}
+
+soit près de $2.6$ fois plus importante que celle d'une douche.
+
+\subsection*{Vérification}
+
+On peut évaluer plusieurs choses : 
+\begin{itemize}[noitemsep]
+  \item Vérifier que la conclusion est correcte : est-ce que sur Internet, les sites s'accordent à dire que le bain est plus consommateur que la douche ?
+  \begin{itemize}[noitemsep] 
+    \item[$\circ$] \href{https://www.lavoixdunord.fr/566304/article/2019-04-10/un-bain-consomme-cinq-fois-plus-d-eau-qu-une-douche}{La voix du Nord} : Attention aux sources : La Voix du Nord n'est pas un magasine scientifique
+    \item[$\circ$] \href{https://ekwateur.fr/blog/ma-consommation-d-energie/consommation-bain/}{Ekwateur} : semble plus pertinent en termes de sources
+  \end{itemize}
+  \item Vérifier que nos volumes estimés pour le bain et pour la douche coincident à peu près avec ce qui se trouve en ligne.
+  \begin{itemize}[noitemsep] 
+    \item[$\circ$] Estimation pour le bain
+    \item[$\circ$] Estimation pour la douche
+  \end{itemize}
+\end{itemize}
+
+\subsection*{Conclusion}
+
+Du point de vue de la consommation d'eau, la douche est plus écologique que le bain
+
+\subsection*{Protocole expérimental de mesure de débit}
+
+Une expérience simple permet de mesurer le débit de sa douche chez soi :
+\begin{enumerate}[noitemsep]
+    \item Prendre un seau gradué (ou un récipient dont on connaît le volume).
+    \item Ouvrir la douche à son débit habituel et placer le seau sous le jet d'eau.
+    \item Chronométrer précisément le temps nécessaire pour remplir le seau.
+    \item Calculer le débit en divisant le volume d'eau recueilli par la durée mesurée.
+\end{enumerate}
+
+Le débit est donné par la relation :
+\begin{equation}
+    Q = \frac{V}{t}
+\end{equation}
+
+où $Q$ est le débit (en L/min), $V$ le volume d'eau mesuré (en L) et $t$ le temps (en minutes).
+
+
+\end{document}

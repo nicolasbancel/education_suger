@@ -1,10 +1,12 @@
 \documentclass{exam}
-\usepackage{../../mypackages}
-\usepackage{../../macros}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
 
-\title{DST N°1 - Géométrie dans l'espace et Suites}
+\setlength{\parindent}{0pt}
+
+\title{Devoir sur table N°1 - Chapitre sur les fonctions}
 \author{N. Bancel}
-\date{4 Décembre 2024}
+\date{2 Octobre 2024}
 
 \begin{document}
 
@@ -14,194 +16,150 @@
 
 \textbf{Année 2024-2025}
 \hfill
-\textbf{1ères STD2A} \par
+\textbf{1ère STD2A} \par
 
 {\let\newpage\relax\maketitle}
+%\maketitle
 
 \begin{center}
-\textbf{\textcolor{red}{Durée : 2 heures. La calculatrice n'est pas autorisée}} \\
-\textbf{\textcolor{red}{Une réponse donnée sans justification sera considérée comme fausse.}} \\
-Cette interrogation contient \numquestions\ questions, sur \numpages\ pages et est notée sur 21 points. 
-
+\textbf{\textcolor{red}{La calculatrice n'est pas autorisée}}
 \end{center}
 
-\section*{Exercice 1 : Jeux de rôles (8 points)}
+\section*{Exercice 1 - Elements de cours et rappels}
 
-\textbf{Extrait du BAC 2017 STD2A Nouvelle Calédonie} \par
-\vspace{1em}
-Dans les jeux de rôles, on utilise différents types de dés en plus du classique dé à six faces afin
-d'obtenir des résultats différents. Les polyèdres réguliers, connus aussi sous le nom de "solides de
-Platon", permettent d'obtenir des dés équiprobables, chaque face ayant la même probabilité de
-sortir à chaque tirage. Par exemple, un dé à huit faces a la forme d'un octaèdre régulier.
+\begin{questions}
+\question[1] Un polynôme de degré 2 s'écrit sous la forme $ax^2 + bx + c$, avec $a$, $b$, et $c$ réels et $a \neq 0$ Déterminer les coefficients a, b, et c pour les polynômes 
+$g$ et $h$ définis sur $\mathbb{R}$ par
+\begin{itemize}
+  \item $g(x) = 3x^2 - 2$
+  \item $h(x) = (x-4)(5-2x)$
+\end{itemize}
 
-\subsection*{Étude de l'octaèdre régulier}
-
-Un octaèdre régulier peut-être obtenu à partir d'un cube en prenant pour sommets de l'octaèdre les centres des faces du cube.
-On a représenté ci-dessous, en perspective parallèle, un octaèdre régulier ABCDEF inscrit dans un cube dont l'arête mesure 2 cm.
-Le point O est le point d'intersection des diagonales du quadrilatère ABCD
+\question[0.5] Quelle est la forme graphique (entre Forme 1, ou Forme 2) de la courbe représentative dans un repère orthonormé
+de la fonction $f$ définie sur $\mathbb{R}$ par : $f(x) = -3x^2 + x - 2$ ?
+Une justification est demandée
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.4\linewidth]{img/dst_01_01.jpg}
-  \caption{\label{} Octaèdre}
+  \includegraphics[width=0.6\linewidth]{/img/dst_01_forme.jpg}
+  \caption{\label{} Formes de paraboles}
 \end{figure}
 
-On admet que $\left(O\mathpunct{} ; \ \overrightarrow{OA}\mathpunct{}, \ \overrightarrow{OB}\mathpunct{}, \ \overrightarrow{OE}\right)$ est un repère orthonormal de l'espace.
-\begin{questions}
-  \question[2.25] Donner les coordonnées des sommets de l'octaèdre régulier ABCDEF dans le repère orthonormal de l'espace $\left(O\mathpunct{} ; \ \overrightarrow{OA}\mathpunct{}, \ \overrightarrow{OB}\mathpunct{}, \ \overrightarrow{OE}\right)$
-  \question[1] Que peut-on dire de la sphère de centre O passant par A ?
-  \question[1] En utilisant les coordonées de $A$ et de $E$, calculer la longueur AE de l'arête de l'octaèdre régulier ABCD.
-  \question[1] Retrouver ce résultat en utilisant le théorème de Pythagore
-  \question[1] Calculer les coordonées des vecteurs $\overrightarrow{AE}$ et $\overrightarrow{DF}$
-  \question[0.75] En utilisant l'annexe et la question précédente, les droites $(AE)$ et $(DF)$ sont-elles perpendiculaires ? Justifier
-  \question[1] Calculer le volume de l'octaèdre régulier ABCDEF. On arrondira le résultat au $cm^3$. On rappelle que le volume $V$ d'une pyramide est donné par la formule :
- \[
-  V = \frac{B \times h}{3}
-  \]
-  où $B$ est l'aire de la base de la pyramide et $h$ la hauteur relative à cette base.
-\end{questions} 
+\question[0.5] Donner la solution de l'équation dans $\mathbb{R}$ : $2x - 5 = -4x + 13$
+\question[1] Factoriser l'expression $(5x - 2)(x+4) + 6(5x -2)$
+\question[1] Dessiner le tableau de variation de la fonction $f$ définie sur l'intervalle $[-4 ; 4]$, et représentée dans le graphique ci-dessous : 
 
+\begin{tikzpicture}[ 
+  declare function={ 
+  f(\x)=-(1/72)*\x^4+3/16*(\x^3)+(1/9)*\x^2-9/4*\x+7/9; 
+  } 
+  ]
+  \begin{axis}[axis equal, 
+  width=10 cm, 
+  grid=major, 
+  axis x line=middle, axis y line=middle, 
+  axis line style = very thick, 
+  grid style={gray!30}, 
+  ymin=-5, ymax=6, yticklabels={}, ylabel=$y$, 
+  xmin=-4, xmax=4, xticklabels={}, xlabel=$x$, 
+  samples=500, 
+  ] 
+  \addplot[blue, very thick,domain=-4:4, smooth]{f(x)}; 
+  \addplot [color=red, mark=*,only marks,samples at={-4,-2,2,4}] {f(x)}; 
+  \pgfplotsinvokeforeach{-4,-2,2,4}{\draw[dashed] ({#1},0) |- (0,{f(#1)}); }
+  \foreach \X/\Y in {-4/right,-2/left,2/left,4/right} 
+  {\edef\temp{\noexpand\node[\Y] at (0,\X) {$\X$};} 
+  \temp}
+  \foreach \X/\Y in {-4/above,-2/below,2/above,4/below} 
+  {\edef\temp{\noexpand\node[\Y] at (\X,0) {$\X$};} 
+      \temp} 
+  \end{axis}
+  \end{tikzpicture} \par
 
-\section*{Exercice 2 : Le parallélépipède rectangle (8 points)}
+  \begin{tikzpicture}
+    \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{\dots, \dots, \dots, \dots}
+    %\tkzTabVar{-/ \textcolor{green}{$-4$}, +/\textcolor{red}{$4$}, -/$-2$, +/$2$}
+ \end{tikzpicture}
 
-On considère le parallélépipède rectangle $ABCDEFGH$ représenté ci-dessous, tel que $AB = 6$, $AD = 4$ et $AE = 2$.
-
-\begin{center}
-    \includegraphics[width=0.5\textwidth]{img/dst_01_02.png}
-\end{center}
-
-On se place dans le repère 
-\[
-\left(A \mathpunct{}; \ \frac{1}{6} \overrightarrow{AB}\mathpunct{}, \ \frac{1}{4} \overrightarrow{AD}\mathpunct{}, \ \frac{1}{2} \overrightarrow{AE}\right).
-\]
-
-\begin{questions}
-    \question[2] Donner les coordonnées des points $A$, $B$, $C$, $D$, $E$, $F$ et $G$ dans ce repère.
-
-    \question[0.5] Donner les coordonnées du vecteur $\overrightarrow{AC}$.
-
-    \question[0.5] On considère le point $I$ tel que 
-    \[
-    \overrightarrow{DI} = \frac{1}{2} \overrightarrow{DH}.
-    \]
-    Placer le point $I$ sur le graphique. Pas besoin de calcul, vous devez pouvoir placer ce point grâce à la compréhension de la notion de vecteur.
-
-    \question[0.5] Donner les coordonnées du point $I$. Bonus : avec une équation (sans utiliser une simple lecture graphique), comment pouvait-on trouver proprement les coordonées du point I ? 
-
-    \question[0.5] En déduire les coordonnées du vecteur $\overrightarrow{EI}$.
-
-    \question[0.5] Soit $J$ le point défini par 
-    \[
-    \overrightarrow{FJ} = \overrightarrow{FG} + \frac{1}{2} \overrightarrow{GC}.
-    \]
-    Placer le point $J$ sur le graphique. Pas besoin de calcul, vous devez pouvoir placer ce point grâce à la compréhension de la notion de vecteur.
-
-    \question[0.5] Donner les coordonnées du point $J$. Bonus : avec une équation (sans utiliser une simple lecture graphique), comment pouvait-on trouver proprement les coordonées du point J ? 
-
-    \question[0.5] En déduire les coordonnées du vecteur $\overrightarrow{FJ}$.
-
-    \question[1] Quelle est la nature du quadrilatère $EIFJ$ ? Justifier. (On peut utiliser l'information en annexe pour s'aider à répondre à cette question)
-
-    \question[1] Calculer la longueur des segments $[EF]$ et $[EI]$.
-
-    \question[0.5] En déduire l'aire du quadrilatère $EIFJ$.
-\end{questions}
-
-
-\section*{Exercice 3 : Suites - Exercice identique à celui du BAC Blanc. (5 points)}
-
-\begin{questions}
-  \question[2.5] Soit la suite $(U_n)$ définie pour tout $n \geq 0$ par la relation suivante :
-  
-  \[
-    \left\{
-      \begin{array}{ll}
-            U_{n+1} = U_n + n \\
-            U_0 = 2 
-        \end{array}
-      \right.
-    \]
-  
-  \begin{parts}
-    \part[1] Calculer les trois premiers termes de la suite $(U_n)$.
-    \part[1] Calculer $U_{n+1} - U_{n}$
-    \part[0.5] Cette suite est-elle croissante ou décroissante ? Justifier
-  \end{parts}
-
-  \question[2.5] Soit la suite \((V_n)\) définie par la relation fonctionnelle :
-  \[
-  V_n = 5 \times 2^n.
-  \]
-  \begin{parts}
-    \part[1] Calculer les termes $V_0$, $V_1$ et $V_2$.
-    \part[1] Calculer le rapport $\frac{V_{n+1}}{V_n}$
-    \part[0.5] Déterminer si la suite $(V_n)$ est géométrique, et préciser sa raison. Cette suite est-elle croissante ou décroissante ? Justifier
-  \end{parts}
+ \question[1] Dresser le tableau de signe de la fonction $k$ définie sur $\mathbb{R}$ par : $k(x) = 3(x-4)(x+1)$. \textbf{Attention : le tableau ci-dessous est indicatif, il se peut qu'il manque quelques éléments dessus. A vous de les trouver} \par
+\vspace{1em}
+ \begin{tikzpicture}
+  \tkzTabInit{$x$ / 1 , $k(x)$ / 1}{\dots, \dots, \dots, \dots}
+  \tkzTabLine{, \dots, t, \dots, t,\dots }
+\end{tikzpicture}
 
 \end{questions}
 
-\section*{Annexe}
+\section{Exercice 2 - Etude d'une fonction}
 
-\begin{itemize}
-  \item Un polygone est régulier si et seulement si tous ses côtés ont la même longueur
-  \item On peut dire que deux droites sont parallèles si et seulement si leurs vecteurs directeurs (les vecteurs qui suivent la direction de la droite) sont colinéaires.
-  \item On dit que 2 vecteurs $\overrightarrow{AB}$ et $\overrightarrow{CD}$ respectivement de coordonées $x_{AB}, y_{AB}, z_{AB}$ et $x_{CD}, y_{CD}, z_{CD}$ sont colinéires si et seulement si on peut écrire 
-  \[
-  \overrightarrow{AB} = \alpha \cdot \overrightarrow{CD}
-  \]
- c'est-à-dire
-  \[
-  \begin{pmatrix}
-    x_{AB} \\
-    y_{AB} \\ 
-    z_{AB}
-  \end{pmatrix}
-  = 
-  \alpha \cdot
-  \begin{pmatrix}
-    x_{CD} \\
-    y_{CD} \\ 
-    z_{CD}
-  \end{pmatrix}
-\] 
-autrement dit 
-\[
-  \begin{pmatrix}
-    x_{AB} \\
-    y_{AB} \\ 
-    z_{AB}
-  \end{pmatrix}
-  =
-  \begin{pmatrix}
-    \alpha \cdot x_{CD} \\
-    \alpha \cdot y_{CD} \\ 
-    \alpha \cdot z_{CD}
-  \end{pmatrix}
-\] 
-\item Soit A, B, C et D quatre points du plan. Les droites (AB) et (CD) sont perpendiculaires si et seulement si les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{CD}$ sont orthogonaux.
-\item Deux vecteurs $\overrightarrow{AB}$ et $\overrightarrow{CD}$ de coordonnées \\ 
+\begin{questions}
 
+\question[2] Montrer que la fonction $f(x) = -2x^2 - 4x + 16$ peut s'écrire sous la forme 
 \[
-  \overrightarrow{AB} = 
-  \begin{pmatrix}
-    x_{AB} \\
-    y_{AB} \\ 
-    z_{AB}
-  \end{pmatrix}
-\] et
-\[
-  \overrightarrow{CD} = 
-  \begin{pmatrix}
-    x_{CD} \\
-    y_{CD} \\ 
-    z_{CD}
-  \end{pmatrix}
+-2(x-2)(x+4)
 \]
-sont orthogonaux si et seulement si leur produit scalaire est égal à 0, c'est-à-dire : 
+
+\question[1] En déduire les solutions de l'équation $f(x)=0$
+
+\question[1] Quelle est l'image de $x=3$ par la fonction f ?
+\question[1] Le point $A$ de coordonées $(-1 ; 18)$ appartient-il à la courbe représentative de $f$ ? Qu'en est-il du point $B$ de coordonées $(0 ; 14)$ ? Justifier
+\question[2] Construire le tableau de signe de la fonction $f$ sur le domaine de définition $\mathcal{D} = ] - \infty ; + \infty [$
+\question[1] En déduire les solutions de l'inéquation 
 \[
-  x_{AB} \cdot x_{CD} + y_{AB} \cdot y_{CD} + z_{AB} \cdot z_{CD} = 0
+f(x) \geq 0
 \]
-\end{itemize}
+On prendra le soin de bien écrire les intervalles
+
+\question[1] L'extremum de la fonction (c'est-à-dire le maximum ou le minimum - on déterminera ce qu'il en est dans la question suivante) $f$ est atteint en $x = -1$. Dessiner le tableau de variation de la fonction $f$. \textbf{[Bonus à 0.5 point]} \textit{(sauter cette question bonus si vous n'avez pas la réponse, n'y passez pas trop de temps)} : à partir de la forme développée de la fonction $f$, comment aurions-nous pu trouver que l'extremum était atteint en $x=-1$ ?
+
+\question[1] (Cette question se décompose en 3 sous questions) 
+  \begin{itemize}
+    \item Quel est le nombre de solutions de l'équation $f(x) = 20$ ?
+    \item Quel est le nombre de solutions de l'équation $f(x) = 18$ ?
+    \item Quel est le nombre de solutions de l'équation $f(x) = 2$ ?
+  \end{itemize}
+
+
+\end{questions}
+
+
+\section*{Exercice 3 - Polynôme de degré 3 - Interpolation}
+
+
+Soit la fonction polynôme de degré 3 $h$ définie dans $\mathbb{R}$ par :
+\[
+h(x) = x^3 - 2x^2 -x + d
+\]
+où $d$ est un paramètre à déterminer. On appelle $\mathcal{H}$ la courbe représentative de la fonction $h$. On souhaite imposer la contrainte suivante : La courbe \(\mathcal{H}\) doit passer par le point $B$ de coordonées $(1, 0)$.
+
+\begin{questions}
+
+\question[1] Montrer que $d = 2$
+\question[1] Montrer que h peut s'écrire sous la forme factorisée : 
+\[
+  h(x) = (x-1)(x-2)(x+1)
+\]
+
+\question[1] Quel est le tableau de signe de la fonction $h$ sur le domaine de définition $\mathcal{D} = ] - \infty ; + \infty [$?
+\question[1] Dans le graphique en dernière page, la courbe verte représente la fonction $f$ d'équation $f(x) = x^3 - 2x^2$. Montrer que la courbe rouge qui représente la fonction $g$ a pour équation 
+\[
+g(x) = x - 2
+\]
+\question[1] A partir de la question 3, résoudre l'inéquation suivante dans $\mathcal{D}$
+\[
+x^3 - 2x^2 \leq x - 2
+\]
+Quelle est l'interprétation graphique des résultats ?
+
+\end{questions}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{/img/dst_01_fonctions.jpg}
+  \caption{\label{} Graphique de l'exercice 3}
+\end{figure}
 
 
 \end{document}
+
+

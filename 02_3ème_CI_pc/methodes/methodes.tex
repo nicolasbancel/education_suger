@@ -3,7 +3,17 @@
 \usepackage{../../macros}
 \usepackage{array,multirow}
 \usepackage[table]{xcolor}  % Load xcolor with the table option for colored cells
-\usepackage{colortbl}       % Load colortbl for \columncolor in tables
+
+
+
+\renewcommand{\arraystretch}{1.5} % Augmente l'espacement vertical entre les lignes du tableau
+\newcolumntype{C}{>{\centering\arraybackslash}m{2cm}}
+
+\SetLabelAlign{myright}{\hss\llap{$#1$}}
+\newlist{where}{description}{1}
+\setlist[where]{labelwidth=2cm,labelsep=1em,
+                        leftmargin=!,align=myright,font=\normalfont}
+
 
 \usepackage{pgfplots}
     \pgfplotsset{
@@ -18,13 +28,14 @@
 \author{N. Bancel}
 
 \maketitle
+
 \def\WITH_CORRECTION{YES}
 
 \section{Les unités du système international}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\linewidth]{unites.jpg}
+  \includegraphics[width=0.7\linewidth]{img/unites.jpg}
 \end{figure}
 
 \section{Multiples et sous multiples}
@@ -151,7 +162,7 @@ Ainsi :
 \section{Transformation de formules}
 
 \begin{tcolorbox}[colback=red!10!white, colframe=red!75!black, title=PAR COEUR]
-  Cela ne sert à rien d'apprendre par coeur 3 formules comme \(\rho = \frac{m}{V}\) puis \(m = \rho \times V\) puis \(V = \frac{m}{\rho}\). Il suffit d'en retenir une et d'être en mesure de retrouver les 2 autres. Pour cela, on manipule simplement des concepts mathématiques.
+  Cela ne sert à rien d'apprendre par coeur 3 formules comme $\rho = \frac{m}{V}$ puis $m = \rho \times V$ puis $V = \frac{m}{\rho}$. Il suffit d'en retenir une et d'être en mesure de retrouver les 2 autres. Pour cela, on manipule simplement des concepts mathématiques.
 \end{tcolorbox}
 
 En sciences physiques, il est important de comprendre les relations entre les grandeurs physiques et de savoir manipuler les équations, plutôt que d'apprendre par cœur plusieurs formules. Prenons l'exemple de la relation fondamentale reliant la masse ($m$), le volume ($V$), et la masse volumique ($\rho$) :
@@ -170,7 +181,7 @@ Partons de l'équation de base :
 
 Pour isoler $m$, il suffit de multiplier chaque côté de l'équation par $V$ (ce qui revient à "se débarrasser" de la division par $V$ dans le membre de droite) :
 \begin{align}
-\rho \cdot V &= \frac{m}{V} \cdot V, \\
+\rho \cdot V &= \frac{m}{\cancel{V}} \cdot \cancel{V}, \\
 \rho \cdot V &= m.
 \end{align}
 
@@ -187,12 +198,12 @@ Reprenons encore l'équation de départ :
 
 Cette fois, pour isoler $V$, nous devons d'abord inverser la division par $V$. Cela se fait en multipliant chaque côté par $V$ :
 \begin{align}
-\rho \cdot V &= m.
+ \rho \cdot V &= \frac{m \cdot \cancel{V}}{\cancel{V}}.
 \end{align}
 
 Ensuite, pour isoler $V$, il suffit de diviser chaque côté de l'équation par $\rho$ :
 \begin{align}
-V &= \frac{m}{\rho}.
+\frac{\cancel{\rho} \cdot V}{\cancel{\rho}} &= \frac{m}{\rho}.
 \end{align}
 
 Ainsi, on obtient la formule :
@@ -200,9 +211,158 @@ Ainsi, on obtient la formule :
 V = \frac{m}{\rho}.
 \end{equation}
 
+\subsection*{Exemples plus complexes}
+
+La formule de l'attraction gravitationnelle entre deux masses $ m_1 $ et $ m_2 $ est donnée par :
+
+\[
+F_g = G \cdot \frac{m_1 \cdot m_2}{r^2}
+\]
+
+où :
+
+\begin{itemize}
+    \item $ F_g $ est la force gravitationnelle (en newtons),
+    \item $ G $ est la constante gravitationnelle ($ 6,674 \times 10^{-11} \, \mathrm{N \cdot m^2 \cdot kg^{-2}} $),
+    \item $ m_1 $ et $ m_2 $ sont les masses des objets (en kilogrammes),
+    \item $ r $ est la distance entre les deux masses (en mètres).
+\end{itemize}
+
+\subsection*{1. Isoler $ m_1 $}
+
+Pour isoler $ m_1 $, nous voulons exprimer cette masse en fonction des autres variables ($ F_g $, $ G $, $ m_2 $, et $ r $). Suivons les étapes ci-dessous :
+
+\[
+F_g = G \cdot \frac{m_1 \cdot m_2}{r^2}
+\]
+
+1. Multiplions les deux membres par $ r^2 $ pour éliminer le dénominateur :
+\[
+F_g \cdot r^2 = \frac{G \cdot m_1 \cdot m_2 \cdot \cancel{r^2}}{\cancel{r^2}}
+\]
+
+2. Divisons les deux membres par $ G \cdot m_2 $ pour isoler $ m_1 $ :
+\[
+\frac{F_g \cdot r^2}{G \cdot m_2} = \frac{m_1 \cdot \cancel{G \cdot m_2}}{\cancel{G \cdot m_2}}
+\]
+
+Ainsi, la masse $ m_1 $ est donnée par la formule suivante :
+\[
+m_1 = \frac{F_g \cdot r^2}{G \cdot m_2}
+\]
+
+\subsection*{2. Isoler $ r $}
+
+Pour isoler $ r $, nous voulons exprimer la distance entre les deux masses en fonction des autres variables ($ F_g $, $ G $, $ m_1 $, et $ m_2 $). Suivons les étapes détaillées :
+
+\[
+F_g = G \cdot \frac{m_1 \cdot m_2}{r^2}
+\]
+
+1. Multiplions les deux membres par $ r^2 $ pour éliminer le dénominateur (et faire "remonter" $r^2$) :
+\[
+F_g \cdot r^2 = \frac{G \cdot m_1 \cdot m_2 \cdot \cancel{r^2}}{\cancel{r^2}}
+\]
+
+2. Divisons les deux membres par $ F_g $ pour isoler $ r^2 $ :
+\[
+\frac{\cancel{F_g} \cdot r^2}{\cancel{F_g}} = \frac{G \cdot m_1 \cdot m_2}{F_g}
+\]
+
+3. Prenons la racine carrée des deux membres pour obtenir $ r $ :
+\[
+\sqrt{r^2} = \sqrt{\frac{G \cdot m_1 \cdot m_2}{F_g}}
+\]
+La racine carrée d'un nombre au carré est égale à lui-même donc 
+
+\[
+r = \sqrt{\frac{G \cdot m_1 \cdot m_2}{F_g}}
+\]
+
 \subsection*{Conclusion}
 
 Il n'est donc pas nécessaire de mémoriser toutes les formules $\rho = \frac{m}{V}$, $m = \rho \cdot V$, et $V = \frac{m}{\rho}$. Il suffit de retenir une seule d'entre elles, par exemple $\rho = \frac{m}{V}$, et d'apprendre à manipuler les équations en utilisant des multiplications et des divisions pour déduire les autres au besoin. Cette méthode favorise la compréhension et évite les erreurs de mémorisation.
+
+\subsection*{Exercices d'entraînement}
+
+\subsubsection*{La vitesse}
+
+Contexte : La vitesse d'un objet peut se calculer en mesurant en distance, et en déterminant le temps qu'il a fallu à cet objet pour parcourir cette distance. Sa formule s'écrit
+  \[
+  v = \frac{d}{t}
+  \]
+  où 
+
+\begin{addmargin}[4em]{1em}
+  \begin{compactitem}
+      \item [v]: représente la vitesse de l'objet
+      \item [d]: représente la distance parcourue
+      \item [t]: représente le temps écoulé pour que l'objet parcourt la distance
+\end{compactitem}
+\end{addmargin}
+\vspace{1em}
+\textbf{Questions}
+\begin{itemize}
+  \item Si dans un problème, je connais la valeur de la vitesse d'un véhicule, et je sais combien de temps il a roulé, comment puis-je déduire la distance qu'il a parcourue ?
+  \item Si dans un problème, je connais la valeur de la vitesse d'un véhicule, et je sais quelle distance il a parcouru, comment puis-je déduire le temps / la durée pendant laquelle il a roulé ?
+\end{itemize}
+
+\subsubsection*{L'énergie cinétique}
+
+    Contexte : Lorsque vous voyez une voiture en mouvement, son énergie (cinétique) dépend de sa vitesse et de sa masse. Cette énergie joue un rôle important lors des accidents de voiture ou dans la conception des freins. Sa formule est 
+    \[
+    E_c = \frac{1}{2} \times m \times v^2
+    \]
+    où 
+
+  \begin{addmargin}[4em]{1em}
+    \begin{compactitem}
+      \item [$E_c$]: représente l'énergie cinétique de l'objet
+      \item [m]: représente la masse de l'objet 
+      \item [v]: représente la vitesse de l'objet
+  \end{compactitem}
+  \end{addmargin}
+  \vspace{1em}
+  \textbf{Questions}
+  \begin{itemize}
+    \item Si dans un problème, je connais la valeur de l'énergie cinétique et je connais la valeur de la vitesse, quelle formule me permet de déterminer la masse de l'objet ?
+    \item Si dans un problème, je connais la valeur de l'énergie cinétique et je connais la valeur de la masse, quelle formule me permet de déterminer la vitesse de l'objet ?
+  \end{itemize}
+
+  \subsubsection*{L'énergie mécanique et ses composants}
+
+  \textbf{Contexte :} L'énergie mécanique d'un système se compose de deux formes principales :
+  \begin{itemize}
+      \item L'énergie cinétique $E_c$, liée au mouvement d'un objet.
+      \item L'énergie potentielle $E_p$, liée à la position de l'objet dans un champ de force, comme la gravité.
+  \end{itemize}
+  
+  La formule de l'énergie mécanique totale est :
+  \[
+  E_m = E_p + E_c
+  \]
+  où
+
+  \begin{addmargin}[4em]{1em}
+  \begin{compactitem}
+      \item [$E_m$] : énergie mécanique totale (en joules, J).
+      \item [$E_p$] : énergie potentielle (en joules, J), donnée par $E_p = m \cdot g \cdot h$.
+      \item [$E_c$] : énergie cinétique (en joules, J), donnée par $E_c = \frac{1}{2} \cdot m \cdot v^2$.
+  \end{compactitem}
+  \end{addmargin}
+
+\vspace{1em}
+  \textbf{Lorsqu'une balle est lancée en l'air, son énergie potentielle augmente avec l'altitude, tandis que son énergie cinétique diminue. À tout moment, la somme des deux reste constante (si on néglige les frottements).}
+  
+\vspace{1em}
+\textbf{Questions}
+
+  \begin{itemize}
+    \item Si l'énergie mécanique totale d'un objet est de $50 \, \mathrm{J}$, et que son énergie potentielle est de $30 \, \mathrm{J}$, quelle est son énergie cinétique ? Comment l'avez-vous déterminé ?
+    \item Plus généralement, si je connais l'énergie mécanique totale d'un corps, et son énergie potentielle, comment est-ce que je peux déduire son énergie cinétique ?
+\end{itemize}
+
+
 
 
 \section{Précision d'une mesure}
@@ -218,7 +378,7 @@ Un appareil mesure une valeur avec un certain degré d'imprécision. C'est-à-di
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\linewidth]{balances.jpg}
+  \includegraphics[width=0.7\linewidth]{img/balances.jpg}
 \end{figure}
 
 \begin{enumerate}[noitemsep]
@@ -229,7 +389,7 @@ Un appareil mesure une valeur avec un certain degré d'imprécision. C'est-à-di
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\linewidth]{intervalles_balances.jpg}
+  \includegraphics[width=0.7\linewidth]{img/intervalles_balances.jpg}
   \caption{Représentation des intervalles}
 \end{figure}
 
@@ -251,7 +411,7 @@ Ici, on pourrait penser que de l'eau s'est évaporée lors du chauffage. Il conv
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\linewidth]{circuit.jpg}
+  \includegraphics[width=0.7\linewidth]{img/circuit.jpg}
 \end{figure}
 
 \begin{itemize}[noitemsep]
@@ -270,7 +430,7 @@ Ici, on pourrait penser que de l'eau s'est évaporée lors du chauffage. Il conv
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\linewidth]{circuite_intervalles.jpg}
+  \includegraphics[width=0.7\linewidth]{img/circuite_intervalles.jpg}
   \caption{Représentation des intervalles}
 \end{figure}
 
@@ -292,12 +452,12 @@ N = a \times 10^n
 \]
 où :
 \begin{itemize}[noitemsep]
-    \item \( a \) est un nombre réel tel que \( 1 \leq |a| < 10 \),
-    \item \( n \) est un entier relatif (positif ou négatif).
+    \item $ a $ est un nombre réel tel que $ 1 \leq |a| < 10 $,
+    \item $ n $ est un entier relatif (positif ou négatif).
 \end{itemize}
 \end{tcolorbox}
 
-\textbf{Exemple} : Le nombre \( 123000 \) peut être écrit comme \( 1,23 \times 10^5 \). \\
+\textbf{Exemple} : Le nombre $ 123000 $ peut être écrit comme $ 1,23 \times 10^5 $. \\
 
 \textcolor{blue}{\textbf{Exercice}} : Ecris les nombres suivants en notation scientifique
 \vspace{1em}
@@ -358,7 +518,7 @@ Les chiffres significatifs représentent la précision d'une mesure ou d'un calc
 
 \end{tcolorbox}
 
-\textbf{Exemple} : Dans \( 0,00560 \), il y a trois chiffres significatifs : \( 5 \), \( 6 \) et le dernier zéro.
+\textbf{Exemple} : Dans $ 0,00560 $, il y a trois chiffres significatifs : $ 5 $, $ 6 $ et le dernier zéro.
 
 \vspace{1em}
 
@@ -404,19 +564,19 @@ Les chiffres significatifs représentent la précision d'une mesure ou d'un calc
 
   {Tous les zéros situés à la fin d'un nombre décimal sont significatifs.}
     & {Pour déterminer le nombre de chiffres significatifs, il faut compter les chiffres que comporte le nombre (tout en excluant les zéros se situant au début du nombre).}
-    & {Le nombre \( 0,50600 \) possède 5 chiffres significatifs.} \\
+    & {Le nombre $ 0,50600 $ possède 5 chiffres significatifs.} \\
   
     \midrule
   
   {En fonction du contexte, les zéros situés à la fin d’un nombre entier peuvent être significatifs ou non.}
     & {Pour déterminer le nombre de chiffres significatifs, il faut se fier au contexte, par exemple à la précision de l’instrument.}
-    & {Si la valeur \( 23\,700 \) est mesurée à l'aide d'un instrument précis à l'unité près, alors \( 23\,700 \) comprend 5 chiffres significatifs. Si la valeur \( 23\,700 \) est mesurée à l'aide d'un instrument précis à la centaine près, alors \( 23\,700 \) comprend 3 chiffres significatifs. On peut donc dire que \( 23\,700 \) est équivalent à \( 2,37 \times 10^4 \)} \\
+    & {Si la valeur $ 23\,700 $ est mesurée à l'aide d'un instrument précis à l'unité près, alors $ 23\,700 $ comprend 5 chiffres significatifs. Si la valeur $ 23\,700 $ est mesurée à l'aide d'un instrument précis à la centaine près, alors $ 23\,700 $ comprend 3 chiffres significatifs. On peut donc dire que $ 23\,700 $ est équivalent à $ 2,37 \times 10^4 $} \\
   
   \midrule
 
   {Dans une notation scientifique, les chiffres devant la puissance de 10 sont significatifs.}
     & {Pour déterminer le nombre de chiffres significatifs, il faut compter le nombre de chiffres situés à gauche de la puissance de 10.}
-    & {Le nombre \( 9,568 \times 10^3 \) possède 4 chiffres significatifs. Le nombre \( 2,5 \times 10^{-2} \) possède 2 chiffres significatifs.} \\
+    & {Le nombre $ 9,568 \times 10^3 $ possède 4 chiffres significatifs. Le nombre $ 2,5 \times 10^{-2} $ possède 2 chiffres significatifs.} \\
 
   \bottomrule
 \end{tabularx}
@@ -429,7 +589,7 @@ Les chiffres significatifs représentent la précision d'une mesure ou d'un calc
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\linewidth]{chiffres_significatifs.jpg}
+  \includegraphics[width=0.7\linewidth]{img/chiffres_significatifs.jpg}
   \caption{\label{} Chiffres Significatifs}
 \end{figure}
 
@@ -451,37 +611,37 @@ Pour manipuler des puissances de 10 et effectuer des calculs plus facilement, vo
 \[
 a^m \times a^n = a^{m + n}
 \]
-\textbf{Exemple} : \( 10^3 \times 10^2 = 10^{3+2} = 10^5 \).
+\textbf{Exemple} : $ 10^3 \times 10^2 = 10^{3+2} = 10^5 $.
 
 \subsection{Division de puissances de même base}
 \[
 \frac{a^m}{a^n} = a^{m - n}
 \]
-\textbf{Exemple} : \( \frac{10^5}{10^3} = 10^{5-3} = 10^2 \).
+\textbf{Exemple} : $ \frac{10^5}{10^3} = 10^{5-3} = 10^2 $.
 
 \subsection{Puissance d'une puissance}
 \[
 (a^m)^n = a^{m \times n}
 \]
-\textbf{Exemple} : \( (10^2)^3 = 10^{2 \times 3} = 10^6 \).
+\textbf{Exemple} : $ (10^2)^3 = 10^{2 \times 3} = 10^6 $.
 
 \subsection{Puissance de produit}
 \[
 (a \times b)^n = a^n \times b^n
 \]
-\textbf{Exemple} : \( (2 \times 5)^3 = 2^3 \times 5^3 = 8 \times 125 = 1000 \).
+\textbf{Exemple} : $ (2 \times 5)^3 = 2^3 \times 5^3 = 8 \times 125 = 1000 $.
 
 \subsection{Puissance de quotient}
 \[
 \left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}
 \]
-\textbf{Exemple} : \( \left(\frac{4}{2}\right)^2 = \frac{4^2}{2^2} = \frac{16}{4} = 4 \).
+\textbf{Exemple} : $ \left(\frac{4}{2}\right)^2 = \frac{4^2}{2^2} = \frac{16}{4} = 4 $.
 
 \subsection{Puissance de 10}
 La puissance de 10 est souvent utilisée pour exprimer des valeurs très grandes ou très petites :
 \begin{itemize}[noitemsep]
-    \item \( 10^3 = 1000 \),
-    \item \( 10^{-3} = 0,001 \).
+    \item $ 10^3 = 1000 $,
+    \item $ 10^{-3} = 0,001 $.
 \end{itemize}
 
 \section{Faire un raisonnement scientifique}
@@ -527,7 +687,7 @@ En divisant par 100 en haut et en bas, on s'aperçoit que :
 V = \frac{500}{18.5} = \frac{50}{18.5} \times 10
 \]
 
-La valeur de \(\frac{50}{18.5}\) nous est donnée dans l'énoncé, donc :
+La valeur de $\frac{50}{18.5}$ nous est donnée dans l'énoncé, donc :
 
 \[
 V \approx 2.702 \times 10 = 27.02\,\si{m^3}
@@ -542,7 +702,7 @@ Ainsi, le volume nécessaire est environ \SI{27.02}{m^3}, ce qui est supérieur 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.7\linewidth]{pictogrammes.jpg}
+  \includegraphics[width=0.7\linewidth]{img/pictogrammes.jpg}
   \label{Les pictogrammes}
 \end{figure}
 
@@ -550,7 +710,7 @@ Ainsi, le volume nécessaire est environ \SI{27.02}{m^3}, ce qui est supérieur 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\linewidth]{securite.jpg}
+  \includegraphics[width=0.8\linewidth]{img/securite.jpg}
   \label{Les règles de sécurité}
 \end{figure}
 
@@ -558,7 +718,7 @@ Ainsi, le volume nécessaire est environ \SI{27.02}{m^3}, ce qui est supérieur 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\linewidth]{identification.jpg}
+  \includegraphics[width=0.9\linewidth]{img/identification.jpg}
   \label{Identification d'espèces chimiques}
 \end{figure}
 
