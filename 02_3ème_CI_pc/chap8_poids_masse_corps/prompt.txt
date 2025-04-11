@@ -1,0 +1,26 @@
+Rédige moi la correction de l'exercice de Physique Chimie de 3ème en pièce jointe
+Je veux que tu le rédiges en format LaTex
+
+
+Contraintes LaTex
+- Pour les bullet points, je veux que tu utilises \begin{compactenum}
+- pour les apostrophes, que tu fasses des ' au lieu de ’
+- ne retranscris pas l'énoncé
+- n'ajoute pas de \vspace{} entre 2 subsections
+- quand il y a des calculs à faire, décompose bien ton raisonnement en plusieurs étapes : "(1) Théorie / formules" "(2) Conversions (si nécessaire)" "(3) Application numérique" "(4) Interprétation"
+
+Je veux que l'en tête du Latex ressemble à ça
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+
+\title{Chapitre 4 : L'atome / Les molécules}
+\author{N. Bancel}
+\date{Octobre 2024}
+\maketitle

@@ -1,0 +1,134 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+\usepackage{xcolor}
+\usepackage{amsmath}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\title{Correction : Détermination de la couleur d'un photon}
+\author{N. Bancel}
+\date{Octobre 2024}
+\maketitle
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{img/exercice_12.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} Activité 2 page 85}
+\end{figure}
+
+
+\section*{Correction de l'exercice N°12}
+
+\subsection*{1. Formule de base}
+L'énergie d'un photon est reliée à sa longueur d'onde par la relation :
+
+\begin{equation}
+    E = \frac{h c}{\lambda}
+\end{equation}
+
+avec :
+\begin{compactenum}
+    \item $E = 2.12$ eV (énergie du photon),
+    \item $h = 6.626 \times 10^{-34}$ J.s (constante de Planck),
+    \item $c = 3.00 \times 10^8$ m/s (vitesse de la lumière),
+    \item $1$ eV $= 1.602 \times 10^{-19}$ J (conversion eV → J).
+\end{compactenum}
+
+\subsection*{2. Conversion de l'énergie en joules}
+On convertit $E$ en joules :
+
+\begin{equation}
+    E = 2.12 \times 1.602 \times 10^{-19}
+\end{equation}
+
+\begin{equation}
+    E \approx 3.39 \times 10^{-19} \text{ J}
+\end{equation}
+
+\subsection*{3. Calcul de la longueur d'onde}
+On isole $\lambda$ dans la formule :
+
+\begin{equation}
+    \lambda = \frac{h c}{E}
+\end{equation}
+
+En remplaçant les valeurs :
+
+\begin{equation}
+    \lambda = \frac{(6.626 \times 10^{-34}) \times (3.00 \times 10^8)}{3.39 \times 10^{-19}}
+\end{equation}
+
+\begin{equation}
+    \lambda \approx 5.86 \times 10^{-7} \text{ m} = 586 \text{ nm}
+\end{equation}
+
+\subsection*{4. Détermination de la couleur}
+D'après le spectre visible, une longueur d'onde de **586 nm** correspond à une lumière de couleur **jaune-orange**.
+
+\subsection*{5. Conclusion}
+Le photon émis possède une longueur d'onde de **586 nm**, ce qui correspond à une émission lumineuse de couleur **jaune-orange**, comme on peut l’observer dans le spectre visible.
+
+
+
+\section*{Correction de l'exercice 14}
+
+\subsection*{1. Représentation du phénomène de transition}
+L’électron effectue une transition de l’état $E_1 = -3.03$ eV vers l’état fondamental $E_0 = -5.14$ eV. Cette transition entraîne l’émission d’un photon dont l’énergie est donnée par :
+
+\begin{equation}
+    E = E_1 - E_0
+\end{equation}
+
+Schématiquement, on représente cette transition par un diagramme d’énergie où un électron passe d’un niveau supérieur à un niveau inférieur en libérant un photon.
+
+\subsection*{2. Calcul de la longueur d'onde du photon émis}
+\begin{compactenum}
+    \item \textbf{Calcul de l'énergie du photon} :
+    \begin{equation}
+        E = (-3.03) - (-5.14)
+    \end{equation}
+    \begin{equation}
+        E = 2.11 \text{ eV}
+    \end{equation}
+    
+    \item \textbf{Conversion en joules} :
+    \begin{equation}
+        E = 2.11 \times 1.602 \times 10^{-19}
+    \end{equation}
+    \begin{equation}
+        E \approx 3.38 \times 10^{-19} \text{ J}
+    \end{equation}
+    
+    \item \textbf{Calcul de la longueur d’onde} :
+    \begin{equation}
+        \lambda = \frac{h c}{E}
+    \end{equation}
+    \begin{equation}
+        \lambda = \frac{(6.626 \times 10^{-34}) \times (3.00 \times 10^8)}{3.38 \times 10^{-19}}
+    \end{equation}
+    \begin{equation}
+        \lambda \approx 5.88 \times 10^{-7} \text{ m} = 588 \text{ nm}
+    \end{equation}
+\end{compactenum}
+
+\subsection*{3. Justification que le rayonnement est visible}
+Le spectre visible s'étend de **400 nm (violet) à 700 nm (rouge)**. 
+La longueur d’onde obtenue ($588$ nm) est bien dans cet intervalle, donc le rayonnement émis est visible.
+
+\subsection*{4. Détermination de la couleur de la lumière émise}
+D’après le spectre fourni, une longueur d’onde de **588 nm** correspond à une lumière **jaune-orange**.
+
+\subsection*{5. Représentation du spectre de la lampe}
+La lampe à vapeur de sodium émet principalement dans la bande du **jaune-orange** avec un pic autour de **589 nm**. Son spectre est discontinu et dominé par cette teinte caractéristique.
+
+\subsection*{6. Conclusion}
+La transition électronique étudiée conduit à l’émission d’un photon de **588 nm**, correspondant à une lumière **jaune-orange**, ce qui est typique des lampes à vapeur de sodium utilisées dans l’éclairage public.
+
+
+
+\end{document}

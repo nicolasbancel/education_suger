@@ -1,0 +1,78 @@
+\documentclass[answers]{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\title{Mini-cours - Automatismes : Pourcentages et Taux d'évolution}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2024-2025 - 3ème trimestre}
+\hfill
+\textbf{Mini-cours} \par
+
+{\let\newpage\relax\maketitle}
+
+\section*{Les pourcentages et les coefficients multiplicateurs}
+
+
+\paragraph{Définitions}
+\begin{itemize}
+    \item \textbf{Augmenter} une valeur de $t\,\%$ revient à la multiplier par $\boxed{1 + \dfrac{t}{100}}$.
+    \item \textbf{Diminuer} une valeur de $t\,\%$ revient à la multiplier par $\boxed{1 - \dfrac{t}{100}}$.
+\end{itemize}
+Les nombres $1 + \dfrac{t}{100}$ et $1 - \dfrac{t}{100}$ sont appelés des \textbf{coefficients multiplicateurs}.
+
+\paragraph{Exemples}
+\begin{itemize}
+    \item Un prix de 80€ augmente de $15\,\%$ : \\
+    $80 \times 1.15 = \boxed{92\text{€}}$
+    \item Ce même prix diminue de $15\,\%$ : \\
+    $80 \times 0.85 = \boxed{68\text{€}}$
+\end{itemize}
+
+\section*{Le taux d'évolution}
+
+\paragraph{Définition}
+Le \textbf{taux d'évolution} entre une valeur initiale $V_0$ et une valeur finale $V_1$ est :
+\[
+t = \dfrac{V_1 - V_0}{V_0}, \quad \text{et en pourcentage : } \quad t\% = 100 \times \dfrac{V_1 - V_0}{V_0}
+\]
+
+\paragraph{Exemple}
+La population passe de 8500 à 10400 habitants. \\
+\[
+t = \dfrac{10400 - 8500}{8500} \approx \boxed{0.224} \quad \Rightarrow \quad \boxed{22.4\,\%}
+\]
+
+\section*{Évolutions successives}
+
+\paragraph{Propriété}
+Le coefficient multiplicateur global d’évolutions successives est le produit des coefficients de chaque étape.
+
+\paragraph{Exemple}
+Une entreprise augmente ses ventes de $10\,\%$ puis les diminue de $5\,\%$ : \\
+\[
+C = 1.10 \times 0.95 = 1.045 \Rightarrow \text{augmentation globale de } \boxed{4.5\,\%}
+\]
+
+\section*{Évolution réciproque}
+
+\paragraph{Définition}
+L'évolution réciproque est celle qui permet de retrouver la valeur initiale après une évolution.
+
+\paragraph{Propriété}
+Le coefficient de l’évolution réciproque est l’inverse du coefficient initial :\\
+Si $V_1 = V_0 \times (1 + \dfrac{t}{100})$, alors $V_0 = V_1 \times \dfrac{1}{1 + \dfrac{t}{100}}$.
+
+\paragraph{Exemple}
+Une baisse de $8\,\%$ donne $0.92$. L’évolution inverse est : \\
+$\dfrac{1}{0.92} \approx 1.087 \Rightarrow$ il faut une hausse d’environ $\boxed{8.7\,\%}$.
+
+\end{document}

@@ -1,0 +1,265 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% Paste image : Cmd+Alt+V 
+% Or Open command Palette Cmd+Shift+P and write "Paste Image"
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+\title{Chapitre 9 : Energies cinétiques et potentielle}
+\author{N. Bancel}
+\date{Octobre 2024}
+\maketitle
+
+\section*{Exercice de compréhension}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{2025-03-26-17-05-33.png}
+\end{figure}
+
+\section*{Conservation de l'énergie ?}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{2025-03-26-17-07-50.png}
+\end{figure}
+
+\subsection*{Données}
+\begin{compactitem}
+    \item Masse de Louis : $m = \SI{50}{\kilo\gram}$
+    \item Hauteur initiale : $h = \SI{153}{\meter}$
+    \item Vitesse à l'arrivée : $v = \SI{100}{\kilo\meter\per\hour}$
+    \item Accélération de la pesanteur : $g = \SI{9.81}{\meter\per\second^2}$
+\end{compactitem}
+
+\subsection*{Énergie potentielle initiale}
+\textbf{Raisonnement :} L'énergie potentielle gravitationnelle s'exprime par :
+\begin{equation}
+    E_p = m g h
+\end{equation}
+\textbf{Conversions :}
+Aucune conversion nécessaire.
+
+\textbf{Application numérique :}
+\begin{equation}
+    E_p = \SI{50}{\kilo\gram} \times \SI{9.81}{\meter\per\second^2} \times \SI{153}{\meter}
+\end{equation}
+\begin{equation}
+    E_p \approx \SI{7.50e4}{\joule}
+\end{equation}
+
+\subsection*{Énergie cinétique à l'arrivée}
+\textbf{Raisonnement :} L'énergie cinétique s'exprime par :
+\begin{equation}
+    E_c = \frac{1}{2} m v^2
+\end{equation}
+\textbf{Conversions :}
+Conversion de la vitesse en \si{\meter\per\second} :
+\begin{equation}
+    v = \frac{\SI{100}{\kilo\meter\per\hour} \times 10^3}{3600} = \SI{27.78}{\meter\per\second}
+\end{equation}
+
+\textbf{Application numérique :}
+\begin{equation}
+    E_c = \frac{1}{2} \times \SI{50}{\kilo\gram} \times (\SI{27.78}{\meter\per\second})^2
+\end{equation}
+\begin{equation}
+    E_c \approx \SI{1.93e4}{\joule}
+\end{equation}
+
+\subsection*{Analyse des résultats}
+\textbf{Raisonnement :} Si l'énergie mécanique se conservait totalement, alors :
+\begin{equation}
+    E_p = E_c
+\end{equation}
+
+\textbf{Application numérique :}
+\begin{equation}
+    \SI{7.50e4}{\joule} \neq \SI{1.93e4}{\joule}
+\end{equation}
+
+Il y a donc une perte d'énergie. 
+
+\textbf{Interprétation :} Cette perte d'énergie s'explique par :
+\begin{compactitem}
+    \item Les frottements de l'air.
+    \item Les frottements avec le câble.
+    \item L'énergie dissipée sous forme de chaleur et de bruit.
+\end{compactitem}
+
+\subsection*{Conclusion}
+L'énergie ne s'est pas totalement conservée au cours du mouvement. Une partie a été dissipée sous forme de chaleur et de frottements.
+
+\section*{Pour se rassurer sur le brevet}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{brevet_1.png}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{brevet_2.png}
+\end{figure}
+
+\subsection{Mouvement et énergie}
+
+\subsubsection*{Question 1.1.}
+
+\subsubsection*{Question 1.2.1}
+
+\begin{compactitem}
+    \item Raisonnement : $E_c = \frac{1}{2}mv^2$. Si $v = 0$, alors $E_c = 0$.
+    \item Conclusion : Le skieur est immobile au point A, donc son énergie cinétique est nulle.
+\end{compactitem}
+
+\subsubsection*{Question 1.2.2}
+
+\begin{compactitem}
+  \item Raisonnement : L'expression de l'énergie potentielle est 
+  \[
+  E_p = mgh
+  \]
+  \item L'altitude $h$ diminue entre le point A et C. La masse $m$ et l'intensité de pesanteur $g$ restent constantes : on peut donc en déduire que l'énergie potentielle diminue entre le point A et le point C
+\end{compactitem}
+
+\subsubsection*{Question 1.3}
+
+Il y a deux méthodes de résolution pour cette question 
+
+\begin{compactitem}
+  \item Méthode numérique. Calcul de la conversion en $km/h$ 
+
+  \begin{align*}
+25 \times \frac{\text{m}}{\text{s}} &= 25 \times \frac{\frac{1}{1000} \text{km}}{\frac{1}{3600} \text{h}} \\
+                      &= 25 \times \frac{3600}{1000} \\
+                      &= \SI{90}{{\kilo\meter\per\hour}}
+  \end{align*}
+
+  %\, \text{m/s} = 25 \times \frac{1 \, \text{km}}{1000 \, \text{m}} \times \frac{3600 \, \text{s}}{1 \, \text{h}} = 25 \times \frac{3600}{1000} \, \text{km/h} = 90 \, \text{km/h
+
+\item Méthode graphique : par lecture du graphique, on voit que $25 m/s$ équivaut à $90 km/h$. Ainsi, la vitesse du skieur au niveau du point C (au moment où il saute) est comparable à la vitesse d'une voiture.
+\end{compactitem}
+
+\subsection{Etre prêt pour le jour J}
+
+\begin{compactitem}
+  \item Raisonnement : Le sucre est transformé en glucose, puis en énergie. Il y a formation de nouvelles substances dans l’organisme.
+  \item Conclusion : Il s’agit d’une transformation chimique, car la nature des molécules est modifiée.
+\end{compactitem}
+
+\subsection{Réglementation sur le poids minimal}
+
+
+\begin{compactitem}
+  \item Raisonnement : On connaît la formule du poids : $P = mg$ où $P$ représente le poids (exprimé en Newtons), $m$ représente la masse (exprimée en $kg$) et $g$ représente l'intensité de pesanteur.
+  \item Données : 
+  \begin{compactitem}
+      \item Poids de Louis : $m = \SI{68.1}{kg} \Rightarrow P = 68.1 \times 9.8 = 667$
+      \item Poids d'Arthur : $m = \SI{60.8}{kg} \Rightarrow P = 60.8 \times 9.8 = 596$
+  \end{compactitem}
+  \item Seuils :
+  \begin{compactitem}
+      \item Louis (\SI{180}{cm}) : poids minimal = \SI{666}{N}
+      \item Arthur (\SI{170}{cm}) : poids minimal = \SI{598}{N}
+  \end{compactitem}
+  \item Conclusion : Louis a un poids de $667 N$ et doit en peser minimum $666$. C'est ok pour Louis. 
+  \item En revanche, Arthur a un poids de $596 N$ et doit en avoir un minimum de $598$. Il est donc en dessous du seuil et ne peut pas participer à la compétition.
+\end{compactitem}
+
+
+
+
+
+
+
+
+
+
+\section*{Le footing}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{2025-03-26-17-08-06.png}
+\end{figure}
+
+\subsection*{1. Conversion de la vitesse en m/s}
+\begin{compactitem}
+    \item \textbf{Formule générale :}
+    \begin{equation}
+        v = \frac{v_0 \times 1000}{3600}
+    \end{equation}
+    \item \textbf{Conversion :}
+    \begin{equation}
+        v = \frac{13 \times 1000}{3600}
+    \end{equation}
+    \begin{equation}
+        v \approx 3.61\ \SI{}{m\per s}
+    \end{equation}
+    \item \textbf{Conclusion :} La vitesse de Claire en m/s est \SI{3.61}{m\per s}.
+\end{compactitem}
+
+\subsection*{2. Calcul de l'énergie cinétique initiale}
+\begin{compactitem}
+    \item \textbf{Formule générale :}
+    \begin{equation}
+        E_c = \frac{1}{2} m v^2
+    \end{equation}
+    \item \textbf{Application numérique :}
+    \begin{equation}
+        E_c = \frac{1}{2} \times 50 \times (3.61)^2
+    \end{equation}
+    \begin{equation}
+        E_c \approx 325\ \SI{}{J}
+    \end{equation}
+    \item \textbf{Conclusion :} Claire possède une énergie cinétique de \SI{325}{J} lors de son footing.
+\end{compactitem}
+
+\subsection*{3. Nouvelle énergie cinétique avec les bracelets lestés}
+\begin{compactitem}
+    \item \textbf{Nouvelle masse :}
+    \begin{equation}
+        m_2 = 50 + 2 \times 1 = 52
+    \end{equation}
+    \item \textbf{Nouvelle énergie cinétique :}
+    \begin{equation}
+        E_{c2} = \frac{1}{2} m_2 v^2
+    \end{equation}
+    \begin{equation}
+        E_{c2} = \frac{1}{2} \times 52 \times (3.61)^2
+    \end{equation}
+    \begin{equation}
+        E_{c2} \approx 338\ \SI{}{J}
+    \end{equation}
+    \item \textbf{Conclusion :} Avec les bracelets lestés, l'énergie cinétique devient \SI{338}{J}.
+\end{compactitem}
+
+\subsection*{4. Nouvelle vitesse pour retrouver l'énergie initiale}
+\begin{compactitem}
+    \item \textbf{Formule générale :}
+    \begin{equation}
+        v_2 = \sqrt{\frac{2 E_c}{m_2}}
+    \end{equation}
+    \item \textbf{Application numérique :}
+    \begin{equation}
+        v_2 = \sqrt{\frac{2 \times 325}{52}}
+    \end{equation}
+    \begin{equation}
+        v_2 \approx 3.54\ \SI{}{m\per s}
+    \end{equation}
+    \item \textbf{Conversion en km/h :}
+    \begin{equation}
+        v_2 = \frac{3.54 \times 3600}{1000}
+    \end{equation}
+    \begin{equation}
+        v_2 \approx 12.7\ \SI{}{km\per h}
+    \end{equation}
+    \item \textbf{Conclusion :} Pour conserver la même énergie cinétique qu'au départ, Claire devrait courir à \SI{12.7}{km\per h} avec ses bracelets lestés.
+\end{compactitem}
+
+
+\end{document}

@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+
+\title{\vspace{-2cm}Rappels importants pour les devoirs surveillés en physique}
+
+\title{Attendus pour les devoirs surveillés en physique}
+\author{N. Bancel}
+\date{31 Mars 2025}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025 - 3ème trimestre}
+\hfill
+\textbf{3ème CI} \par
+
+{\let\newpage\relax\maketitle}
+
+\section*{1. Utiliser les unités du Système International (SI)}
+Toutes les réponses numériques doivent comporter une unité en unités SI. 
+
+\textbf{Exemple : calcul du poids}
+\begin{itemize}[label=--]
+  \item \textbf{Faux :} $P = 500 \times 10 = 5000$ \textit{(sans unité ou en grammes)}
+  \item \textbf{Juste :} $P = 50 \, \si{kg} \times 10 \, \si{\newton\per\kilogram} = 500 \, \si{\newton}$
+\end{itemize}
+
+\section*{2. Lire les énoncés attentivement}
+Avant de répondre :
+\begin{itemize}[label=--]
+  \item Repérer les données, les unités, les formules utiles.
+  \item Respecter les attendus de forme : explications claires, unités, encadrer les résultats.
+\end{itemize}
+
+\section*{3. Écriture correcte des unités}
+\begin{itemize}[label=--]
+  \item \si{\meter\per\second} s'écrit aussi \si{\meter\cdot\second^{-1}}
+  \item Ces deux écritures sont équivalentes car elles désignent la même grandeur physique (division par le temps).
+\end{itemize}
+
+\section*{4. Schémas de forces}
+Un bon schéma de force doit :
+\begin{itemize}[label=--]
+  \item Être réalisé avec une règle graduée.
+  \item Avoir le point d'application clairement placé.
+  \item Montrer des flèches orientées avec une longueur proportionnelle.
+  \item Indiquer le nom de la force (\og $\vec{P}$\fg{}, $\vec{R}$, etc.)
+\end{itemize}
+
+\section*{5. Manipulations d'équations}
+Savoir isoler une variable :
+\begin{itemize}[label=--]
+  \item \textbf{Formule de base :} $P = m \times g$
+  \item \textbf{On cherche $m$ :} \quad $m = \dfrac{P}{g}$
+\end{itemize}
+
+\section*{6. Différencier les notions proches}
+\begin{itemize}[label=--]
+  \item \textbf{Intensité de pesanteur $g$} : \si{\newton\per\kilogram} (valeur sur Terre \~10).
+  \item \textbf{Constante gravitationnelle $G$} : \si{6.67e-11\newton\meter\squared\per\kilogram\squared}, utilisée pour calculer la force gravitationnelle universelle.
+  \item \textbf{Force gravitationnelle $F$} : force entre deux objets massiques, formule $F = G \cdot \dfrac{m_1 m_2}{d^2}$
+\end{itemize}
+
+\section*{7. Exemple de rédaction attendue pour une formule}
+
+\textit{L'énergie cinétique correspond à l'énergie que possède un objet en mouvement.}
+
+\[
+E_c = \frac{1}{2} \times m \times v^2
+\]
+
+\begin{adjustwidth}{4em}{1em}
+\begin{itemize}[label=--, leftmargin=1.5em]
+  \item[$E_c$] : énergie cinétique (en \si{\joule})
+  \item[$m$] : masse de l’objet (en \si{\kilogram})
+  \item[$v$] : vitesse de l’objet (en \si{\meter\per\second})
+\end{itemize}
+\end{adjustwidth}
+
+\end{document}

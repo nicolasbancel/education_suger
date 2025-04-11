@@ -1,0 +1,168 @@
+\documentclass[answers]{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\title{Chapitre 7 - Statistiques \\
+\vspace{1em}
+\large Correction d'exercices}
+\author{N. Bancel}
+\date{10 Avril 2025}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2024-2025 - 3ème trimestre}
+\hfill
+\textbf{1ère STD2A} \par
+
+{\let\newpage\relax\maketitle}
+
+\section*{Exercice 4}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{img/exo_01.jpg}
+  \captionsetup{labelformat=empty}
+\end{figure}
+
+\begin{solution}
+  
+\section*{1. Interprétation des événements}
+
+\begin{itemize}
+    \item $\overline{A}$ : l'élève n'est \textbf{pas une fille}, donc c’est un garçon.
+    \item $A \cup B$ : l'élève est \textbf{une fille} \textcolor{red}{OU} \textbf{intéressé par les cours de programmation} (ou les deux).
+    \item $A \cap \overline{B}$ : l'élève est \textbf{une fille} \textcolor{red}{(ET ELLE EST)} \textbf{non intéressée} par les cours de programmation.
+\end{itemize}
+
+\section*{2. Cardinaux associés}
+
+\begin{itemize}
+    \item $\mathbf{card}(\overline{A}) = 20$ (il y a 40 élèves dont 20 filles, donc 20 garçons)
+    \item $\mathbf{card}(A \cup B)$ : on utilise la formule :
+    \[
+      \mathbf{card}(A \cup B )= \mathbf{card}(A) + \mathbf{card}(B) - \mathbf{card}(A \cap B) = 20 + 30 - 15 = 35
+    \]
+    \item Sinon on peut compter : (soit on est intéressé par la programmation (il y a 30 élèves), soit on est une fille (il y a déjà 15 filles qui ont été comptées dans le groupe de ceux qui aiment la programmation. Il en reste 5 qui n'ont pas été comptées car elles n'aiment pas la programmation. Il y a donc 35 personnes au total qui remplissent le critère)
+    \item $\mathbf{card}(A \cap \overline{B})$ : filles non intéressées = $20 - 15 = 5$
+\end{itemize}
+\end{solution}
+
+
+\section*{Exercice 26}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{img/exo_02.jpg}
+  \captionsetup{labelformat=empty}
+\end{figure}
+
+\begin{solution}
+
+  \begin{center}
+    %\renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{>{\bfseries}lccc}
+    \toprule
+                             & CB     & Espèces & Total \\
+    \midrule
+    Alimentaires             & 150    & 50      & 200   \\
+    Non alimentaires         & 80     & 20      & 100   \\
+    \midrule
+    Total                    & 230    & 70      & 300   \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
+    \subsection*{1. Fréquences marginales (rapport à l'effectif total)}
+
+\[
+\text{Total} = 300
+\]
+
+On divise chaque valeur du tableau par l'effectif total, soit 300. Cela donne les fréquences marginales :
+
+\begin{center}
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{>{\bfseries}lccc}
+  \toprule
+   & CB & Espèces & Total \\
+  \midrule
+  Alimentaires & $\dfrac{150}{300} = 0.5$ & $\dfrac{50}{300} = 0.167$ & $\dfrac{200}{300} = 0.667$ \\
+  Non alimentaires & $\dfrac{80}{300} = 0.267$ & $\dfrac{20}{300} = 0.067$ & $\dfrac{100}{300} = 0.333$ \\
+  \midrule
+  Total & $\dfrac{230}{300} = 0.767$ & $\dfrac{70}{300} = 0.233$ & $1$ \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+
+
+  \subsection*{2. Fréquences conditionnelles par lignes}
+
+  On divise chaque valeur d'une ligne par le total de cette ligne. Cela permet de connaître, pour un type de produit donné, la répartition des modes de paiement.
+  
+  \begin{itemize}
+      \item Pour les produits alimentaires (total : 200) :
+      \[
+      \text{CB : } \frac{150}{200} = 0.75 \quad \text{Espèces : } \frac{50}{200} = 0.25
+      \]
+      \item Pour les produits non alimentaires (total : 100) :
+      \[
+      \text{CB : } \frac{80}{100} = 0.80 \quad \text{Espèces : } \frac{20}{100} = 0.20
+      \]
+  \end{itemize}
+  
+  \begin{center}
+  \begin{tabular}{>{\bfseries}lcc}
+  \toprule
+   & CB & Espèces \\
+  \midrule
+  Alimentaires & 0.75 & 0.25 \\
+  Non alimentaires & 0.80 & 0.20 \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+  
+  \vspace{1em}
+  
+  \subsection*{3. Fréquences conditionnelles par colonnes}
+  
+  On divise chaque valeur d'une colonne par le total de cette colonne. Cela permet de connaître, pour un mode de paiement donné, la répartition selon le type de produit.
+\end{solution}
+
+\newpage
+\clearpage
+
+\begin{solution}  
+
+  \begin{itemize}
+      \item Paiement par carte bancaire (total : 230) :
+      \[
+      \text{Alimentaires : } \frac{150}{230} \approx 0.652 \quad \text{Non alimentaires : } \frac{80}{230} \approx 0.348
+      \]
+      \item Paiement en espèces (total : 70) :
+      \[
+      \text{Alimentaires : } \frac{50}{70} \approx 0.714 \quad \text{Non alimentaires : } \frac{20}{70} \approx 0.286
+      \]
+  \end{itemize}
+  
+  \begin{center}
+  \begin{tabular}{>{\bfseries}lcc}
+  \toprule
+   & CB & Espèces \\
+  \midrule
+  Alimentaires & 0.652 & 0.714 \\
+  Non alimentaires & 0.348 & 0.286 \\
+  \bottomrule
+  \end{tabular}
+  \end{center}
+
+\end{solution}
+
+\end{document}

@@ -1,0 +1,136 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+\usepackage{multicol}
+\usepackage{multido}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+% Option pour version professeur ou élève
+\newif\ifprof
+\proffalse % changer \proffalse en \proftrue pour la version professeur
+
+% Couleur des réponses professeurs
+\newcommand{\proftext}[1]{\ifprof {\textcolor{blue}{#1}} \fi}
+
+\title{Chapitre 4 - Les minéraux}
+\author{N. Bancel}
+\date{Mars 2025}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1\textsuperscript{\text{ère}} STD2A} \par
+
+{\let\newpage\relax\maketitle}
+
+% Résumé encadré
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!80!black, title=\textbf{\underline{\large À retenir}}]
+\begin{itemize}
+    \item Le verre est un solide \textbf{amorphe} principalement composé de \textbf{silice (SiO$_2$)}.
+    \item Il passe d'un état \textbf{caoutchouteux} à un état \textbf{solide vitreux} lors du refroidissement.
+    \item Les céramiques sont des matériaux \textbf{rigides, résistants à la chaleur et à la corrosion}.
+\end{itemize}
+\end{tcolorbox}
+
+\section*{1. Le verre : définition et structure}
+\subsection*{1.1 Composition et nature du verre}
+\begin{itemize}
+    \item Le verre est principalement composé de \hspace{4cm} \\
+    \proftext{(réponse : dioxyde de silicium, SiO$_2$)}
+    \item C'est un solide \hspace{1cm}, c'est-à-dire que \hspace{1cm}.
+    \proftext{(réponse : amorphe ; sa structure n’est pas régulière comme un cristal)}
+\end{itemize}
+
+
+
+\begin{center}
+\textit{\textbf{Espace pour dessiner la structure amorphe et cristalline de la silice :}}
+
+\vspace{3cm}
+\end{center}
+
+\subsection*{1.2 Transition vitreuse}
+\textit{Représente ci-dessous le schéma de la transition vitreuse entre les états solide et caoutchouteux :}
+
+\begin{center}
+\vspace{4cm} % Espace pour graphique
+\end{center}
+
+\section*{2. Fabrication du verre et rôle des additifs}
+\subsection*{2.1 Fusion et fondants}
+\begin{itemize}
+    \item La silice fond à environ \dotfillrule{0.15cm}.
+    \proftext{(réponse : 1730°C)}
+    \item On utilise des fondants (\dotfillrule{0.15cm}) pour \dotfillrule{0.15cm}.
+    \proftext{(réponse : soude, potasse ; abaisser la température de fusion)}
+\end{itemize}
+
+\subsection*{2.2 Coloration du verre}
+Complète le tableau suivant avec la couleur obtenue :
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Oxyde métallique} & \textbf{Couleur du verre} \\
+\hline
+Oxyde de fer & \ifprof \textcolor{blue}{Vert} \else \dotfillrule{0.15cm} \fi \\
+\hline
+Oxyde de cobalt & \ifprof \textcolor{blue}{Bleu} \else \dotfillrule{0.15cm} \fi \\
+\hline
+Oxyde de cuivre & \ifprof \textcolor{blue}{Rouge} \else \dotfillrule{0.15cm} \fi \\
+\hline
+Oxyde de manganèse & \ifprof \textcolor{blue}{Violet ou bleu} \else \dotfillrule{0.15cm} \fi \\
+\hline
+Sélénium & \ifprof \textcolor{blue}{Orange à rouge} \else \dotfillrule{0.15cm} \fi \\
+\hline
+\end{tabular}
+\end{center}
+
+\section*{3. Les céramiques}
+\subsection*{3.1 Définition et types}
+\begin{itemize}
+    \item Les céramiques sont des matériaux \dotfillrule{0.15cm}, souvent obtenus par cuisson à haute température.
+    \proftext{(réponse : inorganiques, non métalliques)}
+    \item Deux grandes familles :
+    \begin{itemize}
+        \item Céramiques \dotfillrule{0.15cm} : poterie, brique, porcelaine.
+        \proftext{(réponse : traditionnelles)}
+        \item Céramiques \dotfillrule{0.15cm} : freins, optique, électronique.
+        \proftext{(réponse : techniques ou industrielles)}
+    \end{itemize}
+\end{itemize}
+
+\subsection*{3.2 Propriétés des céramiques}
+\begin{multicols}{2}
+\begin{itemize}
+    \item Très \dotfillrule{0.15cm}
+    \item Température de fusion \dotfillrule{0.15cm}
+    \item Résistantes à la \dotfillrule{0.15cm}
+    \item Bons isolants \dotfillrule{0.15cm}
+\end{itemize}
+\proftext{\begin{itemize}
+    \item (réponses : rigides, >2000°C, corrosion, thermiques ou électriques)
+\end{itemize}}
+\end{multicols}
+
+\subsection*{3.3 Fabrication et coloration}
+\begin{itemize}
+    \item Matière de départ : \dotfillrule{0.15cm} \proftext{(poudre)}
+    \item Cuisson = frittage $\rightarrow$ les grains \dotfillrule{0.15cm}
+    \proftext{(réponse : se soudent sans passer par une phase fondue)}
+    \item Possibilité de coloration par \dotfillrule{0.15cm} \proftext{(oxydes métalliques)}
+\end{itemize}
+
+\vspace{1cm}
+\textit{Schéma : fabrication et frittage d’une céramique}
+
+\vspace{4cm}
+
+\end{document}

@@ -1,0 +1,153 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[french]{babel}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{margin=2cm}
+\pagestyle{fancy}
+\lhead{Correction de l'exercice}
+\rhead{Physique}
+
+\begin{document}
+
+\section*{Exercice 15 page 97}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/exo_15_1.jpg}
+    \caption{Présentation de la bioluminescence}
+    \label{fig:bioluminescence}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/exo_15_2.jpg}
+    \caption{Énoncé des questions sur la bioluminescence}
+    \label{fig:questions_bioluminescence}
+\end{figure}
+
+\subsection*{1. Mécanisme de transition en jeu dans la bioluminescence}
+La bioluminescence repose sur une réaction chimique impliquant la luciférine et l'enzyme luciférase. Lorsque la luciférine est oxydée par l'oxygène en présence de luciférase, un intermédiaire excité est formé : l'oxyluciférine dans un état excité. Cet état instable se désexcite en émettant un photon, produisant ainsi une émission lumineuse.
+
+\subsection*{2. Intervalle pour la longueur d’onde des photons émis}
+La bioluminescence naturelle émet généralement des photons dans le spectre visible. Pour les organismes marins, la longueur d’onde typique est entre \SI{450}{nm} et \SI{550}{nm}, correspondant à une lumière bleu-vert, bien adaptée à la propagation sous l’eau.
+
+\subsection*{3. Calcul de la différence d’énergie entre états}
+La différence d’énergie entre l’état fondamental et l’état excité peut être estimée par la relation de Planck :
+\begin{equation}
+    E = \frac{hc}{\lambda}
+\end{equation}
+avec :
+\begin{itemize}
+    \item \( h = \SI{6.626e-34}{J.s} \) (constante de Planck),
+    \item \( c = \SI{3.00e8}{m/s} \) (vitesse de la lumière),
+    \item \( \lambda \approx \SI{500}{nm} = \SI{500e-9}{m} \).
+\end{itemize}
+
+En appliquant ces valeurs :
+\begin{equation}
+    E = \frac{(6.626 \times 10^{-34}) \times (3.00 \times 10^8)}{500 \times 10^{-9}}
+    = \SI{3.97e-19}{J}
+\end{equation}
+Cette énergie correspond à environ \SI{2.48}{eV}.
+
+\subsection*{4. Impact environnemental du projet}
+L’éclairage bioluminescent représente une alternative écologique aux éclairages urbains classiques (LED, lampes à incandescence, etc.) car :
+\begin{itemize}
+    \item Il ne consomme pas d’électricité, réduisant ainsi l’empreinte carbone.
+    \item Il limite la pollution lumineuse, préservant les écosystèmes nocturnes.
+    \item Son impact sur la biodiversité est moindre par rapport aux sources lumineuses artificielles.
+\end{itemize}
+Toutefois, des défis restent à relever, notamment en matière d’intensité lumineuse et de durée de fonctionnement pour rendre cette technologie viable à grande échelle.
+
+
+\section*{Exercice 18 page 97}
+
+\subsection*{1. Schématisation du problème}
+Le schéma du problème est le suivant :
+
+Le projecteur éclaire une surface rectangulaire de \SI{0.2}{m} de large et \SI{0.4}{m} de long à une distance de \SI{2}{m}.
+
+\subsection*{2. Définition de l'IRC et commentaire}
+L'Indice de Rendu des Couleurs (IRC) est une mesure de la capacité d'une source lumineuse à restituer fidèlement les couleurs des objets qu'elle éclaire, comparé à une source de lumière naturelle. L'IRC est noté sur une échelle de 0 à 100 :
+
+\begin{itemize}
+    \item Un IRC proche de 100 indique une très bonne restitution des couleurs.
+    \item Un IRC inférieur à 80 peut provoquer des distorsions de couleur perceptibles.
+\end{itemize}
+
+Dans cet exercice, le projecteur possède un IRC de 90, ce qui est une valeur élevée. Cela signifie que la lumière émise est de bonne qualité en termes de fidélité des couleurs.
+
+\subsection*{3. Calcul du flux lumineux reçu par l'écran}
+
+Le flux lumineux \( \Phi \) est donné par la relation entre l'éclairement \( E \) et la surface \( S \) éclairée :
+
+\begin{equation}
+    \Phi = E \times S
+\end{equation}
+
+Données :
+\begin{itemize}
+    \item Eclairement à \SI{2}{m} : \SI{500}{lux} = \SI{500}{lm/m^2}
+    \item Surface éclairée :
+    \begin{equation}
+        S = 0.2 \times 0.4 = \SI{0.08}{m^2}
+    \end{equation}
+\end{itemize}
+
+Calcul du flux lumineux :
+
+\begin{equation}
+    \Phi = 500 \times 0.08 = \SI{40}{lm}
+\end{equation}
+
+Ainsi, le flux lumineux reçu par l'écran est de \SI{40}{lumens}.
+
+
+\section*{Exercice 20 page 97}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/exo_20.jpg}
+    \caption{Comparaison des étiquettes d'ampoules}
+    \label{fig:etiquettes_ampoules}
+\end{figure}
+
+\subsection*{1. Quelle ampoule produit le plus grand flux de lumière ?}
+Le flux lumineux est donné en lumens (lm). D'après les étiquettes :
+\begin{itemize}
+    \item L'ampoule Lampodule produit \SI{1700}{lm}.
+    \item L'ampoule Photolux produit \SI{2300}{lm}.
+\end{itemize}
+L'ampoule \textbf{Photolux} produit donc le plus grand flux lumineux.
+
+\subsection*{2. Quelle ampoule possède le meilleur rendement énergétique ?}
+Le rendement énergétique peut être estimé par le rapport \( \frac{\Phi}{P} \) où \( \Phi \) est le flux lumineux et \( P \) la puissance consommée :
+\begin{itemize}
+    \item Lampodule : \( \frac{1700}{21} \approx 81 \) lm/W
+    \item Photolux : \( \frac{2300}{100} = 23 \) lm/W
+\end{itemize}
+L'ampoule \textbf{Lampodule} a donc le meilleur rendement énergétique.
+
+\subsection*{3. Quelle ampoule donne le meilleur rendu des couleurs ?}
+L'Indice de Rendu des Couleurs (IRC) est un indicateur de la fidélité des couleurs sous une source lumineuse :
+\begin{itemize}
+    \item Lampodule : IRC = 75
+    \item Photolux : IRC = 95
+\end{itemize}
+L'ampoule \textbf{Photolux} donne le meilleur rendu des couleurs.
+
+\subsection*{4. Quelle ampoule émet la teinte la plus chaude ?}
+La température de couleur est donnée en Kelvin (K). Plus cette valeur est basse, plus la lumière est chaude (teinte jaunâtre) :
+\begin{itemize}
+    \item Lampodule : 5300K (plus froid)
+    \item Photolux : 3000K (plus chaud)
+\end{itemize}
+L'ampoule \textbf{Photolux} émet donc la teinte la plus chaude.
+
+
+\end{document}
