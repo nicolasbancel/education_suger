@@ -1,0 +1,465 @@
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{fourier}
+\usepackage[scaled=0.875]{helvet}
+\renewcommand{\ttdefault}{lmtt}
+%tapuscrit : Denis Vergès
+\usepackage{amsmath,amssymb,makeidx}
+\usepackage[normalem]{ulem}
+\usepackage{fancybox}
+\usepackage{tabularx}
+\usepackage{ulem}
+\usepackage{dcolumn}
+\usepackage{textcomp}
+\usepackage{diagbox}
+\usepackage{graphics,graphicx}
+\usepackage{lscape}
+\newcommand{\euro}{\eurologo{}}
+\usepackage{pstricks,pst-eucl,pst-plot,pstricks-add}
+\usepackage[left=3.5cm, right=3.5cm, top=2cm, bottom=3cm]{geometry}
+\newcommand{\vect}[1]{\overrightarrow{\,\mathstrut#1\,}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+%Merci à Frédéric Jaëck pour le sujet
+%Tapuscrit : Denis Vergès
+\renewcommand{\theenumi}{\textbf{\arabic{enumi}}}
+\renewcommand{\labelenumi}{\textbf{\theenumi.}}
+\renewcommand{\theenumii}{\textbf{\alph{enumii}}}
+\renewcommand{\labelenumii}{\textbf{\theenumii.}}
+\def\Oij{$\left(\text{O}~;~\vect{\imath},~\vect{\jmath}\right)$}
+\def\Oijk{$\left(\text{O}~;~\vect{\imath},~\vect{\jmath},~\vect{k}\right)$}
+\def\Ouv{$\left(\text{O}~;~\vect{u},~\vect{v}\right)$}
+\usepackage{fancyhdr}
+\usepackage[dvips]{hyperref}
+\hypersetup{%
+pdfauthor = {APMEP},
+pdfsubject = {Baccalauréat STD2A},
+pdftitle = {Nouvelle Calédonie 27 novembre 2018},
+allbordercolors = white,
+pdfstartview=FitH} 
+\usepackage[frenchb]{babel}
+\usepackage[np]{numprint}
+\begin{document}
+\setlength\parindent{0mm}
+\rhead{\textbf{A. P{}. M. E. P{}.}}
+\lhead{\small Baccalauréat STD2A}
+\lfoot{\small{Nouvelle Calédonie}}
+\rfoot{\small{28 novembre 2017}}
+\pagestyle{fancy}
+\thispagestyle{empty}
+
+\begin{center}
+{\large \textbf{\decofourleft~Baccalauréat  Nouvelle Calédonie 27 novembre 2018~\decofourright}\\[5pt]\textbf{Sciences et technologies du design et des arts appliqués}} 
+
+\medskip
+
+L'annexe 1, est à rendre avec la copie. L'annexe 2, est à rendre avec la copie. L'annexe 3, est à rendre avec la copie. 
+\end{center}
+
+\vspace{0,5cm}
+
+Le candidat doit traiter les 3 exercices. 
+
+Le candidat est invité à faire figurer toute trace de recherche, même incomplète ou non fructueuse, qu'il aura développée. Il est rappelé que la qualité de la rédaction, la clarté et la précision des raisonnements entreront pour une part importante dans l'appréciation des copies. 
+
+L'usage de tout modèle de calculatrice, avec ou sans mode examen, est autorisé. 
+
+\bigskip
+
+\textbf{\textsc{Exercice 1}  \hfill 10 points}
+
+\medskip
+
+Un propriétaire a pour projet de construire un portail. 
+
+L'esquisse ci -dessous réalisée informatiquement représente une partie de sa maison, une des piles de la maison et le futur portail. Elle indique l'emplacement des piles du portail et donne une idée de la forme des portes du portail. 
+
+\begin{center}
+\psset{unit=1cm}
+\begin{pspicture}(11.5,6)
+%\psgrid
+\def\coin{\psline(0,0)(0,0.3)\psline(-0.45,0.45)(-0.45,0.15)(0,0)(0.35,0.125)(0.35,0.425)}
+\psline(0.45,0)(8.6,2.8)
+\psline(0.8,0.25)(4.9,1.65)(4.9,3.1)
+\psline(0.8,1.6)(0.8,0.1)
+\psline(0.0,1.6)(0.45,1.4)(0.8,1.6)
+\psline(0.0,0.15)(0.4,0)
+\psline(0.45,1.4)(0.45,0)
+\psline(0.8,1.6)(0.3,1.8)(0,1.6)(0,0.15)
+\psline(5.5,3.2)(5.5,1.7)
+\psline(4.65,3.2)(5.15,3.)(5.5,3.2)
+\psline(4.65,1.7)(5.1,1.6)
+\psline(5.15,3.)(5.15,1.6)
+\psline(5.5,3.2)(5,3.4)(4.65,3.2)(4.65,1.7)
+\rput(3,4.1){1\up{re} pile du}
+\rput(3,3.5){portail} 
+\rput(8.6,2.8){Pierre}
+\rput(8.6,2.4){d'angle de} \rput(8.6,2){la maison} 
+\rput(5.7,0.9){1\up{re} porte du}
+\rput(5.7,0.5){portail}
+\psline(8.6,2.8)(8.6,5.2)(6.45,5.9)(4.3,5.5)(4.3,3.1)(4.65,3)
+\psline(5.5,2.675)(6.9,2.2) 
+\psline(8.6,5.2)(6.9,4.6)(6.45,5.9) 
+\psline(6.9,4.6)(4.3,5.5)
+\psline(6.9,4.6)(6.9,2.2)
+\multido{\n=2.2+0.3}{8}{\rput(6.9,\n){\coin}}
+\pspolygon(4.6,3.8)(4.6,4.4)(5.5,4.1)(5.5,3.5)%fenêtre
+\psline(3.2,1.05)(3.2,2.6)
+\pscurve(0.8,1.4)(1.4,1.3)(2,1.6)(2.6,2.1)(3.2,2.6)(3.8,2.5)(4.4,2.7)(4.9,2.8)
+\psline{->}(4.8,1)(4,2)
+\psline{->}(3.6,3.4)(4.6,2.8)
+\psline{->}(7.8,2.4)(7.25,3)
+\end{pspicture}
+\end{center}
+
+La figure ci-dessous est une représentation en perspective parallèle d'une partie d'une pile de la maison et de la première pile du portail. 
+
+\begin{center}
+\psset{unit=1cm}
+\begin{pspicture*}(11.2,6.5)
+%\psgrid
+\psline(11.2,0.7)
+\def\coin1{\psline(-0.9,1.05)(-0.9,0.15)(0,0)(0,0.9)\psline(0,0)(1.1,0.1)(1.1,1)}
+\multido{\n=0.22+0.9}{5}{\rput(3.7,\n){\coin1}}
+\multido{\n=0.5+0.9}{7}{\rput(8.2,\n){\coin1}}
+\rput(5.5,5.3){ Le point O}
+\psline(2.8,4.82)(3.7,4.66)(4.8,4.8)(3.8,5.6)(2.8,4.82)(3.7,4.66)(3.8,5.6)
+\psline[linestyle=dashed](2.8,4.82)(3.9,4.96)(4.8,4.8)
+\psline[linestyle=dashed](3.8,5.6)(4.8,4.8)
+\psline[linestyle=dotted](3.7,4.66)(3.9,4.96)
+\psline[linestyle=dotted](2.8,4.82)(4.8,4.8)
+\psline{->}(4.7,5.2)(3.8,4.8)
+\uput[dr](4.8,4.8){C} \uput[u](3.8,5.6){D} \uput[dl](3.7,4.66){E} 
+\end{pspicture*}
+
+\medskip
+
+\textbf{Les deux parties de cet exercice peuvent être traitées indépendamment.}
+ 
+\end{center}  
+
+\textbf{Partie A : Les piles du portail}
+
+\medskip 
+
+Pour réaliser les piles du portail, le propriétaire souhaite utiliser des pierres identiques aux pierres d'angles de sa maison. Chaque pierre d'angle est un cube de côté $40$~cm. Chaque pile du portail comporte $5$ pierres d'angle et est surmontée d'une pyramide à base carrée. La base de chaque pyramide est identique à la base d'une pierre d'angle et sa hauteur est égale au côté de la base. 
+
+Ainsi, la hauteur de la pyramide surmontant la première pierre du portail est le segment [DO] de même longueur que le segment [AB], le point O étant le centre de la base de la pyramide. 
+
+\emph{Dans cette partie, aucune justification des constructions n'est attendue. On laissera visibles les traits de construction au crayon.}
+
+\medskip 
+
+\begin{enumerate}
+\item L'objectif de cette question est de représenter la première pile du portail en perspective centrale sur le dessin de l'\textbf{annexe 1 à rendre avec la copie}. 
+
+La ligne d'horizon $(h)$ est donnée. Une partie de la maison est déjà représentée en perspective centrale sur l'\textbf{annexe 1 à rendre avec la copie}. Le plan (ABCE) sera frontal. Les points A, B, C, D, E, \ldots seront représentés respectivement par les points $a$, $b$, $c$, $d$, $e$, \ldots dans la perspective centrale. 
+	\begin{enumerate}
+		\item Le sol de la maison étant horizontal, placer sur l'\textbf{annexe 1 à rendre avec la copie} le point $p$, point de fuite principal de la perspective centrale. 
+		\item Terminer la représentation en perspective centrale des cinq pierres de la première pile du portail sur l'\textbf{annexe 1 à rendre avec la copie}. 
+	\end{enumerate}
+\item  Sur l'\textbf{annexe 1 à rendre avec la copie}, représenter la pyramide qui surmonte la première pile du portail, en perspective centrale. 
+\end{enumerate}
+
+\bigskip
+
+\textbf{Partie B : Les portes du portail}
+
+\medskip 
+
+Dans le repère orthonormal de l'\textbf{annexe 2 à rendre avec la copie}, on a placé les points: 
+
+A$'(2~;~0)$ ; B$'(2,4~;~0)$; C$'(2,4~;~2)$ ; D$'(2,2~;~2,4)$ et E$'(2~;~2)$ 
+
+Le polygone A$'$B$'$C$'$D$'$E$'$ représente à l'échelle la coupe de la 1\up{re} pile du portail surmontée de la pyramide, par le plan passant par D et parallèle à (ABCE). 
+
+Le haut de la première porte du portail est modélisé par la courbe représentative $\mathcal{C}_f$ d'une fonction $f$, polynôme de degré 3. On note $f'$ la fonction dérivée de $f$. 
+
+La fonction $f$ est définie sur [0~;~2] par $f(x) = mx^3 + px^2 + 2,4$ où $m$ et $p$ sont des réels.
+
+\medskip 
+
+\begin{enumerate}
+\item 
+	\begin{enumerate}
+		\item Exprimer $f'(x)$ en fonction de $m$ et $p$. 
+		\item Calculer $f'(0)$. Puis donner une interprétation graphique du résultat.
+	\end{enumerate}
+\item Pour des raisons esthétiques, la fonction $f$ doit vérifier les conditions suivantes: 
+
+\[ f(2) = 2  \quad \text{et} \quad  f'(2) = 2.\]
+
+	\begin{enumerate}
+		\item Donner une interprétation graphique de ces conditions. 
+		\item Montrer que les réels $m$ et $p$ vérifient le système de deux équations à deux inconnues suivant : 
+
+\[\left\{\begin{array}{l c r}
+8m + 4p &=& -0,4\\ 
+12m + 4p &=& 2
+\end{array}\right. \: \text{puis résoudre ce système.}\]
+	\end{enumerate} 
+\item  Pour cette question, on admet que la fonction $f$ est définie sur l'intervalle [0~;~2] par: 
+
+\[f(x) = 0,6x^3 - 1,3x^2 + 2,4.\] 
+
+	\begin{enumerate}
+		\item Déterminer le signe de $f'(x)$ et en déduire les variations de la fonction $f$ sur [0~;~2]. 
+		\item Compléter le tableau de valeurs de la fonction $f$ donné en \textbf{annexe 2 à rendre avec la copie}. (On arrondira à $10^{-2}$ près). 
+	\end{enumerate}
+\item Pour renforcer la porte, on lui ajoute deux barres métalliques modélisées respectivement par les segments [E$'$F] et [FG] avec F(1~;~0) et G(0~;~1,6).
+	\begin{enumerate}
+		\item Calculer le produit scalaire $\vect{\text{FE}'} \cdot  \vect{\text{FG}}$. 
+		\item Déterminer la mesure arrondie au degré près de l'angle $\widehat{\text{E}'\text{FG}}$ formé par ces deux barres métalliques. 
+	\end{enumerate}
+\item Dans le repère de l'\textbf{annexe 2 à rendre avec la copie}, 
+	\begin{enumerate}
+		\item tracer les segments [E$'$F] et [FG],
+		\item tracer la tangente à la courbe $\mathcal{C}_f$ au point d'abscisse 0, puis tracer la courbe $\mathcal{C}_f$,
+		\item tracer les symétriques, par rapport à l'axe des ordonnées, de la courbe $\mathcal{C}_f$ du polygone A$'$B$'$C$'$D$'$E$'$ et des segments [E$'$F] et [FG]. (On obtient ainsi une représentation de l'ensemble du portail). 
+	\end{enumerate}
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\textbf{\textsc{Exercice 2}  \hfill 5 points}
+
+\medskip 
+
+Pour chacune des quatre affirmations suivantes, indiquer si elle est vraie ou fausse en \textbf{justifiant la réponse}. 
+
+\emph{Une réponse non justifiée n'est pas prise en compte.} 
+
+Les quatre questions sont indépendantes les unes des autres. 
+
+\medskip
+
+\begin{enumerate}
+\item Affirmation 1 : log $(\np{3000}) = 3 + \text{log} (3)$. 
+\item Soit FBC un triangle tel que FB = 3 cm, FC = 5 cm et $\widehat{\text{BFC}} = 125\degres$. 
+
+Affirmation 2 : la longueur exacte du troisième côté de ce triangle est $7$cm. 
+\item Affirmation 3 : dans le plan muni d'un repère orthonormal \Oij, le cercle dont une équation est $(x - 2)^2 + (y - 3)^2 = 9$, coupe l'axe des abscisses en deux points. 
+\item Dans le plan muni d'un repère orthonormal \Oij, on considère les points A(1~;~1), A$'(- 5~;~1)$,  B$(- 2~;~5)$ et B$'(- 2~;~- 3)$. 
+
+Affirmation 4 : l'ellipse d'axes [AA$'$] et [BB$'$] a pour représentation paramétrique 
+
+\[\left\{\begin{array}{l cr}
+x& =& - 2 + 4 \cos t\\ 
+y&=&1 + 3 \sin t
+\end{array}\right. ;\: t \in [0~;~2\pi].\] 
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\textbf{\textsc{Exercice 3}  \hfill 5 points}
+
+\medskip  
+
+Les deux figures planes ci-dessous sont constituées de losanges identiques au losange ABCD. 
+\begin{center}
+
+La figure 1 est un hexagone régulier et comporte 3 losanges. La figure 2 est constituée de 6 losanges. 
+
+\parbox{0.48\linewidth}{\psset{unit=1cm}
+\def\los{\pspolygon(0;0)(1;30)(1;-30)(1;-90)}
+\begin{pspicture}(-2,-2)(2,2.5)
+\rput(0,2.1){Figure 1}
+\multido{\n=0+120}{3}{\rput{\n}(0;0){\los}}
+\uput[dl](0;0){D}\uput[ur](1;30){C}\uput[u](1;90){B}\uput[ul](1;150){A}
+\end{pspicture}} \hfill 
+\parbox{0.48\linewidth}{\psset{unit=1cm}
+\def\losa{\pspolygon(0;0)(1;30)(1.732;0)(1;-30)}
+\begin{pspicture}(-2,-2)(2,2.5)
+\rput(0,2.1){Figure 1}
+\multido{\n=0+60}{6}{\rput{\n}(0;0){\losa}}
+\uput[dl](1;-150){D}\uput[ur](0;40){C}\uput[ul](1;150){B}\uput[ul](1.732;180){A}
+\rput(0,2.1){Figure 2}
+\end{pspicture}}
+\end{center}
+
+\smallskip
+
+\begin{enumerate}
+\item 
+	\begin{enumerate}
+		\item Donner la mesure en degré de chacun des angles du losange ABCD. 
+		\item Quelles transformations du plan ont permis de construire la figure 2, à partir du losange ABCD? 
+	\end{enumerate}
+\item En supposant que la longueur AB est égale à $2$~cm, déterminer l'aire, arrondie au mm2 près, de l'hexagone en figure 1. 
+\item On crée une nouvelle figure comprenant 5 losanges en appliquant au losange ABCD les symétries d'axes [AB], [BC], [CD] et [DA]. Quelle figure obtient-on ? 
+
+Vous indiquerez sur la copie la réponse choisie. Aucune justification n'est demandée.
+
+\begin{center}
+\begin{tabularx}{\linewidth}{*{3}{>{\centering \arraybackslash}X}} 
+\textbf{a.~~} Figure 3& \textbf{b.~~} Figure 4 &\textbf{c.~~} Figure 5 \\
+\psset{unit=1cm}
+\def\los{\pspolygon(0;0)(1;30)(1;-30)(1;-90)}
+\begin{pspicture}(-2,-2)(2,1)
+%\psgrid
+\multido{\n=-1.000+0.866,\na=-1.000+0.5}{3}{\rput{-60}(\n,\na){\los}}
+\rput{-60}(-1,0){\los}
+\rput{-60}(0.72,-1){\los}
+\end{pspicture}&
+\psset{unit=1cm}
+\def\los{\pspolygon(0;0)(1;30)(1;-30)(1;-90)}
+\begin{pspicture}(-2,-1)(2,2)
+%\psgrid
+\multido{\n=0+120}{3}{\rput{\n}(0;0){\los}}
+\rput{60}(0,1){\los}
+\rput{180}(0,1){\los}
+\end{pspicture}&\psset{unit=1cm}
+\def\los{\pspolygon(0;0)(1;30)(1;-30)(1;-90)}
+\begin{pspicture}(-2,-2.5)(2,1)
+%\psgrid
+\multido{\n=-1.000+0.866,\na=-1.000+0.5}{3}{\rput{-60}(\n,\na){\los}}
+\rput(-1,0){\los}\rput(-0.134,-1.5){\los}
+\end{pspicture}\\
+\end{tabularx}
+\end{center}
+
+\medskip
+
+\item Sur l'\textbf{annexe 3 à rendre avec la copie}, on propose un pavage obtenu en utilisant la figure 5 comme motif. 
+
+On fera apparaître sur le pavage de l'\textbf{annexe 3, à rendre avec la copie}, tous les éléments permettant la description des transformations demandées dans cette question. 
+	\begin{enumerate}
+		\item Décrire une transformation du plan qui permet de passer du motif 1 au motif 2. 
+		\item Décrire deux transformations du plan qui, appliquées successivement, permettent de passer du motif 1 au motif 3. 
+	\end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\begin{center}
+\textbf{\large Annexe 1 à rendre avec la copie}
+
+\vspace{1.5cm} 
+
+\textbf{Exercice 1- Partie A} 
+
+
+\vspace{1.5cm}
+
+\psset{unit=0.8cm}
+\begin{pspicture}(17.6,17.1)
+%\psgrid [gridcolor=red , subgridcolor=yellow]
+\psline(0,11.6)(9.9,11.6)
+\psline(1.8,-0.1)(1.8,0.1)\psline(4.5,-0.1)(4.5,0.1)
+\psset{linewidth=1.2pt}
+\psline(0,0)(17.6,0)
+\psline(16.7,0)(16.7,17.1)
+\psline(14,0)(14,17.1)
+%\psline(2.9,2.3)(2.9,17.1)
+\psline(16.7,2.7)(14,2.7)(12.9,4.47)
+\psline(16.7,5.4)(14,5.4)(12.9,6.63)
+\psline(16.7,8.1)(14,8.1)(12.9,8.8)
+\psline(16.7,10.8)(14,10.8)(12.9,10.96)
+\psline(16.7,13.5)(14,13.5)(12.9,13.12)
+\psline(16.7,16.2)(14,16.2)(12.9,15.29)
+\psline(14,0)(9.9,8.6)(9.9,17.1)
+
+\psline(12.9,2.3)(12.9,17.1)
+\uput[u](0.2,11.6){$(h)$}\uput[d](1.8,0){$a$}\uput[d](4.5,0){$b$}
+\end{pspicture}
+\end{center}
+
+\newpage
+
+\begin{center}
+\textbf{\large Annexe 2 à rendre avec la copie} 
+
+\vspace{1.5cm} 
+
+\textbf{Exercice 1- Partie B }
+
+\bigskip
+
+\begin{tabularx}{0.8\linewidth}{|*{6}{>{\centering \arraybackslash}X|}}\hline
+$x$		&0	&0,5&1	&1,5&2\\ \hline
+$f(x)$	&	&	&	&	&\\ \hline
+\end{tabularx}
+
+\vspace{1.5cm}
+
+\psset{unit=2.25cm,comma=true}
+\begin{pspicture*}(-3,-0.3)(3,2.75)
+\pspolygon[fillstyle=solid,fillcolor=lightgray](2,0)(2,2)(2.2,2.4)(2.4,2)(2.4,0)
+\psgrid[gridlabels=0pt,subgriddiv=10](-3,0)(3,2.75)
+\psaxes[linewidth=1.25pt,Dx=0.5,Dy=0.5]{->}(0,0)(-3,0)(3,2.75)
+\uput[ul](2,0){A$'$} \uput[ur](2.4,0){B$'$} \uput[ur](2.4,2){C$'$} \uput[u](2.4,2.4){D$'$} \uput[ul](2,2){E$'$} 
+\end{pspicture*}
+\end{center}
+
+\newpage
+
+\begin{center}
+\textbf{\large Annexe 3 à rendre avec la copie}
+
+\vspace{1.5cm}
+
+\textbf{Exercice 3 Question 4 :}
+
+\vspace{1.5cm}
+
+\psset{unit=1cm,linewidth=0.4pt}
+\begin{pspicture*}(12,10)
+%\psgrid
+\def\tri{\pspolygon(0;0)(1;30)(1;-30)}
+\def\los{\pspolygon(0;0)(1;30)(1;-30)(1;-90)}
+\multido{\n=0.000+0.866,\na=-6.0+0.5}{15}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-6.0+0.5}{15}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-5.0+0.5}{15}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-5.0+0.5}{15}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-4.0+0.5}{15}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-4.0+0.5}{15}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-3.0+0.5}{15}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-3.0+0.5}{15}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-2.0+0.5}{15}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-2.0+0.5}{15}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-1.0+0.5}{15}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=-1.0+0.5}{15}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=0.0+0.5}{15}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=0.0+0.5}{15}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=1.0+0.5}{14}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=1.0+0.5}{14}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=2.0+0.5}{14}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=2.0+0.5}{14}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=3.0+0.5}{14}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=3.0+0.5}{14}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=4.0+0.5}{13}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=4.0+0.5}{13}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=5.0+0.5}{12}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=5.0+0.5}{12}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=6.0+0.5}{11}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=6.0+0.5}{11}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=7.0+0.5}{10}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=7.0+0.5}{10}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=8.0+0.5}{9}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=8.0+0.5}{9}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=9.0+0.5}{8}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=9.0+0.5}{8}{\rput{-60}(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=10.0+0.5}{7}{\rput(\n,\na){\tri}}
+\multido{\n=0.000+0.866,\na=10.0+0.5}{7}{\rput{-60}(\n,\na){\tri}}
+\psset{linecolor=red,linewidth=1.2pt}
+\def\motif{\multido{\n=-1.000+0.866,\na=-1.000+0.5}{3}{\rput{-60}(\n,\na){\los}}
+\rput(-1,0){\los}\rput(-0.134,-1.5){\los}}
+%\rput(1,3){\motif}
+\psset{linecolor=blue,linewidth=1.2pt}
+\def\motifB{\pspolygon(0,1)(0.866,1.5)(0.866,0.5)(1.732,1)(2.598,0.5)(1.732,0)(1.732,-1)(0.866,-1.5)(0.866,-0.5)(0,-1)(-0.866,-0.5)(0,0)}
+%\multido{\n=1.732+2,\na=0+0.5}{5}{\rput(\n,\na){\motifB}}
+\multido{\n=1+2}{5}{\rput(3.5,\n){\motifB}}
+\multido{\n=1+2}{5}{\rput(8.7,\n){\motifB}}
+%\psset{linecolor=orange}
+\multido{\n=2.5+2.0}{5}{\rput{-60}(6.1,\n){\motifB}}
+\multido{\n=2.5+2.0}{5}{\rput{-60}(0.9,\n){\motifB}}
+\multido{\n=2.5+2.0}{5}{\rput{-60}(11.3,\n){\motifB}}
+\rput(4.4,7){\huge 1}\rput(4.4,5){\huge 2}\rput(6.5,5.8){\huge 3}
+\end{pspicture*}
+\end{center}
+\end{document}

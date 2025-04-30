@@ -14,11 +14,34 @@
   \end{array}
   \right.
   \]
-
-
-
-
 ```
+
+## Maths - Repères de l'espace
+
+```latex 
+% Coordonnées
+$A(1; 0; 0)$
+
+% Repère
+$\left(O\mathpunct{} ; \ \overrightarrow{OA}\mathpunct{}, \ \overrightarrow{OB}\mathpunct{}, \ \overrightarrow{OE}\right)$
+
+% Vecteurs et opérations sur les vecteurs
+
+ \[
+      \begin{pmatrix}
+        x_{AE} \\
+        y_{AE} \\ 
+        z_{AE}
+      \end{pmatrix}
+      = 
+      \begin{pmatrix}
+        x_{E} - x_{A} \\
+        y_{E} - y_{A} \\ 
+        z_{E} - z_{A}
+      \end{pmatrix}
+    \]
+    
+
 
 ## Formules + Légendes des formules
 
