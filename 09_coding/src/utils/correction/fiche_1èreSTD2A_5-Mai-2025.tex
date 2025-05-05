@@ -1,0 +1,114 @@
+\documentclass[answers]{exam}
+\usepackage{/Users/nicolasbancel/git/education_suger/mypackages}
+\usepackage{/Users/nicolasbancel/git/education_suger/macros}
+
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+%\usepackage{blindtext}
+
+\renewcommand{\arraystretch}{1.5} % Augmente l'espacement vertical entre les lignes du tableau
+\newcolumntype{C}{>{\centering\arraybackslash}m{2cm}}
+
+
+\SetLabelAlign{myright}{\hss\llap{$#1$}}
+\newlist{where}{description}{1}
+\setlist[where]{labelwidth=2cm,labelsep=1em,
+                        leftmargin=!,align=myright,font=\normalfont}
+
+\setlength{\parindent}{0pt}
+
+\title{Fiche d'exercices corrigée}
+\author{N. Bancel}
+\date{5 Mai 2025}
+
+\begin{document}
+
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1ère STD2A} \par
+
+{\let\newpage\relax\maketitle}
+%\maketitle
+
+
+
+
+\section*{Calcul du Flux Lumineux d'un Projecteur LUMEX 3000}
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.8\linewidth]{/Users/nicolasbancel/git/education_suger/09_coding/data/exo_18.jpg}
+      \captionsetup{labelformat=empty}
+    \end{figure}
+
+    \begin{solution}
+
+\begin{questions}
+
+\item \textbf{Schématisation du problème décrit:}
+
+La situation décrite met en scène un projecteur, le LUMEX 3000, installé pour éclairer une surface rectangulaire. Voici un schéma simplifié représentant la configuration :
+
+- Une source lumineuse (projecteur) positionnée à \SI{2}{\meter} de la surface à éclairer.
+- La surface rectangulaire à éclairer mesure \SI{20}{\centi\meter} de largeur et \SI{40}{\centi\meter} de longueur.
+
+\item \textbf{Définition et commentaire de l'IRC :}
+
+L'Indice de Rendu des Couleurs (IRC) est une mesure de la capacité d'une source lumineuse à reproduire fidèlement les couleurs d'un objet en comparaison avec une source de lumière naturelle. L'IRC est noté de 0 à 100. Un IRC de 90, comme dans le cas du projecteur LUMEX 3000, est considéré comme très élevé, indiquant que le projecteur est capable de rendre les couleurs de manière très précise, ce qui est crucial pour des applications esthétiques ou artistiques.
+
+\item \textbf{Calcul du flux lumineux reçu par l’écran :}
+
+Nous allons calculer le flux lumineux reçu par la surface éclairée en utilisant les caractéristiques données et les propriétés de l'éclairement.
+
+\subsection{Raisonnement avec formules mathématiques}
+
+L'éclairement lumineux (E) est défini par la formule :
+\[
+E = \frac{\Phi}{A}
+\]
+où 
+\begin{addmargin}[4em]{1em}
+    \begin{compactitem}
+        \item [E]: éclairement lumineux en lux
+        \item [\Phi]: flux lumineux en lumens (lm)
+        \item [A]: surface éclairée en mètres carrés (\si{\square\meter})
+    \end{compactitem}
+\end{addmargin}
+
+Nous pouvons réorganiser la formule pour résoudre pour le flux lumineux (\(\Phi\)):
+\[
+\Phi = E \times A
+\]
+
+\subsection{Conversions dans les bonnes unités}
+
+- Surface de l'écran : \(20 \times 40 = 800 \, \si{\centi\meter\squared}\)
+- Convertir la surface en \si{\meter\squared} :
+  \[
+  A = \SI{800}{\centi\meter\squared} = \SI{0.08}{\meter\squared}
+  \]
+
+\subsection{Application numérique}
+
+- Éclairement : \(E = \SI{500}{lux}\)
+
+Calcul du flux lumineux :
+\[
+\Phi = 500 \times 0.08 = 40
+\]
+
+\subsection{Conclusion}
+
+Le flux lumineux reçu par l'écran est de \(\Phi = \SI{40}{\lumen}\).
+
+\end{questions}
+
+\end{solution}
+
+\end{document}
