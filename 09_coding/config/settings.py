@@ -1,0 +1,2 @@
+# filepath: config/settings.py
+OPENAI_API_KEY = "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"

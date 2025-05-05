@@ -1,0 +1,40 @@
+\documentclass[answers]{exam}
+\usepackage{/Users/nicolasbancel/git/education_suger/mypackages}
+\usepackage{/Users/nicolasbancel/git/education_suger/macros}
+
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+%\usepackage{blindtext}
+
+\renewcommand{\arraystretch}{1.5} % Augmente l'espacement vertical entre les lignes du tableau
+\newcolumntype{C}{>{\centering\arraybackslash}m{2cm}}
+
+
+\SetLabelAlign{myright}{\hss\llap{$#1$}}
+\newlist{where}{description}{1}
+\setlist[where]{labelwidth=2cm,labelsep=1em,
+                        leftmargin=!,align=myright,font=\normalfont}
+
+\setlength{\parindent}{0pt}
+
+\title{Fiche d'exercices corrigée}
+\author{N. Bancel}
+\date{[[DATE]]}
+
+\begin{document}
+
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{[[MATIERE]]} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{[[CLASSE]]} \par
+
+{\let\newpage\relax\maketitle}
+%\maketitle
+
+
+\end{document}
