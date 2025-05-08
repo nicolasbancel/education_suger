@@ -1,69 +1,41 @@
-# Auto-Correct Tool
+# Correction automatique d'exercices – Physique-Chimie
 
-This project is designed to automatically correct exams and exercises for students by processing images of book pages containing exercises. The tool crops the specified exercise area and generates a LaTeX document that includes a screenshot of the exercise along with the associated corrections.
+Un outil Python complet qui permet de générer automatiquement des **fiches LaTeX de correction d'exercices**, à partir :
+- d'**images d'énoncés scannés**,
+- de **fichiers `.tex` existants**,
+- ou bientôt de **PDF d'annales**.
 
-## Project Structure
+Ce projet est pensé à la fois pour :
+- 🧑‍🏫 **les enseignants**, qui souhaitent générer rapidement des corrections bien formatées ;
+- 🧑‍💻 **les développeurs**, qui souhaitent adapter le pipeline à d'autres matières ou formats.
 
+---
+
+## ✨ Fonctionnalités principales
+
+- 🔍 Extraction intelligente de l'énoncé et des questions depuis des fichiers LaTeX.
+- 🪄 Génération automatique des corrections en langage LaTeX via **GPT-4o (OpenAI)**.
+- 🧩 Insertion des solutions directement dans le document, avec des marqueurs de type `%CORRECTION:Q1E2%`.
+- 🖼️ Gestion dynamique des images associées aux énoncés.
+- 📦 Organisation modulaire pour intégration facile dans d'autres projets.
+
+---
+
+## 🚀 Installation
+
+### 1. Prérequis
+
+- Python 3.10+
+- [Poetry](https://python-poetry.org/) pour la gestion des dépendances
+- Un compte OpenAI avec clé API
+
+### 2. Clonage et configuration
+
+```bash
+git clone https://github.com/nicolasbancel/education_suger.git
+cd education_suger/09_coding
+poetry install
+cp .env.example .env  # créez un fichier .env avec votre clé API
 ```
-auto-correct-tool
-├── src
-│   ├── main.py                # Entry point of the application
-│   ├── utils
-│   │   ├── image_processing.py # Functions for image loading and cropping
-│   │   ├── latex_generator.py   # Functions for LaTeX document generation
-│   │   └── correction_logic.py   # Logic for automatic correction
-│   └── models
-│       └── __init__.py        # Initialization of models package
-├── data
-│   ├── input                  # Directory for input files (images)
-│   └── output                 # Directory for output files (LaTeX documents)
-├── tests
-│   ├── test_image_processing.py # Unit tests for image processing functions
-│   ├── test_latex_generator.py   # Unit tests for LaTeX generation functions
-│   └── test_correction_logic.py   # Unit tests for correction logic functions
-├── requirements.txt           # Project dependencies
-├── README.md                  # Project documentation
-└── .gitignore                 # Files and directories to ignore in version control
-```
-
-## Setup Instructions
-
-1. **Clone the Repository**
-   Clone this repository to your local machine using:
-   ```
-   git clone <repository-url>
-   ```
-
-2. **Navigate to the Project Directory**
-   Change into the project directory:
-   ```
-   cd auto-correct-tool
-   ```
-
-3. **Install Dependencies**
-   Install the required Python packages listed in `requirements.txt`:
-   ```
-   pip install -r requirements.txt
-   ```
-
-4. **Prepare Input Data**
-   Place the images of book pages containing exercises in the `data/input` directory.
-
-5. **Run the Application**
-   Execute the main script to start the application:
-   ```
-   python src/main.py
-   ```
-
-## Usage
-
-- The tool will load the specified book page, crop the exercise, and generate a LaTeX document with the exercise image and corrections.
-- The generated LaTeX documents will be saved in the `data/output` directory.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
+Ajoutez dans .env :
+`OPENAI_API_KEY=sk-...`

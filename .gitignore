@@ -1,4 +1,5 @@
 *.aux
+.env
 *.log
 *.fdb_latexmk
 *.out
