@@ -222,7 +222,7 @@ def exercice_number_pixel_2(
         raise ValueError(f"Erreur lors du parsing de la réponse GPT : {e}")
 
 
-def exercice_number_pixel_2(
+def exercice_number_pixel_archived(
     image_path,
     exercise_number,
     box_description=NUMEROTATION_EXERCICES["Physique_1ères"],
@@ -374,12 +374,3 @@ if __name__ == "__main__":
 
     except Exception as e:
         print("Error getting crop coordinates:", e)
-
-    """
-    exercise_text = input("Enter the exercise text for correction: ")
-    try:
-        correction = get_correction(exercise_text)
-        print("Correction:", correction)
-    except Exception as e:
-        print("Error getting correction:", e)
-    """

@@ -6,7 +6,6 @@ import sys
 import base64
 import os
 import json
-from pydantic import BaseModel
 from typing import List
 from PIL import Image
 from dotenv import load_dotenv
@@ -32,11 +31,26 @@ PACKAGES_PATH = "/Users/nicolasbancel/git/education_suger/mypackages.sty"
 CONTRAINTES_PATH = "/Users/nicolasbancel/git/education_suger/09_coding/templates/contraintes_physique.md"
 LATEX_TEMPLATE = "/Users/nicolasbancel/git/education_suger/09_coding/templates/template_correction.tex"
 OUTPUT_DIR = "correction"
+IMAGE_FOLDER = "/Users/nicolasbancel/git/education_suger/09_coding/data/a_corriger"
 
 
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode("utf-8")
+
+
+def get_image_files(folder_path):
+    """
+    Retourne une liste de chemins d’images (.jpg, .jpeg, .png) dans le dossier spécifié.
+    """
+    valid_extensions = (".jpg", ".jpeg", ".png")
+    image_files = []
+
+    for filename in os.listdir(folder_path):
+        if filename.lower().endswith(valid_extensions):
+            image_files.append(os.path.join(folder_path, filename))
+
+    return image_files
 
 
 def make_image_block(image_path: str) -> str:
@@ -45,7 +59,7 @@ def make_image_block(image_path: str) -> str:
     """
     return rf"""\begin{{figure}}[H]
   \centering
-  \includegraphics[width=0.8\linewidth]{{{image_path}}}
+  \includegraphics[width=0.6\linewidth]{{{image_path}}}
   \captionsetup{{labelformat=empty}}
 \end{{figure}}"""
 
@@ -83,7 +97,7 @@ def update_latex(
         file.write(content)
 
     full_path = os.path.abspath(output_path)
-    print(f"Fichier généré : {full_path}")
+    print(f"✅ Fichier LaTex généré : {full_path}")
     return full_path
 
 
@@ -140,7 +154,7 @@ def correction(
         ],
     )
 
-    print("Response: ", response)
+    # print("Response: ", response)
     try:
         raw_content = response.output[0].content[0].text.strip()
 
@@ -165,7 +179,7 @@ def latex_block(
 
     prompt = (
         "On te fournit une correction d'exercice en Latex. A partir de cette correction, trouve un titre à l'exercice"
-        "En sortie, ne me donne que le titre, sans rien autour"
+        "En sortie, ne me donne que le titre, sans rien autour. Fais un titre succinct et explicite."
         "Voici la correction :\n"
         f"{latex_correction}"
     )
@@ -186,7 +200,7 @@ def latex_block(
         ],
     )
 
-    print("Response: ", title_raw)
+    # print("Response: ", title_raw)
     try:
         title = title_raw.output[0].content[0].text.strip()
     except Exception as e:
@@ -197,7 +211,7 @@ def latex_block(
 
     \begin{{figure}}[H]
       \centering
-      \includegraphics[width=0.8\linewidth]{{{image_path}}}
+      \includegraphics[width=0.6\linewidth]{{{image_path}}}
       \captionsetup{{labelformat=empty}}
     \end{{figure}}
 
@@ -220,7 +234,7 @@ def latex_block(
         with open(latex_file_path, "w", encoding="utf-8") as file:
             file.write(updated_content)
 
-        print(f"✅ Bloc inséré juste avant \\end{{document}} dans : {latex_file_path}")
+        print(f"✅ Correction faite et insérée pour : {os.path.basename(image_path)}")
 
     except Exception as e:
         print(f"❌ Erreur lors de l'injection LaTeX : {e}")
@@ -228,6 +242,9 @@ def latex_block(
 
 if __name__ == "__main__":
     # Exemple d'utilisation
+
+    images = get_image_files(IMAGE_FOLDER)
+
     latex_file_path = update_latex(
         latex_template_path=LATEX_TEMPLATE,
         output_dir=OUTPUT_DIR,
@@ -236,14 +253,16 @@ if __name__ == "__main__":
         matiere=MATIERE,
     )
 
-    latex_correction = correction(
-        image_path=IMAGE_PATH,
-        contraintes_path=CONTRAINTES_PATH,
-        packages_path=PACKAGES_PATH,
-    )
+    for image in images:
 
-    latex_block(
-        latex_correction,
-        latex_file_path,
-        image_path=IMAGE_PATH,
-    )
+        latex_correction = correction(
+            image_path=image,
+            contraintes_path=CONTRAINTES_PATH,
+            packages_path=PACKAGES_PATH,
+        )
+
+        latex_block(
+            latex_correction,
+            latex_file_path,
+            image_path=image,
+        )
