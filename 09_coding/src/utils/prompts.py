@@ -11,6 +11,8 @@ from typing import List
 from PIL import Image
 from dotenv import load_dotenv
 
+from utils.helpers import encode_image
+
 
 load_dotenv()
 
@@ -43,11 +45,6 @@ print(os.environ.get("OPENAI_API_KEY"))
 
 # Documentation on how to extract the image
 # https://platform.openai.com/docs/guides/images-vision?api-mode=responses&format=base64-encoded
-
-
-def encode_image(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode("utf-8")
 
 
 def column_size(image_path):

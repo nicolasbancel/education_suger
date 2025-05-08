@@ -1,7 +1,8 @@
 # filepath: src/utils/chatgpt_prompts.py
 from openai import OpenAI
 
-from prompts.latex_prompts import prompt_get_exercices
+from utils.prompts.latex_prompts import prompt_get_exercices
+
 
 # from config.settings import OPENAI_API_KEY
 import os

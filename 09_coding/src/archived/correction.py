@@ -10,47 +10,15 @@ from typing import List
 from PIL import Image
 from dotenv import load_dotenv
 
+from config import CONTRAINTES_PATH, PACKAGES_PATH, LATEX_TEMPLATE
+from helpers import encode_image, get_image_files
 
 load_dotenv()
-
-
-IMAGE_PATH_GLOBAL = (
-    "/Users/nicolasbancel/git/education_suger/09_coding/data/exemple_image_pc_1ere.jpg"
-)
 
 client = OpenAI(
     # This is the default and can be omitted
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
-
-CLASSE = "1ère STD2A"
-DATE = "5 Mai 2025"
-MATIERE = "Physique-Chimie"
-IMAGE_PATH = "/Users/nicolasbancel/git/education_suger/09_coding/data/exo_18.jpg"
-PACKAGES_PATH = "/Users/nicolasbancel/git/education_suger/mypackages.sty"
-CONTRAINTES_PATH = "/Users/nicolasbancel/git/education_suger/09_coding/templates/contraintes_physique.md"
-LATEX_TEMPLATE = "/Users/nicolasbancel/git/education_suger/09_coding/templates/template_correction.tex"
-OUTPUT_DIR = "correction"
-IMAGE_FOLDER = "/Users/nicolasbancel/git/education_suger/09_coding/data/a_corriger"
-
-
-def encode_image(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode("utf-8")
-
-
-def get_image_files(folder_path):
-    """
-    Retourne une liste de chemins d’images (.jpg, .jpeg, .png) dans le dossier spécifié.
-    """
-    valid_extensions = (".jpg", ".jpeg", ".png")
-    image_files = []
-
-    for filename in os.listdir(folder_path):
-        if filename.lower().endswith(valid_extensions):
-            image_files.append(os.path.join(folder_path, filename))
-
-    return image_files
 
 
 def make_image_block(image_path: str) -> str:
@@ -242,15 +210,20 @@ def latex_block(
 
 if __name__ == "__main__":
     # Exemple d'utilisation
+    from helpers import get_date_format_francais, extract_class_and_subject_from_path
+
+    IMAGE_FOLDER = "/Users/nicolasbancel/git/education_suger/09_coding/data/a_corriger"
 
     images = get_image_files(IMAGE_FOLDER)
+    output_dir = IMAGE_FOLDER.parent
+    classe, matiere = extract_class_and_subject_from_path(folder_path)
 
     latex_file_path = update_latex(
         latex_template_path=LATEX_TEMPLATE,
-        output_dir=OUTPUT_DIR,
-        classe=CLASSE,
-        date=DATE,
-        matiere=MATIERE,
+        output_dir=output_dir,
+        classe=classe,
+        date=get_date_format_francais(),
+        matiere=matiere,
     )
 
     for image in images:

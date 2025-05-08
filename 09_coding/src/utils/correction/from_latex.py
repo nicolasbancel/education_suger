@@ -1,6 +1,6 @@
 from openai import OpenAI
-from latex_parser import get_exercices, insert_solution_placeholder
-from helpers import encode_image
+from utils.latex_parser import get_exercice_openai, insert_solution_placeholder
+from utils.helpers import encode_image
 from dotenv import load_dotenv
 import os
 import re
@@ -166,7 +166,7 @@ def insert_solutions_into_latex(output_path: str, exercices: list):
 
 if __name__ == "__main__":
 
-    structured_latex = get_exercices(LATEX_FILE_PATH)
+    structured_latex = get_exercice_openai(LATEX_FILE_PATH)
     structured_questions = insert_solution_placeholder(structured_latex)
     structured_questions_backup = structured_questions.copy()
 

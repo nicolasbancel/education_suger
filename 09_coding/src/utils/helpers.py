@@ -4,6 +4,11 @@ import re
 import base64
 
 
+def encode_image(image_path: str) -> str:
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode("utf-8")
+
+
 def get_date_format_francais():
     mois_fr = {
         1: "Janvier",
@@ -57,6 +62,19 @@ def extract_class_and_subject_from_path(full_path: str):
     )
 
 
-def encode_image(image_path: str) -> str:
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode("utf-8")
+def get_image_files(folder_path):
+    """
+    Retourne une liste de chemins d’images (.jpg, .jpeg, .png) dans le dossier spécifié.
+    """
+    valid_extensions = (".jpg", ".jpeg", ".png")
+    image_files = []
+
+    for filename in os.listdir(folder_path):
+        if filename.lower().endswith(valid_extensions):
+            image_files.append(os.path.join(folder_path, filename))
+
+    return image_files
+
+
+if __name__ == "__main__":
+    pass
