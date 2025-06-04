@@ -39,3 +39,41 @@ cp .env.example .env  # créez un fichier .env avec votre clé API
 ```
 Ajoutez dans .env :
 `OPENAI_API_KEY=sk-...`
+
+
+## 🧪 Exemples d'utilisation
+
+### À partir d’un fichier `.tex` structuré
+
+Ce mode permet d’extraire automatiquement les exercices et questions depuis un fichier `.tex`, d’y insérer des marqueurs de correction, de générer les solutions via GPT-4o, puis de les intégrer au bon endroit dans le fichier LaTeX.
+
+```bash
+poetry run python main.py from_latex /Users/nicolasbancel/git/education_suger/02_3ème_CI_pc/ds/brevet_blanc_2.tex
+
+poetry run python main.py from_latex /Users/nicolasbancel/git/education_suger/01_1ères_STD2A_pc/ds/bac_blanc_1ereSTD2A_PC_no2.tex
+
+poetry run python /utils/meta/correction_framework.py
+```
+
+### À partir d’un dossier d’images
+
+Ce mode scanne toutes les images `.jpg`, `.png`, etc., présentes dans le dossier, génère une solution LaTeX pour chacune via OpenAI, et les assemble dans une fiche LaTeX.
+
+### Commands
+
+```bash
+
+cd /Users/nicolasbancel/git/education_suger/09_coding/src
+
+poetry run python main.py from_image /Users/nicolasbancel/git/education_suger/01_1ères_STD2A_pc/chap5_lumiere/a_corriger
+
+
+```
+
+### Other paths
+
+```
+/Users/nicolasbancel/git/education_suger/00_1ères_STD2A_maths/08_probabilités/fiche_1
+```
+
+

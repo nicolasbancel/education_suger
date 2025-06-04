@@ -1,0 +1,452 @@
+\documentclass[answers]{exam}
+\usepackage{/Users/nicolasbancel/git/education_suger/mypackages}
+\usepackage{/Users/nicolasbancel/git/education_suger/macros}
+\usetikzlibrary{calc}
+
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\newcommand{\cmark}{\ding{51}}
+
+%\usepackage{blindtext}
+
+\renewcommand{\arraystretch}{1.5} % Augmente l'espacement vertical entre les lignes du tableau
+\newcolumntype{C}{>{\centering\arraybackslash}m{2cm}}
+
+
+\SetLabelAlign{myright}{\hss\llap{$#1$}}
+\newlist{where}{description}{1}
+\setlist[where]{labelwidth=2cm,labelsep=1em,
+                        leftmargin=!,align=myright,font=\normalfont}
+
+\setlength{\parindent}{0pt}
+
+\title{Fiche d'exercices d'optique.}
+\author{N. Bancel}
+\date{Juin 2025}
+
+\begin{document}
+
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1ères STD2A} \par
+
+{\let\newpage\relax\maketitle}
+%\maketitle
+
+
+\section*{Extrait BAC 2019 - Metropole - A FAIRE CHEZ VOUS}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/annale_2_optique_1.jpg}}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/annale_2_optique_2.jpg}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/annale_2_optique_3.jpg}}
+\end{figure}
+
+
+\section*{Extrait BAC 2019 - Exercice corrigé}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/annale_optique_1.jpg}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/annale_optique_2.jpg}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/annale_optique_3.jpg}}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/annale_optique_4.jpg}}
+\end{figure}
+
+
+
+\subsection*{PARTIE C – Le viaduc de Millau (7,5 pts)}
+
+\begin{questions}
+
+%----------------------------------------------------------------
+\question[C.1] Indiquer à quelle caractéristique est liée la valeur « 100 ISO ».
+
+  \begin{solution}
+  La valeur \textbf{ISO} caractérise \textbf{la sensibilité du capteur à la lumière}.  
+  Plus l’ISO est élevé, plus le capteur est sensible (il nécessite donc moins de lumière pour une exposition correcte).  
+  \end{solution}
+
+
+%----------------------------------------------------------------
+\question[C.2] Nommer l’élément de l’objectif lié au nombre d’ouverture $N$.
+
+  \begin{solution}
+  Le nombre d’ouverture $N$ est directement lié au \textbf{diaphragme} de l’objectif, c’est-à-dire l’orifice circulaire qui laisse passer la lumière. La relation a retenir est : 
+\[
+  N = \frac{f}{D}
+\]
+  où $f$ est la distance focale de l’objectif et $D$ le diamètre de l’ouverture du diaphragme.
+
+  Autrement dit, le diamètre du diaphragme est donné par la formule :
+\[
+  D = \frac{f}{N}
+\]
+  Ainsi, plus $N$ est grand, plus le diaphragme est petit et moins de lumière atteint le capteur.
+
+  \end{solution}
+
+
+%----------------------------------------------------------------
+\subsection*{C.3 – Recherche d’une faible profondeur de champ}
+
+\begin{questions}
+
+\question[C.3.1] Définir la profondeur de champ en photographie.
+
+  \begin{solution}
+  La \textbf{profondeur de champ} est la région de l’espace, devant et derrière le plan de mise au point, dans laquelle les objets apparaissent nets ; au-delà de cette zone, ils deviennent flous.  
+  \end{solution}
+
+\question[C.3.2] Expliquer comment agir sur $N$ pour obtenir ce résultat.
+
+  \begin{solution}
+  Pour réduire la profondeur de champ et créer du flou d’arrière-plan, il faut \textbf{ouvrir le diaphragme, c'est-à-dire augmenter le diamètre du diaphragme. Ce qui correspond à prendre des valeurs de $N$ plus petites}. Pour rappel :
+  
+  \[
+  D = \frac{f}{N}
+  \]
+  où 
+  \begin{addmargin}[4em]{1em}
+  \begin{compactitem}
+    \item[$D$] : diamètre du diaphragme
+    \item[$f$] : distance focale de l’objectif
+    \item[$N$] : nombre d’ouverture
+  \end{compactitem}
+  \end{addmargin}
+
+  \vspace{1em}
+
+  Donc si on diminue la valeur de $N$ (passer par exemple de $N=11$ à $N=5.6$), $D$ augmente. \\
+  Un plus grand diamètre d'ouverture entraîne une profondeur de champ plus faible, car la zone nette est plus réduite.
+
+  \vspace{1em}
+
+  \textit{Interprétation / Exemple} : Prenez l'équivalent avec votre pupille : quand vous voulez voir plus distinctement un ensemble de choses (lointaines), \textbf{vous froncez les yeux pour réduire la taille de votre pupille} (équivalent au dimaètre du diaphragme) et ainsi augmenter la profondeur de champ.
+  \textbf{Lorsque vous avez les pupilles dilatées (diamètre plus grand)}, vous voyez moins distinctement les objets éloignés, les alentours sont floutés, et vous ne voyez qu'un ensemble réduit de choses (la profondeur de champ est réduite).
+  
+\end{solution}
+
+\end{questions}
+
+
+%----------------------------------------------------------------
+\subsection*{C.4 – Nouvelle ouverture : $N=5{,}6$}
+
+\begin{questions}
+
+\question[C.4.1] Indiquer si l’image sera sur- ou sous-exposée si seul $N$ est modifié. Justifier.
+
+  \begin{solution}
+  \textbf{Raisonnement}  
+  \begin{compactitem}
+    \item Le passage de $N=11$ à $N=5.6$ correspond à \SI{-2}{IL} (deux “stops”) : on passe de $N=11$ à $N=8$ (1 stop : multiplication par 2 de la quantité de lumière), puis de $N=8$ à $N=5.6$ (1 autre stop : multiplication encore par 2 de la quantité de lumière). le flux lumineux est donc multiplié par $2^2=4$.
+    \item Le temps de pose restant le même et égal à \SI[parse-numbers=false]{\tfrac{1}{250}}{\second}, quatre fois plus de lumière atteindra le capteur.
+  \end{compactitem}
+
+  \textbf{Conclusion} : l’image sera \textbf{surexposée}.  
+  \end{solution}
+
+
+
+\question[C.4.2] Déterminer le temps de pose nécessaire pour conserver une exposition correcte.
+
+  \begin{solution}
+  \textbf{1. Raisonnement (lettres)}  
+
+  Pour compenser une ouverture $4$ fois plus lumineuse, il faut que le temps de pose soit $4$ fois plus court :
+  \[
+    t_{\text{nouveau}} = \frac{t_{\text{ancien}}}{4}
+  \]
+
+  \textbf{2. Conversion (SI)}  
+
+  \[
+    t_{\text{ancien}} = \SI[parse-numbers=false]{\tfrac{1}{250}}{\second}
+  \]
+
+  \textbf{3. Application numérique}  
+
+  \[
+    t_{\text{nouveau}} = \frac{\tfrac{1}{250}}{4} = \frac{1}{1000}
+  \]
+
+  \[
+    t_{\text{nouveau}} = \SI[parse-numbers=false]{\tfrac{1}{1000}}{\second}
+  \]
+
+  \textbf{4. Conclusion} : parmi les vitesses disponibles (Document 5), le photographe choisira \SI[parse-numbers=false]{\tfrac{1}{1000}}{\second}.  
+  \end{solution}
+
+\end{questions}
+
+
+%----------------------------------------------------------------
+\subsection*{C.5 – Caractéristiques de l’image}
+
+\begin{questions}
+
+\question[C.5.1] Calculer la définition de l’image.
+
+  \begin{solution}
+  \textbf{1. Raisonnement}  
+  La définition est le nombre total de pixels :
+  \[
+    N_{\text{px}} = N_x \times N_y
+  \]
+
+  \textbf{2. Conversion} : les dimensions sont déjà en pixels (\num{6016} px × \num{4000} px).
+
+  \textbf{3. Application numérique}  
+
+  \[
+    N_{\text{px}} = 6016 \times 4000 = 24064000
+  \]
+
+  \[
+    \boxed{N_{\text{px}} = \num{24,1}\,\text{Mpixels}}
+  \]
+
+  \textbf{4. Conclusion} : l’image contient environ \num{24} millions de pixels (24 Mpx).  
+  \end{solution}
+
+
+
+\question[C.5.2] Indiquer à quelle caractéristique est liée la valeur « 300 dpi ».
+
+  \begin{solution}
+  Les \emph{dots per inch} (dpi) expriment \textbf{la résolution d’impression} : c’est le nombre de points imprimés par pouce linéaire, ce qui détermine la finesse (et donc la taille physique maximale) d’un tirage papier à partir du fichier.  
+  \end{solution}
+
+\end{questions}
+
+
+%----------------------------------------------------------------
+\subsection*{C.6 – Plan rapproché du pylône}
+
+Données :  
+\begin{compactitem}
+  \item Distance focale : $f' = \SI{200}{\milli\metre} = \SI{0.200}{\metre}$  
+  \item Hauteur pylône : $h = \SI{87.0}{\metre}$  
+  \item Distance objet-objectif : $OA = \SI{50.0}{\metre}$  
+  \item Capteur : \SI{23.5}{\milli\metre} × \SI{15.6}{\milli\metre}
+\end{compactitem}
+
+\begin{questions}
+
+\question[C.6.1] Réaliser un schéma.
+
+  \begin{solution}
+  \textit{(Schéma descriptif)}  
+  Tracer :
+  \begin{compactitem}
+    \item l’axe optique horizontal ;
+    \item la lentille mince centrée en $O$, de foyers $F$ (objet) et $F'$ (image) ;
+    \item le pylône $AB$ (segment vertical à gauche à distance $OA$) ;
+    \item les rayons :  
+      \begin{compactitem}
+        \item rayon passant par $O$ (non dévié) ;  
+        \item rayon parallèle à l’axe passant par $F'$ après la lentille.  
+        \item \textcolor{red}{Tout rayon parallèle à l'axe optique est dévié pour passer par un foyer. Et inversement tout rayon passant par un des foyers (image ou objet) ressort parallèle à l'axe optique}
+      \end{compactitem}
+    \item leur intersection définit $A'B'$ (image inversée du pylône) à la distance $OA'$.
+  \end{compactitem}
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/annale_optique_5.png}
+  \caption{Schéma de la formation de l'image par une lentille mince.}
+  \end{figure}
+
+  \end{solution}
+
+
+
+\question[C.6.2] Calculer $OA'$ (position de l’image).
+\begin{solution}
+\textbf{1. Relation de conjugaison (distances algébriques)}  
+\[
+  \frac{1}{\overline{OA'}} - \frac{1}{\overline{OA}} \;=\; \frac{1}{f'}
+\]
+
+\begin{addmargin}[4em]{1em}
+\begin{compactitem}
+  \item[\(\overline{OA}\)] : distance objet-lentille  
+  \item[\(\overline{OA'}\)] : distance image-lentille (à déterminer)  
+  \item[\(f'\)] : distance focale
+\end{compactitem}
+\end{addmargin}
+
+\medskip
+{\color{red}
+\textbf{Distances algébriques} – l’axe optique est \emph{orienté vers la droite}.  
+Toute distance mesurée à gauche de \(O\) est donc \emph{négative}, et toute distance
+mesurée à droite est \emph{positive}. Dans notre cas, la longueur \(\overline{OA}\) devra donc prendre une valeur négative, car le pylône est à gauche de la lentille. Et la longueur \(\overline{OA'}\) sera positive, car l’image se forme à droite de la lentille, dans le sens de l’axe optique.  
+}
+\medskip
+
+Pour plus de détails, voir la vidéo : \href{https://www.youtube.com/watch?v=rBXHw1L-6y0}{Relation de CONJUGAISON : calculer la distance focale | 1\textsuperscript{ère} | Physique}
+
+\medskip
+\textbf{2. Conversion (S.I.)}  
+\[
+\begin{aligned}
+  \overline{OA} &= \SI{-50.0}{\meter}
+                 = \SI{-5.00e4}{\milli\metre} \\[4pt]
+  f'            &= \SI{200}{\milli\metre}
+\end{aligned}
+\]
+
+\textbf{3. Application numérique (mm)}  
+
+\begin{align*}
+  \frac{1}{\overline{OA'}} 
+    &= \frac{1}{f'} - \frac{1}{\overline{OA}} \\[4pt]
+    &= \frac{1}{200} - \Bigl(-\frac{1}{5.00\times10^{4}}\Bigr) \\[4pt]
+    &= 0.00500 - (-0.00002) \\[4pt]
+    &= 0.00498 
+\end{align*}
+
+\vspace{0.6em}
+On a donc :  
+\[
+  \boxed{\displaystyle \frac{1}{\overline{OA'}} = 0{,}00498}
+\]
+
+\vspace{0.6em}
+Pour obtenir \(\overline{OA'}\), \textbf{on prend le réciproque} (on « inverse » la
+fraction) : si \(\dfrac{1}{x}=a\), alors \(x=\dfrac{1}{a}\).
+
+\[
+  \overline{OA'} = \frac{1}{0.00498}
+  \;\simeq\; \SI{2.01e2}{\milli\metre}.
+  \]
+\[
+  \boxed{\overline{OA'} \approx \SI{201}{\milli\metre}\;}
+\]
+
+\textbf{4. Conclusion}  
+L’image se forme \(\approx\!\SI{201}{\milli\metre}\) derrière la lentille,
+légèrement au-delà du foyer (\(\SI{200}{\milli\metre}\)).
+
+
+\end{solution}
+
+\question[C.6.3] L’image du pylône apparaît-elle en entier ?
+
+\begin{solution}
+%------------------------------------------------------------
+% Pourquoi calculer A'B' ?
+%------------------------------------------------------------
+\textbf{Principe préalable}
+
+Pour que le pylône apparaisse \emph{entièrement} sur la photo, il faut que la 
+hauteur de son image \(\overline{A'B'}\) n’excède pas la dimension utile du 
+capteur (\SI{23.5}{\milli\metre} côté le plus long).  
+La relation de \emph{grandissement}  
+\[
+  \gamma = \frac{\overline{A'B'}}{\overline{AB}}
+          = -\frac{\overline{OA'}}{\overline{OA}}
+\]
+montre qu’il suffit de connaître 
+
+\begin{addmargin}[4em]{1em}
+\begin{compactitem}
+  \item[\(\overline{OA}\)]  : distance objet-lentille (pylône à \SI{-50.0}{m} de la lentille) : \cmark C'est bon, on connait cette donnée, ell est donnée dans l'énoncé
+  \item[\(\overline{OA'}\)] : distance image-lentille (\(\SI{201}{mm}\) : \cmark C'est bon, on connait cette donnée, on l'a calculée à la question précédente)  
+  \item[\(\overline{AB}\)]  : hauteur réelle du pylône (\SI{87.0}{m}) : \cmark C'est bon, on connait cette donnée, ell est donnée dans l'énoncé
+\end{compactitem}
+\end{addmargin}
+
+pour pouvoir déterminer la hauteur de l’image \(\overline{A'B'}\) du pylône.
+
+%------------------------------------------------------------
+% 1) Formule
+%------------------------------------------------------------
+\bigskip
+\textbf{1. Formule du grandissement}
+
+\[
+  \gamma \;=\; \frac{\overline{A'B'}}{\overline{AB}}
+  \;=\; \frac{\overline{OA'}}{\overline{OA}}.
+\]
+
+%------------------------------------------------------------
+% 2) Données
+%------------------------------------------------------------
+\bigskip
+\textbf{2. Données numériques}
+
+\[
+  \overline{AB} = \SI{87.0}{\meter} = \SI{8.70e4}{\milli\metre},\qquad
+  \overline{OA} = -\SI{5.00e4}{\milli\metre},\qquad
+  \overline{OA'} = \SI{2.01e2}{\milli\metre}.
+\]
+
+%------------------------------------------------------------
+% 3) Application numérique
+%------------------------------------------------------------
+\bigskip
+\textbf{3. Application numérique}
+
+\begin{align*}
+  |\gamma| &= \frac{\overline{OA'}}{|\overline{OA}|}
+            = \frac{201}{50\,000}
+            \;\simeq\; 0.00402, \\[6pt]
+  |\overline{A'B'}| &= |\gamma|\,|\overline{AB}|
+                     = 0.00402 \times 87\,000
+                     \;\simeq\; \SI{3.50e2}{\milli\metre}.
+\end{align*}
+
+\[
+  \boxed{\displaystyle \overline{A'B'} \approx \SI{350}{\milli\metre}}
+\]
+
+%------------------------------------------------------------
+% 4) Interprétation
+%------------------------------------------------------------
+\bigskip
+\textbf{4. Conclusion – cadrage sur le capteur}
+
+La hauteur calculée de l’image (\(\approx\SI{350}{\milli\metre}\)) dépasse de 
+loin la dimension maximale du capteur (\(\SI{23.5}{\milli\metre}\)).  
+\textbf{Le pylône ne tient donc pas en entier dans le cadre} ; il faudra 
+reculer l’appareil ou employer une focale plus courte pour l’intégralité de la 
+scène.
+\end{solution}
+
+\end{questions}
+
+\end{questions}
+
+
+\end{document}

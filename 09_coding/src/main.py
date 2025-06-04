@@ -3,7 +3,9 @@
 import os
 import sys
 import argparse
+import shutil
 from pathlib import Path
+
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 
@@ -12,6 +14,7 @@ from utils.helpers import (
     extract_class_and_subject_from_path,
     get_date_format_francais,
     get_image_files,
+    save_variable_to_json,
 )
 from utils.latex_parser import (
     extract_exercises_from_latex,
@@ -61,7 +64,9 @@ def run_from_image(folder_path):
         )
 
 
-def run_from_latex(file_path, open_ai_method=False):
+def run_from_latex(
+    file_path, open_ai_method=False, export_exercices=True, export_markers=True
+):
     if not os.path.isfile(file_path) or not file_path.endswith(".tex"):
         print(f"❌ Fichier LaTeX invalide : {file_path}")
         sys.exit(1)
@@ -75,6 +80,19 @@ def run_from_latex(file_path, open_ai_method=False):
         print("Exercices : ", exercices)
         output_path = insert_correction_markers_into_latex(file_path, exercices)
         print("✅ Markers inserted in Output_path : ", output_path)
+
+        if export_markers:
+            original = Path(output_path)
+            if "_corrige.tex" in original.name:
+                new_name = original.name.replace("_corrige.tex", "_markers.tex")
+            else:
+                new_name = original.stem + "_markers.tex"
+
+            new_path = original.with_name(new_name)
+            shutil.copyfile(original, new_path)
+            print(
+                f"✅ Copie du fichier avec les marqueurs enregistrée sous : {new_path}"
+            )
 
         question_context = {}
         for index_exercice, exercice in enumerate(exercices):
@@ -114,6 +132,8 @@ def run_from_latex(file_path, open_ai_method=False):
                 print("✅ New version of the exercices variable : ", exercices)
 
         insert_solutions_into_latex(output_path, exercices)
+        if export_exercices:
+            save_variable_to_json(exercices, file_path)
 
 
 def run_from_pdf(file_path):

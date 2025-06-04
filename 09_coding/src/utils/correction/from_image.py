@@ -1,13 +1,11 @@
 # filepath: src/utils/chatgpt_prompts.py
+import os
+
 from openai import OpenAI
 
 # from config.settings import OPENAI_API_KEY
-import sys
-import base64
-import os
-import json
-from typing import List
-from PIL import Image
+
+
 from dotenv import load_dotenv
 
 from config import CONTRAINTES_PATH, PACKAGES_PATH, LATEX_TEMPLATE

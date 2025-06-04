@@ -2,6 +2,8 @@ import datetime
 import os
 import re
 import base64
+import json
+from pathlib import Path
 
 
 def encode_image(image_path: str) -> str:
@@ -74,6 +76,18 @@ def get_image_files(folder_path):
             image_files.append(os.path.join(folder_path, filename))
 
     return image_files
+
+
+def save_variable_to_json(variable, file_path):
+    # Détermine le nom du fichier JSON de log
+    base_path = Path(file_path)
+    log_path = base_path.with_name(base_path.stem + "_logs.json")
+
+    # Sauvegarde du contenu au format JSON lisible
+    with open(log_path, "w", encoding="utf-8") as f:
+        json.dump(variable, f, ensure_ascii=False, indent=2)
+
+    print(f"✅ Fichier de log sauvegardé dans : {log_path}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,162 @@
+\documentclass[answers]{exam}
+\usepackage{/Users/nicolasbancel/git/education_suger/mypackages}
+\usepackage{/Users/nicolasbancel/git/education_suger/macros}
+
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+%\usepackage{blindtext}
+
+\renewcommand{\arraystretch}{1.5} % Augmente l'espacement vertical entre les lignes du tableau
+\newcolumntype{C}{>{\centering\arraybackslash}m{2cm}}
+
+
+\SetLabelAlign{myright}{\hss\llap{$#1$}}
+\newlist{where}{description}{1}
+\setlist[where]{labelwidth=2cm,labelsep=1em,
+                        leftmargin=!,align=myright,font=\normalfont}
+
+\setlength{\parindent}{0pt}
+
+\title{Fiche d'exercices corrigée}
+\author{N. Bancel}
+\date{8 Mai 2025}
+
+\begin{document}
+
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025}
+\hfill
+\textbf{1ères STD2A} \par
+
+{\let\newpage\relax\maketitle}
+%\maketitle
+
+
+
+
+\section*{Étude d'un projecteur : schéma, IRC et flux lumineux}
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.6\linewidth]{/Users/nicolasbancel/git/education_suger/01_1ères_STD2A_pc/chap5_lumiere/a_corriger/exo_18.jpg}
+      \captionsetup{labelformat=empty}
+    \end{figure}
+
+    \begin{solution}
+\subsection*{1. Schématiser le problème décrit.}
+
+\begin{questions}
+Pour résoudre ce problème, nous devons considérer la configuration suivante :
+- Un projecteur nommé LUMEX 3000 est utilisé pour éclairer une surface rectangulaire.
+- Dimensions de la surface : \SI{0.2}{m} de largeur et \SI{0.4}{m} de longueur.
+- Distance entre le projecteur et la surface : \SI{2}{m}.
+
+Pour visualiser, imaginez un rectangle sur un mur, éclairé par un projecteur placé à une certaine distance. Le projecteur projette la lumière blanche fournie par une lampe LED de \SI{7}{W}.
+
+\end{questions}
+
+\subsection*{2. Rappeler la définition de l'IRC et commenter la valeur donnée dans les caractéristiques techniques.}
+
+\begin{questions}
+L'Indice de Rendu des Couleurs (IRC) est une mesure de la capacité d'une source lumineuse à reproduire fidèlement les couleurs des objets comparée à une source de lumière naturelle ou idéale. Un IRC maximum est de 100.
+
+Le projecteur LUMEX 3000 affiche un IRC de 90, indiquant qu'il reproduit très bien les couleurs, très proche d'une source de lumière naturelle. Cette caractéristique est idéale pour des projets nécessitant une bonne fidélité des couleurs, comme pour des œuvres d'art ou des projets de design.
+
+\end{questions}
+
+\subsection*{3. Calculer le flux lumineux reçu par l'écran.}
+
+Pour calculer le flux lumineux reçu, on utilise la formule :
+\[
+\Phi = E \times A
+\]
+où
+\begin{addmargin}[4em]{1em}
+\begin{compactitem}
+    \item [\(\Phi\)]: Flux lumineux reçu (en lumens)
+    \item [\(E\)]: Éclairement (en lux)
+    \item [\(A\)]: Aire de la surface éclairée (en mètres carrés)
+\end{compactitem}
+\end{addmargin}
+
+\begin{questions}
+1. **Conversions dans les bonnes unités :**
+
+La surface est de \(0.2 \, \text{m} \times 0.4 \, \text{m} = 0.08 \, \text{m}^2\).
+
+2. **Application numérique :**
+
+L'éclairement \(E\) est \SI{500}{lux}. Donc, nous avons :
+\[
+\Phi = 500 \times 0.08 = 40
+\]
+
+3. **Conclusion :**
+
+Le flux lumineux reçu par l'écran est de \SI{40}{lumens}.
+
+\end{questions}
+\end{solution}
+
+
+
+\section*{Comparaison de Deux Ampoules : Flux Lumineux, Rendement Énergétique, Rendu des Couleurs et Température de Couleur}
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.6\linewidth]{/Users/nicolasbancel/git/education_suger/01_1ères_STD2A_pc/chap5_lumiere/a_corriger/exo_20.jpg}
+      \captionsetup{labelformat=empty}
+    \end{figure}
+
+    \begin{solution}
+\begin{questions}
+
+\subsection*{Question 1 : Quelle ampoule produit le plus grand flux de lumière ?}
+
+En comparant les deux étiquettes :
+\begin{compactitem}
+    \item L'ampoule \textbf{Lampodule} produit un flux lumineux de \SI{1700}{lm}.
+    \item L'ampoule \textbf{Photolux} produit un flux lumineux de \SI{2300}{lm}.
+\end{compactitem}
+
+La réponse est que l'ampoule \textbf{Photolux} produit le plus grand flux de lumière, avec \SI{2300}{lm}.
+
+\subsection*{Question 2 : Quelle ampoule possède le meilleur rendement énergétique ?}
+
+Le rendement énergétique est indiqué par la classe énergétique :
+\begin{compactitem}
+    \item L'ampoule \textbf{Lampodule} est classée \textbf{A}.
+    \item L'ampoule \textbf{Photolux} est classée \textbf{C}.
+\end{compactitem}
+
+La réponse est que l'ampoule \textbf{Lampodule} possède le meilleur rendement énergétique, avec une classe \textbf{A}.
+
+\subsection*{Question 3 : Quelle ampoule donne le meilleur rendu des couleurs ?}
+
+Le rendu des couleurs est mesuré par l'IRC (Indice de Rendu de Couleur) :
+\begin{compactitem}
+    \item L'ampoule \textbf{Lampodule} a un IRC de \num{75}.
+    \item L'ampoule \textbf{Photolux} a un IRC de \num{95}.
+\end{compactitem}
+
+La réponse est que l'ampoule \textbf{Photolux} donne le meilleur rendu des couleurs, avec un IRC de \num{95}.
+
+\subsection*{Question 4 : Quelle ampoule émet la teinte la plus chaude ?}
+
+La teinte de la lumière est donnée par la température de couleur en Kelvin (K) :
+\begin{compactitem}
+    \item L'ampoule \textbf{Lampodule} a une température de couleur nominalement à \SI{5300}{K} (plus froide).
+    \item L'ampoule \textbf{Photolux} a une température de couleur nominalement à \SI{3000}{K} (plus chaude).
+\end{compactitem}
+
+La réponse est que l'ampoule \textbf{Photolux} émet la teinte la plus chaude, avec une température de couleur de \SI{3000}{K}.
+
+\end{questions}
+\end{solution}
+
+\end{document}

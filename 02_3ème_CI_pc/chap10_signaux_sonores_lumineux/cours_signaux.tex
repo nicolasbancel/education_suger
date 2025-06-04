@@ -1,0 +1,230 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% \definecolor{SectionColor}{HTML}{1A73E8}      % Blue
+% \definecolor{SubsectionColor}{HTML}{EA4335}   % Red
+
+
+% Apply colors to section titles
+\sectionfont{\color{blue}}
+\subsectionfont{\color{magenta}}
+
+\title{Chapitre 12 - Cours sur les signaux sonores et lumineux}
+\author{N. Bancel}
+\date{Mai 2025}
+
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025 - 3ème trimestre}
+\hfill
+\textbf{3ème CI} \par
+
+{\let\newpage\relax\maketitle}
+
+%\begin{center}
+%\textbf{\textcolor{red}{Infos importantes}} \\
+%\end{center}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Concepts importants à retenir]
+  \begin{compactitem}
+    \item Unités de mesure de la fréquence et du volume sonore 
+    \item Comprendre le principe des domaines de l'audible.
+    \item Principes des sonars et des lasers. Réflexions et application de la formule de $v=\frac{d}{t}$ en fonction des situations
+  \end{compactitem}
+\end{tcolorbox}
+
+\section*{Signaux sonores}
+
+\subsection*{Production et propagation du son}
+
+\begin{compactitem}
+\item Le son est une sensation auditive. Pour créer un son, il faut mettre un objet en vibration, par exemple, une corde que l’on va pincer, ou alors la membrane d’un haut-parleur qui va vibrer.
+\item Le son ne se propage pas dans le vide (on n'entend pas de bruit dans l'espace)
+\end{compactitem}
+
+\subsection*{Fréquence}
+
+
+Il existe des \textbf{sons aigus} et des \textbf{sons graves}.  
+Ce qui fait la différence entre ces deux sons, c’est la \textbf{fréquence} qui caractérise un son.  
+La fréquence se note \textbf{f}, elle s’exprime en \textbf{hertz} noté \textbf{Hz}.  
+
+\vspace{1em}
+
+\begin{compactitem}
+\item \textcolor{blue}{\textbf{Plus la fréquence d’un son augmente}, plus le son est \textbf{aigu}.}  
+\item \textcolor{blue}{\textbf{Plus la fréquence diminue}, plus le son est \textbf{grave}.}
+\end{compactitem}
+
+\vspace{1em}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\linewidth]{img/audible.png}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} Domaines de l'audible}
+\end{figure}
+
+\begin{compactitem}
+  \item Fréquence au-dessus de \textbf{20 000 Hz} : \textbf{ultrasons}, inaudibles pour l’humain.
+  \item Fréquence en dessous de \textbf{20 Hz} : \textbf{infrasons}, également inaudibles.
+  \item Fréquence entre \textbf{20 Hz} et \textbf{20 000 Hz} : \textbf{domaine audible} (valeurs moyennes).
+\end{compactitem}
+
+\subsection*{Application}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\linewidth]{img/extrait_brevet_2024.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} \textit{Extrait du sujet de brevet 2024}}
+\end{figure}
+
+
+\subsection*{Intensité / Niveau sonore}
+
+\textbf{Le niveau sonore} indique l’intensité d’un son. Il s’exprime en \textbf{décibels (dB)}.
+
+\begin{compactitem}
+  \item Plus le niveau est élevé, plus le son est fort.
+  \item Un son fort écouté longtemps peut \textbf{endommager l’oreille}.
+  \item Des \textbf{échelles en dB} permettent de comparer les bruits (chuchotement, circulation, concert...).
+\end{compactitem}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\linewidth]{img/niveau_sonore.png}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} Niveaux sonores}
+\end{figure}
+
+\section*{Mesure de distance avec le son et la lumière}
+
+\subsection*{Principe de mesure par écho}
+
+On utilise deux propriétés du son et de la lumière :
+\begin{itemize}
+  \item Leur \textbf{propagation en ligne droite},
+  \item Leur \textbf{réflexion sur certains objets}.
+\end{itemize}
+
+Le principe est le suivant :
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{img/er_2.png}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} Schéma de principe : émetteur, récepteur, et objet réfléchissant}
+\end{figure}
+
+On place un \textbf{émetteur} et un \textbf{récepteur} au même endroit (ici, le téléscope joue ce rôle). Un \textbf{objet réfléchissant} est situé à une certaine distance. Le signal (son ou lumière) fait un aller-retour entre l’émetteur et l’objet. On mesure la durée $\Delta t$ de cet aller-retour.
+
+\subsection*{Evaluation de la distance}
+
+\textit{On suppose que le signal se propage à la vitesse de la lumière $c$ dans le milieu considéré. On mesure le temps entre le moment où le signal est émis et où il est de retour sur le téléscope. Comment évaluer la distance entre le téléscope et l’objet (et donc entre la terre et la lune) en fonction des données suivantes
+\begin{compactitem}
+  \item la vitesse de la lumière dans le vide $c = 3{,}00 \times 10^8$ m/s,
+  \item le temps mesuré $\Delta t$.
+\end{compactitem}
+}
+
+\vspace{6em}
+
+\subsection*{Application : la distance terre-lune}
+
+
+Les astronautes ont placé un \textbf{réflecteur} sur la Lune. Un \textbf{laser} est envoyé depuis la Terre, se réfléchit sur la Lune, et revient.
+
+\begin{compactitem}
+  \item Durée de l’aller-retour : $\Delta t = 2{,}43$ s
+  \item Vitesse de la lumière : $c = 300\,000$ km/s
+\end{compactitem}
+
+\vspace{6em}
+
+\subsection*{Situation sans aller retour}
+
+Attention, dans certaines situations, il n'y a pas de notion d'aller-retour entre l'émetteur et le récepteur.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{img/er_1.png}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} \textit{Schéma de principe : émetteur, récepteur sans retour}}
+\end{figure}
+
+Formule à utiliser : 
+
+\[
+v = \frac{d}{t}
+\]
+
+où d est simplement la distance entre l'émetteur et le récepteur.
+
+\subsection*{Application : La bouée - Partie 2}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/extrait_brevet_2024_2.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} \textit{Extrait du sujet de brevet 2024}}
+\end{figure}
+
+\subsection*{Application 2 : Fonds marin}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/extrait_brevet_2024_3.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} \textit{Extrait du sujet de brevet 2024}}
+\end{figure}
+
+\textbf{Question supplémentaire} : Si la profondeur était de 1.5 kilomètres. Combien de temps mettrait le signal sonore à faire son aller-retour ? 
+
+\subsection*{Application 3 : Le tonnerre - Question ouverte}
+
+
+On considère que la lumière produite par la foudre parvient quasi instantanément à l'observateur.  
+Supposons qu'il s'écoule un laps de temps de 0,5 seconde entre le moment où l'éclair est observé et celui où le tonnerre est entendu.
+
+\vspace{1em}
+En considérant que la vitesse du son dans l'air est de 340 m/s, à quelle distance de l'observateur la foudre est-elle tombée ?
+
+\vspace{1em}
+
+En déduire un moyen mnémotechnique lié à la foudre, du type :  
+\textit{"Chaque seconde que je compte entre le moment où je vois la foudre et celui où j'entends le tonnerre correspond à environ …… mètres de distance."}
+
+
+\section*{Exercices pour s'entrainer}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{img/IMG_4576.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} \textit{Exercice 1 : L'échographie}}
+\end{figure}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{img/IMG_4578.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} \textit{Exercice 2 : Calculer une durée}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{img/IMG_4577.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} \textit{Exercice 3 : La mission Rosetta}}
+\end{figure}
+
+
+\end{document}

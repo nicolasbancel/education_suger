@@ -27,8 +27,15 @@ EXERCICE_KEYS = {
     "questions_exercice": list,
 }
 
+"""
 QUESTION_PATTERN = re.compile(
     r"(\\question(?:\[[^\]]*\])?\s*)(?P<qtext>.*?)(?=(\\question|\\section|\\subsection|\\end\{document\}|\Z))",
+    re.DOTALL,
+)
+"""
+
+QUESTION_PATTERN = re.compile(
+    r"\\question(?:\[(?P<points>[^\]]+)\])?\s*(?P<qtext>.*?)(?=(\\question|\\part|\\section|\\subsection|\\end\{document\}|\Z))",
     re.DOTALL,
 )
 
@@ -87,6 +94,12 @@ def extract_exercises_from_latex(latex_file_path: str) -> List[Dict]:
         questions = []
         for j, q in enumerate(question_matches):
             qtext = q.group("qtext").strip()
+            points_raw = q.group("points")
+            try:
+                points = float(points_raw) if points_raw is not None else None
+            except ValueError:
+                points = None
+
             marker = f"Q{j+1}E{numero_exercice}"
 
             # Toutes les images dans la question
@@ -100,6 +113,7 @@ def extract_exercises_from_latex(latex_file_path: str) -> List[Dict]:
                     "enonce": qtext,
                     "solution": "",
                     "marker": marker,
+                    "points": points,
                     "image_paths": image_paths_q,
                 }
             )

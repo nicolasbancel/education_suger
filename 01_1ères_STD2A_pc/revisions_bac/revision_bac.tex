@@ -1,0 +1,361 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\SetLabelAlign{myright}{\hss\llap{$#1$}}
+\newlist{where}{description}{1}
+\setlist[where]{labelwidth=2cm,labelsep=1em,
+                leftmargin=!,align=myright,font=\normalfont}
+
+
+% \definecolor{SectionColor}{HTML}{1A73E8}      % Blue
+% \definecolor{SubsectionColor}{HTML}{EA4335}   % Red
+
+\DeclareUnicodeCharacter{202F}{FIX ME!!!!}
+
+% Apply colors to section titles
+\sectionfont{\color{blue}}
+\subsectionfont{\color{magenta}}
+
+\title{Révisions du BAC - Physique-Chimie}
+\author{N. Bancel}
+\date{Mai 2025}
+
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Physique-Chimie} \\
+
+\textbf{Année 2024-2025 - 3ème trimestre}
+\hfill
+\textbf{1ères STD2A} \par
+
+{\let\newpage\relax\maketitle}
+
+%\begin{center}
+%\textbf{\textcolor{red}{Infos importantes}} \\
+%\end{center}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Concepts importants à retenir]
+  \begin{compactitem}
+    \item Taux d'évolution d'une grandeur
+    \item Pourcentages
+    \item Fractions irréductibles
+    \item Equations du 1er degré
+  \end{compactitem}
+\end{tcolorbox}
+
+\section*{L'énergie / Les ondes électromagnétiques}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Méthode, breakable]
+  \textbf{Étapes à suivre pour relier énergie, fréquence et longueur d'onde d'un photon :}
+  \begin{compactitem}
+    \item \textbf{Relier énergie et fréquence :} Utiliser la relation $E = h \times \nu$ pour calculer la fréquence $\nu$ (en \si{\hertz}), si l'énergie $E$ est donnée (la constante de Planck $h$ est \textbf{toujours} donnée).
+    \item \textbf{Déduire la longueur d'onde à partir de la fréquenc :} Utiliser $\lambda = \dfrac{c}{\nu}$ pour trouver la longueur d'onde $\lambda$ (en \si{\meter}).
+    \item \textbf{Convertir la longueur d'onde en nanomètre :} $1\,\text{nm} = \SI{1e-9}{\meter}$.
+    \item \textbf{Identifier le type de rayonnement :} Comparer la longueur d'onde obtenue avec les domaines connus :
+    \begin{compactitem}
+      \item Infrarouge : $\lambda > \SI{700}{\nano\meter}$
+      \item Visible : $\SI{400}{\nano\meter} \leq \lambda \leq \SI{700}{\nano\meter}$
+      \item Ultraviolet : $\lambda < \SI{400}{\nano\meter}$
+    \end{compactitem}
+  \end{compactitem}
+  \end{tcolorbox}
+
+  \textcolor{red}{Il est aussi important de connaître les types d'ondes électro magnétiques, et les longueurs d'ondes essentielles}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\linewidth]{img/03.png}
+\end{figure}
+
+\subsection*{Exemple d'exercice corrigé}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/01.jpg}
+  \caption*{\textit{Extrait de BAC STD2A 2019}}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/02.jpg}
+\end{figure}
+
+
+Donnée : $E = \SI{1.42e-19}{\joule}$
+Constante de Planck : $h = \SI{6.63e-34}{\joule\second}$
+
+\vspace{0.5em}
+
+\textbf{1. Calcul de la fréquence :}
+\[
+\nu = \dfrac{E}{h} = \dfrac{\SI{1.42e-19}{\joule}}{\SI{6.63e-34}{\joule\second}} \approx \SI{2.14e14}{\hertz}
+\]
+
+\vspace{0.5em}
+
+\textbf{2. Calcul de la longueur d'onde :}
+\[
+\lambda = \dfrac{c}{\nu} = \dfrac{\SI{3.00e8}{\meter\per\second}}{\SI{2.14e14}{\hertz}} \approx \SI{1.40e-6}{\meter}
+\]
+
+\[
+\lambda = \SI{1.40e-6}{\meter} = \SI{1400}{\nano\meter}
+\]
+
+\vspace{0.5em}
+
+\textbf{3. Conclusion :}
+
+$\SI{1400}{\nano\meter} > \SI{700}{\nano\meter}$, donc il s'agit bien d'un rayonnement \textbf{infrarouge}.
+
+\subsection*{Exercice à faire vous-même}
+
+\vspace{1em}
+\textit{Extrait du BAC 2019 - Polynésie}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{img/04.jpg}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \fbox{\includegraphics[width=0.8\linewidth]{img/05.jpg}}
+\end{figure}
+
+\section*{Ondes électromagnétiques - Définitions à connaître par coeur}
+
+\begin{tabular}{p{0.28\textwidth} p{0.68\textwidth}}
+  \toprule
+  \textbf{Terme} & \textbf{Définition} \\
+  \midrule
+  \textbf{Lumière (modèle ondulatoire)} & 
+  La lumière peut être décrite comme une onde électromagnétique qui se propage dans le vide et engendre une variation locale du champ électrique et magnétique.
+  Direction de propagation de l’énergie de cette onde : rayon lumineux. \\
+  
+  \midrule
+
+  \textbf{Lumière (modèle particulaire)} &
+  La lumière est également décrite comme un ensemble de particules appelées \textbf{photons}. Un rayon lumineux est alors la trajectoire de propagation de ces particules de masse nulle se déplaçant dans la vide à la vitesse de la lumière : $c$ \\
+
+  \midrule
+  
+  \textbf{Photon} &
+  Un photon est une particule de lumière, sans masse, sans charge, qui transporte une énergie proportionnelle à la fréquence de l’onde associée : $E = h \times \nu$. \\
+  \midrule
+  
+  \textbf{Rayonnements invisibles utilisés en peinture} &
+  Les rayonnements \textbf{infrarouges} (IR) et \textbf{ultraviolets} (UV) sont souvent utilisés pour révéler des couches sous-jacentes dans les œuvres picturales, comme les dessins préparatoires ou les restaurations anciennes. \\
+  \midrule
+  
+  \textbf{Limites du spectre visible} &
+  La lumière visible correspond aux longueurs d’onde comprises entre \SI{400}{\nano\meter} (violet) et \SI{750}{\nano\meter} (rouge). En dessous, on parle d’ultraviolet ; au-dessus, d’infrarouge. \\
+  \bottomrule
+  \end{tabular}
+
+  \section*{Les métaux}
+
+
+\begin{tabular}{p{0.28\textwidth} p{0.68\textwidth}}
+  \toprule
+  \textbf{Terme} & \textbf{Définition} \\
+  \midrule
+  \textbf{Composition du verre} & 
+  Le verre est principalement composé de silice (dioxyde de silicium) \ce{SiO_2} \\
+  \midrule
+
+  \textbf{Solide amorphe} &
+  Solide dont la structure d'atomes n'est pas régulière (contrairement à un solide cristallin) \\
+
+  \midrule
+  
+  \textbf{Transition vitreuse} &
+  Le phénomène de transition vitreuse consiste en un passage d'un état caoutchouteux à un état vitreux, solide (et inversement)
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{img/06.jpg} 
+  \end{figure} \\
+
+  \midrule
+  
+  \textbf{Céramique} &
+  Ensemble des matériaux inorganiques, non métalliques et qui nécessitent de hautes températures lors de leur fabrication. Structure généralement cristalline. \\
+  \midrule
+  
+  \textbf{Propriétés des céramiques} &
+  \begin{compactitem}
+    \item Les céramiques sont généralement très rigide
+    \item Elles ont une température de fusion très élevée, supérieure à 2000°C.
+    \item Insensibles à la corrosion
+    \item Bonne résistance à l'usure
+    \item Inertes chimiquement, bons isolants
+  \end{compactitem} \\
+  \bottomrule
+  \end{tabular}
+  
+
+\section*{Les métaux}
+
+
+\begin{tabular}{p{0.28\textwidth} p{0.68\textwidth}}
+  \toprule
+  \textbf{Terme} & \textbf{Définition} \\
+  \midrule
+  \textbf{Métal pur} & 
+  Métal composé d'un seul élément chimique. Exemple Fer \ce{Fe}, Or \ce{Au}, Argent \ce{Ag}. \\
+  \midrule
+
+  \textbf{Alliage} &
+  Métal composé d'au moins deux éléments chimiques \\
+  \midrule
+  
+  \textbf{Composition de l'acier} &
+  Fer + Carbone \\
+
+  \midrule
+
+  \textbf{Composition du bronze} &
+  Cuivre + Etain \\
+  
+  \bottomrule
+  \end{tabular}
+
+
+  \section*{Les autres types de matériaux}
+
+
+\begin{tabular}{p{0.28\textwidth} p{0.68\textwidth}}
+  \toprule
+  \textbf{Terme} & \textbf{Définition} \\
+  \midrule
+  \textbf{Matériau organique} & 
+  Matériau dont la molécule est composée d'un squelette carboné (constitué d'atomes de carbones liés les uns aux autres) \\
+  \midrule
+
+  \textbf{Matériau composite} &
+  Combinaison d'au moins deux matériaux différents, \textbf{non miscibles}. Permet de combiner les avantages de chacun des composants. Il est composé de
+  \begin{compactitem}
+    \item \textbf{Un renfort} : squelette du matériau. Assure la solidité (exemples : fibres, cailloux dans béton)
+    \item \textbf{Une matrice} : Enveloppe le renfort, assure la cohésion du matériau
+  \end{compactitem}
+  Exemple de matériau composite : le béton armé \\
+  \midrule
+  
+  \textbf{Composition de l'acier} &
+  Fer + Carbone \\
+
+  \midrule
+
+  \textbf{Composition du bronze} &
+  Cuivre + Etain \\
+  
+  \bottomrule
+  \end{tabular}
+  
+  \section*{La photographie}
+
+ \subsection*{Formules essentielles}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black,
+                  title=Formules essentielles en optique photographique, breakable]
+\begin{compactitem}
+  \item \textbf{Relation de conjugaison (lentille mince)} :\\
+        \[
+        \frac{1}{\overline{OA'}} - \frac{1}{\overline{OA}} = \frac{1}{f'}
+        \]\\
+        \vspace{1em}
+        avec \emph{distances algébriques} orientées vers la droite.
+        \begin{compactitem}
+          \item \(\overline{OA}\) : distance objet (positive si objet réel, négative si virtuel).
+          \item \(\overline{OA'}\) : distance image (positive si réelle, négative si virtuelle).
+          \item \(f'\) : distance focale (positive pour lentille convergente, négative pour divergente).
+        \end{compactitem}
+
+  \item \textbf{Grandissement (rapport linéaire)} :\\
+        \[
+        \gamma
+           = \frac{\overline{A'B'}}{\overline{AB}}
+           = \frac{\overline{OA'}}{\overline{OA}}
+          \]\\
+    \begin{compactitem}
+    \item Si $\gamma<1$ l’image est réduite par rapport à la taille de l'objet
+    \item Si $\gamma>1$ elle est agrandie.
+    \end{compactitem}
+  \item \textbf{Nombre d’ouverture} :\\
+        \[
+          N = \frac{f'}{D}
+        \]\\
+        \vspace{1em}
+        avec \(D\) le diamètre du diaphragme, et f' est la distance focale.
+        \begin{compactitem}
+          \item Formule inverse : 
+          \[
+            D = \dfrac{f'}{N}
+          \]
+          \item Quand \(N\) \emph{augmente} \(\Rightarrow\) \(D\) \emph{diminue} \(\Rightarrow\) moins de lumière atteint le capteur.
+          \item Quand \(N\) \emph{diminue} \(\Rightarrow\) \(D\) \emph{augmente} \(\Rightarrow\) plus de lumière atteint le capteur.
+        \end{compactitem}
+
+  \item \textbf{Flux lumineux (stops)} :\\
+        Passer d’un nombre d’ouverture au suivant (par ex. \(N = 4 \rightarrow N = 5{,}6\)) divise par 2 la quantité de lumière reçue ; l’opération inverse la multiplie par 2. Un « stop » = un facteur 2 de flux lumineux.
+\end{compactitem}
+\end{tcolorbox}
+
+\subsection*{Méthode – vérifier qu'un sujet tient sur le capteur}
+
+\begin{tcolorbox}[colback=blue!10!white, colframe=blue!75!black, title=Méthode : le sujet tient‑il dans l’image ?, breakable]
+\textbf{Étapes à suivre :}
+\begin{compactitem}
+\item Mesurer ou relever la distance objet‑lentille (OA) .
+\item Calculer OA' via la relation de conjugaison.
+\item Déterminer le grandissement : $\frac{OA'}{OA}$
+\item Grâce à l'énoncé, on a la longueur / hauteur de l'objet (AB) (c'est la taille de l'objet photographié)
+\item En déduire la hauteur (ou largeur) de l’image : (A'B') .
+\item Comparer  aux dimensions utiles du capteur.
+\item Si l’image est plus grande que le capteur, elle ne peut pas être intégralement capturée sur la photo 
+\item Pour la faire rentrer : reculer l’appareil ou choisir une focale plus courte.
+\end{compactitem}
+\end{tcolorbox}
+
+\subsection*{Définitions}
+
+\begin{tabular}{p{0.35\textwidth} p{0.68\textwidth}}
+\toprule
+\textbf{Terme} & \textbf{Définition} \\
+\midrule
+\textbf{ISO} & Sensibilité du capteur ; un ISO élevé permet d’exposer avec moins de lumière mais accroît le bruit numérique. \\
+\midrule
+\textbf{Distance focale } & Distance entre le centre optique et le foyer image d’une lentille ou d’un objectif. Elle fixe l’angle de champ (courte focale : grand angle, longue focale : téléobjectif). \\
+\midrule
+\textbf{Diaphragme} & Orifice circulaire de l’objectif dont le diamètre  règle la quantité de lumière et la profondeur de champ ; relié à  par . \\
+\midrule
+\textbf{Profondeur de champ} & Intervalle de distances où les objets sont nets. Elle diminue quand on ouvre le diaphragme (petit ), allonge la focale ou rapproche le sujet. \\
+\midrule
+\textbf{Grandissement } & Rapport de la taille de l’image sur la taille de l’objet ; permet de vérifier qu’un sujet tient sur le capteur. \\
+\midrule
+\textbf{Capteur} & Surface photosensible (ex. : \SI{23.5}{\milli\metre} × \SI{15.6}{\milli\metre} en APS‑C) qui convertit la lumière en signal numérique. \\
+\midrule
+\textbf{Image} & Reproduction optique formée par l’objectif sur le capteur ; codée en pixels. \\
+\midrule
+\textbf{Pixel} & Plus petite unité d’une image ou d’un capteur ; stocke l’information de couleur et de luminosité. \\
+\midrule
+\textbf{Définition (de l'image ou du capteur)} & Nombre total de pixels : \(N_{\text{px}} = N_x \times N_y\), où \\
+& \(N_x\) est le nombre de pixels horizontaux \\
+& \(N_y\) le nombre de pixels verticaux ; \\
+& Le résultat s’exprime généralement en mégapixels (Mpx). \\
+\midrule
+\textbf{Nombre d’ouverture \(N\)} & \(N = f'/D\) avec \(D\) diamètre du diaphragme. Si \(N\) augmente \(\Rightarrow\) \(D\) diminue \(\Rightarrow\) moins de lumière passe. \\
+\midrule
+\textbf{Temps de pose \(t\)} & Durée pendant laquelle l’obturateur est ouvert ; doubler \(t\) double la lumière reçue. \\
+\midrule
+\textbf{DPI (dots per inch)} & Résolution d’impression : nombre de points par pouce ; plus le DPI est élevé, plus l’impression est fine. \\
+\bottomrule
+\end{tabular}
+
+
+\end{document}

@@ -1,0 +1,117 @@
+[
+  {
+    "numero_exercice": 1,
+    "titre_exercice": "Partie 1 : La peinture",
+    "enonce_exercice": "\\begin{questions}",
+    "image_paths": [],
+    "questions_exercice": [
+      {
+        "enonce": "Brièvement définir chacun des constituants de la peinture, et donner un exemple (reproduire sur votre copie et remplir le tableau)\n\n  \\begin{center}\n    \\begin{tabular}{|>{\\bfseries}l|p{7cm}|p{4cm}|}\n    \\hline\n    Constituant & Définition & Exemple \\\\\n    \\hline\n    Liant &  &  \\\\\n    \\hline\n    Diluant / Solvant &  &  \\\\\n    \\hline\n    Pigment & &  \\\\\n    \\hline\n    Charges &  &  \\\\\n    \\hline\n    Additifs &  &  \\\\\n    \\hline\n    \\end{tabular}\n    \\end{center}",
+        "solution": "\\begin{solution}\n\n\n\\subsection*{Constituants de la peinture}\n\n\\begin{center}\n\\begin{tabular}{|>{\\bfseries}l|p{7cm}|p{4cm}|}\n\\hline\nConstituant & Définition & Exemple \\\\\n\\hline\nLiant & Le liant est utilisé pour fixer les pigments et permettre à la peinture d'adhérer à la surface sur laquelle elle est appliquée. & Résine acrylique \\\\\n\\hline\nDiluant / Solvant & Le diluant, ou solvant, est utilisé pour ajuster la viscosité de la peinture et faciliter son application. & Eau (pour les peintures acryliques) \\\\\n\\hline\nPigment & Les pigments sont des substances colorantes qui donnent à la peinture sa couleur. & Oxyde de titane \\\\\n\\hline\nCharges & Les charges sont des matériaux qui améliorent certaines propriétés de la peinture, comme sa texture ou son pouvoir couvrant. & Carbonate de calcium \\\\\n\\hline\nAdditifs & Les additifs sont utilisés pour modifier les propriétés de la peinture, telles que le temps de séchage ou la résistance aux intempéries. & Agents anti-UV \\\\\n\\hline\n\\end{tabular}\n\\end{center}\n\n\n\\end{solution}",
+        "marker": "Q1E1",
+        "points": 4.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Que signifie une peinture \"sans solvant\" ?",
+        "solution": "\\begin{solution}\n\n\\subsection*{Peinture \"sans solvant\"}\n\nUne peinture \"sans solvant\" signifie une peinture qui ne contient pas de diluant utilisé pour ajuster sa viscosité. Les peintures sans solvant sont formulées pour minimiser l'émission de composés organiques volatils (COV) dans l'atmosphère. Elles sont souvent à base d'eau, ce qui les rend plus respectueuses de l'environnement et moins nocives pour la santé.\n\n\\end{solution}",
+        "marker": "Q2E1",
+        "points": 1.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Expliquer la différence entre le séchage par évaporation et le séchage par siccavation.",
+        "solution": "\\begin{solution}\n\n\\subsection*{Différence entre séchage par évaporation et séchage par siccavation}\n\n\\begin{compactitem}\n    \\item \\textbf{Séchage par évaporation} :\n    \\begin{compactitem}\n        \\item Le séchage par évaporation est un processus physique où le solvant de la peinture s'évapore.\n        \\item Ce type de séchage dépend de la température et de la ventilation.\n        \\item Aucune réaction chimique n'est impliquée; seul le solvant quitte le film de peinture.\n    \\end{compactitem}\n    \n    \\item \\textbf{Séchage par siccavation} :\n    \\begin{compactitem}\n        \\item Le séchage par siccavation est un processus chimique où la peinture durcit grâce à l'oxydation du liant.\n        \\item Ce processus implique une réaction chimique, généralement l’oxydation d’huiles ou de résines naturelles.\n        \\item Le séchage dépend de l'oxygène présent dans l'air, et non de l'évaporation.\n    \\end{compactitem}\n\\end{compactitem}\n\nAinsi, la principale différence réside dans le fait que le séchage par évaporation est un processus physique nécessitant l'évaporation du solvant, tandis que le séchage par siccavation est un processus chimique impliquant la durcissement du liant via l'oxydation.\n\n\\end{solution}",
+        "marker": "Q3E1",
+        "points": 1.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Indiquer la différence entre le pigment et le colorant.\n\n  \\end{questions}",
+        "solution": "\\begin{solution}\n\n\\subsection*{Différence entre pigment et colorant}\n\n\\begin{compactitem}\n    \\item \\textbf{Pigment} : \n    \\begin{compactitem}\n        \\item Les pigments sont des substances en poudre qui ne se dissolvent pas dans le milieu qu'ils colorent.\n        \\item Ils sont insolubles et restent en suspension dans un liant.\n        \\item Les pigments sont souvent utilisés pour leur capacité à fournir une couleur intense et durable.\n    \\end{compactitem}\n    \n    \\item \\textbf{Colorant} :\n    \\begin{compactitem}\n        \\item Les colorants sont des substances qui se dissolvent dans le milieu qu'elles colorent.\n        \\item Ils sont solubles, ce qui permet une dispersion uniforme de la couleur.\n        \\item Les colorants peuvent être utilisés pour teindre des liquides ou des matériaux où une solution homogène est requise.\n    \\end{compactitem}\n\\end{compactitem}\n\nAinsi, la distinction principale réside dans la solubilité : les pigments sont insolubles et restent en suspension, alors que les colorants sont solubles et se dissolvent dans le milieu.\n\n\\end{solution}",
+        "marker": "Q4E1",
+        "points": 2.0,
+        "image_paths": []
+      }
+    ]
+  },
+  {
+    "numero_exercice": 2,
+    "titre_exercice": "Partie 2 : Les minéraux",
+    "enonce_exercice": "\\begin{questions}",
+    "image_paths": [],
+    "questions_exercice": [
+      {
+        "enonce": "Qu'est ce qu'un solide amorphe ?",
+        "solution": "\\begin{solution}\nUn solide amorphe est un type de solide qui, contrairement aux cristaux, ne présente pas de structure ordonnée à l'échelle microscopique. Dans un solide amorphe, les atomes ou molécules sont disposés de manière aléatoire, ce qui signifie qu'il n'y a pas de répétition régulière d'un motif sur de longues distances. Cette absence d'ordre cristallin donne aux solides amorphes des propriétés physiques distinctes, telles qu'une absence de points de fusion nets.\n\n\\subsection*{Conclusion}\n\nLes solides amorphes sont courants dans la nature et dans les matériaux fabriqués par l'homme, tels que le verre, les plastiques, et certains types de gels. Leur structure irrégulière rend ces solides généralement moins rigides et plus malléables que les solides cristallins.\n\\end{solution}",
+        "marker": "Q1E2",
+        "points": 2.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Quel est le principal composant du verre ?",
+        "solution": "\\begin{solution}\nLe principal composant du verre est la silice, \\ce{SiO2}.  \n\n\\subsection*{Conclusion}\n\nLa silice est un composé chimique formé de silicium et d'oxygène, qui constitue la majorité de la composition du verre. Sa structure amorphe, où les atomes ne sont pas arrangés de manière régulière, confère au verre ses propriétés uniques, telles que la transparence et la résistance aux intempéries.\n\\end{solution}",
+        "marker": "Q2E2",
+        "points": 2.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Qu'est ce que la température de transition vitreuse ? On pourra s'aider d'un schéma pour justifier.",
+        "solution": "\\begin{solution}\nLa température de transition vitreuse, notée souvent \\( T_g \\), est une température caractéristique des matériaux amorphes, tels que le verre et certains polymères. Elle marque la transition de l'état de solide \"rigide\" à un état plus \"caoutchouteux\" ou visqueux. Cette transition ne correspond pas à un changement de phase net, comme une fusion, mais plutôt à un changement progressif des propriétés mécaniques et physiques du matériau lorsque sa température augmente.\n\n\\subsection*{Explication avec schéma}\n\n\\begin{center}\n  \\begin{tikzpicture}\n    % Axes\n    \\draw[->] (0,0) -- (6,0) node[anchor=west]{Température};\n    \\draw[->] (0,0) -- (0,4) node[anchor=south]{Volume spécifique};\n\n    % Ligne de transition\n    \\draw[thick, red] (0,0) .. controls (2,0.5) and (4,1.5) .. (6,3);\n\n    % Point de transition vitreuse\n    \\draw[dashed] (3,0) -- (3,2);\n\n    % Labels\n    \\node at (3,-0.3) {\\( T_g \\)};\n    \\node at (5,2.5) {État \"caoutchouteux\"};\n    \\node at (1,0.2) {État \"rigide\"};\n\n  \\end{tikzpicture}\n\\end{center}\n\n\\begin{addmargin}[2em]{1em}\n  \\begin{compactitem}\n      \\item La courbe représente le changement du volume spécifique du matériau avec l'augmentation de la température. \n      \\item En dessous de \\( T_g \\), le matériau est dans un état rigide.\n      \\item Au-dessus de \\( T_g \\), le matériau devient plus souple et visqueux.\n  \\end{compactitem}\n\\end{addmargin}\n\n\\subsection*{Conclusion}\n\nLa température de transition vitreuse est fondamentale pour déterminer les applications possibles des matériaux amorphes. Par exemple, pour un verre utilisé dans des applications architecturales, \\( T_g \\) doit être bien au-dessus des températures attendues dans cet environnement pour éviter toute déformation.\n\\end{solution}",
+        "marker": "Q3E2",
+        "points": 1.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Ce qui distingue une céramique d'un verre est que la céramique a une structure majoritairement cristalline. Citer 2 propriétés physiques intéressantes de la céramique.\n\n\\end{questions}",
+        "solution": "\\begin{solution}\nLes céramiques, du fait de leur structure majoritairement cristalline, possèdent plusieurs propriétés physiques intéressantes. En voici deux :\n\n\\begin{compactitem}\n    \\item \\textbf{Haute résistance mécanique :} Les céramiques sont généralement très dures et résistantes à la compression. Cette propriété en fait des matériaux idéaux pour des applications nécessitant une grande résistance à l'usure et à la déformation, comme les outils de coupe ou les revêtements de sol.\n\n    \\item \\textbf{Stabilité thermique :} Les céramiques conservent leurs propriétés mécaniques à des températures élevées. Elles présentent une faible dilatation thermique et sont souvent utilisées dans des environnements sujet à des variations de température importantes, comme les éléments réfractaires dans les fourneaux.\n\n\\end{compactitem}\n\nCes propriétés rendent les céramiques précieuses dans des domaines tels que l'électronique, l'aérospatial, et la construction.\n\\end{solution}",
+        "marker": "Q4E2",
+        "points": 1.0,
+        "image_paths": []
+      }
+    ]
+  },
+  {
+    "numero_exercice": 3,
+    "titre_exercice": "Partie 3 : La restauration",
+    "enonce_exercice": "\\begin{questions}",
+    "image_paths": [],
+    "questions_exercice": [
+      {
+        "enonce": "Quelle est la différence entre une méthode destructive et une méthode non destructive ? Donner un exemple de chaque.",
+        "solution": "\\begin{solution}\n\n\\subsection*{Différence entre méthode destructive et méthode non destructive}\n\nLors de l'analyse ou de la restauration d'un objet, il existe deux types de méthodes utilisées : les méthodes destructives et les méthodes non destructives.\n\n\\begin{compactitem}\n    \\item \\textbf{Méthode destructive :} \n        \\begin{addmargin}[4em]{1em}\n        Une méthode destructive implique l'altération ou la destruction partielle ou totale de l'objet analysé. Ces méthodes sont souvent utilisées lorsqu'une analyse précise et détaillée est nécessaire, par exemple, en chimie analytique pour déterminer la composition exacte d'un échantillon.\\\\\n        \\textit{Exemple :} L'analyse chimique par dissolution, où une partie de l'échantillon est dissoute pour en déterminer la composition.\n        \\end{addmargin}\n\n    \\item \\textbf{Méthode non destructive :} \n        \\begin{addmargin}[4em]{1em}\n        Une méthode non destructive permet de préserver l'intégrité de l'objet testé ou analysé. Ces techniques sont employées lorsque l'objet doit être conservé intact après l'analyse.\\\\\n        \\textit{Exemple :} L'imagerie par rayons X, utilisée pour examiner l'intérieur d'un objet sans causer de dommages.\n        \\end{addmargin}\n\\end{compactitem}\n\n\\end{solution}",
+        "marker": "Q1E3",
+        "points": 2.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Quel type d'information sur une oeuvre les méthodes vues en cours permettent-elles de déterminer ?",
+        "solution": "\\begin{solution}\n\n\\subsection*{Informations déterminées par les méthodes d'analyse}\n\nLes méthodes d'analyse vues en cours, qu'elles soient destructives ou non destructives, permettent de déterminer plusieurs types d'informations importantes sur une œuvre :\n\n\\begin{compactitem}\n    \\item \\textbf{Composition chimique :} Ces méthodes permettent de découvrir les matériaux et les substances utilisés dans l'œuvre, par exemple, les pigments dans une peinture.\n    \\item \\textbf{Structure interne :} Grâce à des techniques comme l'imagerie par rayons X, il est possible de visualiser les couches sous-jacentes ou la structure interne sans endommager l'œuvre.\n    \\item \\textbf{État de conservation :} Elles peuvent évaluer l'état de dégradation des matériaux, ce qui est essentiel pour planifier une restauration efficace.\n    \\item \\textbf{Techniques de fabrication :} Les analyses permettent aussi de comprendre les techniques et procédés utilisés par l'artiste, ce qui contribue à la valorisation historique de l'objet.\n\\end{compactitem}\n\nCes informations sont cruciales non seulement pour la préservation et la restauration des œuvres d'art, mais aussi pour enrichir notre compréhension historique et culturelle.\n\n\\end{solution}",
+        "marker": "Q2E3",
+        "points": 2.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Expliquer brièvement la méthode de datation au carbone 14",
+        "solution": "\\begin{solution}\n\n\\subsection*{Méthode de datation au carbone 14}\n\nLa datation au carbone 14 est une méthode utilisée pour déterminer l'âge d'objets organiques jusqu'à environ \\SI{50000}{ans}. Elle repose sur le principe de la décroissance radioactive du carbone 14, un isotope radioactif du carbone.\n\n\\begin{compactitem}\n    \\item \\textbf{Principe :} Le carbone 14 se forme dans l'atmosphère et est absorbé par les organismes vivants. Lorsque ceux-ci meurent, ils cessent de l'absorber, et le carbone 14 commence à se désintégrer à un taux constant.\n    \n    \\item \\textbf{Formule :} La méthode utilise la formule :\n    \\[\n    N(t) = N_0e^{-\\lambda t}\n    \\]\n    où \n    \\begin{addmargin}[4em]{1em}\n    \\begin{compactitem}\n        \\item [$N(t)$]: représente la quantité de carbone 14 à un instant $t$\n        \\item [$N_0$]: représente la quantité initiale de carbone 14\n        \\item [$\\lambda$]: est la constante de désintégration du carbone 14\n        \\item [$t$]: le temps écoulé depuis la mort de l'organisme\n    \\end{compactitem}\n    \\end{addmargin}\n    \n    \\item \\textbf{Conclusion :} En mesurant la quantité de carbone 14 restant dans l'échantillon et en utilisant la demi-vie connue du carbone 14 (\\SI{5730}{ans}), il est possible de calculer l'âge de l'échantillon.\n\\end{compactitem}\n\nLa datation au carbone 14 est une technique précieuse en archéologie et paléontologie pour dater des restes biologiques anciens.\n\n\\end{solution}",
+        "marker": "Q3E3",
+        "points": 1.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Donner les valeurs limites des longueurs d'onde du domaine visible.",
+        "solution": "\\begin{solution}\n\n\\subsection*{Longueurs d'onde du domaine visible}\n\nLe domaine visible du spectre électromagnétique correspond aux longueurs d'onde que l'œil humain peut percevoir. \n\nLes valeurs limites des longueurs d'onde du domaine visible sont environ :\n\n\\begin{compactitem}\n    \\item \\textbf{Limite inférieure :} \\SI{380}{\\nano\\meter} (violet)\n    \\item \\textbf{Limite supérieure :} \\SI{750}{\\nano\\meter} (rouge)\n\\end{compactitem}\n\nAinsi, le spectre visible s'étend grosso modo de \\SI{380}{\\nano\\meter} à \\SI{750}{\\nano\\meter}.\n\n\\end{solution}",
+        "marker": "Q4E3",
+        "points": 1.0,
+        "image_paths": []
+      },
+      {
+        "enonce": "Les rayonnements infrarouges sont invisibles pour l'oeil humain. Citer un autre type de rayonnement invisible utilisé dans l'étude d'oeuvres d'art.\n\n\\end{questions}",
+        "solution": "\\begin{solution}\n\n\\subsection*{Autre type de rayonnement invisible}\n\nEn plus des rayonnements infrarouges, un autre type de rayonnement invisible souvent utilisé dans l'étude des œuvres d'art est l'ultraviolet (UV). Le rayonnement UV permet de révéler des détails invisibles à l'œil nu, comme les retouches ou les couches de vernis. Il est souvent utilisé car il peut provoquer une fluorescence distinctive de certains matériaux, ce qui est utile pour l'analyse de la surface et de la composition des œuvres.\n\n\\end{solution}",
+        "marker": "Q5E3",
+        "points": 1.0,
+        "image_paths": []
+      }
+    ]
+  }
+]

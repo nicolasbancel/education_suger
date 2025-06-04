@@ -1,0 +1,39 @@
+from math import sqrt
+
+def dist(x,y,A):
+    return sqrt((x-A[0])**2 + (y-A[1])**2)
+
+def distance(d,A,pas):
+    d1 = dist(0,-d[2]/d[1],A)
+    d2 = dist(pas,(-d[2]-d[0]*pas)/d[1],A)
+
+    if d1 == d2:
+        return d1
+
+    if d2 < d1:
+        k = 1
+    else:
+        k = -1
+        d1,d2 = d2,d1
+
+    x = 0
+    while d2 <= d1:
+        x += k * pas
+        d1 = d2
+        d2 = dist(x,(-d[2]-d[0]*x)/d[1],A)
+
+    return d1
+
+
+def vraiedist(d,A):
+    d = (d[0]*A[0]+d[1]*A[1]+d[2])/ sqrt(d[0]**2 + d[1]**2)
+    if d < 0:
+        d *= -1
+    return d
+
+
+d = [2,-5,4]
+A = [3,1]
+
+print(distance(d,A,0.1))
+print(vraiedist(d,A))
