@@ -9,6 +9,23 @@ from pathlib import Path
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 
+try:
+    from dotenv import load_dotenv
+
+    # Cherche le .env à la racine du repo (un cran au-dessus de /src)
+    PROJECT_ROOT = Path(__file__).resolve().parents[1]
+    ENV_PATH = PROJECT_ROOT / ".env"
+    load_dotenv(dotenv_path=ENV_PATH, override=False)
+except Exception as e:
+    print(f"⚠️ Impossible de charger .env automatiquement ({e}).")
+
+# 1) --- Corriger le sys.path pour viser .../<repo>/src, pas .../src/src ---
+REPO_ROOT = (
+    Path(__file__).resolve().parents[1]
+)  # .../auto-correct-tool/auto-correct-tool
+SRC_DIR = REPO_ROOT / "src"
+if str(SRC_DIR) not in sys.path:
+    sys.path.append(str(SRC_DIR))
 
 from utils.helpers import (
     extract_class_and_subject_from_path,

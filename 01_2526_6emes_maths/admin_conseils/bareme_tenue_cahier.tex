@@ -1,0 +1,132 @@
+\documentclass[answers]{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\usepackage{ltablex}
+\keepXColumns
+
+
+\title{Barème de notation des cahiers}
+\author{N. Bancel}
+\date{2 Décembre 2025}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\definecolor{lavande}{RGB}{180,190,255}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de 6ème} \par
+
+{\let\newpage\relax\maketitle}
+
+%\begin{center}
+%  \textbf{\textcolor{blue}{Liste des attendus pour la tenue du cahier d'exercices et du lutin}}
+%\end{center}
+
+\vspace{0.5cm}
+
+\renewcommand{\arraystretch}{1.7}
+
+\newcolumntype{Y}{>{\hsize=0.7\hsize}X} % Colonne plus étroite
+\newcolumntype{Z}{>{\hsize=1.3\hsize}X} % Colonne plus large
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Nouveau tableau : colonnes larges pour Critère + Description
+\centering
+\begin{adjustbox}{width=1.2\textwidth, center}
+\begin{longtable}{|L{0.17\textwidth}|L{0.23\textwidth}|L{0.48\textwidth}|c|}
+\rowcolor{lavande}
+\hline
+\textbf{Catégorie} & \textbf{Critère évalué} & \textbf{Description} & \textbf{Points} \\[2pt]
+
+% ---------------- Cahier d'exercices ----------------
+\hline
+\multirow{3}{*}{Cahier d’exercices}
+  & Titres des exercices présents et soignés (+ utilisation de couleur)
+  & Les exercices comportent un titre clair, souligné ou encadré. Et une référence claire à l'endroit où retrouver l'exercice ("Exercice N°34 page 127 - Le livre scolaire" ou "Exercice d'application N°3 - Lutin" ou "Exercice N°2 - Fiche d'exercice")
+  & 2 \\
+  \cline{2-4}
+
+  & Ordres de grandeurs notés
+  & Les ordres de grandeur sont indiqués lorsque nécessaire (unités, puissances de 10, cohérence des résultats).
+  & 1 \\
+  \cline{2-4}
+
+  & Corrections notées (ou rattrapées en cas d'absence)
+  & Toutes les corrections sont recopiées, complétées ou rattrapées en cas d’absence, de manière lisible.
+  & 3 \\[6pt]
+  
+
+% ---------------- Lutin ----------------
+\hline
+\multirow{5}{*}{Lutin}
+  & Feuilles rangées dans l’ordre
+  & Les feuilles sont classées dans l’ordre attendu : leçons, exercices, évaluations…
+  & 1 \\
+  \cline{2-4}
+
+  & Chaque feuille imprimée dans un feuillet transparent (1 page par feuillet)
+  & Chaque feuille est protégée dans une pochette transparente, une seule par poche.
+  & 1 \\
+  \cline{2-4}
+
+  & Interrogations + calcul mental faciles à retrouver
+  & Les évaluations et exercices de calcul mental sont regroupés et rapidement identifiables.
+  & 2 \\
+  \cline{2-4}
+
+  & Cours complet (rien de manquant)
+  & Aucune feuille manquante : l’ensemble du cours est présent dans le lutin.
+  & 2 \\
+  \cline{2-4}
+
+  & Leçons, phrases, définitions recopiées correctement
+  & Le travail est propre : tracés à la règle ou compas, titres alignés, soin général.
+  & 2 \\[6pt]
+
+% ---------------- Général ----------------
+\hline
+\multirow{5}{*}{Général}
+  & Organisation générale (titres soulignés, couleurs…)
+  & Le cahier et le lutin sont organisés : titres visibles, couleur raisonnée, structure claire.
+  & 2 \\
+  \cline{2-4}
+
+  & Écriture soignée et lisible
+  & L’écriture est propre, lisible, régulière.
+  & 1 \\
+  \cline{2-4}
+
+  & Peu ou pas de ratures
+  & Les ratures sont limitées et propres, sans nuire à la lecture.
+  & 1 \\
+  \cline{2-4}
+
+  & Pas de feuilles volantes
+  & Aucune feuille glissée en vrac ; tout est rangé ou collé.
+  & 1 \\
+  \cline{2-4}
+
+  & Présence de prénom / nom // Identification facile du lutin
+  & Nom, prénom et classe sont visibles clairement.
+  & 1 \\[6pt]
+
+% ---------------- Total ----------------
+\hline
+\rowcolor{green!20}
+ & \textbf{Total} & \textbf{Note maximale possible} & \textbf{20} \\
+ \hline
+
+\end{longtable}
+\end{adjustbox}
+
+\end{document}

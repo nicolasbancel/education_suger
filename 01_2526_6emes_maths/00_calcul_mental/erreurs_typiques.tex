@@ -1,0 +1,227 @@
+\documentclass[answers]{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\title{Calcul mental - Erreurs typiques}
+\author{N. Bancel}
+\date{19 novembre 2025}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de 6ème} \par
+
+{\let\newpage\relax\maketitle}
+
+\begin{center}
+  \textbf{\textcolor{red}{Ce document recense les erreurs typiques que vous faites et comment y palier}} \\
+  
+\end{center}
+
+\section{Regroupements astucieux}
+
+\begin{compactitem}
+\item Vous devez essayer de tomber sur des résultats ronds, qui se terminent par 0 
+\item Identifiez les "termes compliqués" : traitez les en dernier.
+\item Cherchez des chiffres qui, combinés, donnent des nombres faciles à manipuler : $1$, $2$, $10$, $100$, $1000$, etc
+\item Ayez en tête les chiffres qui, quand ils s'additionnent, finissent par 0. Sur les additions : 
+  \begin{itemize}
+    \item Les nombres se terminant par $1$ se combinent bien avec ceux qui terminent par $9$
+    \item Les nombres se terminant par $2$ se combinent bien avec ceux qui terminent par $8$
+    \item Les nombres se terminant par $3$ se combinent bien avec ceux qui terminent par $7$
+    \item Les nombres se terminant par $4$ se combinent bien avec ceux qui terminent par $6$
+    \item Les nombres se terminant par $5$ se combinent bien avec ceux qui terminent par $5$
+  \end{itemize}
+  \item Ayez en tête les chiffres qui, quand ils se multiplient, finissent par 0. Sur les multiplications : 
+    \begin{itemize}
+    \item Les nombres se terminant par des chiffres pairs (0, 2, 4, 6, 8) se terminent par 0 quand on les multiplie par $5$
+    \end{itemize}
+  \item Ayez en tête quelques opérations très importantes : 
+  \[
+  0.5 \times 2 = 1 \\ \vspace{1em}
+  2.5 \times 4 = 10 \text{ car } 2.5 \times 2 = 2.5 + 2.5 = 5 \text{ et } 5 \times 2 = 10
+  \]
+\end{compactitem}
+
+
+\section{Division par 10, 100, 1000}
+
+Quand je divise un nombre en 10, 100, 1000 parts égales, chacune de ces parts est plus petite que le nombre de départ. \\
+
+\begin{compactitem}
+  \item $187 \div 100$ revient à se demander : si j'ai $187$€ et que je dois répartir équitablement ces $187$€ à 100 personnes, chaque personne aura bien moins que $187$€ chacun. Je voudrais que vous preniez du recul par rapport à votre résultat et ne mettiez pas en réponse un nombre plus grand que $187$.
+  \item Je vous renvoie à votre cours pour savoir comment calculer le résultat
+  \item Note : il est important de savoir faire le calcul dans l'autre sens : quand vous remultipliez votre résultat par 100, vous êtes censés retomber sur le nombre de départ. 
+\end{compactitem}
+ 
+\vspace{1em}
+
+\begin{center}
+\textbf{\textcolor{blue}{Explication théorique}} \vspace{1em}
+
+Si $a \div b = c$ alors il est bon de vérifier qu'on a bien $c \times b = a$. \vspace{1em}
+
+\textbf{\textcolor{blue}{Explication par l'exemple}} \vspace{1em}
+
+Autrement dit, si on pense que $187 \div 100 = 1870$, on vérifie que $1870 \times 100 = 187$. \\
+Ce n'est pas le cas. \\
+$1870 \times 100 = 187 000 \neq 187$ \\ 
+Bonne réponse : $187 \div 100 = 1.87$. Ce qui est cohérent : on a bien à l'inverse $1.87 \times 100 = 187$
+
+
+\end{center}
+
+\textbf{Exemples}
+
+\begin{align*}
+    41 \times 4 \times 2.5 \times 
+      &= 41 \times (2 \times 2) &&\text{on remplace $4$ par $2 \times 2$} \\
+      &= (41 \times 2) \times 2 &&\text{par associativité de la multiplication} \\
+      &= 82 \times 2 &&\text{car } 41 \times 2 = 82 \\
+      &= 164. &&\text{car } 82 \times 2 = 164
+  \end{align*}
+
+
+
+\begin{questions}
+
+  \question $41 \times 4 =$
+  \begin{solution}
+  On utilise l’astuce « multiplier par 4, c’est multiplier deux fois par 2 » et l’associativité de la multiplication.
+  \begin{align*}
+    41 \times 4 
+      &= 41 \times (2 \times 2) &&\text{on remplace $4$ par $2 \times 2$} \\
+      &= (41 \times 2) \times 2 &&\text{par associativité de la multiplication} \\
+      &= 82 \times 2 &&\text{car } 41 \times 2 = 82 \\
+      &= 164. &&\text{car } 82 \times 2 = 164
+  \end{align*}
+  Donc $41 \times 4 = 164$.
+  \end{solution}
+
+  \question $2.5 \times 6.68 \times 4 =$
+  \begin{solution}
+  On utilise la commutativité et l’associativité de la multiplication pour regrouper $2.5$ et $4$. On utilise aussi l’astuce : « multiplier par 4, c’est multiplier deux fois par 2 » ou ici repérer que $2.5 \times 4 = 10$.
+  \begin{align*}
+    2.5 \times 6.68 \times 4
+      &= (2.5 \times 4) \times 6.68 &&\text{par commutativité et associativité} \\
+      &= 10 \times 6.68 &&\text{car } 2.5 \times 4 = 10 \\
+      &= 66.8 &&\text{car } 10 \times 6.68 = 66.8
+  \end{align*}
+  Donc $2.5 \times 6.68 \times 4 = 66.8$.
+  \end{solution}
+
+  \question $284 \div 4 =$
+  \begin{solution}
+  On utilise l’astuce : « diviser par 4, c’est diviser deux fois par 2 ».
+  \begin{align*}
+    284 \div 4
+      &= 284 \div (2 \times 2) &&\text{on remplace $4$ par $2 \times 2$} \\
+      &=(284 \div 2) \div 2 &&\text{on divise d'abord par 2 puis encore par 2} \\
+      &= 142 \div 2 &&\text{car } 284 \div 2 = 142 \\
+      &= 71. &&\text{car } 142 \div 2 = 71
+  \end{align*}
+  Donc $284 \div 4 = 71$.
+  \end{solution}
+
+  \question $21 + 3.1 + 79 + 0.9 =$
+  \begin{solution}
+  On utilise la commutativité puis l’associativité de l’addition pour regrouper les nombres de façon astucieuse : on essaie d’obtenir des multiples de 10.
+  \begin{align*}
+    21 + 3.1 + 79 + 0.9
+      &= 21 + 79 + 3.1 + 0.9 &&\text{par commutativité de l’addition} \\
+      &= (21 + 79) + (3.1 + 0.9) &&\text{par associativité de l’addition} \\
+      &= 100 + (3.1 + 0.9) &&\text{car } 21 + 79 = 100 \\
+      &= 100 + 4 &&\text{car } 3.1 + 0.9 = 4 \\
+      &= 104.
+  \end{align*}
+  Donc $21 + 3.1 + 79 + 0.9 = 104$.
+  \end{solution}
+
+  \question $2.58 \times 1\,000 =$
+  \begin{solution}
+  Multiplier par $1\,000$, c’est multiplier par $10$ trois fois de suite. À chaque fois, la virgule décimale se déplace d’un rang vers la droite.
+  \begin{align*}
+    2.58 \times 1\,000
+      &= 2.58 \times 10 \times 10 \times 10 &&\text{car } 1\,000 = 10 \times 10 \times 10 \\
+      &= 25.8 \times 10 \times 10 &&\text{la virgule avance d’un rang} \\
+      &= 258 \times 10 &&\text{la virgule avance encore d’un rang} \\
+      &= 2\,580. &&\text{la virgule avance d’un troisième rang}
+  \end{align*}
+  Donc $2.58 \times 1\,000 = 2\,580$.
+  \end{solution}
+
+  \question $4.06 \times 100 =$
+  \begin{solution}
+  Multiplier par $100$, c’est multiplier par $10$ deux fois de suite : la virgule décimale se déplace de deux rangs vers la droite.
+  \begin{align*}
+    4.06 \times 100
+      &= 4.06 \times 10 \times 10 &&\text{car } 100 = 10 \times 10 \\
+      &= 40.6 \times 10 &&\text{la virgule avance d’un rang} \\
+      &= 406. &&\text{la virgule avance d’un deuxième rang}
+  \end{align*}
+  Donc $4.06 \times 100 = 406$.
+  \end{solution}
+
+  \question $96 \div 4 =$
+  \begin{solution}
+  On utilise l’astuce : « diviser par 4, c’est diviser deux fois par 2 ».
+  \begin{align*}
+    96 \div 4
+      &= 96 \div (2 \times 2) &&\text{on remplace $4$ par $2 \times 2$} \\
+      &= (96 \div 2) \div 2 &&\text{on divise d’abord par 2 puis encore par 2} \\
+      &= 48 \div 2 &&\text{car } 96 \div 2 = 48 \\
+      &= 24. &&\text{car } 48 \div 2 = 24
+  \end{align*}
+  Donc $96 \div 4 = 24$.
+  \end{solution}
+
+  \question $25 + \bigl(7 - (3 + 2)\bigr) =$
+  \begin{solution}
+  On applique la règle de priorité des opérations : on calcule d’abord ce qui est entre les parenthèses les plus « intérieures ».
+  \begin{align*}
+    25 + \bigl(7 - (3 + 2)\bigr)
+      &= 25 + \bigl(7 - 5\bigr) &&\text{on calcule d’abord } (3+2) \\
+      &= 25 + 2 &&\text{car } 7 - 5 = 2 \\
+      &= 27.
+  \end{align*}
+  Donc $25 + \bigl(7 - (3 + 2)\bigr) = 27$.
+  \end{solution}
+
+  \question $897 \div 1\,000 =$
+  \begin{solution}
+  Diviser par $1\,000$, c’est diviser par $10$ trois fois de suite : la virgule décimale se déplace de trois rangs vers la gauche. Le nombre $897$ peut s’écrire $897.0$.
+  \begin{align*}
+    897 \div 1\,000
+      &= 897.0 \div 10 \div 10 \div 10 &&\text{car } 1\,000 = 10 \times 10 \times 10 \\
+      &= 89.7 \div 10 \div 10 &&\text{la virgule recule d’un rang} \\
+      &= 8.97 \div 10 &&\text{la virgule recule d’un deuxième rang} \\
+      &= 0.897. &&\text{la virgule recule d’un troisième rang}
+  \end{align*}
+  Donc $897 \div 1\,000 = 0.897$.
+  \end{solution}
+
+  \question $3 \times (10 - 2) + (7 - 4) =$
+  \begin{solution}
+  On respecte la priorité des opérations : on calcule d’abord les parenthèses, puis les multiplications avant les additions.
+  \begin{align*}
+    3 \times (10 - 2) + (7 - 4)
+      &= 3 \times 8 + (7 - 4) &&\text{on calcule d’abord } (10 - 2) \\
+      &= 3 \times 8 + 3 &&\text{on calcule ensuite } (7 - 4) \\
+      &= 24 + 3 &&\text{car } 3 \times 8 = 24 \\
+      &= 27.
+  \end{align*}
+  Donc $3 \times (10 - 2) + (7 - 4) = 27$.
+  \end{solution}
+
+\end{questions}
+
+\end{document}
