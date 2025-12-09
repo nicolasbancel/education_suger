@@ -1,0 +1,206 @@
+\documentclass[answers]{exam}
+
+% Version compilable
+%\usepackage{../../../mypackages}
+%\usepackage{../../../macros}
+
+% Version pour execution du script
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% Pour le tableau
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
+\title{Devoir en classe - Geogebra + Tracés géométriques}
+\author{Nicolas Bancel}
+\date{Mardi 9 Décembre 2025}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\definecolor{lavande}{RGB}{180,190,255}
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de 6ème} \par
+
+{\let\newpage\relax\maketitle}
+
+\begin{tcolorbox}[
+  %colback=blue!5!white,
+  colframe=blue!90!black,
+  %title=Commentaire plus détaillé,
+  fonttitle=\bfseries,
+  boxsep=4pt,
+  sharp corners,
+]
+\begin{center}
+\textbf{\textcolor{blue}{Durée de l'exercice : 1h40 \\
+Coefficient : 0.5 \\
+Note sur 20 points
+}}
+\end{center}
+\end{tcolorbox}
+
+
+\section*{Angles dans le triangle — La propriété des 180°}
+
+\begin{questions}
+
+\question[2] Sur Geogebra : 
+\begin{parts}
+  \part Tracer un triangle et mesurer ses trois angles.
+  \part Faire la somme de ces mesures.
+  \part Comparer ce résultat avec les autres élèves de la classe. Que constate-t-on ?
+  \part Exporter le fichier Geogebra en le sauvegardant sur votre tablette au format .ggb, et en le nommant \textit{Prénom Nom - Triangle avec Angle}
+\end{parts}
+
+\question[2] Sur une feuille de papier (quadrillée)
+\begin{parts}
+  \part Tracer un nouveau triangle "assez grand" et le découper avec précision en suivant son contour.
+  \part Nommer ses trois angles $\hat{A}$, $\hat{B}$ et $\hat{C}$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{activite_1_01.jpg}
+  \caption{Exercice Geogebra}
+\end{figure}
+
+  \part Réaliser un pliage afin de rabattre les trois sommets du triangle vers l'intérieur pour former un rectangle.
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{activite_1_02.jpg}
+  \caption{Exercice Geogebra}
+\end{figure}
+
+  \part Expliquer pourquoi ce pliage permet d'expliquer le résultat établi dans la partie 1.
+\end{parts}
+
+\end{questions}
+
+\section*{A la recherche du cercle magique}
+
+\begin{questions}
+
+\question \textbf{Partie 1} \\
+Sur papier, reproduire le triangle ci-dessous et essayer à l'aide du compas de construire un cercle qui passe par les trois sommets du triangle.
+
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{activite_2_01.jpg}
+  \caption{Exercice Geogebra}
+\end{figure}
+
+\question \textbf{Partie 2}
+\begin{parts}
+  \part Sur papier, reproduire à nouveau le triangle ci-dessus.
+  \part Construire les médiatrices des trois côtés du triangle.
+  \part Que constate-t-on ?
+\end{parts}
+
+\question \textbf{Partie 3}  
+Les médiatrices se coupent en un point appelé point de concours.  
+On dit que les trois médiatrices sont concourantes.
+\begin{parts}
+  \part Nommer O le point de concours.
+  \part Tracer le cercle de centre O et passant par A.
+  \part Que constate-t-on ?
+\end{parts}
+
+\question \textbf{Partie 4}  
+Le cercle tracé à la partie 3 s'appelle le cercle circonscrit au triangle ABC.
+\begin{parts}
+  \part Tracer un triangle équilatéral et tracer son cercle circonscrit. Que constate-t-on ?
+  \part Faire de même avec un triangle rectangle. Que constate-t-on ?
+\end{parts}
+
+\end{questions}
+
+
+\section*{Rendu du devoir}
+
+\begin{questions}
+
+\question Aller sur EcoleDirecte, et envoyer un email dont le titre est "Prénom Nom - Devoir Geogebra" et qui contient en pièce jointe le fichier GeoGebra de l'exercice 1 (Angles dans le triangle)
+\question Puis coller sur une copie double les différents dessins et commentaires faits dans les 2 exercices. Vous inscrirez votre prénom et votre nom sur la copie double.
+\end{questions}
+
+\section*{Barème}
+\renewcommand{\arraystretch}{1.7}
+
+{
+  %\setlength{\LTleft}{-2.3cm}  % déborde de 1.5 cm dans la marge de gauche
+  \setlength{\LTright}{0pt}    % rien de plus à droite
+
+\centering
+\begin{longtable}{|L{0.3\textwidth}|L{0.7\textwidth}|c|}
+\hline
+\rowcolor{lavande}
+\textbf{Critère évalué} & \textbf{Description} & \textbf{Points} \\[2pt]
+\hline
+
+% ---------------- Exercice 1 ----------------
+  Exercice 1 — Angles dans le triangle (GeoGebra + feuille)
+  & Construction correcte d'un triangle sur GeoGebra, mesure des trois angles et calcul de la somme.  
+  Fichier GeoGebra enregistré et nommé correctement ("Prénom Nom - Triangle avec Angle").  
+  Sur feuille : triangle tracé proprement, pliage réalisé, explication cohérente du lien avec la somme des angles.
+  & 5 \\
+\hline
+
+% ---------------- Exercice 2 ----------------
+  Exercice 2 — "À la recherche du cercle magique"
+  & Reproduction correcte des triangles demandés.  
+  Médiatrices tracées avec soin, point de concours identifié et nommé O.  
+  Cercle de centre O passant par A correctement tracé.  
+  Cercles circonscrits des triangles équilatéral et rectangle réalisés, avec constats rédigés clairement pour chaque cas.
+  & 5 \\
+\hline
+
+% ---------------- Propreté ----------------
+  Propreté et soin du travail
+  & Écriture lisible et assez régulière.  
+  Figures tracées aux instruments (règle, équerre, compas), pas de tracés à main levée.  
+  Peu de ratures, feuilles propres, découpages et collages soignés.
+  & 3 \\
+\hline
+
+% ---------------- Rendu ----------------
+  Rendu du devoir (email + copie double)
+  & Email envoyé via ÉcoleDirecte avec un objet clair du type "Prénom Nom - Devoir Geogebra".  
+  Fichier GeoGebra joint au bon format (.ggb).  
+  Copie double rendue avec prénom, nom, classe, et tous les dessins / réponses collés ou recopiés proprement.
+  & 3 \\
+\hline
+
+% ---------------- Entraide et questions ----------------
+  Entraide et qualité des questions posées
+  & L'élève demande de l'aide de manière précise (par exemple : "Je n'arrive pas à construire les médiatrices" plutôt que "Je n'ai pas compris").  
+  Il ou elle peut aider un camarade en expliquant une méthode sans simplement donner la réponse.  
+  Les questions posées montrent une vraie recherche de compréhension.
+  & 4 \\
+\hline
+
+% ---------------- Total ----------------
+\rowcolor{green!35}
+ \textbf{Total} & \textbf{Note maximale possible} & \textbf{20} \\
+\hline
+
+\end{longtable}
+}
+
+\end{document}

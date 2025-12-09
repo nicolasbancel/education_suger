@@ -1,0 +1,110 @@
+\documentclass[answers]{exam}
+
+% Version compilable
+%\usepackage{../../../mypackages}
+%\usepackage{../../../macros}
+
+% Version pour execution du script
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% Pour le tableau
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
+\title{Notation DM Geogebra}
+\author{Nicolas Bancel}
+\date{6 Décembre 2025}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\definecolor{lavande}{RGB}{180,190,255}
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de 6ème} \par
+
+{\let\newpage\relax\maketitle}
+
+\subsection*{Barème de notation du devoir maison}
+
+\renewcommand{\arraystretch}{1.7}
+
+{
+  %\setlength{\LTleft}{-2.3cm}  % déborde de 1.5 cm dans la marge de gauche
+  \setlength{\LTright}{0pt}    % rien de plus à droite
+
+\centering
+\begin{longtable}{|L{0.3\textwidth}|L{0.7\textwidth}|c|}
+\hline
+\rowcolor{lavande}
+\textbf{Critère évalué} & \textbf{Description} & \textbf{Points} \\[2pt]
+\hline
+
+% ---------------- Travail mathématique et géométrique ----------------
+  Exercice d'application n°3 (fichier GeoGebra)
+  & L'exercice d'application n°3 est réalisé complètement. 
+  La construction (angles, longueurs, nom des points) est respectée.
+  Il n'y a pas de point en trop, qui ne sert à rien dans la figure.
+  & 4 \\
+\hline
+
+  Figure sur papier (constellation)
+  & La figure de la constellation est réalisée au crayon à papier, avec les instruments de géométrie, sans tracés à main levée.
+  Les points, segments et éventuelles légendes sont clairement indiqués et lisibles.
+  La figure a un titre : vous indiquez clairement quelle constellation vous avez choisi.
+  & 3 \\
+\hline
+
+  Figure GeoGebra (constellation)
+  & La figure GeoGebra respecte les consignes : construction propre, segment ou angles correctement tracés, et nommés.
+  Il n'y pas de point en trop, qui ne sert à rien dans la figure et qui n'en fait pas partie. 
+  Le fichier est enregistré et nommé correctement (vous pouvez préciser la constellation que vous avez choisie)
+  & 3 \\[6pt]
+\hline  
+
+% ---------------- Organisation et outils numériques ----------------
+
+Utilisation de Gmail + Autonomie + Bonne volonté
+& Le devoir est envoyé à la bonne adresse, avec un objet de mail clair ("Le titre de votre email doit être "VotrePrénom VotreNom 6ème - Devoir maison Geogebra", par exemple "Nicolas Bancel 6ème - Devoir maison Geogebra").
+  Les 3 pièces jointes (2 fichiers GeoGebra + 1 photo de la figure papier) sont bien attachées. 
+  Capacité à utiliser Internet et se débrouiller seul pour trouver les réponses à ses questions.
+  Ou si un email sur EcoleDirecte est envoyé pour poser une question, la question est claire et précise.
+& 5 \\ [6pt]
+\hline
+
+% ---------------- Gestion du temps et anticipation ----------------
+
+  Anticipation du travail
+  & Sur 5 points :  
+  \begin{compactitem}
+    \item 5 pts : travail commencé et/ou questions posées avant la date limite, prise en compte des feedbacks, devoir envoyé en avance.
+    \item 2.5 pts : devoir envoyé dans les temps mais questions posées la veille de la deadline ou le jour même. Ou non prise en compte des retours que j'ai pu faire.
+    \item 0 pt : devoir envoyé le jour même mais ou pendant l'heure de cours. 
+  \end{compactitem}
+  \textbf{Malus de retard :} si le devoir est rendu en retard, on applique un \textbf{–5} sur la note finale du devoir, en plus des points d’anticipation.
+  & 5 \\[6pt]
+\hline
+
+% ---------------- Total ----------------
+\rowcolor{green!35}
+ \textbf{Total} & \textbf{Note maximale possible (hors malus de retard)} & \textbf{20} \\
+\hline
+
+\end{longtable}
+}
+
+\end{document}
