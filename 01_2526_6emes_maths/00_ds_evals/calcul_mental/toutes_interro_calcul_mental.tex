@@ -1,0 +1,329 @@
+\documentclass[answers]{exam}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\usepackage{makecell} % pour wrap dans les en-têtes
+
+\definecolor{lavande}{RGB}{180,190,255}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Historique des évaluations de calcul mental \\ Classe de 6ème}
+\author{N. Bancel}
+\date{30 Janvier 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+
+\begin{Indication}
+Ci-dessous vous trouverez un tableau avec l'historique (vierge) de toutes les interrogations de calcul mental que vous avez eues depuis le début de l'année. Je vous invite à reprendre régulièrement ces questions.
+\vspace{1em} \\
+\textbf{Objectif et temps :}
+\begin{compactitem}
+  \item Chaque interrogation de calcul mental dure \textbf{5 minutes}.
+  \item Il y a \textbf{10 questions}.
+  \item Donc : viser environ \textbf{30 secondes par question}.
+\end{compactitem}
+\vspace{1em}
+\textbf{Ressources pour travailler / réviser :}
+\begin{compactitem}
+  \item Le cours théorique dans l'espace de travail : \textbf{[Chapitre 00] Calcul mental > Chapitre 0 - Calcul mental.pdf} 
+  \item Des vidéos pour mieux comprendre : \textbf{[Chapitre 00] Calcul mental > Vidéos pour mieux intégrer le cours.pdf} 
+  \item Quelques corrections que j'ai faites en vidéo : 
+  \begin{compactitem}
+      \item \href{https://www.loom.com/share/60ca42f3b2f841c4945bbd4c3c03bcf6}{[Correction] Interrogation Calcul Mental N°3}
+      \item \href{https://www.loom.com/share/14d597a7dda741c298b08c6ffd6b81a5}{[Correction 1/2] Interrogation Calcul Mental N°6}
+      \item \href{https://www.loom.com/share/0d3d3eea160e4fa6aa2b5d8d9f4a059e}{[Correction 2/2] Interrogation Calcul Mental N°6}
+      \item \href{https://www.loom.com/share/4c39cf223f4946aaacf99402cb01882a}{[Correction] Interrogation Calcul Mental N°7}
+  \end{compactitem}
+  
+\end{compactitem}
+
+\end{Indication}
+
+\vspace{3mm}
+
+\renewcommand{\arraystretch}{1.7}
+
+
+
+{%\setlength{\LTleft}{-2.3cm}  % déborde de 1.5 cm dans la marge de gauche
+%\setlength{\LTright}{0pt}    % rien de plus à droite
+
+% Hauteur d'une ligne (zone d'écriture par question)
+\newlength{\Hligne}
+\setlength{\Hligne}{0.75cm} % <- plus petit (tu peux ajuster)
+
+% Cellule centrée (vertical + horizontal) de hauteur fixée
+\newcommand{\CellC}[2]{\parbox[c][#1][c]{\linewidth}{\centering #2}}
+
+% Cellule vide de hauteur fixée (zone réponse)
+\newcommand{\CellVide}[1]{\parbox[c][#1][c]{\linewidth}{}}
+
+\centering
+\begin{longtable}{|L{0.25\textwidth}|L{0.30\textwidth}|L{0.30\textwidth}|}
+\hline
+\rowcolor{lavande}
+\textbf{Interro} & \textbf{Enoncé} & \textbf{Réponse} \\[2pt]
+\hline
+
+% ===================== Interrogation N°1 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°1}}%
+}
+& \CellC{\Hligne}{$19 + 6$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$278 - 5$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$234 + 99$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$1\,263 + 101$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$3\,974 - 1\,001$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$858 - 99$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$13\,891 + 8$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$967 + 21$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$7 + 6$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2\,658 + 299$} & \CellVide{\Hligne} \\
+\hline
+
+% ===================== Interrogation N°2 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°2}}%
+}
+& \CellC{\Hligne}{$234 + 99$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$1\,289 - 101$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2\,789 - 1\,001$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$1\,828 - 399$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$9\,368 + 599$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4{,}32 \times 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$9\,861 \div 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$34 \times 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$89 \div 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$1{,}7 \times 1\,000$} & \CellVide{\Hligne} \\
+\hline
+
+% ===================== Interrogation N°3 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°3}}%
+}
+& \CellC{\Hligne}{$7\,452 \div 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$3\,504 - 201$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4\,673 - 2\,001$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$8\,127 + 799$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}5 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$46 \times 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$0{,}37 \div 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}58 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$897 \div 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$276 + 101$} & \CellVide{\Hligne} \\
+\hline
+
+% ===================== Interrogations N°4 et N°5 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°4--N°5}}%
+}
+& \CellC{\Hligne}{$41 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}5 \times 6{,}68 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$284 \div 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$21 + 3{,}1 + 79 + 0{,}9$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}58 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4{,}06 \times 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$96 \div 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$25 + (7 - (3 + 2))$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$897 \div 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$3 \times (10 - 2) + (7 - 4)$} & \CellVide{\Hligne} \\
+\hline
+
+% ===================== Interrogation N°6 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°6}}%
+}
+& \CellC{\Hligne}{$40 + 5{,}8 + 0{,}2 + 9$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$76 \div 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$((12 - 3) \times 2 + 4)$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$84\,162 \div 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$117 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$88{,}6 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$12 \div 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4 + 2 \times (5 - 1)$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$34{,}18 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$0{,}5 \times 44 \times 4$} & \CellVide{\Hligne} \\
+\hline
+% ===================== Interrogations N°4 et N°5 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°4--N°5}}%
+}
+& \CellC{\Hligne}{$41 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}5 \times 6{,}68 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$284 \div 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$21 + 3{,}1 + 79 + 0{,}9$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}58 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4{,}06 \times 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$96 \div 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$25 + (7 - (3 + 2))$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$897 \div 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$3 \times (10 - 2) + (7 - 4)$} & \CellVide{\Hligne} \\
+\hline
+
+% ===================== Interrogation N°6 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°6}}%
+}
+& \CellC{\Hligne}{$40 + 5{,}8 + 0{,}2 + 9$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$76 \div 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$((12 - 3) \times 2 + 4)$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$84\,162 \div 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$117 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$88{,}6 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$12 \div 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4 + 2 \times (5 - 1)$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$34{,}18 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$0{,}5 \times 44 \times 4$} & \CellVide{\Hligne} \\
+\hline
+
+% ===================== Interrogation N°7 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°7}}%
+}
+& \CellC{\Hligne}{$35 + 4{,}6 + 10 + 0{,}4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$90 \div 5$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$(15 - 7) \times 3 + 5$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$64 \times 5$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$7{,}2 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$0{,}6 \times 5 + 27$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$865 \div 100$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}5 \times 6{,}68 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$34{,}18 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$105 \div 5$} & \CellVide{\Hligne} \\
+\hline
+
+% ===================== Interrogation N°8 =====================
+\multirow{10}{*}{%
+  \parbox[c][\dimexpr 10\Hligne \relax][c]{0.25\textwidth}{\centering\textbf{N°8}}%
+}
+& \CellC{\Hligne}{$12\,004 \div 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$65 \times 5$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4{,}2 + 4 + 13{,}8$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$(14 + 7) \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$3\,208 - 201$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$620 \div 5$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$2{,}5 \times 6{,}89 \times 4$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$127 + 399$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$4{,}72 \times 1\,000$} & \CellVide{\Hligne} \\
+\cline{2-3}
+& \CellC{\Hligne}{$(18 - 6) \times 2 + 3 \times 2$} & \CellVide{\Hligne} \\
+\hline
+
+
+
+
+\end{longtable}
+}
+
+\end{document}

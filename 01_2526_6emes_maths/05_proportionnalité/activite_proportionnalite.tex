@@ -1,0 +1,322 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% --- tcolorbox setup ---
+\tcbuselibrary{theorems,skins,hooks}
+
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\definecolor{lavande}{RGB}{180,190,255}
+% --- Color palette (coherent: green = help/indication, red = required cells, blue = solutions) ---
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=4mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Proportionnalité appliquée aux périmètres et aux aires}
+\author{N. Bancel}
+\date{Février 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+
+\newcommand{\figinline}[2]{%
+\begin{minipage}{#1\linewidth}
+  \centering
+  \includegraphics[width=\linewidth]{#2}
+\end{minipage}%
+}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+
+\section{Introduction - Prérequis}
+
+\begin{Indication}
+  Pour ce devoir, vous allez avoir besoin de : 
+  \begin{compactitem}
+    \item Ouvrir l'application Google Sheets sur votre tablette
+    \item Vous connecter via votre adresse Gmail
+    \item Une fois que Sheets est ouvert, cliquer sur l'icone + en bas à droite, puis sur "Nouvelle feuille de calcul" pour créer une nouvelle Google Sheet.
+    \item A la question "Veuillez saisir le nom de votre nouvelle feuille de calcul", vous devez saisir : "[Votre prénom] Proportionnalité - Cercles" (Les crochets sont à inclure. Par exemple \textbf{[Nicolas] Proportionnalité - Cercles}) puis cliquer sur "Créer".
+  \end{compactitem}
+
+  Votre feuille de calcul est prête.
+\end{Indication}
+
+\section{Création de la table de référence}
+
+\begin{questions}
+  \question Cliquer sur la cellule $A1$ et saisissez le texte suivant : "Objet". Puis cliquer sur Entrée
+  \question Cliquer sur la cellule $B1$ et saisissez le texte suivant : "Périmètre". Puis cliquer sur Entrée
+  \question Cliquer sur la cellule $C1$ et saisissez le texte suivant : "Diamètre". Puis cliquer sur Entrée
+  \question Cliquer sur la cellule $D1$ et saisissez le texte suivant : "Ratio". Puis cliquer sur Entrée
+\end{questions}
+
+\section{Mesures chez vous ou dans la cour}
+
+Munissez-vous d'une petite corde ou d'un mètre qui peut facilement se plier et s'adapter à la forme d'un objet.
+
+\begin{questions}
+  \question Choisissez un objet circulaire chez vous ou dans la cour de récréation (par exemple, une assiette, un couvercle, une roue de vélo, etc.). Notez le nom de cet objet dans la cellule $A2$.
+  \question Utilisez la corde ou le mètre pour mesurer le périmètre (en cm) de l'objet choisi. Notez cette mesure dans la cellule $B2$.
+  \question Utilisez une règle ou un mètre pour mesurer le diamètre (en cm) de l'objet choisi (vous pouvez aussi mesurer le rayon, et le multiplier par deux). Notez cette mesure dans la cellule $C2$.
+  \question Dans la cellule $D2$, nous allons chercher à calculer la division du périmètre de l'objet par son diamètre. Autrement dit, on cherche à écrire une formule : 
+  \[
+  \frac{Périmètre}{Diamètre}
+  \]
+  et stocker le résultat de cette formule dans la cellule $D2$. Pour cela, il faut utiliser les références de cellules. Par exemple, pour faire la division du périmètre par le diamètre, vous devez faire la division de la cellule $B2$ par la cellule $C2$. Cliquer sur la cellule $D2$, puis taper la formule suivante : \verb|=B2/C2|. Puis cliquer sur Entrée. Un résultat devrait s'afficher.
+
+\question Répétez les étapes 1 à 4 pour 9 autres objets circulaires différents. A chaque fois, calculez le ratio du périmètre par le diamètre et stockez le résultat dans la colonne D. Vous avez 3 méthodes possibles : 
+\begin{compactitem}
+  \item Méthode 1 : à chaque fois, vous tapez la formule \verb|=B2/C2| dans la cellule de la colonne D, en adaptant les références de cellules (par exemple, pour la ligne 3, ce sera \verb|=B3/C3|).
+  \item Méthode 2 : vous tapez la formule \verb|=B2/C2| dans la cellule $D2$, puis vous copiez cette cellule, et vous la collez dans les cellules $D3$, $D4$, $D5$, etc. Google Sheets va automatiquement adapter les références de cellules pour vous
+  \item Méthode 3 : vous tapez la formule \verb|=B2/C2| dans la cellule $D2$, puis vous cliquez sur la petite case bleue en bas à droite de la cellule $D2$, et vous faites glisser cette case vers le bas jusqu'à la ligne où vous avez vos données. Cliquer sur la zone bleue, une suggestion "Saisie automatique" devrait vous être proposée. Vous pouvez cliquer sur cette suggestion pour que Google Sheets remplisse automatiquement les cellules de la colonne D avec la formule adaptée à chaque ligne.
+\end{compactitem}
+\question Que remarquez-vous sur les résultats que vous obtenez dans la colonne D ? Est-ce que le ratio du périmètre par le diamètre est le même pour tous les objets ? Si oui, à combien est-il égal ? Pour être plus précis sur la valeur de ce nombre, vous pouvez calculer la moyenne des 10 valeurs obtenues. Dans la cellule $E1$, écrire "Moyenne Ratio", et dans la cellule $F1$, écrire une formule qui permet de calculer cette moyenne. Vous utiliserez la formule documentée dans le lien suivant : \href{https://support.google.com/docs/answer/3093615?hl=fr}{MOYENNE}. On appelera ce nombre "Pi" et on le notera $\pi$.
+
+\begin{Indication}
+  La proportionnalité, c'est ça. On se rend compte que, pour n'importe quel objet dans la nature en forme de cercle : 
+  \begin{compactitem}
+  \item Si on connait son périmètre, on peut immédiatement en déduire son diamètre en divisant le périmètre par un nombre qui ne change jamais.
+  \item Si on connait son diamètre, on peut immédiatement en déduire son périmètre en multipliant le diamètre par par un nombre qui ne change jamais.
+  \end{compactitem}
+  Ce "coefficient de proportionnalité", c'est \textit{Pi}. \textrr{Et ça, c'est complètement incroyable. Si si !}
+\end{Indication}
+
+\question Prenez maintenant un nouvel objet circulaire et faites l'opération inverse : mesurez le diamètre de cet objet, puis calculez son périmètre en utilisant la formule suivante :
+\[
+Périmètre = \pi \times Diamètre
+\]
+Notez le résultat dans la cellule $B$ de la ligne correspondante. Puis, mesurez le périmètre de cet objet avec votre corde ou votre mètre, et comparez le résultat que vous avez calculé avec le résultat que vous avez mesuré. Est-ce que les deux résultats sont proches ? Si oui, bravo, vous avez réussi à utiliser la proportionnalité pour faire une estimation du périmètre d'un cercle à partir de son diamètre.
+
+\question Partagez votre feuille de calcul avec moi : nicolas.bancel@gmail.com. Rôle : Editeur
+
+\end{questions}
+
+\section{Approximation de l'aire d'un cercle}
+
+\begin{Indication}
+Déterminer l'aire de figures anguleuses (qui sont faites de segments), on sait que c'est facile. On peut découper notre figure en triangles, ou rectangles, dont on peut facilement calculer l'aire. \\
+
+En revanche, quand les formes sont arrondies, c'est plus compliqué. On peut utiliser des méthodes qu'on appelle des méthodes d'approximation : on va essayer de trouver une figure anguleuse qui ressemble à notre figure arrondie, et dont on sait calculer l'aire. \\
+
+Plus notre figure anguleuse ressemble à notre figure arrondie, plus l'aire de la figure anguleuse sera proche de l'aire de la figure arrondie. C'est ce que nous allons faire pour essayer d'estimer l'aire d'un cercle.
+\end{Indication}
+
+\begin{questions}
+  \question Sur une feuille blanche, tracer avec le compas un cercle de 9cm de rayon.
+  \question Tracer un diamètre de ce cercle au hasard (rappel : un dimaètre passe par le centre du cercle)
+  \question Nous allons tracer 8 autres diamètres de ce cercle, en les espaçant régulièrement. Pour cela, vous pouvez utiliser un rapporteur pour mesurer des angles de 20° entre chaque diamètre (car votre cercle sera décomposé en 18 "parts de camemberts", donc chaque part correspond à un angle de 360° / 18 = 20°). Vous devriez ainsi obtenir 9 diamètres espacés régulièrement à l'intérieur du cercle.
+  \question Relier avec votre crayon les extrémités de ces diamètres pour former un polygone à 18 côtés à l'intérieur du cercle. Ce polygone est une approximation du cercle. Votre figure devrait ressembler à celle ci-dessous
+
+  \fig{0.6}{00.jpg}{}
+  \question Votre polygone est donc composé de 18 triangles identiques. Si on arrive à déterminer l'aire d'un de ces triangles, on arrivera à déterminer l'aire du polygone en entier, et obtenir une approximation de l'aire du cercle. Focalisons-nous donc sur un de ces triangles :
+  \fig{0.6}{02.jpg}{}
+  La formule de son aire est : 
+ \[
+ \mathcal{A} = \frac{base \times hauteur}{2}
+ \] 
+  Dans le triangle que vous avez choisi : quelle est sa base, et combien mesure-t-elle ? Avec votre équerre, tracer sa hauteur. Combien mesure-t-elle ? Calculez l'aire de ce triangle en utilisant la formule ci-dessus. Votre figure devrait ressembler à ça : 
+  \fig{0.6}{01.jpg}{}
+  Dans ce cas, l'aire du triangle s'écrit : 
+ \[
+ \mathcal{A_\text{ABZ}} = \frac{AB \times ZU}{2}
+ \] 
+
+  \question Chaque triangle a la même aire. En déduire l'aire du polygon. Comme ce polygone a une forme très proche de celle du cercle, on peut considérer qu'on a réussi à trouver une approximation de l'aire du cercle.
+  \question Cette méthode était un peu complexe : est-ce qu'il n'y a pas une formule plus simple ? Souvenez-vous de ce nombre que vous avez trouvé dans la partie précédente, appelé "Pi" ? Faites le calcul suivant : 
+  \[
+   \pi \times rayon \times rayon
+  \]
+  Et comparez cette valeur à ce que vous avez trouvé dans la question précédente. Que constatez-vous ?
+\end{questions}
+
+\begin{Indication}
+  Cette partie est une introduction (de niveau 6ème) à des concepts que vous verrez en 1ère, en Terminale, puis en license : la notion d'intégrale. L'idée sera de trouver un moyen de calculer mathématiquement l'aire bleue sous une courbe de n'importe quelle forme (on appelle cette aire "l'intégrale").
+
+  \fig{0.3}{integ_01.jpg}{}
+
+   Et mathématiquement, on peut approximer cette aire grâce à des rectangles qui épousent la forme de la courbe. La somme des aires de ces rectangles donnent une valeur approchée de l'intégrale de la fonction.  
+
+  \fig{0.3}{integ_02.jpg}{}
+
+  Plus il y a de rectangles, meilleure est l'approximation :
+\begin{center}
+\figinline{0.4}{integ_03.jpg}\hfill
+\figinline{0.4}{integ_04.jpg}
+\end{center}
+\end{Indication}
+
+\section{Conclusion}
+
+\begin{Indication}
+  Nous venons donc de voir 2 formules très importantes sur le cercle : 
+
+  \[
+  \mathcal{P_\text{cercle}} = 2 \times \pi \times \text{rayon}
+\]
+
+\[
+  \mathcal{A_\text{cercle}} = \pi \times \text{rayon} \times \text{rayon}
+  \]
+
+  Et nous venons de découvrir un nouveau nombre, $\pi$. C'est un nombre fascinant (si si, croyez-moi). De nombreuses formules de physique, et bien sûr de mathématiques impliquent $\pi$, qui est une des constantes les plus importantes de ces disciplines.
+  On dit que $\pi$ est irrationnel, c'est-à-dire qu'on ne peut pas l'exprimer comme une fraction.
+  Son écriture décimale est infinie, et elle ne se répète pas. En voici les 100 premières décimales : 
+ \[
+\begin{aligned}
+\pi \approx {}&
+3{,}1415926535 \quad 8979323846 \quad 2643383279 \\
+&5028841971 \quad 6939937510 \quad 5820974944 \\
+&5923078164 \quad 0628620899 \quad 8628034825 \\
+&3421170679
+\end{aligned}
+\]
+
+\end{Indication}
+
+\begin{questions}
+  \question \textbf{Question bonus} Vous avez moyen aussi de faire une approximation un peu plus précise de $\pi$, avec le travail que vous avez fait. 
+  \[
+  \pi = \frac{\mathcal{P_\text{cercle}}}{2 \times \text{rayon}}
+  \]
+  Dans le cas de l'exercice précédent, vous pouvez approximer le périmètre du cercle par le périmètre du polygône à 18 côtés. 
+    \[
+  \mathcal{P_\text{cercle}} \approx \mathcal{P_\text{polygone}} = 18 \times AB
+  \]
+  Donc 
+   \[
+  \pi \approx \frac{18 \times AB}{2 \times \text{rayon}}
+  \]
+  Grâce aux mesures que vous avez faites, et à l'énoncé, faites votre propre calcul de $\pi$. Vous pouvez comparer votre valeur avec la valeur de l'encadré du dessus.
+\end{questions}
+
+\begin{Indication}
+
+  \textrr{[Section bonus] Hors programme, c'est juste pour votre curiosité.} \\
+
+  La méthode utilisée pour approximer l'aire du cercle est aussi une méthode qui permet de faire le lien entre le périmètre du cercle et son aire. \textrr{Supposons qu'on connaisse déjà la formule du périmètre du cercle et qu'on a le droit de s'en servir}
+
+  \[
+  \color{red}\mathcal{P_\text{cercle}} = 2 \times \pi \times \text{rayon}
+\]
+  
+\textrr{Réécrivons la formule de l'aire}
+  
+ \begin{align*}
+\mathcal{A}_{\text{cercle}}
+  &= 18 \times \mathcal{A}_{\text{ABZ}} \\
+  &= 18 \times \frac{AB \times ZU}{2} \\
+\text{Or } \quad 18 \times AB
+  &= \mathcal{P}_{\text{polygone}}
+  \approx \mathcal{P}_{\text{cercle}} \\
+\text{Donc } \quad
+  \mathcal{A}_{\text{cercle}}
+  &\approx \frac{\mathcal{P}_{\text{cercle}} \times ZU}{2} \\
+\intertext{Or la longueur $ZU$ est proche de celle d'un rayon : $ZU \approx \text{rayon}$}
+\text{Donc } \quad
+  \mathcal{A}_{\text{cercle}}
+  &\approx \frac{\mathcal{P}_{\text{cercle}} \times \text{rayon}}{2} \\
+\intertext{Or on sait que $\mathcal{P}_{\text{cercle}} = 2 \times \pi \times \text{rayon}$}
+\text{Donc } \quad
+\mathcal{A}_{\text{cercle}}
+  &= \frac{2 \times \pi \times \text{rayon} \times \text{rayon}}{2} \\[6pt]
+&\boxed{\boxed{
+\mathcal{A}_{\text{cercle}} = \pi \times \text{rayon} \times \text{rayon}
+}}
+\end{align*}
+\end{Indication}
+
+\section{Barème}
+
+\renewcommand{\arraystretch}{1.6}
+{
+\centering
+\begin{longtable}{|L{0.22\textwidth}|L{0.62\textwidth}|c|}
+\hline
+\rowcolor{lavande}
+\textbf{Catégorie} & \textbf{Critère évalué} & \textbf{Points} \\[2pt]
+\hline
+
+% =========================
+% SECTION 1 À 3 — SHEETS + PÉRIMÈTRE
+% =========================
+\rowcolor{lavande!40}
+\multicolumn{3}{|l|}{\textbf{Sections 1 à 3 // Google Sheets et périmètre du cercle}} \\
+\hline
+
+Gestion de Google Sheet 
+& La feuille Google Sheets est correctement créée, nommée, structurée (titres des colonnes, organisation lisible).
+Feuille bien partagée avec moi.
+& 2 \\
+\hline
+
+Mesures, formules, remarques
+& Plusieurs objets circulaires sont mesurés. Les valeurs sont cohérentes et renseignées avec soin (même si elles ne sont pas parfaites).Les formules sont correctement utilisées (division, références de cellules, recopie ou saisie automatique).
+L'élève remarque que le ratio périmètre / diamètre est presque constant et identifie le nombre $\pi$.
+Calcul d’un périmètre à partir du diamètre et comparaison avec la mesure réelle (démarche comprise, même si approximation).
+& 3 \\
+\hline
+
+% =========================
+% SECTION 4 — AIRE DU CERCLE
+% =========================
+\rowcolor{lavande!40}
+\multicolumn{3}{|l|}{\textbf{Section 4 // Approximation de l’aire du cercle}} \\
+\hline
+
+Construction géométrique
+& Cercle, diamètres et polygone correctement tracés. Le soin et l’investissement sont pris en compte. La base et la hauteur sont identifiées, l’aire du triangle est calculée avec la bonne formule.
+& 3 \\
+\hline
+
+Raisonnement global
+& L’élève comprend que l’aire du cercle peut être approchée par la somme des aires des triangles. Comparaison pertinente avec $\pi \times \text{rayon}^2$ et constat de la cohérence des résultats.
+& 2 \\
+\hline
+
+
+% =========================
+% COMPÉTENCES TRANSVERSALES
+% =========================
+\rowcolor{lavande!40}
+\multicolumn{3}{|l|}{\textbf{Compétences transversales et attitude}} \\
+\hline
+
+Anticipation, organisation, consignes
+& Travail commencé en avance, régulier, sans tout faire au dernier moment. Des traces sont visibles. Les consignes sont parfaitement respectées (nom des documents etc)
+& 5 \\
+\hline
+
+Communication avec l’enseignant, effort
+& Questions posées via EcoleDirecte ou Google Sheets, messages clairs (captures, explications, essais). L’élève a cherché, essayé, persévéré, même en cas de difficulté. Implication visible.
+& 5 \\
+\hline
+
+\rowcolor{lavande}
+\multicolumn{2}{|r|}{\textbf{Total}} & \textbf{20} \\
+\hline
+
+\end{longtable}
+}
+
+\end{document}

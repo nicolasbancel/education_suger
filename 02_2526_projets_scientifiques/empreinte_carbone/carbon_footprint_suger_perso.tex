@@ -1,0 +1,132 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+
+\title{Suger Carbon Footprint - Google Sheet activity}
+\author{N. Bancel}
+\date{January 15th 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Projets Scientifiques}{Année 2025-2026}{Classes de 6ème-5ème}
+{\let\newpage\relax\maketitle}
+
+\section{Access to / Description of the Google Sheet}
+
+\begin{questions}
+\question Go to the following link : \href{https://docs.google.com/spreadsheets/d/1dNwbzpJt8uUCMYMr-9A3AGU0R27vBdNBqc6oD62n8s8/edit?gid=2097997664#gid=2097997664}{Simulation of a calculation of a carbon footprint}
+\question Make sure you can click on a tab that has your name on it. If you cannot find it, please send me an email in EcoleDirecte.
+\end{questions}
+
+\begin{Indication}
+  \textbf{Description of your tab}
+  \begin{compactitem}
+    \item The main table consists of the inventory made by the students on a subset of the rooms in Suger. Where students counted the number of tables, projectors etc per room. As you can see : 
+    \item Definitions of the main columns : 
+    \begin{compactitem}
+        \item Column A (Salle) : the room where the inventory was made 
+        \item Column B (Item) : what was counted in that room
+        \item Column C (Category - Keyword) : a simple word to designate what was counted. 
+        \item Column D (Number / Value) : the quantity counted in that room, for that specific item.
+    \end{compactitem}
+    \item To better understand the meaning of the other columns, please watch the following video : \href{https://www.loom.com/share/01b4986befa84a109330f6ea4e52b666}{[Suger Carbon Footprint] Description of the main Google Sheet tabs}
+  \end{compactitem}
+\end{Indication}
+
+\section{Inventory : Filling your own Google Sheet tab}
+
+Before starting this section, please make sure you know how to use a Google Sheet formula by watching the following video : \href{https://www.loom.com/share/36719b97cfb243b8a52dcccf79004bbb}{[Suger Carbon Footprint] Using formulas in Google Sheet}
+
+\subsection*{Total Carbon Footprint of each object}
+
+\begin{questions}
+  \question In your own Google tab (do not touch the Template), in cell \textbf{E2}, build a formula using the \textbf{VLOOKUP} function to fills the Carbon Footprint (of the object) (in kilograms) column. This column must automatically fill in the right value based on the \textbf{Category - Keyword} column. In your formula, you should use the \textbf{Reference table} tab to get the right values.
+
+  \begin{Indication}
+  \textbf{How to find how to use VLOOKUP in your case}
+  \begin{compactitem}
+    \item You can use chatGPT to get some guidance on this function. When writing a prompt to chatGPT, please make sure to include the following information :
+    \begin{compactitem}
+        \item You are using Google Sheets
+        \item You want to use the VLOOKUP function
+        \item You want to lookup values from a reference table located in another tab
+        \item You want to return the value in a specific column based on a matching keyword
+        \item ChatGPT will probably ask you for more information to give you a more precise answer. Please provide it with the necessary details.
+    \end{compactitem}
+    \item Value expected in cell E2 : 900
+  \end{compactitem}
+\end{Indication}
+
+  \question Once you have filled cell E2 with the formula, do an autocomplete until cell E64 to propagate the formula. If you're encountering an error in some cells, you can copy paste the error message to ChatGPT, along with the formula that was used in that cell. 
+
+\begin{Indication}
+  \textbf{Most probable error when using VLOOKUP} : When propagating the formula, you may encounter the \textbf{\#N/A} error in some cells. This means that the keyword in the \textbf{Category - Keyword} column does not exist in the \textbf{Reference table} tab. It is probably because the reference table is no longer the actual table that goes between celle A1 and cell F13. To fix this, you can modify the formula in cell E2 to use absolute references for the reference table. For example, if your reference table is in cells A1 to F13 of the "Reference table" tab, you should modify the formula to use \textbf{'Reference table'!$A$1:$F$13} instead of \textbf{'Reference table'!A1:F13}. This way, when you propagate the formula, the reference table will remain fixed.
+\end{Indication}
+
+\question At the end of question 2, all column E should be filled with numerical values (no error). In cell \textbf{\textcolor{red}{F1}} write a formula which calculates the \textbf{Carbon Footprint (based on \# of objects)} based on the number of objects in column D (\textbf{Number / Value}) and the value in column E (\textbf{Carbon Footprint (of the object) (in kilograms)}).
+\question Now propagate the formula from cell F1 until cell F64 so that all column F is filled with numerical values.
+
+\end{questions}
+
+\subsection*{Lifetime coefficient applied to the Carbon Footprint}
+
+\textit{Context : let's say the carbon footpring of constructing a projector is 900 kg of $CO_2$. But this projector will be used for 5 years before being replaced. The correct representation of the carbon footprint of the projector per year is obtained by dividing the initial carbon footprint by the number of years it will be used : hence $900/5=180$.  This gives us an annual carbon footprint of 180 kg of $CO_2$ per year for that projector.}
+
+\begin{questions}
+  \question In cell \textbf{G2}, using the VLOOKUP function, build a formula which determines the \textbf{Lifetime (per unit) (in years)} of the object by looking up its value in column E of the \textbf{Reference table} tab. Expected value in G2 : 5.
+  \question Now propagate the formula from cell G2 until cell G64 so that all column G is filled with numerical values.
+  \question In cell \textbf{H2}, build a formula which calculates the \textbf{Carbon Footprint per year} by dividing the value in column F (\textbf{Carbon Footprint (based on \# of objects)}) by the value in column G (\textbf{Lifetime (per unit) (in years)}).
+\end{questions}
+
+\subsection*{Total Annual Carbon Footprint of Suger inventory}
+
+\textit{Context : You've now determined the annual carbon footprint of the items in each room of Suger. The next step is to calculate the total annual carbon footprint of all the items in Suger. This will give us an idea of the overall environmental impact of the school's equipment and help identify areas for improvement.}
+
+\begin{questions}
+  \question In cell \textbf{\textcolor{red}{K1}}, build a formula which calculates the \textbf{Total Annual Carbon Footprint of Suger objects} by summing all the values in column H (\textbf{Carbon Footprint per year}).
+\end{questions}
+
+\section{iPad carbon footprint}
+
+
+\begin{questions} 
+  \question Using the https://impactco2.fr/ website, determine the approximative carbon footprint of an iPad in kilograms of $CO_2$ (only focus on the manufacturing).
+  \begin{compactitem}
+    \item Write your answer in cell \textbf{\textcolor{red}{K5}}.
+    \item Copy paste the URL of the page where you found the information in cell \textbf{\textcolor{red}{L6}}.
+  \end{compactitem}
+  \question Using the internet or ChatGPT, determine the average lifetime of an iPad in years.
+    \begin{compactitem}
+    \item Write your answer in cell \textbf{\textcolor{red}{K6}}.
+    \item Copy paste the URL of the page where you found the information in cell \textbf{\textcolor{red}{L6}}.
+  \end{compactitem}
+  \question In cell \textbf{\textcolor{red}{K7}}, build a formula which calculates the \textbf{Annual Carbon Footprint of an iPad} by dividing the value in cell K5 (Carbon Footprint of an iPad) by the value in cell K6 (Average lifetime of an iPad in years).
+  \question In cell \textbf{\textcolor{red}{K8}}, put an estimated value of the number of students in Suger (you can check on the Internet, on the Suger website, or elsewhere). Copy paste your source in cell \textbf{\textcolor{red}{L8}}.
+  \question In cell \textbf{\textcolor{red}{K9}}, build a formula which calculates the \textbf{Total Annual Carbon Footprint of iPads in Suger}, based on the available information.
+\end{questions}
+
+\end{document}

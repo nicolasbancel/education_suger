@@ -1,0 +1,309 @@
+\documentclass[answers]{exam}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Interrogation N°4}
+\author{N. Bancel}
+\date{13 Janvier 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+\consignes{1h15}{1.5}
+
+\section*{Exercice 1 - Cours (9.5 points)}
+
+\begin{questions}
+  \question[3] \textbf{Médiatrice} (\textbf{Pénalité de -1 si au global je considère que la notion n'est toujours pas rentrée)}. 
+    \begin{parts}
+      \part[1] Donner la définition précise de la médiatrice d’un segment. Un vocabulaire mathématique est attendu.
+            \begin{solution}
+      La médiatrice d’un segment est \textbf{la droite qui passe par le milieu de ce segment et qui est perpendiculaire à ce segment}.
+      \end{solution}
+      \part[2] Avec deux méthodes différentes, tracer la médiatrice d'un segment $AB$ de longueur $6$ cm. Inclure toutes les légendes nécessaires. \textbf{Il est attendu de nommer la méthode. Mais pas besoin de détailler les étapes}
+
+      \begin{solution}
+      On trace d’abord le segment $[AB]$ de longueur $6$ cm.
+
+      \begin{itemize}
+        \item \textbf{Méthode au compas} :  
+        On trace deux arcs de cercle de même rayon de centres $A$, puis $B$, qui se coupent en deux points $E$ et $F$.  
+        La droite $(EF)$ est la médiatrice du segment $[AB]$.  
+        On note le milieu $C$ de $[AB]$ ; on a $CM = CB = 3$ cm et $(EF)\perp (AB)$. \textrr{Note importante // Codage} : on n'oublie pas d'écrire les légendes (noms des points, codages des longueurs et des longueurs)
+
+
+\fig{0.5}{corr_04_02.jpg}{Méthode au compas}
+
+        \item \textbf{Méthode à la règle graduée et à l’équerre} :  
+        On place le milieu $C$ de $[AB]$ en mesurant $3$ cm à partir de $A$ et $B$.  
+        À l’aide de l’équerre, on trace la droite perpendiculaire à $(AB)$ passant par $C$ ; cette droite est la médiatrice du segment $[AB]$.  
+        \textrr{Note importante // Codage} : on n'oublie pas d'écrire les légendes (noms des points, codages des longueurs et des longueurs)
+
+\fig{0.5}{corr_04_01.jpg}{Méthode à l'équerre et à la règle graduée}
+
+
+      \end{itemize}
+      \end{solution}
+    \end{parts}
+
+  \question[2] \textbf{Bissectrice}
+    \begin{parts}
+      \part[1] Donner la définition précise de la bissectrice d’un angle. Un vocabulaire mathématique est attendu.
+    \begin{solution}   
+      La bissectrice d’un angle est \textbf{la demi-droite qui partage cet angle en deux angles de même mesure}.
+    \end{solution}
+
+      \part[1] Faire un dessin à main levée de la bissectrice d'un angle $\widehat{ABC}$. Inclure toutes les légendes nécessaires.
+          \begin{solution}   
+      \begin{Indication}
+        Ce qui était attendu :
+      \begin{compactitem}
+        \item Voir les 3 points A, B et C.
+        \item Que le sommet de l'angle soit bien le point B (pour que l'angle formé soit bien $\widehat{ABC}$).
+        \item La demi-droite bissectrice partant de B.
+        \item Les deux angles égaux formés par la bissectrice, avec leur codage
+      \end{compactitem}
+      \end{Indication}
+
+\fig{0.6}{corr_04_03.jpg}{Dessin attendu de la bissectrice d'un angle}
+
+    \end{solution}
+    \end{parts}
+  \question[4.5] \textbf{Quadrilatères} (0.75 point par case correctement remplie)
+    Recopier sur votre copie double le tableau suivant et le compléter en (1) réalisant une figure pour représenter chaque quadrilatère, et (2) remplissant les informations liées aux propriétés des côtés, et des diagonales de chaque quadrilatère
+
+\fig{0.6}{00.jpg}{}
+
+\begin{solution}
+  \fig{0.8}{corr_04_04.jpg}{}
+\end{solution}
+
+  \end{questions}
+
+\section*{Exercice 2 - Application - Construction d'angles (2.5 points)}
+
+\begin{questions}
+  \question[2] À l'aide de la règle et du rapporteur, construire, en précisant les légendes, le triangle $ABC$ tel que :
+\[
+AB = 7~\text{cm}, \qquad \widehat{BAC} = 26\text{°}, \qquad \widehat{ABC} = 47\text{°}
+\]
+\begin{solution}
+\begin{compactitem}
+  \item Tracer le segment $[AB]$ de longueur $7$ cm à la règle
+  \item Avec le rapporteur, tracer l'angle $\widehat{BAC} = 26\text{°}$ en prenant soin de bien positionner le rapporteur au point A.
+  \item Avec le rapporteur, tracer l'angle $\widehat{ABC} = 47\text{°}$ en prenant soin de bien positionner le rapporteur au point B.
+  \item Le point C est l'intersection des deux demi-droites tracées précédemment. Tracer les segments $[AC]$ et $[BC]$ pour obtenir le triangle $ABC$.
+\end{compactitem}
+ 
+\fig{0.8}{corr_04_05.jpg}{}
+
+  \end{solution}
+\question[0.5] \justifier\ En vous appuyant sur une propriété du triangle que vous citerez, en déduire la mesure de l'angle $\widehat{ACB}$.
+
+\begin{solution}
+Dans un triangle, la somme des mesures des angles est égale à $180\text{°}$.  
+Donc, on a :
+
+  \begin{align}
+    \widehat{ACB} + \widehat{BAC} + \widehat{ABC} &= 180\text{°} \\
+    \text{ainsi} \quad \widehat{ACB} &= 180\text{°} - \widehat{BAC} - \widehat{ABC} \\
+    \text{donc}  \quad \widehat{ACB} &= 180\text{°} - 26\text{°} - 47\text{°} \\
+    \widehat{ACB} &= 107\text{°}
+  \end{align}
+
+\end{solution}
+
+\end{questions}
+
+
+\section*{Exercice 3 - Application - Mesure d'angles (2.5 points)}
+
+\begin{questions}
+  \question Dans la Figure 2 ci-dessous (dite constellation du "Petit Lion") :
+  \fig{0.5}{03.jpg}{Figure 2}
+    \begin{parts}
+      \part Mesurer avec votre rapporteur les 2 angles marqués. Il est demandé de nommer ces angles.
+    \begin{solution}  
+      En mesurant avec le rapporteur, on trouve :
+      \begin{compactitem}
+  \item $\widehat{BAC} = \ang{18}$
+  \item $\widehat{CBD} = \ang{148}$
+\end{compactitem}
+    \end{solution}
+      \part Préciser la nature de chacun de ces angles.
+          \begin{solution}  
+ L'angle $\widehat{BAC} = \ang{18}$ est un angle aigu car sa mesure est comprise entre $0°$ et $90°$.
+  L'angle $\widehat{CBD} = \ang{148} $ est un angle obtus car sa mesure est comprise entre $90°$ et $180°$.
+    \end{solution}
+    \end{parts}
+\end{questions}
+
+
+
+\section*{Exercice 4 - Raisonnement - Calcul d'angles (5.5 points)}
+
+\begin{questions}
+
+  \question[3] Sur la Figure 3 ci-dessous, les points A, E, M sont alignés. Les angles d'un triangle équilatéral ont tous la même mesure. Dans ces questions, aucune mesure au rapporteur ne doit être faite. Tout doit être calculé / déduit à partir de propriétés vues en cours.
+
+\fig{0.4}{02.jpg}{Figure 3}
+
+\begin{parts}
+      \part[1] \justifier\ Quelle est la mesure de l'angle $\widehat{AEF}$ ? 
+      \begin{solution}
+        Sur la figure, on observe que les trois côtés $[AE]$, $[EF]$ et $[AF]$ portent le même codage : le triangle $AEF$ est donc \textbf{équilatéral}.
+
+\textbf{D'après le cours}, on sait que \textbf{chaque angle d’un triangle équilatéral mesure $60^\circ$}.  
+Ainsi, $\widehat{AEF} = 60^\circ$. \textbf{On peut facilement retrouver ce résultat :}  
+Dans tout triangle, la somme des mesures des angles est égale à $180^\circ$.  
+Dans le triangle équilatéral $AEF$, les trois angles ont la même mesure :
+\[
+\widehat{AEF} = \widehat{EFA} = \widehat{FAE}.
+\]
+On peut donc écrire :
+\begin{align}
+\widehat{AEF} + \widehat{EFA} + \widehat{FAE} &= 180^\circ \\
+3 \times \widehat{AEF} &= 180^\circ \\
+\widehat{AEF} &= \dfrac{180^\circ}{3} \\
+\widehat{AEF} &= 60^\circ
+\end{align}
+Comme $\widehat{AEF} = \widehat{EFA} = \widehat{FAE}$, on en déduit que chacun de ces angles vaut $60^\circ$ (puisqu'on vient de démontrer que c'était la mesure de l'angle $\widehat{AEF}$).
+      \end{solution}
+
+      \part[1] \justifier\ En déduire la mesure de l'angle $\widehat{FEM}$.
+
+      \begin{solution}
+        
+      
+Les points $A$, $E$, $M$ sont alignés, donc les demi-droites $[EA)$ et $[EM)$ sont \textbf{opposées}.  
+  Les angles $\widehat{FEA}$ et $\widehat{FEM}$ sont donc \textbf{supplémentaires} :
+  \begin{align}
+    \widehat{FEA} + \widehat{FEM} &= 180^\circ
+  \end{align}
+  Or, dans le triangle équilatéral $AEF$, on a $\widehat{FEA} = 60^\circ$. Donc :
+  \begin{align}
+    60^\circ + \widehat{FEM} &= 180^\circ \\
+    \widehat{FEM} &= 180^\circ - 60^\circ \\
+    \widehat{FEM} &= 120^\circ
+  \end{align}
+\end{solution}
+
+      \part[1] \justifier\ Calculer la mesure de l'angle $\widehat{EMF}$.
+\begin{solution}
+
+  On lit sur la figure que $\widehat{AFM}$ est un angle droit, donc :
+  \[
+    \widehat{AFM} = 90^\circ.
+  \]
+  C'est cet angle qui va d'abord nous intéresser. Il est formé de 2 angles adjacents : $\widehat{EFA}$ et $\widehat{EFM}$. On connait la mesure de $\widehat{AFM}$, et on connait aussi la mesure de $\widehat{AFE}$ (d'après la question a)). On va donc pouvoir en déduire la mesure de l'angle $\widehat{EFM}$ :
+  
+  Dans le triangle équilatéral $AEF$, l'angle  $\widehat{EFA}$ vaut $60^\circ$, donc
+
+  $\widehat{EFA}$ et $\widehat{EFM}$ sont adjacents (et complémentaires : leur somme vaut $\widehat{AFM} = 90^\circ$)). On peut écrire que :
+
+  \begin{align}
+    \widehat{EFM} + \widehat{EFA} &= \widehat{AFM} \\
+    \widehat{EFM} &= \widehat{AFM} - \widehat{EFA} \\
+    \widehat{EFM} &= 90^\circ - 60^\circ \\
+    \widehat{EFM} &= 30^\circ
+  \end{align}
+
+  Il nous reste à trouver la valeur de l'angle  $\widehat{EMF}$. Le triangle qui nous intéresse ici est le triangle $EFM$, car nous connaissons la mesure de deux de ses angles : $\widehat{FEM} = 120^\circ$ (d'après la question b)) et $\widehat{EFM} = 30^\circ$ (démontré juste avant).
+  
+  \begin{align}
+    \widehat{FEM} + \widehat{EFM} + \widehat{EMF} &= 180^\circ \\
+    \widehat{EMF} &= 180^\circ - \widehat{FEM} - \widehat{EFM} \\
+    \widehat{EMF} &= 180^\circ - 120^\circ - 30^\circ  \\
+    \widehat{EMF} &= 30^\circ
+  \end{align}
+
+\end{solution}
+
+
+    \end{parts}
+
+
+  \question[2.5] \justifier\ Sur la Figure 4 ci-dessous, les points H, A, P sont alignés. Avec les informations codées sur cette figure, déterminer si le triangle CAT est
+rectangle en A. Justifier.
+
+\fig{0.5}{01.jpg}{Figure 4}
+
+\begin{solution}
+\textrr{Les points $H$, $A$, $P$ sont alignés : L'angle $\widehat{HAP}$ est donc un angle plat, il vaut $180^\circ$. L'enjeu de l'exercice étant de trouver la mesure de l'angle $\widehat{CAT}$, on va chercher à calculer les angles $\widehat{HAC}$ et $\widehat{TAP}$, puis en déduire la mesure de l'angle $\widehat{CAT}$. Enfin, on pourra conclure si le triangle $CAT$ est rectangle en $A$ ou non}.
+
+\medskip
+
+\textbf{Il est important d'avoir bien cette stratégie en tête : après ça, il ne "reste plus" qu'à essayer de déterminer d'abord la mesure de l'angle $\widehat{HAC}$ (en se plaçant dans le bon triangle), puis celle de l'angle $\widehat{TAP}$ (en se plaçant dans le bon triangle)}
+
+\medskip
+
+\textrr{Dans le triangle $CHA$} on lit sur la figure que $\widehat{CHA}=90^\circ$ et que $\widehat{HCA}=45^\circ$.  
+Dans un triangle, la somme des angles vaut $180^\circ$, donc :
+\begin{align*}
+\widehat{CHA} + \widehat{HCA} + \widehat{HAC} &= 180^\circ \\
+90^\circ + 45^\circ + \widehat{HAC} &= 180^\circ \\
+\widehat{HAC} &= 180^\circ - 135^\circ \\
+\widehat{HAC} &= 45^\circ
+\end{align*}
+
+\medskip
+
+\textrr{Dans le triangle $APT$} on lit sur la figure que $\widehat{APT}=90^\circ$ et que $\widehat{ATP}=43^\circ$.  
+Donc :
+\begin{align*}
+\widehat{APT} + \widehat{ATP} + \widehat{PAT} &= 180^\circ \\
+90^\circ + 43^\circ + \widehat{PAT} &= 180^\circ \\
+\widehat{PAT} &= 180^\circ - 133^\circ \\
+\widehat{PAT} &= 47^\circ
+\end{align*}
+
+\medskip
+
+\textr{Calcul de l'angle $\widehat{CAT}$}  
+Comme $H$, $A$, $P$ sont alignés, l'angle $\widehat{HAP}$ est un angle plat, donc :
+\[
+\widehat{HAP} = 180^\circ.
+\]
+Sur la demi-plan au-dessus de la droite $(HAP)$, cet angle plat est décomposé en trois angles adjacents :
+\[
+\widehat{HAP} = \widehat{HAC} + \widehat{CAT} + \widehat{TAP}.
+\]
+Or $\widehat{HAC}=45^\circ$ (triangle $CHA$) et $\widehat{TAP}=\widehat{PAT}=47^\circ$ (triangle $APT$). Donc :
+\begin{align*}
+180^\circ &= 45^\circ + \widehat{CAT} + 47^\circ \\
+\widehat{CAT} &= 180^\circ - 92^\circ \\
+\widehat{CAT} &= 88^\circ
+\end{align*}
+\medskip
+
+\textbf{Conclusion :} le triangle $CAT$ \textbf{n'est pas rectangle en $A$} car $\widehat{CAT} = 88^\circ \neq 90^\circ$.
+\end{solution}
+
+\end{questions}
+
+
+\end{document}

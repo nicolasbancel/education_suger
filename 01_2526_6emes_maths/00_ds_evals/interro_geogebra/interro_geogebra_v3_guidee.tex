@@ -1,0 +1,263 @@
+\documentclass[answers]{exam}
+
+% Version compilable
+%\usepackage{../../../mypackages}
+%\usepackage{../../../macros}
+
+% Version pour execution du script
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+% Pour le tableau
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Devoir en classe - Geogebra + Tracés géométriques}
+\author{Nicolas Bancel}
+\date{Mardi 15 Décembre 2025}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\definecolor{lavande}{RGB}{180,190,255}
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de 6ème} \par
+
+{\let\newpage\relax\maketitle}
+
+\begin{tcolorbox}[
+  %colback=blue!5!white,
+  colframe=blue!90!black,
+  %title=Commentaire plus détaillé,
+  fonttitle=\bfseries,
+  boxsep=4pt,
+  sharp corners
+]
+\begin{center}
+\textbf{\textcolor{blue}{Durée de l'exercice : 1h40 \\
+Coefficient : 0.5 \\
+Note sur 20 points.
+}}
+\end{center}
+\end{tcolorbox}
+
+\vspace{0.3em}
+
+\begin{center}
+  \textbf{\textcolor{red}{Attention au temps - si vous êtes bloqués, avancez dans le devoir.}}
+\end{center}
+
+
+\section*{Exercice 1 - Partie 1 - Somme des angles dans le triangle}
+
+\begin{questions}
+
+\question Sur Geogebra : 
+\begin{parts}
+  \part Tracer un triangle quelconque (cela veut dire : "de n'importe quelles dimensions") et déterminer la mesure de ses trois angles.
+  \part Faire la somme de ces mesures, en la stockant dans une variable appelée \textit{totalangles1}.
+  \part Tracer un autre triangle quelconque sur le même fichier, et refaire les mêmes étapes que précédemment, en stockant la somme des angles dans une variable appelée \textit{totalangles2}. 
+  \part Que constate-t-on ?
+  \part Exporter le fichier Geogebra en le sauvegardant sur votre tablette, dans un dossier approprié, au format .ggb, et en le nommant \textit{Prénom Nom - Somme Angles Triangles.ggb}
+\end{parts}
+\end{questions}
+
+\begin{Indication}
+  \textbf{Elements d'aide}
+  \begin{compactitem}
+    \item Mesurer des angles et stocker une somme dans une variable : aller dans l'espace de travail. Geogebra - Tutoriels > Liens Tutoriels Geogebra.pdf > Paragraphe "Devoir sur table (converti en devoir maison)". Il y a un lien vers une video [Geogebra] Variables et somme d'angles.
+    \item Je vous conseille de renommer les angles. Par défaut, GeoGebra met des lettres grecques (type $\alpha$, $\beta$, $\epsilon$, $\zeta$ etc), qui ne sont pas faciles à retrouver sur le clavier. Utilisez des lettres normales en minuscules à la place (a, b, c etc)
+    \item Pour exporter un fichier Geogebra, une vidéo est disponible sur ce même document : "GeoGebra Correction 4/4"
+  \end{compactitem}
+\end{Indication}
+
+\section*{Exercice 2 - A la recherche du cercle magique}
+
+\begin{questions}
+
+\question \textbf{Partie 1} : Sur papier, et en utilisant uniquement la règle et le compas, tracer le triangle $ABC$ tel que 
+ \[
+  AB = 7~\text{cm}, \qquad BC = 10~\text{cm}, \qquad AC = 9~\text{cm}.
+  \]
+et essayer à l'aide du compas de construire un cercle qui passe par les trois sommets du triangle. Noter E son centre.
+
+\begin{Indication}
+  \textbf{Elements d'aide} : ce triangle ne doit pas être tracé avec une règle en tâtonnant et en essayant de tomber sur des longueurs qui conviennent. Il y a une méthode avec la règle et le compas qui ont été vues en classe (et est disponible dans votre cours ou sur Internet)
+\end{Indication}
+
+\question \textbf{Partie 2}
+\begin{parts}
+  \part Construire les médiatrices des trois côtés du triangle (on peut utiliser l'une ou l'autre des 2 méthodes connues)
+
+  \begin{Indication}
+  \textbf{Conseil} : le tracé des médiatrices doit être propre. Il est recommandé d'utiliser la méthode du compas - cela vous entraîne à utiliser cet outil.
+\end{Indication}
+
+  \part Que constate-t-on ?
+\end{parts}
+
+\question \textbf{Partie 3} : Les médiatrices se coupent en un point d'intersection (qu'on appelle point de concours).  
+On dit que les trois médiatrices sont concourantes.
+\begin{parts}
+  \part Nommer O le point de concours.
+  \part Tracer le cercle de centre O et passant par A.
+  \part Que constate-t-on ?
+\end{parts}
+
+\question \textbf{Partie 4} : Le cercle tracé à la partie 3 s'appelle le cercle circonscrit au triangle ABC. Sur un nouveau fichier geogebra, 
+\begin{parts}
+  \part Tracer un triangle quelconque et tracer son cercle circonscrit.
+  \begin{Indication}
+  \textbf{Attention} : Il n'est pas autorisé d'utiliser l'option de Geogebra : "Cercle passant par 3 points".
+\end{Indication}
+  \part Tracer ensuite sur le même fichier un triangle rectangle et tracer son cercle circonscrit. Que constate-t-on ?
+  \part Sauvegarder le fichier Geogebra en le nommant \textit{Prénom Nom - Cercle magique.ggb}
+\end{parts}
+
+\end{questions}
+
+\section*{Exercice 1 - Partie 2 - Si vous avez le temps}
+
+\textcolor{red}{Cette section fait partie intégrante du devoir. Je l'ai mise là parce que je veux être certain que vous avez pris le temps de faire les autres exercices avant (cette partie est moins prioritaire)}
+
+\begin{questions}
+  
+\question Sur une feuille de papier (quadrillée)
+\begin{parts}
+  \part Tracer un nouveau triangle "assez grand" et le découper avec précision en suivant son contour.
+  \part Nommer ses trois angles $\hat{A}$, $\hat{B}$ et $\hat{C}$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{activite_1_01.jpg}
+  \caption{Exercice Geogebra}
+\end{figure}
+
+  \part Réaliser un pliage afin de rabattre les trois sommets du triangle vers l'intérieur pour former un rectangle. Vous collerez votre figure sur votre copie double.
+
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{activite_1_02.jpg}
+  \caption{Exercice Geogebra}
+\end{figure}
+
+  \part Expliquer pourquoi ce pliage permet d'expliquer le résultat établi dans la partie 1 de l'exercice 1.
+\end{parts}
+\end{questions}
+
+\section*{Rendu du devoir}
+
+\begin{questions}
+
+\question Coller vos pliages et écrivez tous vos commentaires sur une copie double, et prendre en photo chaque page de votre copie double.
+\question Aller sur EcoleDirecte, et envoyer un email dont le titre est "Prénom Nom - Devoir Geogebra" et qui contient en pièce jointe 
+\begin{compactenum}
+  \item le fichier GeoGebra de l'exercice 1 (\textit{Prénom Nom - Somme Angles Triangles.ggb}) 
+  \item le fichier GeoGebra de l'exercice 2 (\textit{Prénom Nom - Cercle magique.ggb}) 
+  \item les photos de chaque page de votre copie double.
+\end{compactenum}
+\begin{Indication}
+  \textbf{Attention} : Je voudrais que vous respectiez les noms de fichiers / titres d'email etc.
+\end{Indication}
+\end{questions}
+
+
+\section*{Barème}
+
+\textcolor{red}{Ce barème correspond à celui utilisé pendant le "devoir sur table" en classe. Etant donné que le devoir est désormais réalisé à la maison, le barème est amené à changeer un peu mais dans l'idée, les attendus restent identiques.}
+
+\renewcommand{\arraystretch}{1.7}
+
+{
+  %\setlength{\LTleft}{-2.3cm}  % déborde de 1.5 cm dans la marge de gauche
+  \setlength{\LTright}{0pt}    % rien de plus à droite
+
+\centering
+\begin{longtable}{|L{0.3\textwidth}|L{0.7\textwidth}|c|}
+\hline
+\rowcolor{lavande}
+\textbf{Critère évalué} & \textbf{Description} & \textbf{Points} \\[2pt]
+\hline
+
+% ---------------- Exercice 1 ----------------
+  Exercice 1 — Angles dans le triangle (GeoGebra + feuille)
+  & Construction correcte d'un triangle sur GeoGebra, mesure des trois angles et calcul de la somme.  
+  Fichier GeoGebra enregistré et nommé correctement.  
+  Sur feuille : triangle tracé proprement, pliage réalisé, explication cohérente du lien avec la somme des angles.
+  & 5 \\
+\hline
+
+% ---------------- Exercice 2 ----------------
+  Exercice 2 — "À la recherche du cercle magique"
+  & Reproduction correcte des triangles demandés.  
+  Médiatrices tracées avec soin, point de concours identifié. Légendes sur les dessins.
+  Cercles correctement tracés.  
+  Constats rédigés clairement pour chaque cas. Travail correct sur Geogebra.
+  & 5 \\
+\hline
+
+% ---------------- Propreté ----------------
+  Propreté et soin du travail
+  & Écriture lisible et assez régulière.  
+  Figures tracées aux instruments (règle, équerre, compas), pas de tracés à main levée.  
+  Peu de ratures, feuilles propres, découpages et collages soignés.
+  & 2 \\
+\hline
+
+% ---------------- Rendu ----------------
+  Rendu du devoir (email + copie double)
+  & Email envoyé via ÉcoleDirecte avec un objet clair du type "Prénom Nom - Devoir Geogebra".  
+  Fichiers GeoGebra joint au bon format (.ggb). Les noms des fichiers respectent bien le format demandé. 
+  Photos de la copie double envoyées.
+  & 4 \\
+\hline
+
+% ---------------- Entraide et questions ----------------
+  Entraide et qualité des questions posées
+  & L'élève demande de l'aide de manière précise (par exemple : "Je n'arrive pas à construire les médiatrices" plutôt que "Je n'ai pas compris"). Ou arrive à faire efficacement des recherches sur Internet.
+  Il ou elle peut aider un camarade en expliquant une méthode sans simplement donner la réponse.  
+  Les questions posées montrent une vraie recherche de compréhension.
+  & 4 \\
+\hline
+
+% ---------------- Total ----------------
+\rowcolor{green!35}
+ \textbf{Total} & \textbf{Note maximale possible} & \textbf{20} \\
+\hline
+
+\end{longtable}
+}
+
+\end{document}

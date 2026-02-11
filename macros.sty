@@ -3,10 +3,68 @@
 \usepackage{mypackages}
 
 
+% =======================================================================
+% Macros pour les interrogations
+% =======================================================================
+
+% Bracket "Justifier"
+
+\newcommand{\justifier}{\textbf{\textcolor{red}{[Justifier]}}}
+
+% Bracket "En tête"
+
+\newcommand{\dsheaderold}[4]{%
+\noindent\textbf{#1}\hfill\textbf{#2}\\
+\textbf{#3}\hfill\textbf{#4}\\
+}
+
+
+\newcommand{\dsheader}[4]{%
+\noindent\textbf{#1}\hfill\textbf{#2}\\
+\par
+\noindent\textbf{#3}\hfill\textbf{#4}
+}
+
+% Bracket "En tête"
+
+\newcommand{\consignesrendusujet}[2]{%
+\begin{center}
+\textbf{\textcolor{red}{Durée : #1 // Coefficient #2}}\\
+\textbf{\textcolor{red}{Attention à bien rédiger quand c'est demandé. Et n'oubliez pas de rendre le sujet !\\
+}}
+\end{center}
+}
+
+\newcommand{\consignes}[2]{%
+\begin{center}
+\textbf{\textcolor{red}{Durée : #1 // Coefficient #2}}\\
+\textbf{\textcolor{red}{Chaque question qui commence par [Justifier] attend une rédaction :\\
+Pour ce type de question, une réponse sans phrase de rédaction rapporte 0 point.}}
+\end{center}
+}
+
+% Figure centrée
+
+\newcommand{\fig}[3]{%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=#1\linewidth]{#2}
+  \captionsetup{labelformat=empty,labelsep=none}
+  \if\relax\detokenize{#3}\relax
+    % pas de caption
+  \else
+    \caption{#3}
+  \fi
+\end{figure}%
+}
+
 
 
 % Macro pour texte en gras et bleu
 \newcommand{\textbb}[1]{\textbf{\textcolor{blue}{#1}}}
+\newcommand{\textrr}[1]{\textbf{\textcolor{red}{#1}}}
+
+\newcommand{\just}{\textbf{\textcolor{red}{[Justifier] }}}
 
 \setlength\parindent{0pt}
 

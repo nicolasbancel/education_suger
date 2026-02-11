@@ -1,0 +1,95 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% Pour le tableau
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+
+\title{Critères de réussite}
+\author{N. Bancel}
+\date{Février 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\definecolor{lavande}{RGB}{180,190,255}
+
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de 6ème} \par
+
+{\let\newpage\relax\maketitle}
+
+\section{Général - Geométrie}
+
+\begin{Indication}
+
+\begin{compactitem}
+  \item Tous les dessins sont tracés au crayon à papier. Sauf indiqué, les tracés ne sont jamais faits à main levée, mais avec règle, équerre, compas, rapporteur etc.
+  \item Une figure se fait en trait plein, bien appuyé
+  \item Les étapes qui permettent de construire la figure sont tracés en pointillés, ou avec un trait plein moins appuyé que la figure. La figure doit bien ressortir.
+  \item Légendes et codages importants
+  \begin{compactitem}
+    \item Les points importants sont nommés (milieu, centre, sommet, etc.)
+    \item Les angles droits sont codés avec un petit carré
+    \item Les segments égaux sont codés avec des petits traits (un trait pour les segments égaux entre eux, deux traits pour un autre groupe de segments égaux, etc.)
+    \item Les angles égaux sont codés avec des arcs, et un ou plusieurs traits dessus quand ils sont de même mesure
+\end{compactitem}
+\end{compactitem}
+
+\end{Indication}
+
+
+\section{Chapitre 10 - Symétrie axiale}
+
+\begin{Indication}
+
+\begin{compactitem}
+  \item Quand on trace le symétrique d'un objet mathématique (point, droite, cercle etc), on lui donne le même nom avec une apostrophe (exemple : le symétrique de $A$ est noté $A'$, le symétrique d'une droite $d$ est $(d')$).
+  \item Un axe de symétrie est une droite, pas un segment
+  \item Quand on trace le symétrique d'un point par rapport à un axe $(d)$
+\begin{compactitem}
+
+    \item On est très précis sur la perpendicularité (faite à l'équerre). La perpendiculaire à $(d)$ passant par le point est tracée en pointillés.
+    \item On reporte la même distance de l'autre côté de $(d)$, \textrr{en utilisant le compas}.
+    \item On nomme le point symétrique avec une apostrophe
+\end{compactitem}
+\item Quand on est aidé d'un quadrillage, on place les points précisément sur les coins des carreaux. Et les traits suivent les lignes du quadrillage. Il n'y a aucune excuse pour de l'approximation.
+\end{compactitem}
+
+\end{Indication}
+
+\end{document}
+

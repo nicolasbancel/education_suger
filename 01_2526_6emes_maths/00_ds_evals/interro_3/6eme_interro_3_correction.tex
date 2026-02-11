@@ -1,0 +1,501 @@
+%\documentclass{exam}
+\documentclass[answers]{exam}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+\title{Interrogation N°3}
+\author{N. Bancel}
+\date{4 Décembre 2025}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\newenvironment{compactparts}
+  {\begin{parts}\setlength{\itemsep}{0pt}\setlength{\partopsep}{0pt}}
+  {\end{parts}}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Mathématiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de 6ème} \\
+
+{\let\newpage\relax\maketitle}
+
+\begin{center}
+\textbf{\textcolor{red}{Durée : 1h15}} \\
+\textbf{\textcolor{red}{Chaque question qui commence par [Justifier] attend une rédaction : \\
+Pour ce type de question, une réponse sans phrase de rédaction rapporte 0 point.}} \\
+Une copie mal tenue sera pénalisée.
+
+\end{center}
+
+\section*{Exercice 1 - Cours (7 points)}
+
+\begin{questions}
+  \question[4] Médiatrice 
+    \begin{parts}
+      \part[1.5] Donner la définition précise de la médiatrice d’un segment. Un vocabulaire mathématique est attendu
+      \begin{solution}
+      La médiatrice d’un segment est \textbf{la droite qui passe par le milieu de ce segment et qui est perpendiculaire à ce segment}.
+      \end{solution}
+
+      \part[0.5] Quelle est la propriété principale des points d'une médiatrice ?
+      \begin{solution}
+      Tous les points d’une médiatrice d’un segment sont \textbf{à égale distance des deux extrémités de ce segment}.  
+      Autrement dit, si le point $M$ appartient à la médiatrice du segment $[AB]$, alors $MA = MB$.
+      \end{solution}
+
+      \part[2] Avec deux méthodes différentes, tracer la médiatrice d'un segment $AB$ de longueur $6$ cm. Inclure toutes les légendes nécessaires. \textbf{Il est attendu de nommer la méthode. Mais pas besoin de détailler les étapes}
+      \begin{solution}
+      On trace d’abord le segment $[AB]$ de longueur $6$ cm.
+
+      \begin{itemize}
+        \item \textbf{Méthode au compas} :  
+        On trace deux arcs de cercle de même rayon de centres $A$, puis $B$, qui se coupent en deux points $E$ et $F$.  
+        La droite $(EF)$ est la médiatrice du segment $[AB]$.  
+        On note le milieu $M$ de $[AB]$ ; on a $AM = MB = 3$ cm et $(EF)\perp (AB)$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{corr_03_02.jpg}
+    \captionsetup{labelformat=empty}
+    \caption{\label{} Figure 2}
+  \end{figure} 
+
+        \item \textbf{Méthode à la règle graduée et à l’équerre} :  
+        On place le milieu $M$ de $[AB]$ en mesurant $3$ cm à partir de $A$ et $B$.  
+        À l’aide de l’équerre, on trace par $M$ la droite perpendiculaire à $(AB)$ ; cette droite est la médiatrice du segment $[AB]$.  
+        On indique sur le schéma que $(d)$ (par exemple) est perpendiculaire à $(AB)$ en $M$ et que $M$ est le milieu du segment $[AB]$.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{corr_03_01.jpg}
+    \captionsetup{labelformat=empty}
+    \caption{\label{} Figure 2}
+  \end{figure} 
+
+      \end{itemize}
+      \end{solution}
+    \end{parts}
+
+  \question[1.5] Triangle : À l'aide de la règle et du compas, construire, en précisant les légendes, le triangle $ABC$ tel que :
+  \[
+  AB = 7~\text{cm}, \qquad BC = 10~\text{cm}, \qquad AC = 8.5~\text{cm}.
+  \]
+  \begin{solution}
+  \begin{compactenum}
+    \item On trace d’abord le segment $[AB]$ de longueur $7$ cm.
+    \item On trace le cercle de centre $A$ et de rayon $8.5$ cm.
+    \item On trace le cercle de centre $B$ et de rayon $10$ cm.
+    \item Les deux cercles se coupent en un point $C$.  
+    \item On relie $C$ à $A$ et $C$ à $B$ pour obtenir le triangle $ABC$.
+  \end{compactenum}
+  Sur la figure, on vérifie que $AB = 7$ cm, $AC = 8{,}5$ cm et $BC = 10$ cm.
+  \end{solution}
+
+  \question[1.5] Recopier les phrases suivantes sur votre cahier, en complétant les trous.
+
+  \begin{compactitem}
+      \item Les \quad \ldots \ldots \ldots \quad \ldots \quad et \quad \ldots \quad sont \quad \ldots \quad en $F$.
+      \item Le point $F$ est \quad \ldots \ldots des droites $(d)$ et $(d')$.
+      \item $F$ \quad \ldots \ldots \quad $(d)$ et $F$ \quad \ldots \ldots \quad $(d')$.
+      \item Le \quad \ldots \ldots \quad $[DF]$ a pour \quad \ldots \ldots \quad les points $D$ et $F$
+  \end{compactitem}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figure_1.jpg}
+    \captionsetup{labelformat=empty}
+    \caption{\label{} Figure 1}
+  \end{figure} 
+
+  \begin{solution}
+  \begin{compactitem}
+      \item Les \textbf{droites} $(d)$ et $(d')$ sont \textbf{sécantes} en $F$.
+      \item Le point $F$ est \textbf{le point commun} des droites $(d)$ et $(d')$.
+      \item $F$ \textbf{appartient à} $(d)$ et $F$ \textbf{appartient à} $(d')$. Qui peut aussi s'écrire : $F$ $\in$ $(d)$ et $F$ $\in$ $(d')$.
+      \item Le \textbf{segment} $[DF]$ a pour \textbf{extrémités} les points $D$ et $F$.
+  \end{compactitem}
+  \end{solution}
+
+\end{questions}
+
+
+
+
+\section*{Exercice 2 - Tracés géométriques (5 points)}
+
+\begin{questions}
+\question[2] Tracer une figure qui respecte les instructions suivantes 
+
+\begin{compactitem}
+    \item Tracer une droite $(AB)$.
+    \item Placer un point $T$ tel que $T \in [AB]$.
+    \item Placer un point $N$ tel que $N \in [AB)$ et $N \notin [AB]$.
+    \item Placer un point $C$ tel que $C \in [BA)$ et $C \notin [AB]$.
+    \item Placer un point $H$ tel que $H \in [CA]$.
+\end{compactitem}
+
+\begin{solution}
+
+Quelques éléments de correction importants
+  \begin{compactitem}
+    \item Pour tracer une droite en utilisant 2 points : le trait doit dépasser les limites des 2 points. Pour montrer que la droite est "infinie". Sinon on est juste en train de tracer un segment.
+    \item Une fois que vous avez tracé votre figure et que vous avez terminé, relisez chaque instruction et vérifiez en sens inverse que votre figure respecte bien les conditions.
+\end{compactitem}
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{corr_03_03.jpg}
+    \captionsetup{labelformat=empty}
+    \caption{\label{} Figure 3}
+  \end{figure} 
+  
+\end{solution}
+
+\question[3] Sur votre feuille, réaliser les constructions demandées.
+\begin{parts}
+      \part[2] Tracer un cercle de centre $I$ et de diamètre 6 cms. Placer deux points J et K tels que le segment $[JK]$ soit un diamètre du cercle C, un point L sur ce même cercle C, un point M qui appartient au disque, et un point N qui n'appartient pas au disque.
+      \part[0.5] \textbf{\textcolor{red}{[Justifier]}} Que représente le point I pour le segment $[JK]$ ? Coder la figure en conséquence.
+      \part[0.5] \textbf{\textcolor{red}{[Justifier]}} Que vaut la longueur IL ? Coder la figure en conséquence.
+  \end{parts}
+
+\end{questions}
+
+\begin{solution}
+
+\textbf{Attention : le diamètre fait 6 cm, donc le rayon fait 3 cm.}
+  
+
+ \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{corr_03_04.jpg}
+    \captionsetup{labelformat=empty}
+    \caption{\label{} Figure 4}
+  \end{figure} 
+  
+  \begin{itemize}
+      \item Le segment $[JK]$ est un diamètre du cercle C. Donc le point I est le milieu du segment $[JK]$. Coder la figure en conséquence.
+      \item I étant le centre du cercle, et L étant un point appartenant au cercle, le segment $[IL]$ est un rayon du cercle $C$. Ainsi, la longueur IL est égale à 3 cm (la moitié du diamètre).
+  \end{itemize}
+
+
+\end{solution}
+
+\section*{Exercice 3 - Cercle (3 points)}
+
+\begin{solution}
+Résumé des réponses attendues pour chaque affirmation.
+
+\begin{compactparts}
+  \part Faux
+  \part Vrai
+  \part Faux
+  \part Vrai
+  \part Faux
+  \part Vrai
+  \part Faux
+  \part Vrai
+  \part Faux
+  \part Vrai
+\end{compactparts}
+
+\end{solution}
+
+
+\begin{questions}
+  \question[2.5] Déterminer si les affirmations suivantes sont vraies ou fausses. Justifier la réponse en vous aidant de la figure 2.
+  \begin{parts}
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $B$ est à égale distance de $A$ et de $E$.
+    \begin{solution} 
+    \textbf{\textcolor{red}{[FAUX]}}. Sur la figure, les segments $[AB]$, $[BC]$, $[CD]$ et $[DE]$ sont de même longueur.  
+    On a donc :
+  
+    \begin{align*}
+    AB &= \text{une longueur} \\
+    AB &= BC = CD = DE \\
+    BE &= BC + CD + DE && \text{On décompose le segment [BE] en 3 segments} \\
+    BE &= AB + AB + AB && \text{Car BC = AB, CD = AB, et DE = AB (la longueur est toujours la même)} \\ 
+    BE &= 3 \times AB  && \text{BE est donc 3 fois plus grande que AB. Ainsi} \\ 
+    BE &\neq AB
+    \end{align*}
+
+    Comme $AB \neq BE$, le point $B$ n’est pas à égale distance de $A$ et de $E$.  
+    \textbf{L’affirmation est fausse.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $G$ est à égale distance de $A$ et de $E$.
+    \begin{solution}
+    \textbf{\textcolor{red}{[VRAI]}}. Les segments $[AG]$ et $[GE]$ ont le même codage, donc
+    \[
+    AG = GE.
+    \]
+    Le point $G$ est donc à égale distance de $A$ et de $E$.  
+    \textbf{L’affirmation est vraie.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $G$ est le milieu de $[AE]$.
+    \begin{solution}
+    \textbf{\textcolor{red}{[FAUX]}}. Pour que G soit le milieu de $[AE]$, G doit :
+    \begin{compactenum}
+      \item appartenir au segment $[AE]$ (ou que G, A et E soient alignés);
+      \item être à égale distance de $A$ et de $E$ (c'est à dire $GA = GE$).
+    \end{compactenum}
+    Le point $G$ est :
+         \begin{compactenum}
+      \item à égale distance de $A$ et de $E$,
+      \item mais il n’est pas situé sur le segment $[AE]$ (il est à l’intérieur du cercle).
+    \end{compactenum} 
+    \textbf{L’affirmation est donc fausse.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $D$ est le milieu de $[CE]$.
+    \begin{solution}
+    \textbf{\textcolor{red}{[VRAI]}}. Les points $C$, $D$ et $E$ sont alignés et $D$ est entre $C$ et $E$.  
+    De plus, les segments $[CD]$ et $[DE]$ ont la même longueur (mêmes marques).  
+    Donc $D$ est à égale distance de $C$ et de $E$ et appartient au segment $[CE]$.  
+    \textbf{L’affirmation est vraie : $D$ est le milieu de $[CE]$.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $F$ est le milieu de $[DF]$.
+    \begin{solution}
+    \textbf{\textcolor{red}{[FAUX]}}. Le segment $[DF]$ a pour extrémités $D$ et $F$.  
+    Le milieu d’un segment est un point \emph{entre} les deux extrémités, et non une extrémité elle-même.  
+    Ici, $F$ est une extrémité de $[DF]$, donc il ne peut pas en être le milieu.  
+    \textbf{L’affirmation est fausse.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $C$ est le milieu de $[AE]$.
+    \begin{solution}
+    \textbf{\textcolor{red}{[VRAI]}}. Sur le segment $[AE]$ (d'après le codage), on voit que
+    \[
+    AB = BC = CD = DE.
+    \]
+    Le point $C$ est situé entre $A$ et $E$ (A, C, E sont alignés), et
+      \begin{align*}
+        AC &= AB + BC = AB + AB = 2 \times AB \\
+        CE &= CD + DE = AB + AB = 2 \times AB
+    \end{align*}
+    donc $AC = CE$, A, C, E sont alignés, donc $C$ est le milieu de $[AE]$.  
+    \textbf{L’affirmation est vraie : $C$ est le milieu de $[AE]$.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $[AE]$ est un diamètre du cercle.
+    \begin{solution}
+    \textbf{\textcolor{red}{[FAUX]}}. Un diamètre est un segment qui relie deux points du cercle et passe par le centre du cercle.  
+    Le segment $[AE]$ relie bien deux points du cercle, mais il ne passe pas par le point $G$, qui est le centre du cercle.  
+    \textbf{L’affirmation est donc fausse : $[AE]$ est une corde du cercle, pas un diamètre.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $[AG]$ est un rayon du cercle.
+    \begin{solution}
+    \textbf{\textcolor{red}{[VRAI]}}. Le point $G$ est le centre du cercle et le point $A$ appartient au cercle.  
+    Par définition, un rayon est un segment qui relie le centre du cercle à un point du cercle.  
+    Donc $[AG]$ est un rayon.  
+    \textbf{L’affirmation est vraie.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $[GE]$ est une corde du cercle.
+    \begin{solution}
+    \textbf{\textcolor{red}{[FAUX]}}. Une corde est un segment dont les deux extrémités appartiennent au cercle.  
+    Ici, $E$ appartient au cercle mais $G$ est le centre du cercle, placé à l’intérieur de celui-ci et non sur le cercle.  
+    Donc $[GE]$ n’est pas une corde, c’est un rayon.  
+    \textbf{L’affirmation est fausse.}
+    \end{solution}
+
+    \part[0.25] \textbf{\textcolor{red}{[Justifier]}} $A$ et $B$ appartiennent au disque 
+    \begin{solution}
+    \textbf{\textcolor{red}{[VRAI]}}. Le point $A$ est sur le cercle.  
+    Le point $B$ est situé entre $A$ et $E$ sur le segment $[AE]$, qui est une corde du cercle, donc $B$ est à l’intérieur du cercle.  
+    Le disque est constitué de tous les points à l’intérieur du cercle et des points du cercle lui-même.  
+    Ainsi, $A$ (sur le cercle) et $B$ (à l’intérieur) appartiennent tous les deux au disque.  
+    \textbf{L’affirmation est vraie.}
+    \end{solution}
+  \end{parts}
+
+  \question[0.5] \textbf{\textcolor{red}{[Justifier]}} Comment facilement tracer la médiatrice du segment $[AE]$ ?
+  \begin{solution}
+  La médiatrice d’un segment est l’ensemble des points à égale distance de ses extrémités.  
+  Sur la figure, 
+  \begin{compactitem}
+    \item Le point C est à égale distance de $A$ et $E$ (c'est le milieu de $[AE]$)
+    \item Le point G est à égale distance de $A$ et $E$ (voir le codage)
+  \end{compactitem}
+  Il suffit donc de tracer la droite passant par $C$ et $G$ : la droite $(CG)$ est la médiatrice du segment $[AE]$.
+  \end{solution}
+\end{questions}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{figure_2.jpg}
+  \captionsetup{labelformat=empty}
+  \caption{\label{} Figure 2}
+\end{figure}
+
+\section*{Exercice 4 - Trajet en avion (2 points)}
+
+\begin{questions} 
+  \question[2] \textbf{\textcolor{red}{[Justifier]}} On a représenté sur la carte le trajet d'un avion. De quelles villes l'avion est-il toujours à égale distance ? Justifier (les mesures du dessin ne sont pas forcément parfaitement précises mais proches de la réalité).
+\end{questions}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figure_3.jpg}
+    \captionsetup{labelformat=empty}
+    \caption{\label{} Figure 3}
+  \end{figure}
+
+
+  \begin{solution}
+  \textcolor{red}{\textit{La difficulté de cet exercice est qu'elle fait appel à un raisonnement inversé en lien avec la médiatrice. Pour que l'avion soit toujours à égale distance de 2 villes, il suffit que sa trajectoire soit la médiatrice du segment formé par les 2 villes. Si c'est le cas, alors l'avion (qui représente un point de la droite) sera toujours à égale distance des 2 extrémités du segment, cad des 2 villes. Là où vous avez été habitué à répondre à la question "quelle est la médiatrice $(d)$ du segment $[AB]$ ?", il faut ici que vous répondiez à la question "de quel segment la droite $(d)$ est-elle la médiatrice ?"}} \\
+  
+  Le trajet de l’avion est représenté par la droite rouge \\
+  
+  Cette droite coupe perpendiculairement et en son milieu le segment : $[\text{Turnbourg}\,\text{Megabourg}]$ \\
+  
+  Elle est donc la \textbf{médiatrice} de ce segment (Le segment fait 4.2 cms de longueur, et la droite de la trajectoire le coupe de telle sorte que chaque "demi segment" fait 2.1 cms).  \\
+  
+  Or tous les points d’une médiatrice sont à égale distance des deux extrémités du segment.  \\
+  
+  Ainsi, tout au long de son trajet, l’avion est
+  toujours à égale distance de \textbf{Turnbourg} et de \textbf{Megabourg}
+
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{corr_03_05.jpg}
+    \captionsetup{labelformat=empty}
+  \end{figure}
+  \end{solution}
+
+
+\section*{Exercice 5 - Calculs - Rappels (3 points)}
+
+\begin{solution}
+ \textcolor{red}{\textbf{A partir du prochain contrôle, il devient obligatoire d'effectuer votre opération en détaillant les étapes ligne par ligne. Et que votre rédaction consiste en 3-4 lignes comme suit : 
+ \begin{align*}
+  A &= ..... \\
+    &= ..... \\
+    &= ..... \\
+  A &= \textit{valeur finale}
+ \end{align*}
+}
+ }
+\end{solution}
+
+\begin{questions}
+  \question[2] Effectuer les calculs suivants en détaillant les étapes.
+  \begin{parts}
+
+    \part[0.5] \textbf{\textcolor{red}{[Justifier]}} $A = (1 + 9) \times (14 - 3)$
+    \begin{solution}
+    \begin{align*}
+    A &= (1 + 9) \times (14 - 3)\\
+      &= 10 \times (14 - 3) && \text{on calcule } 1+9\\
+      &= 10 \times 11       && \text{on calcule } 14-3\\
+      &= 110
+    \end{align*}
+    \end{solution}
+
+\begin{solution}
+ \textcolor{red}{\textbf{Une erreur que je vois encore trop souvent est que vous décomposez en ligne mais que vous faites soit :
+ \begin{align*}
+  A &= (9 + 1) = 10 \\
+  A &= (14 - 3) = 11 \\
+  A &= 10 \times 11 = 110
+ \end{align*}
+ C'est faux : ici, vous donnez 3 valeurs différentes à A. Vous dites alternativement qu'il vaut 10, mais qu'il vaut aussi 11, et qu'il vaut 110. La seule rédaction correcte est celle que j'ai faite. Où vous intégrez vos calculs intermédiaires dans le calcul global.
+}
+ }
+\end{solution}
+
+    \part[0.5] \textbf{\textcolor{red}{[Justifier]}} $B = 3 \times [10 - (2 + 3)] + 5$
+    \begin{solution}
+    \begin{align*}
+    B &= 3 \times [10 - (2 + 3)] + 5\\
+      &= 3 \times [10 - 5] + 5 && \text{on calcule } 2+3\\
+      &= 3 \times 5 + 5\\
+      &= 15 + 5\\
+      &= 20
+    \end{align*}
+
+    \end{solution}
+
+    \part[0.5] \textbf{\textcolor{red}{[Justifier]}} $C = 25 \times 4.7 \times 0.5 \times 4 \times 2$
+    \begin{solution}
+    On regroupe pour simplifier : $25 \times 4 = 100$ et $0.5 \times 2 = 1$.
+    \begin{align*}
+    C &= 25 \times 4.7 \times 0.5 \times 4 \times 2\\
+      &= (25 \times 4) \times (0.5 \times 2) \times 4.7\\
+      &= 100 \times 1 \times 4.7\\
+      &= 100 \times 4.7\\
+      &= 470
+    \end{align*}
+    \end{solution}
+
+    \part[0.5] \textbf{\textcolor{red}{[Justifier]}} $D = 2.5 \times 5 \times 4 \times 177 \times 2$
+    \begin{solution}
+    On regroupe pour créer des dizaines : $2.5 \times 4 = 10$ et $5 \times 2 = 10$.
+    \begin{align*}
+    D &= 2.5 \times 5 \times 4 \times 177 \times 2\\
+      &= (2.5 \times 4) \times (5 \times 2) \times 177\\
+      &= 10 \times 10 \times 177\\
+      &= 100 \times 177\\
+      &= 17700
+    \end{align*}
+    \end{solution}
+
+  \end{parts}
+
+  \question[1] Déterminer l'ordre de grandeur (et préciser à quel ordre de grandeur vous arrondissez) de :
+  \begin{parts}
+
+    \part[0.5] \textbf{\textcolor{red}{[Justifier]}} $J = (88.4 + 121.6) \times 9.8$
+    \begin{solution}
+    On arrondit : 
+    \begin{compactitem}
+      \item $88.4$ à la dizaine la plus proche : $90$
+      \item $121.6$ à la dizaine la plus proche : $120$
+      \item $9.8$ à la dizaine la plus proche : $10$
+    \end{compactitem}
+    Donc :
+   \begin{align*}
+    J &\approx (90 + 120) \times 10 \\
+      &\approx 210 \times 10 \\
+    J &\approx 2100
+    \end{align*}
+    \end{solution}
+
+    \part[0.5] \textbf{\textcolor{red}{[Justifier]}} $K = 2.94 \times 5.27 + 5.081$
+    \begin{solution}
+          On arrondit : 
+    \begin{compactitem}
+      \item $2.94$ à l'unité la plus proche : $2.94 \approx 3$
+      \item $5.27$ à l'unité la plus proche : $5.27 \approx 5$
+      \item $5.081$ à l'unité la plus proche : $5.081 \approx 5$
+    \end{compactitem}
+    Donc :
+   \begin{align*}
+    K &\approx 3 \times 5 + 5 \\
+      &\approx 15 + 5 && \text{CAR LA MULTIPLICATION EST PRIORITAIRE PAR RAPPORT A L'ADDITION} \\
+    K &\approx 20
+    \end{align*}
+
+
+
+ \textcolor{red}{\textbf{Il est très possible qu'à partir du prochain contrôle, je note de manière beaucoup plus sévère les erreurs de priorité. C'est une propriété essentielle qui vous bloquera 
+ dans toutes vos matières scientifiques si vous faites régulièrement la faute. \\[1em] Je ne considère pas que ce soit dans la même catégorie que les fautes d'étourderie, c'est une erreur très importante - et je veux que vous y accordiez en contrôle l'importance et la concentration / application que cette notion mérite.}
+ }
+    \end{solution}
+
+  \end{parts}
+\end{questions}
+
+
+\end{document}
