@@ -1,14 +1,64 @@
-Je vais te donner une evaluation de 10 questions de calcul mental, je veux que tu me génères 4 nouvelles versions de cette interrogation, en changeant l'ordre des questions (tu ne dois pas modifier les questions).
+# Génération de variantes d’une interrogation de calcul mental – 6e
 
-**Output** : format que je peux copier coller dans un fichier markdown (.md), donc ne surcharge pas de formatting. Ne numérotte pas les questions. Je veux que tu mettes un signe = à la fin de chaque calcul, suivi d'un espace. Au sein d'une interrogation, tu peux simplement sauter une ligne après les 5 premières questions.
+Je vais te fournir **une interrogation de calcul mental composée de 10 questions**.
 
-65 x 5
-127 + 399
-620 ÷ 5
-(18 − 6) × 2 + 3 x 2
-(14 + 7) x 4
-12 004 ÷ 4
-4,2 + 4 + 13,8
-2,5 x 6,89 x 4 
-3 208 − 201
-4,72 x 1000
+## Objectif
+
+À partir de cette interrogation :
+
+- Génère **3 nouvelles versions supplémentaires**
+- Affiche **les 4 interrogations au total**
+- Les interrogations doivent contenir **exactement les mêmes 10 questions**
+- **Tu ne dois jamais modifier les questions**
+- **Seul l’ordre des questions change** d’une interrogation à l’autre
+
+---
+
+## Contraintes de sortie (très importantes)
+
+- Le rendu doit être **copiable-collable dans un fichier Markdown (.md)**
+- **Aucun formatage superflu** (pas de tableaux, pas de listes numérotées, pas de puces)
+- **Ne numérote pas les questions**
+- Chaque question doit :
+  - se terminer par un signe `=`  
+  - suivi d’un **espace**
+- Dans chaque interrogation :
+  - fais simplement un **saut de ligne après les 5 premières questions**
+- N’ajoute **aucune correction**
+- N’ajoute **aucun commentaire**
+
+---
+
+## Format attendu
+
+Version A
+
+(question)
+(question)
+(question)
+(question)
+(question)
+
+(question)
+(question)
+(question)
+(question)
+(question)
+
+Version B
+
+(mêmes questions, ordre différent)
+
+Version C
+
+(mêmes questions, ordre différent)
+
+Version D
+
+(mêmes questions, ordre différent)
+
+---
+
+## Interrogation de départ (à utiliser telle quelle)
+
+[TEMPLATE - INSERER LES QUESTIONS]
