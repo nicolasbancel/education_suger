@@ -40,6 +40,7 @@ Pour **chaque élève**, générer une **appréciation synthétique du 2ᵉ trim
   - s’appuyer **prioritairement sur le message vocal** pour chaque élève
   - tenir compte des **notes** pour nuancer ou confirmer les propos
   - inclure **systématiquement un élément encourageant** ou une perspective de progrès
+  - Ne mentionne pas les moyennes chiffrées : elles seront déjà visibles sur le bulletin
 
 ---
 
@@ -50,7 +51,8 @@ Produire un **tableau** comportant exactement **3 colonnes** :
 | Prénom de l’élève | Appréciation – 2ᵉ trimestre | Nombre de caractères |
 |------------------|----------------------------|----------------------|
 
-⚠️ Le nombre de caractères indiqué doit être **strictement inférieur à 400**.
+- Il faut que je puisse facilementcopier coller ce tableau dans Google Sheet. Donc je ne veux pas de mise en forme superflue
+- ⚠️ Le nombre de caractères indiqué doit être **strictement inférieur à 400**.
 
 ---
 
@@ -94,6 +96,5 @@ Produire un **tableau** comportant exactement **3 colonnes** :
 
 ## ✅ Attentes finales
 
-- Une appréciation **par élève**
-- Aucune appréciation manquante
+- Une appréciation **par élève** (il est possible que je ne te fasse pas les appréciations pour tout le monde)
 - Respect strict du **format** et de la **limite de caractères**
