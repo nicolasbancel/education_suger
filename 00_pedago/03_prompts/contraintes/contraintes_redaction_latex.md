@@ -7,7 +7,7 @@
 - S'il y a des sous-questions, je veux que tu utilises \begin{part}
 
 - Nomme le titre des exercices dans une balise \section
-- Le screenshot de l'exercice doit lui aussi être présent, en utilisant la fonction \fig{}{}{} où le 1er argument est le % de linewidth (tu peux utiliser 0,6 par défaut), le 2ème argument est le path vers l'exercice, le 3ème argument est le titre de la figure.
+- Le screenshot de l'exercice doit lui aussi être présent, en utilisant la fonction \fig{}{}{} où le 1er argument est le % de linewidth (tu peux utiliser 0,6 par défaut), le 2ème argument est le path vers l'exercice (prends exactement celui qui t'est fourni dans l'énoncé), le 3ème argument est le titre de la figure.
 - Suis les mêmes libraires, façons d'écrire (les vecteurs, formules chimiques etc) que dans l'énoncé
 
 # Général - Rédaction

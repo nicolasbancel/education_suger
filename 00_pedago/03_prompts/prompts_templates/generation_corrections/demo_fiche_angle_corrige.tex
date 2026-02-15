@@ -1,0 +1,290 @@
+\documentclass[answers]{exam}
+\usepackage{../../../../mypackages}
+\usepackage{../../../../macros}
+
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{[TEMPLATE]}
+\author{N. Bancel}
+\date{15 février 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+
+\section*{Exercice 1 - Angles et alignements}
+
+\fig{0.6}{angle_exo_2.jpg}{Exercice 1}
+
+\begin{solution}
+
+On cherche la mesure de l'angle $\widehat{EGF}$.
+
+\medskip
+
+\textbf{1) Calcul d'un angle dans le triangle $ABD$}
+
+On sait que :
+\begin{compactitem}
+\item $\widehat{ABC}=37^\circ$ et $\widehat{CBD}=31^\circ$ (angles indiqués au point $B$),
+\item donc $\widehat{ABD}=37^\circ+31^\circ=68^\circ$,
+\item $\widehat{DAB}=68^\circ$ (angle indiqué au point $A$) et les points $A,C,D$ sont alignés, donc $\widehat{DAB}$ est bien l'angle du triangle $ABD$.
+\end{compactitem}
+
+Or la somme des angles d'un triangle vaut $180^\circ$.
+
+Donc, dans le triangle $ABD$ :
+\[
+\widehat{ABD} + \widehat{BAD} + \widehat{ADB} = 180^\circ
+\]
+\[
+68^\circ + 68^\circ + \widehat{ADB} = 180^\circ
+\]
+\[
+\widehat{ADB} = 180^\circ - 68^\circ - 68^\circ = 44^\circ
+\]
+
+\medskip
+
+\textbf{2) Utilisation de la bissectrice au point $D$}
+
+On sait que (codage en vert au point $D$) la demi-droite $(DB)$ est la bissectrice de l'angle $\widehat{ADF}$.
+
+Or une bissectrice partage un angle en deux angles de même mesure.
+
+Donc :
+\[
+\widehat{BDF} = \widehat{ADB} = 44^\circ
+\]
+
+\medskip
+
+\textbf{3) Travail dans le triangle $DEF$}
+
+On sait que :
+\begin{compactitem}
+\item $\widehat{FDE} = 60^\circ$ (angle indiqué au point $D$),
+\item $\widehat{DEF} = 70^\circ$ (angle indiqué au point $E$).
+\end{compactitem}
+
+Or la somme des angles d'un triangle vaut $180^\circ$.
+
+Donc, dans le triangle $DEF$ :
+\[
+\widehat{FDE} + \widehat{DEF} + \widehat{DFE} = 180^\circ
+\]
+\[
+60^\circ + 70^\circ + \widehat{DFE} = 180^\circ
+\]
+\[
+\widehat{DFE} = 180^\circ - 60^\circ - 70^\circ = 50^\circ
+\]
+
+\medskip
+
+\textbf{4) Utilisation de la bissectrice au point $F$}
+
+On sait que (codage en vert au point $F$) la demi-droite $(FE)$ est la bissectrice de l'angle $\widehat{DFG}$.
+
+Or une bissectrice partage un angle en deux angles de même mesure.
+
+Donc :
+\[
+\widehat{EFD} = \widehat{EFG} = 50^\circ
+\]
+et donc :
+\[
+\widehat{DFG} = 50^\circ + 50^\circ = 100^\circ
+\]
+
+\medskip
+
+\textbf{5) Calcul de l'angle au point $G$}
+
+On sait que les points $D,E,G$ sont sur la même droite (la droite passant par $D$, $E$ et $G$ sur la figure), donc
+\[
+\widehat{EGF} = \widehat{DGF}.
+\]
+
+Or, dans le triangle $DFG$, la somme des angles vaut $180^\circ$.
+
+Donc :
+\[
+\widehat{FDG} + \widehat{DFG} + \widehat{DGF} = 180^\circ
+\]
+\[
+60^\circ + 100^\circ + \widehat{DGF} = 180^\circ
+\]
+\[
+\widehat{DGF} = 180^\circ - 60^\circ - 100^\circ = 20^\circ
+\]
+
+Donc :
+\[
+\boxed{\widehat{EGF} = 20^\circ}
+\]
+
+\end{solution}
+
+\section*{Exercice 2 - Triangle isocèle/équilatéral et angles}
+
+\fig{0.6}{angles_exo_1.jpg}{Exercice 2}
+
+\begin{solution}
+
+On lit sur la figure :
+\begin{compactitem}
+\item les points $A$, $E$ et $M$ sont alignés,
+\item le petit carré en $F$ indique que $(AF)\perp(FM)$,
+\item les codages de longueurs montrent que $AF=AE=EF$.
+\end{compactitem}
+
+\medskip
+
+\textbf{1. Mesure de l'angle $\widehat{AEF}$}
+
+On sait que $AF=AE=EF$.
+
+Or, si les trois côtés d'un triangle sont égaux, alors ce triangle est équilatéral et ses trois angles mesurent $60^\circ$.
+
+Donc, dans le triangle $AEF$ :
+\[
+\boxed{\widehat{AEF}=60^\circ}
+\]
+
+\medskip
+
+\textbf{2. En déduire la mesure de l'angle $\widehat{FEM}$}
+
+On sait que les points $A$, $E$ et $M$ sont alignés.
+
+Or, si $A$, $E$ et $M$ sont alignés, alors les demi-droites $[EA)$ et $[EM)$ sont dans le prolongement l'une de l'autre : les angles $\widehat{FEA}$ et $\widehat{FEM}$ sont supplémentaires.
+
+Donc :
+\[
+\widehat{FEA} + \widehat{FEM} = 180^\circ
+\]
+Or, dans le triangle équilatéral $AEF$, on a $\widehat{FEA}=60^\circ$.
+
+Donc :
+\[
+60^\circ + \widehat{FEM} = 180^\circ
+\]
+\[
+\widehat{FEM} = 180^\circ - 60^\circ = 120^\circ
+\]
+Ainsi :
+\[
+\boxed{\widehat{FEM}=120^\circ}
+\]
+
+\medskip
+
+\textbf{3. Calculer la mesure de l'angle $\widehat{EMF}$}
+
+On sait que :
+\begin{compactitem}
+\item $(AF)\perp(FM)$ donc $\widehat{AFM}=90^\circ$,
+\item dans le triangle équilatéral $AEF$, $\widehat{AFE}=60^\circ$.
+\end{compactitem}
+
+Or, à $F$, l'angle $\widehat{EFM}$ se décompose en :
+\[
+\widehat{EFM} = \widehat{AFM} - \widehat{AFE}
+\]
+Donc :
+\[
+\widehat{EFM} = 90^\circ - 60^\circ = 30^\circ
+\]
+
+Or, dans le triangle $FEM$ :
+\[
+\widehat{FEM} + \widehat{EFM} + \widehat{EMF} = 180^\circ
+\]
+\[
+120^\circ + 30^\circ + \widehat{EMF} = 180^\circ
+\]
+\[
+\widehat{EMF} = 180^\circ - 120^\circ - 30^\circ = 30^\circ
+\]
+
+Donc :
+\[
+\boxed{\widehat{EMF}=30^\circ}
+\]
+
+\medskip
+
+\textbf{4. Reproduire la figure dans le cas où $AF=4$ cm}
+
+\begin{Indication}
+Méthode de construction (à la règle et au compas) :
+\begin{compactitem}
+\item Tracer le segment $[AF]$ de longueur $4$ cm.
+\item Construire le triangle équilatéral $AEF$ sur le segment $[AF]$ :
+  \begin{compactitem}
+  \item Tracer le cercle de centre $A$ et de rayon $4$ cm.
+  \item Tracer le cercle de centre $F$ et de rayon $4$ cm.
+  \item L'un des points d'intersection des deux cercles est le point $E$.
+  \item Relier $A$ à $E$ et $F$ à $E$.
+  \end{compactitem}
+\item Tracer la droite $(FM)$ perpendiculaire à $(AF)$ passant par $F$ (à l'équerre).
+\item Tracer la droite $(AM)$ (c'est la droite passant par $A$ et $E$). Le point $M$ est l'intersection de $(AM)$ et de $(FM)$.
+\end{compactitem}
+\end{Indication}
+
+\medskip
+
+\textbf{5. Construire la perpendiculaire à $[FM]$ passant par $E$ (elle coupe $[FM]$ en $P$)}
+
+\begin{Indication}
+Tracer par $E$ la droite perpendiculaire à $(FM)$ (à l'équerre). Son intersection avec le segment $[FM]$ est le point $P$.
+\end{Indication}
+
+\medskip
+
+\textbf{6. Calculer la mesure de l'angle $\widehat{PEM}$}
+
+On sait que $EP \perp FM$ (construction de la question 5).
+
+Or, l'angle entre une droite et une droite perpendiculaire à une autre se calcule avec un angle complémentaire.
+
+On sait aussi (question 3) que l'angle entre $EM$ et $FM$ vaut :
+\[
+\widehat{EMF}=30^\circ
+\]
+Donc l'angle entre $EM$ et une droite perpendiculaire à $FM$ vaut :
+\[
+\widehat{PEM} = 90^\circ - 30^\circ = 60^\circ
+\]
+
+Donc :
+\[
+\boxed{\widehat{PEM}=60^\circ}
+\]
+
+\end{solution}
+
+\end{document}

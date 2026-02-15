@@ -32,8 +32,8 @@ Tu dois respecter strictement :
 - Matière : Mathématiques
 - Classe : 6ème
 - Titre : [TEMPLATE]
-- Path Exercice 1 : [#INSERER]
-- Path Exercice 2 : [#INSERER]
+- Path Exercice 1 (respecter exactement ce path) : [#INSERER]
+- Path Exercice 2 (respecter exactement ce path) : [#INSERER]
 
 # CONTRAINTES TEMPLATE LaTeX (STRUCTURE DU DOCUMENT)
 
@@ -59,6 +59,12 @@ Template obligatoire : [INSERER TEMPLATE LATEX 03_prompts/contraintes/contrainte
   - On sait que (Hypothèses utiles issues de l’énoncé ou des questions précédentes)
   - Or (Propriété mathématique utilisée // Préciser dans quelle figure ou dans quel triangle on se place)
   - Donc (Conclusion logique)
+
+
+- Tu dois respecter strictement les consignes de rédactions définies dans le fichier suivant :
+
+[INSERER CONTRAINTES LATEX
+03_prompts/contraintes/contraintes_redaction_maths.md]
 
 # Justifications attendues
 
