@@ -1,0 +1,42 @@
+
+\documentclass{exam}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{[TITRE]}
+\author{N. Bancel}
+\date{[DATE]}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{[MATIERE]}{Année 2025-2026}{[CLASSE]}
+{\let\newpage\relax\maketitle}
+
+\section*{[Section 1]}
+
+
+\end{document}
+

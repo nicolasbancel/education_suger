@@ -6,10 +6,9 @@ Génère moi une correction en Latex de niveau 6ème pour l'exercice
 
 ## Contraintes LaTex
 
-- Pour les nombres décimaux, utilise des points. Je ne veux pas de $AC = 8{,}5$ cm mais plutôt $AC = 8.5$ cm
-- Utilise des balises \begin{solution} et \end{solution} pour encadrer la réponse
-- Si tu veux énumérer des points, utilise des balises \begin{compactenum}
-- Si tu veux lister des points, utilise des balises \begin{compactitem}
+[CONTRAINTES LATEX]
+
+## Contraintes rédaction Maths
 
 ## Output 
 
