@@ -31,7 +31,9 @@ Tu dois produire exactement un seul tableau, sans aucun texte avant ou après. L
 
 Contraintes de format :
 
-- Le tableau doit être directement copiable dans Google Sheets.
+- La 1ère ligne doit contenir le nom des 5 colonnes
+- Les nombres décimaux (dans le barème) doivent être écrits avec une virgule, et non pas un point (sinon, ils ne sont pas interprétés comme des nombres décimaux par Google Sheet)
+- Le tableau doit être directement copiable dans Google Sheets. Mets un séparateur bien identifiable entre chaque colonne (point virgule, de préférence)
 - Une ligne par élément de barème est attendue.
 - Il peut y avoir plusieurs lignes pour une même question ou sous-question.
 - Le format doit être parfaitement épuré (pas de commentaires, pas d’explications hors tableau).
@@ -58,10 +60,10 @@ Exemples de barème avec # total de points
 - 1/2 si la définition est faite avec les mots de l'élève mais ne respecte pas mot pour mot la définition officielle
 
 # Données fournies
-- Barème d’un devoir précédent (à prendre comme référence)
-- Sujet du devoir précédent (lié au barème de référence)
-- Sujet du nouveau devoir (à utiliser pour produire le nouveau barème)
+- Barème d’un devoir précédent (à prendre comme référence) : [#TEMPLATE] [6eme] Interrogation 5 - Bareme.pdf
+- Sujet et correction du devoir précédent (lié au barème de référence) [#TEMPLATE] [6eme] Interrogation 5 - Correction.pdf
+- Sujet du nouveau devoir (à utiliser pour produire le nouveau barème) [#TEMPLATE] [6eme] Interrogation 6 - Enonce.pdf
 
 # Objectif final
 
-Produire un barème cohérent avec mes pratiques, adapté au nouveau sujet, en respectant strictement le format demandé, sans ajout de texte explicatif.
+Produire un barème cohérent avec mes pratiques, adapté au nouveau sujet, en respectant strictement le format demandé, sans ajout de texte explicatif. Il est très important d'inclure un séparateur clair pour faciliter la copie dans Google Sheets
