@@ -1,0 +1,21 @@
+﻿Question - 120 max length,Answer 1 - 75 max length,Answer 2 - 75 max length,Answer 3 - 75 max length,Answer 4 - 75 max length,Time limit,Correct answer(s)
+"Dans une fraction, comment s’appelle le nombre du haut ?",Le numérateur,Le dénominateur,Le quotient,L’unité,20,1
+"Dans la fraction 3/4, que représente le nombre 4 ?",Le nombre de parts prises,Le nombre total de parts,Le numérateur,La fraction simplifiée,20,2
+Quelle fraction est égale à 6/8 ?,3/4,2/4,6/16,12/8,20,1
+Quelle est la bonne méthode pour placer 5/8 sur une demi-droite graduée ?,Partager l’unité en 8 et compter 5 parts,Partager l’unité en 5 et compter 8 parts,Comparer à 1,Transformer en décimal,30,1
+Quelle fraction est plus grande que 1 ?,9/8,3/4,5/6,7/8,20,1
+Quelle est l’écriture décimale de 1/4 ?,"0,25","0,4","0,75","0,2",20,1
+Que fait-on en premier pour additionner 1/2 et 3/4 ?,Mettre au même dénominateur,Additionner les numérateurs,Comparer à 1,Transformer en décimal,30,1
+Quel est le résultat de 1/3 + 1/3 ?,2/3,1/6,1/3,3/6,20,1
+Quelle fraction est la plus grande ?,5/6,3/12,5/12,1/2,20,1
+"Si le numérateur est plus grand que le dénominateur, la fraction est…",Plus grande que 1,Égale à 1,Plus petite que 1,Impossible à comparer,20,1
+Deux figures sont symétriques si…,Elles se superposent par pliage,Elles ont la même aire,Elles ont la même forme,Elles sont alignées,20,1
+Comment s’appelle la droite par rapport à laquelle on fait une symétrie ?,Axe de symétrie,Médiatrice,Bissectrice,Segment,20,1
+"Pour construire le symétrique d’un point A, la droite (d) doit être…",La médiatrice du segment [AA’],Parallèle au segment [AA’],Alignée avec A et A’,Un axe horizontal,30,1
+Le symétrique d’un cercle est…,Un cercle de même rayon,Un cercle plus petit,Un ovale,Un segment,20,1
+Deux segments symétriques ont…,La même longueur,La même orientation,Le même milieu,Le même axe,20,1
+Quelle est la nature de la figure symétrique d’un triangle ?,Un triangle identique,Un rectangle,Un cercle,Un segment,20,1
+"Si un point est sur l’axe de symétrie, que devient-il après symétrie ?",Il reste au même endroit,Il disparaît,Il change de côté,Il double,20,1
+Combien de points faut-il pour définir une droite ?,2,1,3,4,20,1
+Quelle figure possède plusieurs axes de symétrie ?,Le carré,Le triangle quelconque,Le parallélogramme,Le trapèze,20,1
+Quel est l’axe de symétrie d’un segment ?,Sa médiatrice,Sa bissectrice,Une parallèle au segment,Une diagonale,20,1
