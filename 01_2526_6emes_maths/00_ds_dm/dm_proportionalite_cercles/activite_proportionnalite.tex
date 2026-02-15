@@ -1,6 +1,6 @@
 \documentclass{exam}
-\usepackage{../../mypackages}
-\usepackage{../../macros}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
 
 % --- tcolorbox setup ---
 \tcbuselibrary{theorems,skins,hooks}
@@ -81,9 +81,9 @@
 Munissez-vous d'une petite corde ou d'un mètre qui peut facilement se plier et s'adapter à la forme d'un objet.
 
 \begin{questions}
-  \question Choisissez un objet circulaire chez vous ou dans la cour de récréation (par exemple, une assiette, un couvercle, une roue de vélo, etc.). Notez le nom de cet objet dans la cellule $A2$.
+  \question Choisissez un objet circulaire chez vous ou dans la cour de récréation. \textrr{Je vous conseille de prendre des objets de taille suffisament grande (poele, casserole, abat-jour, assiette, table de nuit, couvercle, une roue de vélo, etc.) Vous serez plus précis}. Notez le nom de cet objet dans la cellule $A2$.
   \question Utilisez la corde ou le mètre pour mesurer le périmètre (en cm) de l'objet choisi. Notez cette mesure dans la cellule $B2$.
-  \question Utilisez une règle ou un mètre pour mesurer le diamètre (en cm) de l'objet choisi (vous pouvez aussi mesurer le rayon, et le multiplier par deux). Notez cette mesure dans la cellule $C2$.
+  \question Utilisez une règle ou un mètre pour mesurer le diamètre (en cm) de l'objet choisi (vous pouvez aussi mesurer le rayon, et le multiplier par deux). \textrr{Les méthodes seront forcément approximatives. Vous pouvez faire plusieurs mesures de ce que vous pensez être le rayon, et faire une moyenne. Ou bien vous essayez de réperer le centre. Et vous vérifiez que les rayons partant de votre centre ont tous à peu près la même longueur.} Notez cette mesure dans la cellule $C2$.
   \question Dans la cellule $D2$, nous allons chercher à calculer la division du périmètre de l'objet par son diamètre. Autrement dit, on cherche à écrire une formule : 
   \[
   \frac{Périmètre}{Diamètre}
@@ -92,9 +92,9 @@ Munissez-vous d'une petite corde ou d'un mètre qui peut facilement se plier et 
 
 \question Répétez les étapes 1 à 4 pour 9 autres objets circulaires différents. A chaque fois, calculez le ratio du périmètre par le diamètre et stockez le résultat dans la colonne D. Vous avez 3 méthodes possibles : 
 \begin{compactitem}
-  \item Méthode 1 : à chaque fois, vous tapez la formule \verb|=B2/C2| dans la cellule de la colonne D, en adaptant les références de cellules (par exemple, pour la ligne 3, ce sera \verb|=B3/C3|).
-  \item Méthode 2 : vous tapez la formule \verb|=B2/C2| dans la cellule $D2$, puis vous copiez cette cellule, et vous la collez dans les cellules $D3$, $D4$, $D5$, etc. Google Sheets va automatiquement adapter les références de cellules pour vous
-  \item Méthode 3 : vous tapez la formule \verb|=B2/C2| dans la cellule $D2$, puis vous cliquez sur la petite case bleue en bas à droite de la cellule $D2$, et vous faites glisser cette case vers le bas jusqu'à la ligne où vous avez vos données. Cliquer sur la zone bleue, une suggestion "Saisie automatique" devrait vous être proposée. Vous pouvez cliquer sur cette suggestion pour que Google Sheets remplisse automatiquement les cellules de la colonne D avec la formule adaptée à chaque ligne.
+  \item \textrr{Méthode 1} : à chaque fois, vous tapez la formule \verb|=B2/C2| dans la cellule de la colonne D, en adaptant les références de cellules (par exemple, pour la ligne 3, ce sera \verb|=B3/C3|).
+  \item \textrr{Méthode 2} : vous tapez la formule \verb|=B2/C2| dans la cellule $D2$, puis vous copiez cette cellule, et vous la collez dans les cellules $D3$, $D4$, $D5$, etc. Google Sheets va automatiquement adapter les références de cellules pour vous
+  \item \textrr{Méthode 3} : vous tapez la formule \verb|=B2/C2| dans la cellule $D2$, puis vous cliquez sur la petite case bleue en bas à droite de la cellule $D2$, et vous faites glisser cette case vers le bas jusqu'à la ligne où vous avez vos données. Cliquer sur la zone bleue, une suggestion "Saisie automatique" devrait vous être proposée. Vous pouvez cliquer sur cette suggestion pour que Google Sheets remplisse automatiquement les cellules de la colonne D avec la formule adaptée à chaque ligne.
 \end{compactitem}
 \question Que remarquez-vous sur les résultats que vous obtenez dans la colonne D ? Est-ce que le ratio du périmètre par le diamètre est le même pour tous les objets ? Si oui, à combien est-il égal ? Pour être plus précis sur la valeur de ce nombre, vous pouvez calculer la moyenne des 10 valeurs obtenues. Dans la cellule $E1$, écrire "Moyenne Ratio", et dans la cellule $F1$, écrire une formule qui permet de calculer cette moyenne. Vous utiliserez la formule documentée dans le lien suivant : \href{https://support.google.com/docs/answer/3093615?hl=fr}{MOYENNE}. On appelera ce nombre "Pi" et on le notera $\pi$.
 
