@@ -1,0 +1,161 @@
+\documentclass{exam}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+% --- tcolorbox setup ---
+\tcbuselibrary{theorems,skins,hooks}
+
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\definecolor{lavande}{RGB}{180,190,255}
+
+\definecolor{myindbg}{HTML}{DFF5EC} % vert clair
+\definecolor{myindfr}{HTML}{1F6F4A} % vert foncé
+
+% --- New blue palette ---
+\definecolor{mybluebg}{HTML}{E7F1FF} % bleu clair
+\definecolor{mybluefr}{HTML}{1E4FA3} % bleu foncé
+
+% --- Parametric tcolorbox: 2 args = background, frame ---
+\newtcolorbox{Indication}[2]{%
+  enhanced,
+  colback=#1,
+  colframe=#2,
+  arc=4mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Fractions et proportionnalité appliquées à la cuisine}
+\author{N. Bancel}
+\date{Février 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+
+\newcommand{\figinline}[2]{%
+\begin{minipage}{#1\linewidth}
+  \centering
+  \includegraphics[width=\linewidth]{#2}
+\end{minipage}%
+}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+
+\section{Rappels}
+
+\begin{Indication}{myindbg}{myindfr}
+  Une fraction $\frac{a}{b}$ d'un gateau, c'est couper ce gâteau en $b$ (dénominateur) parts égales, et en prendre $a$ (numérateur) parts. Autrement dit, avec un exemple chiffré qui vous servira pour le devoir : supposons qu'un groupe de 16 amis a collecté 208\euro ~ pour un anniversaire. 5 amis de plus vont sûrement se greffer sur la cagnotte, et on se demande de combien cela devrait augmenter la cagnotte.
+  Le raisonnement à se faire, c'est de se demander : 
+  \begin{compactitem}
+    \item A combien correspond 1 part de la cagnotte ? Calcul : $208 \div 16 = 13$\euro ~ en moyenne.
+    \item Et du coup si 5 amis se greffent (en supposant qu'ils offrent le même montant que ce que les autres ont offert), il y a maintenant $16 + 5 = 21$ participants, et donc la cagnotte devrait monter à $21 \times 13 = 273$\euro
+  \end{compactitem}
+
+  Cet exemple vous servira pour la suite
+\end{Indication}
+
+\section{Votre recette préférée}
+
+\begin{questions}
+  \question Sur un site de cuisine de votre choix (les plus connus en France sont \href{https://www.marmiton.org/}{Marmiton} et \href{https://www.750g.com/}{750 grammes}), trouver votre recette préférée. \textrr{Elle doit contenir au moins 8 ingrédients}.
+  \question Vous indiquerez le lien (URL) de la recette dans la ligne qui correspond à votre prénom et nom sur cette Google Sheet : \href{https://docs.google.com/spreadsheets/d/1Wa0nSyUcOhiXLJ0kbh3Fd7_7XqcnUpJxdxPiZI1lJ5U/edit?gid=0\#gid=0}{[Devoir maison 6eme] Fractions, proportionnalité et cuisine}. Il faut cliquer sur ce lien et accéder à la Google Sheet, vous ne devez pas en créer une vous-même.
+  \question Sur la page des ingrédients, configurer la recette pour que les quantités correspondent aux quantités pour 4 personnes.
+  \question En rédigeant bien et en expliquant vos calculs mathématiques, écrire la recette (et les quantités) pour 1 personne. \textbf{Pas besoin de convertir les doses d'épices et condiments (sel, poivre, curry, muscade etc)}. \textrr{Pour cette question, vous poserez toutes les divisions décimales.}
+  \question En déduire les quantités de chaque ingrédient 
+    \begin{parts}
+      \item Dans la recette pour 2 personnes. \textrr{Pour cette question, vous poserez le calcul}
+      \item Dans la recette pour 6 personnes. \textrr{Pour cette question, vous pouvez utiliser une calculette. Mais expliquez quels calculs vous faites.} 
+      \item Dans la recette pour 10 personnes. \textrr{Pour cette question, vous pouvez utiliser une calculette. Mais expliquez quels calculs vous faites.}
+    \end{parts}
+  \question Comparer vos résultats avec ce que vous dit le site web quand vous changez le nombre de personnes. Vous pouvez cliquer sur les signes + ou - pour adapter la recette au nombre de personnes. 
+
+\fig{0.4}{ratatouille.jpg}{}
+
+  \question On note $a$ la quantité pour un ingrédient donné, dans la recette pour 4 personnes. Nous avons trouvé les quantités en passant par 2 étapes. Résumons cela avec une formule :
+  \begin{parts}
+    \item Soit $b$ la quantité pour 2 personnes. Avec une formule, expliquer comment on passe de $a$ à $b$. Vous écrirez la formule comme $b = a ... ... $.
+    \item Soit $c$ la quantité pour 6 personnes. Avec une formule, expliquer comment on passe de $a$ à $c$. Vous écrirez la formule comme $c = a ... ... $.
+    \item Soit $d$ la quantité pour 10 personnes. Avec une formule, expliquer comment on passe de $a$ à $d$. Vous écrirez la formule comme $d = a ... ... $.
+  \end{parts}
+  \question Reprendre la question précédente et transformer vos formules en \textrr{une seule opération} : une multiplication de $a$ avec une \textrr{fraction}.
+  \begin{parts}
+    \part Pour chacune de ces fractions : préciser si elle est plus grande ou plus petite que 1. Justifier.
+    \part Si c'est possible, simplifier / réduire chacune de ces fractions.
+  \end{parts}  
+
+  \begin{Indication}{myindbg}{myindfr}
+  Interprétation : 
+   Vous remarquerez une version pratique d'une notion vue en cours : 
+  \begin{compactitem}
+    \item quand on multiplie quelque chose par une fraction plus grande que 1, cela revient à prévoir de plus grandes quantités.
+    \item quand on multiplie quelque chose par une fraction plus petite que 1, cela revient à prévoir de plus petites quantités.
+  \end{compactitem}
+  \end{Indication}
+  \question Bonus : si vous voulez gagner jusqu'à 2 points de plus sur ce devoir, vous pouvez faire la recette, prendre le résultat en photo, me l'envoyer sur EcoleDirecte avec un titre \textbf{\textit{Devoir Maison - Recettes}}. Et vous pouvez apporter votre merveille le Jeudi de la rentrée (le 5 Mars) - j'autoriserai peut-être un déjeuner pour célébrer la fin de ce devoir maison, et goûter vos chefs d'oeuvre.
+  
+\end{questions}
+
+\section{Barème}
+
+\renewcommand{\arraystretch}{1.6}
+
+\centering
+\begin{longtable}{|L{0.22\textwidth}|L{0.62\textwidth}|c|}
+\hline
+\rowcolor{lavande}
+\textbf{Catégorie} & \textbf{Critère évalué} & \textbf{Points} \\[2pt]
+\hline
+
+\rowcolor{lavande!40}
+\multicolumn{3}{|l|}{\textbf{Résolution}} \\
+\hline
+
+Calculs
+& Justesse des calculs et des formules mathématiques.
+& 5 \\
+\hline
+
+Rédaction
+& A quel point vous avez fait l'effort de bien rédiger
+& 5 \\
+\hline
+
+\rowcolor{lavande!40}
+\multicolumn{3}{|l|}{\textbf{Compétences transverses}} \\
+\hline
+
+Respect des consignes, propreté du rendu
+& Le travail est rendu sur des doubles feuilles. Vous respectez scrupuleusement les consignes (Titre d'email, vous répondez à chaque question et n'oubliez pas de répondre à des sous questions). L'écriture est soignée, bien espacée. Les questions sont bien numérotées. Vraie volonté de rendre un devoir propre.
+& 4 \\
+\hline
+
+Communication / Effort
+& Questions posées via EcoleDirecte, messages clairs (captures d'écran, explications, essais). Dans vos emails, il y a un Bonjour, un s'il vous plait, un merci. Et quand je vous réponds, mon email ne reste pas sans réponse : si ça a résolu votre problème, vous me dites que c'est bon et que ça vous a débloqué. Si non, vous me le dites.  Implication visible, je sens qu'il y a de l'effort, que vous avez cherché, essayé, persévéré, même en cas de difficulté. Si vous n'avez pas besoin de moi pour avancer, il est quand même attendu que vous me teniez au courant de votre avancée, cela sera valorisé aussi.
+& 6 \\
+\hline
+
+Bonus - Talent culinaire
+& Qualité de votre plat, photos, goût, présentation.
+& 2 \\
+\hline
+
+\rowcolor{lavande}
+\multicolumn{2}{|r|}{\textbf{Total}} & \textbf{20} \\
+\hline
+
+\end{longtable}
+
+
+\end{document}

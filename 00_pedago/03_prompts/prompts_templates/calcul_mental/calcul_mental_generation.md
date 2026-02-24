@@ -15,36 +15,40 @@ Les notions déjà travaillées en classe sont les suivantes :
 6. Soustraction avec un terme du type 101, 201, 1001, etc.  
 7. Multiplication par 10, 100, 1000  
 8. Division par 10, 100, 1000  
-9. Priorités de calcul (parenthèses / multiplication)  
+9. Priorités de calcul (parenthèses / multiplication / soustraction)  
 10. Multiplication par 4  
 11. Division par 4  
 12. Multiplication par 5  
 13. Division par 5  
 14. Regroupement astucieux (multiplication)  
-   - Exemples : 2,5 × 4 ; 0,2 × 5  
-   - Au minimum 3 facteurs  
+    - Exemples : 2,5 × 4 ; 0,2 × 5 ; 0,5 × 4
+    - Au minimum 3 facteurs  
 15. Regroupement astucieux (addition)  
-   - Compléments à l’unité ou à la dizaine (ex : 0,2 + 3,8)  
-   - Au minimum 3 termes  
+    - Compléments à l’unité ou à la dizaine (ex : 0,2 + 3,8)  
+    - Au minimum 3 termes
+16. Distributivité
+    - Uniquement des multiplications par 11 et par 9 
+    - Le facteur (disons Y) devant le 11 et le 9 ne doit pas être trop complexe à ajouter ou à soustraire à 10 × Y 
+
+[#PROGRAMME]
 
 ## Objectif
 
 Génère **une nouvelle interrogation de calcul mental** respectant strictement les contraintes suivantes :
 
 - 10 questions au total  
-- Niveau de difficulté : **moyen (classe de 6e)**  
+- Niveau de difficulté : **inspire toi du niveau de difficulté observé dans les interrogations précédentes **
 - Les questions doivent mélanger l’ensemble des notions listées  
 - Il doit y avoir **au moins une question par catégorie**  
 - Mettre un accent particulier sur les notions suivantes :
   
-  [#TEMPLATE INSERER LES NOTIONS A METTRE EN PRIORITE SUR CE CONTROLE]
+[#NOTIONS_PRIOS_INTERRO]
 
 ## Questions obligatoires à inclure
 
 Les questions suivantes doivent apparaître **exactement telles quelles**, sans modification :
 
-  [#TEMPLATE INSERER LES QUESTIONS A INCLURE]
-
+[#QUESTIONS_FORCEES]
 
 ## Variantes anti-copie
 
@@ -64,6 +68,61 @@ Il sert uniquement à :
 - respecter l’esprit des exercices
 - éviter toute montée ou baisse de difficulté
 
+Interrogation N°11
+
+17 × 9 =
+77 - 2 × 6 + 5 =
+18 + 4 - 3 × 3 =
+2 × (3 + 8 × 6) =
+22 × 11 =
+
+3 × ((4 + 7) - 4 × 2) =
+14 × 101 = 
+4 × 999 =
+5 × 4 – 3 × 6 + 2 =
+17 × 11 = 
+
+Interrogation N°10
+
+79  9 =
+813 x 11 =
+16 + 4 × 2 + 5 =
+5 × 4 – 3 × 6 + 2 =
+3 406 + 199 =
+
+1 504 − 399 =
+2,5 × 5,1254 × 4  =
+92,2 + 100 + 6,8 =
+92 ÷ 4 =
+74 ÷ 5 =
+
+Interrogation N°9
+
+145 ÷ 5 =
+428 ÷ 4 =
+7,2 × 5 =
+0,084 x 1000 =
+2,5 × 6 × 4 + 18 =
+
+0,3 + 26 + 4,7 =
+3406 + 199 =
+127 + 399 =
+23 × 4 =
+(17 − 6) × 2 + 3 × 2 =
+
+Interrogation N°8
+
+12 004 ÷ 4 =
+65 × 5 =
+4,2 + 4 + 13,8 =
+(14 + 7) × 4 =
+3 208 − 201 =
+
+620 ÷ 5 =
+2,5 × 6,89 × 4 =
+127 + 399 =
+4,72 × 1000 =
+(18 − 6) × 2 + 3 × 2 =
 
 Interrogation N°7
 
@@ -152,7 +211,8 @@ Interrogation N°1
 
 ## Format de sortie attendu
 
-- Format texte sans caractères spéciaux, que je peux directemnet copier coller dans mon document d'interrogation, sans soucis de mise en forme
+- Format texte sans caractères spéciaux, que je peux directement copier coller dans mon document d'interrogation, sans aucune mise en forme (type .txt)
+- Tu utiliseras les signes officiels pour les additions, les soustractions, les divisions (÷ et pas /), et les multiplications (× et pas la lettre x), et les décimales sont à écrire avec une virgule, pas un point.
 - Une section par version (A, B, C, D)
 - Questions qui se suivent, sans bullet point ni numérotation
 - A la fin de chaque question, il y a un espace, un signe = et un espace. Par exemple 2,5 × 29 × 4 = 

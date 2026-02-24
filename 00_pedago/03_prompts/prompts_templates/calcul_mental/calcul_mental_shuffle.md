@@ -12,11 +12,9 @@ Je vais te fournir **une interrogation de calcul mental composée de 10 question
 - **Tu ne dois jamais modifier les questions**
 - **Seul l’ordre des questions change** d’une interrogation à l’autre
 
----
-
 ## Contraintes de sortie (très importantes)
 
-- Le rendu doit être **copiable-collable dans un fichier Markdown (.md)**
+- Format texte sans caractères spéciaux, que je peux directement copier coller dans mon document d'interrogation, sans aucune mise en forme (type .txt)
 - **Aucun formatage superflu** (pas de tableaux, pas de listes numérotées, pas de puces)
 - **Ne numérote pas les questions**
 - Chaque question doit :
@@ -26,8 +24,6 @@ Je vais te fournir **une interrogation de calcul mental composée de 10 question
   - fais simplement un **saut de ligne après les 5 premières questions**
 - N’ajoute **aucune correction**
 - N’ajoute **aucun commentaire**
-
----
 
 ## Format attendu
 
@@ -56,8 +52,6 @@ Version C
 Version D
 
 (mêmes questions, ordre différent)
-
----
 
 ## Interrogation de départ (à utiliser telle quelle)
 
