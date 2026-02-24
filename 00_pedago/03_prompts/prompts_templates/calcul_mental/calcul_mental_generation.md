@@ -62,12 +62,12 @@ Les questions suivantes doivent apparaître **exactement telles quelles**, sans 
 
 ## Référence de niveau
 
-Tu trouveras ci-dessous l’historique complet des interrogations précédentes.  
-Il sert uniquement à :
+Tu trouveras ci-dessous l’historique complet des interrogations précédentes. Il sert uniquement à :
 - comprendre le niveau attendu
 - respecter l’esprit des exercices
 - éviter toute montée ou baisse de difficulté
 
+```
 Interrogation N°11
 
 17 × 9 =
@@ -81,6 +81,7 @@ Interrogation N°11
 4 × 999 =
 5 × 4 – 3 × 6 + 2 =
 17 × 11 = 
+
 
 Interrogation N°10
 
@@ -207,7 +208,7 @@ Interrogation N°1
 967 + 21
 7 + 6
 2 658 + 299
-
+```
 
 ## Format de sortie attendu
 

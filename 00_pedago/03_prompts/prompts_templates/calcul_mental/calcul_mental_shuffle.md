@@ -27,6 +27,7 @@ Je vais te fournir **une interrogation de calcul mental composée de 10 question
 
 ## Format attendu
 
+```
 Version A
 
 (question)
@@ -52,6 +53,7 @@ Version C
 Version D
 
 (mêmes questions, ordre différent)
+```
 
 ## Interrogation de départ (à utiliser telle quelle)
 
