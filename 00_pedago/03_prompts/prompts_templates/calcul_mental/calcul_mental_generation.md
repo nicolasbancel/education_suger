@@ -218,3 +218,59 @@ Interrogation N°1
 - Questions qui se suivent, sans bullet point ni numérotation
 - A la fin de chaque question, il y a un espace, un signe = et un espace. Par exemple 2,5 × 29 × 4 = 
 - **Aucune correction**, uniquement les énoncés
+
+## Exemple d'output parfait 
+
+```
+Version A
+
+17 × 9 =
+3 508 + 199 =
+1 204 − 399 =
+46 × 100 =
+8 400 ÷ 100 =
+(18 − 6) × 2 + 3 × 2 =
+24 × 4 =
+125 ÷ 5 =
+2,5 × 6 × 4 =
+27 × 11 =
+
+Version B
+
+2,5 × 6 × 4 =
+125 ÷ 5 =
+17 × 9 =
+(18 − 6) × 2 + 3 × 2 =
+8 400 ÷ 100 =
+27 × 11 =
+46 × 100 =
+1 204 − 399 =
+24 × 4 =
+3 508 + 199 =
+
+Version C
+
+46 × 100 =
+24 × 4 =
+3 508 + 199 =
+2,5 × 6 × 4 =
+17 × 9 =
+125 ÷ 5 =
+27 × 11 =
+8 400 ÷ 100 =
+(18 − 6) × 2 + 3 × 2 =
+1 204 − 399 =
+
+Version D
+
+125 ÷ 5 =
+8 400 ÷ 100 =
+1 204 − 399 =
+27 × 11 =
+2,5 × 6 × 4 =
+46 × 100 =
+(18 − 6) × 2 + 3 × 2 =
+3 508 + 199 =
+17 × 9 =
+24 × 4 =
+```
