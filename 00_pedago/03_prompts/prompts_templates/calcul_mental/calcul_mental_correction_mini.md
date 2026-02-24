@@ -17,6 +17,7 @@ Tu dois produire une **correction minimaliste**, où tu dois
 
 ## Exemple
 
+```
 Entrée :
 234 + 99 =
 1 289 − 101 =
@@ -26,6 +27,7 @@ Sortie :
 234 + 99 = 333
 1 289 − 101 = 1 188
 2 789 − 1 001 = 1788
+```
 
 ## Enoncé
 
