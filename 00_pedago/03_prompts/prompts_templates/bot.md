@@ -1,1 +1,1 @@
-Je plaisante, je plaisante. C'est bien moi qui répond aux emails et appels.
+Je plaisante, je plaisante. C'est bien moi qui réponds aux emails et appels.
