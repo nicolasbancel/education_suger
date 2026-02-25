@@ -326,7 +326,7 @@ export default function ResultsPage() {
                         <th className="text-left py-1 font-medium">Matière</th>
                         <th className="text-right py-1 font-medium w-12">Élève</th>
                         <th className="text-right py-1 font-medium w-12">Classe</th>
-                        <th className="text-right py-1 font-medium w-10">Rang</th>
+                        <th className="text-right py-1 font-medium w-20">Min – Max</th>
                         <th className="text-left py-1 font-medium pl-3">Appréciation</th>
                       </tr>
                     </thead>
@@ -336,7 +336,11 @@ export default function ResultsPage() {
                           <td className="py-1 text-gray-700 font-medium">{line.subject}</td>
                           <td className="text-right py-1 font-semibold text-gray-800">{line.average ?? "—"}</td>
                           <td className="text-right py-1 text-gray-500">{line.average_class ?? "—"}</td>
-                          <td className="text-right py-1 text-gray-400">{line.rang ?? "—"}</td>
+                          <td className="text-right py-1 text-gray-400">
+                            {line.average_min != null && line.average_max != null
+                              ? `${line.average_min} – ${line.average_max}`
+                              : "—"}
+                          </td>
                           <td className="pl-3 py-1 text-gray-600">
                             {line.appreciation && <p>{line.appreciation}</p>}
                             {line.contenu && <p className="text-gray-400 italic mt-0.5">{line.contenu}</p>}
