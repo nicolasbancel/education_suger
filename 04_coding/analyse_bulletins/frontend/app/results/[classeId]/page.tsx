@@ -22,6 +22,9 @@ interface BulletinLine {
   rang: number | null;
   absences: number | null;
   tardiness: number | null;
+  mention: string | null;
+  appreciation_vs: string | null;
+  appreciation_ce: string | null;
 }
 
 interface LLMOutput {
@@ -30,6 +33,27 @@ interface LLMOutput {
   synthesis: string | null;
   reward_suggestion: string | null;
   manually_edited: boolean;
+}
+
+interface VieScolaireEvent {
+  id: string;
+  event_type: string;
+  date: string | null;
+  display_date: string | null;
+  libelle: string | null;
+  motif: string | null;
+  justifie: boolean | null;
+  commentaire: string | null;
+}
+
+interface SanctionEncouragement {
+  id: string;
+  type_element: string | null;
+  date: string | null;
+  display_date: string | null;
+  libelle: string | null;
+  motif: string | null;
+  commentaire: string | null;
 }
 
 interface StudentWithData {
@@ -72,6 +96,8 @@ export default function ResultsPage() {
   const [editValues, setEditValues] = useState<Partial<LLMOutput>>({});
   const [generateError, setGenerateError] = useState<string>("");
   const [expandedStudents, setExpandedStudents] = useState<Set<string>>(new Set());
+  const [vieScolaire, setVieScolaire] = useState<Record<string, VieScolaireEvent[]>>({});
+  const [sanctions, setSanctions] = useState<Record<string, SanctionEncouragement[]>>({});
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
@@ -120,27 +146,48 @@ export default function ResultsPage() {
     setGenerating(true);
     setGenerateError("");
     const studentIds = results.map((r) => r.student.id);
-    const res = await fetch("/api/llm/generate", {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ student_ids: studentIds, trimestre, custom_prompt: customPrompt }),
-    });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({ detail: "Erreur inconnue" }));
-      const detail = Array.isArray(err.detail) ? err.detail.join("\n") : err.detail;
-      setGenerateError(detail || "La génération a échoué");
+    const BATCH_SIZE = 5;
+    const allErrors: string[] = [];
+
+    for (let i = 0; i < studentIds.length; i += BATCH_SIZE) {
+      const batch = studentIds.slice(i, i + BATCH_SIZE);
+      const res = await fetch("/api/llm/generate", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ student_ids: batch, trimestre, custom_prompt: customPrompt }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ detail: `Lot ${Math.floor(i / BATCH_SIZE) + 1} : erreur inconnue` }));
+        const detail = Array.isArray(err.detail) ? err.detail : [err.detail];
+        allErrors.push(...detail);
+      }
+      // Rafraîchit les résultats après chaque lot pour affichage progressif
+      await fetchResults();
     }
-    await fetchResults();
+
+    if (allErrors.length > 0) setGenerateError(allErrors.join("\n"));
     setGenerating(false);
   }
 
-  function toggleExpand(studentId: string) {
+  async function toggleExpand(studentId: string) {
     setExpandedStudents((prev) => {
       const next = new Set(prev);
       if (next.has(studentId)) next.delete(studentId);
       else next.add(studentId);
       return next;
     });
+    // Charger les données vie scolaire la première fois seulement
+    if (vieScolaire[studentId] !== undefined) return;
+    const [vsRes, sancRes] = await Promise.all([
+      fetch(`/api/bulletins/vie-scolaire/${studentId}?trimestre=${trimestre}`, { headers }),
+      fetch(`/api/bulletins/sanctions/${studentId}?trimestre=${trimestre}`, { headers }),
+    ]);
+    const [vsData, sancData] = await Promise.all([
+      vsRes.ok ? vsRes.json() : [],
+      sancRes.ok ? sancRes.json() : [],
+    ]);
+    setVieScolaire((prev) => ({ ...prev, [studentId]: vsData }));
+    setSanctions((prev) => ({ ...prev, [studentId]: sancData }));
   }
 
   async function saveEdit(outputId: string) {
@@ -213,7 +260,7 @@ export default function ResultsPage() {
           disabled={generating || !hasData}
           className="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
         >
-          {generating ? "Génération en cours…" : "2. Générer les appréciations (LLM)"}
+          {generating ? "Génération en cours… (par lots de 5)" : "2. Générer les appréciations (LLM)"}
         </button>
 
         <button
@@ -349,7 +396,129 @@ export default function ResultsPage() {
                         </tr>
                       ))}
                     </tbody>
+                    {(() => {
+                      const bilan = bulletin_lines.find(l => l.subject === "BILAN");
+                      if (!bilan?.average) return null;
+                      return (
+                        <tfoot>
+                          <tr className="border-t-2 border-gray-200 bg-gray-50 font-semibold text-sm">
+                            <td className="py-1.5 text-gray-700">Moyenne générale</td>
+                            <td className="text-right py-1.5 text-gray-900">{bilan.average}</td>
+                            <td className="text-right py-1.5 text-gray-600">{bilan.average_class ?? "—"}</td>
+                            <td className="text-right py-1.5 text-gray-500">
+                              {bilan.average_min != null && bilan.average_max != null
+                                ? `${bilan.average_min} – ${bilan.average_max}`
+                                : "—"}
+                            </td>
+                            <td />
+                          </tr>
+                        </tfoot>
+                      );
+                    })()}
                   </table>
+
+                  {/* Vie scolaire : absences non justifiées, retards, sanctions */}
+                  {(() => {
+                    const events = vieScolaire[student.id] || [];
+                    const sancs = sanctions[student.id] || [];
+                    const absNonJust = events.filter(e => e.event_type === "absence" && e.justifie === false);
+                    const retards = events.filter(e => e.event_type === "retard");
+                    if (absNonJust.length === 0 && retards.length === 0 && sancs.length === 0) return null;
+                    return (
+                      <div className="mt-4 border-t pt-3 space-y-3">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Incidents / Vie scolaire</p>
+
+                        {absNonJust.length > 0 && (
+                          <div>
+                            <p className="text-xs font-medium text-red-600 mb-1">
+                              Absences non justifiées ({absNonJust.length})
+                            </p>
+                            <ul className="space-y-0.5">
+                              {absNonJust.map(e => (
+                                <li key={e.id} className="text-xs text-gray-600">
+                                  <span className="font-medium">{e.display_date || e.date}</span>
+                                  {e.libelle && <span className="text-gray-400"> · {e.libelle}</span>}
+                                  {e.motif && <span className="text-gray-500"> — {e.motif}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {retards.length > 0 && (
+                          <div>
+                            <p className="text-xs font-medium text-orange-600 mb-1">
+                              Retards ({retards.length})
+                            </p>
+                            <ul className="space-y-0.5">
+                              {retards.map(e => (
+                                <li key={e.id} className="text-xs text-gray-600">
+                                  <span className="font-medium">{e.display_date || e.date}</span>
+                                  {e.libelle && <span className="text-gray-400"> · {e.libelle}</span>}
+                                  {e.motif && <span className="text-gray-500"> — {e.motif}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {sancs.length > 0 && (
+                          <div>
+                            <p className="text-xs font-medium text-red-800 mb-1">
+                              Sanctions / Incidents ({sancs.length})
+                            </p>
+                            <ul className="space-y-0.5">
+                              {sancs.map(s => (
+                                <li key={s.id} className="text-xs text-gray-600">
+                                  <span className="font-medium">{s.display_date || s.date}</span>
+                                  {s.type_element && <span className="text-gray-500"> · {s.type_element}</span>}
+                                  {s.libelle && <span className="text-gray-400"> — {s.libelle}</span>}
+                                  {s.motif && <span className="text-gray-500"> ({s.motif})</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+
+                  {/* Bilan trimestre (après conseil de classe) */}
+                  {(() => {
+                    const bilan = bulletin_lines.find(l => l.subject === "BILAN");
+                    if (!bilan) return null;
+                    const hasData = bilan.appreciation || bilan.mention || bilan.appreciation_vs || bilan.appreciation_ce;
+                    if (!hasData) return null;
+                    return (
+                      <div className="mt-4 border-t pt-3">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Bilan trimestre</p>
+                        <div className="space-y-2 text-sm">
+                          {bilan.appreciation && (
+                            <div>
+                              <span className="font-semibold text-gray-700">Appréciation du professeur principal</span>
+                              <p className="mt-0.5 text-gray-600">{bilan.appreciation}</p>
+                            </div>
+                          )}
+                          <div>
+                            <span className="font-semibold text-gray-700">Mention du conseil</span>
+                            <p className="mt-0.5 text-gray-600">{bilan.mention ?? "Pas de récompense / mention"}</p>
+                          </div>
+                          {bilan.appreciation_vs && (
+                            <div>
+                              <span className="font-semibold text-gray-700">Appréciation Vie Scolaire</span>
+                              <p className="mt-0.5 text-gray-600">{bilan.appreciation_vs}</p>
+                            </div>
+                          )}
+                          {bilan.appreciation_ce && (
+                            <div>
+                              <span className="font-semibold text-gray-700">Appréciation du chef d&apos;établissement</span>
+                              <p className="mt-0.5 text-gray-600">{bilan.appreciation_ce}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
               )}
 

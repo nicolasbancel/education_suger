@@ -8,7 +8,8 @@ La tâche tourne en background avec suivi de progression.
 import uuid
 import time
 import base64
-from typing import Dict, List
+import re
+from typing import Dict, List, Optional
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from database import get_db
@@ -17,6 +18,7 @@ import schemas
 from routers.auth import get_current_teacher
 from services.ecoledirecte_client import EcoleDirecteClient, EcoleDirecteError
 from services.crypto import decrypt
+from config import TRIMESTRES_DATES
 
 router = APIRouter(prefix="/api/bulletins", tags=["bulletins"])
 
@@ -80,10 +82,10 @@ def _fetch_bulletins_job(
 
             em = periode.get("ensembleMatieres", {})
 
-            # Récupération vie scolaire (absences/retards)
+            # Récupération vie scolaire (absences/retards/sanctions)
             vs_data = client.get_student_vie_scolaire(token, eleve_id)
-            absences_total = _count_absences(vs_data, periode_id)
-            retards_total = _count_retards(vs_data, periode_id)
+            absences_total = _count_absences(vs_data, trimestre)
+            retards_total = _count_retards(vs_data, trimestre)
 
             # Suppression des lignes existantes pour ce trimestre
             db.query(models.BulletinLine).filter(
@@ -91,7 +93,48 @@ def _fetch_bulletins_job(
                 models.BulletinLine.trimestre == trimestre,
             ).delete()
 
+            # Mise à jour des événements vie scolaire (toute l'année, pas par trimestre)
+            db.query(models.VieScolaireEvent).filter(
+                models.VieScolaireEvent.student_id == student.id,
+            ).delete()
+            for evt in vs_data.get("absencesRetards", []):
+                db.add(models.VieScolaireEvent(
+                    id=str(uuid.uuid4()),
+                    student_id=student.id,
+                    ed_id=evt.get("id"),
+                    event_type=_classify_vie_scolaire(evt.get("libelle", "")),
+                    date=evt.get("date"),
+                    display_date=evt.get("displayDate"),
+                    libelle=evt.get("libelle"),
+                    motif=evt.get("motif"),
+                    justifie=evt.get("justifie"),
+                    commentaire=evt.get("commentaire"),
+                ))
+
+            db.query(models.SanctionEncouragement).filter(
+                models.SanctionEncouragement.student_id == student.id,
+            ).delete()
+            for sanc in vs_data.get("sanctionsEncouragements", []):
+                db.add(models.SanctionEncouragement(
+                    id=str(uuid.uuid4()),
+                    student_id=student.id,
+                    ed_id=sanc.get("id"),
+                    type_element=sanc.get("typeElement"),
+                    date=sanc.get("date"),
+                    display_date=sanc.get("displayDate"),
+                    libelle=sanc.get("libelle"),
+                    motif=sanc.get("motif"),
+                    commentaire=sanc.get("commentaire"),
+                ))
+
             # Ligne de synthèse générale (bilan du PP)
+            # Les noms de champs EcoleDirecte pour le bilan conseil de classe :
+            # mention       → "mention" ou "libelleMention"
+            # appreciation_vs → "appreciationVS" (CPE)
+            # appreciation_ce → "appreciationChefEtab" ou "appreciationEtablissement"
+            mention = em.get("decisionDuConseil") or None
+            appreciation_vs = em.get("appreciationVS") or None
+            appreciation_ce = em.get("appreciationCE") or None
             db.add(models.BulletinLine(
                 id=str(uuid.uuid4()),
                 student_id=student.id,
@@ -99,8 +142,14 @@ def _fetch_bulletins_job(
                 subject="BILAN",
                 appreciation=em.get("appreciationPP") or None,
                 average=_parse_moyenne(em.get("moyenneGenerale")),
+                average_class=_parse_moyenne(em.get("moyenneClasse")),
+                average_min=_parse_moyenne(em.get("moyenneMin")),
+                average_max=_parse_moyenne(em.get("moyenneMax")),
                 absences=absences_total,
                 tardiness=retards_total,
+                mention=mention,
+                appreciation_vs=appreciation_vs,
+                appreciation_ce=appreciation_ce,
             ))
 
             # Une ligne par matière
@@ -163,21 +212,48 @@ def _parse_moyenne(value: str) -> float:
         return None
 
 
-def _count_absences(vs_data: dict, periode_id: str) -> int:
-    """Compte les demi-journées d'absence sur la période."""
-    absences = vs_data.get("absences", [])
+def _classify_vie_scolaire(libelle: str) -> str:
+    """Classifie un événement : 'retard' si durée courte, 'absence' sinon.
+    Reconnaît : '15 minutes', '00:15' (format HH:MM), '0:15'.
+    """
+    if not libelle:
+        return "absence"
+    lb = libelle.strip().lower()
+    if "minute" in lb:
+        return "retard"
+    # Format HH:MM ou H:MM (ex: "00:15", "0:30")
+    if re.match(r'^\d{1,2}:\d{2}$', lb):
+        return "retard"
+    return "absence"
+
+
+def _date_in_trimestre(date_str: Optional[str], trimestre: int) -> bool:
+    """Retourne True si la date est dans la plage du trimestre (config.py)."""
+    if not date_str:
+        return True  # pas de date → on inclut par défaut
+    dates = TRIMESTRES_DATES.get(trimestre, {})
+    debut = dates.get("debut", "")
+    fin = dates.get("fin", "9999-12-31")
+    return debut <= date_str <= fin
+
+
+def _count_absences(vs_data: dict, trimestre: int) -> int:
+    """Compte les absences (non-retards) dans absencesRetards, filtrées sur le trimestre."""
+    events = vs_data.get("absencesRetards", [])
     return sum(
-        1 for a in absences
-        if a.get("idPeriode") == periode_id or not a.get("idPeriode")
+        1 for e in events
+        if _classify_vie_scolaire(e.get("libelle", "")) == "absence"
+        and _date_in_trimestre(e.get("date"), trimestre)
     )
 
 
-def _count_retards(vs_data: dict, periode_id: str) -> int:
-    """Compte les retards sur la période."""
-    retards = vs_data.get("retards", [])
+def _count_retards(vs_data: dict, trimestre: int) -> int:
+    """Compte les retards (libelle en minutes) dans absencesRetards, filtrés sur le trimestre."""
+    events = vs_data.get("absencesRetards", [])
     return sum(
-        1 for r in retards
-        if r.get("idPeriode") == periode_id or not r.get("idPeriode")
+        1 for e in events
+        if _classify_vie_scolaire(e.get("libelle", "")) == "retard"
+        and _date_in_trimestre(e.get("date"), trimestre)
     )
 
 
@@ -254,5 +330,57 @@ def get_bulletin_lines(
             models.BulletinLine.student_id == student_id,
             models.BulletinLine.trimestre == trimestre,
         )
+        .all()
+    )
+
+
+@router.get("/vie-scolaire/{student_id}", response_model=List[schemas.VieScolaireEventOut])
+def get_vie_scolaire(
+    student_id: str,
+    trimestre: int,
+    teacher: models.Teacher = Depends(get_current_teacher),
+    db: Session = Depends(get_db),
+):
+    """Retourne les événements vie scolaire (absences/retards) d'un élève pour un trimestre."""
+    student = db.query(models.Student).filter(models.Student.id == student_id).first()
+    if not student:
+        raise HTTPException(status_code=404, detail="Élève introuvable")
+    dates = TRIMESTRES_DATES.get(trimestre, {})
+    debut = dates.get("debut", "")
+    fin = dates.get("fin", "9999-12-31")
+    return (
+        db.query(models.VieScolaireEvent)
+        .filter(
+            models.VieScolaireEvent.student_id == student_id,
+            models.VieScolaireEvent.date >= debut,
+            models.VieScolaireEvent.date <= fin,
+        )
+        .order_by(models.VieScolaireEvent.date)
+        .all()
+    )
+
+
+@router.get("/sanctions/{student_id}", response_model=List[schemas.SanctionEncouragementOut])
+def get_sanctions(
+    student_id: str,
+    trimestre: int,
+    teacher: models.Teacher = Depends(get_current_teacher),
+    db: Session = Depends(get_db),
+):
+    """Retourne les sanctions/encouragements d'un élève pour un trimestre."""
+    student = db.query(models.Student).filter(models.Student.id == student_id).first()
+    if not student:
+        raise HTTPException(status_code=404, detail="Élève introuvable")
+    dates = TRIMESTRES_DATES.get(trimestre, {})
+    debut = dates.get("debut", "")
+    fin = dates.get("fin", "9999-12-31")
+    return (
+        db.query(models.SanctionEncouragement)
+        .filter(
+            models.SanctionEncouragement.student_id == student_id,
+            models.SanctionEncouragement.date >= debut,
+            models.SanctionEncouragement.date <= fin,
+        )
+        .order_by(models.SanctionEncouragement.date)
         .all()
     )
