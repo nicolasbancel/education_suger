@@ -8,13 +8,21 @@ Les endpoints peuvent changer sans préavis.
 Authentification (validée 2025) :
   1. GET  /v3/login.awp?gtk=1&v=4.96.1  → cookie GTK
   2. POST /v3/login.awp?v=4.96.1        → header X-GTK + credentials → token
+
+Deux domaines distincts (observés en 2025) :
+  - api.ecoledirecte.com   → authentification uniquement
+  - apip.ecoledirecte.com  → toutes les données (classes, élèves, bulletins…)
 """
 import json
 import httpx
+import logging
 from typing import List, Optional
 from urllib.parse import quote
 
-BASE_URL = "https://api.ecoledirecte.com/v3"
+logger = logging.getLogger(__name__)
+
+AUTH_BASE_URL = "https://api.ecoledirecte.com/v3"   # login uniquement
+DATA_BASE_URL = "https://apip.ecoledirecte.com/v3"  # données
 API_VERSION = "4.96.1"
 
 # Headers communs qui imitent Chrome macOS
@@ -43,16 +51,21 @@ class EcoleDirecteClient:
         """Encode un dict en format `data=<urlencoded_json>` attendu par l'API."""
         return f"data={quote(json.dumps(payload, separators=(',', ':'), ensure_ascii=False))}".encode()
 
-    def _post(self, path: str, payload: dict, token: Optional[str] = None) -> dict:
+    def _post(self, path: str, payload: dict, token: Optional[str] = None, base_url: str = DATA_BASE_URL) -> dict:
         headers = {"Content-Type": "application/x-www-form-urlencoded"}
         if token:
             headers["X-Token"] = token
         response = self._client.post(
-            f"{BASE_URL}{path}",
+            f"{base_url}{path}",
             content=self._encode(payload),
             headers=headers,
         )
-        response.raise_for_status()
+        try:
+            response.raise_for_status()
+        except httpx.HTTPStatusError as e:
+            raise EcoleDirecteError(
+                f"EcoleDirecte HTTP {e.response.status_code} sur {path} : {e.response.text[:200]}"
+            )
         data = response.json()
         if data.get("code") not in (200, 201):
             raise EcoleDirecteError(
@@ -65,7 +78,7 @@ class EcoleDirecteClient:
         Récupère le token GTK (cookie) requis avant le login.
         Le cookie est nommé 'GTK' (majuscules).
         """
-        response = self._client.get(f"{BASE_URL}/login.awp?gtk=1&v={API_VERSION}")
+        response = self._client.get(f"{AUTH_BASE_URL}/login.awp?gtk=1&v={API_VERSION}")
         return response.cookies.get("GTK", "")
 
     def login(self, username: str, password: str) -> dict:
@@ -80,7 +93,7 @@ class EcoleDirecteClient:
             login_headers["X-GTK"] = gtk
 
         response = self._client.post(
-            f"{BASE_URL}/login.awp?v={API_VERSION}",
+            f"{AUTH_BASE_URL}/login.awp?v={API_VERSION}",
             content=self._encode({
                 "identifiant": username,
                 "motdepasse": password,
@@ -103,10 +116,25 @@ class EcoleDirecteClient:
             (a for a in accounts if a.get("typeCompte") == "P"),
             accounts[0],
         )
+        account_id = account["id"]
+        name = f"{account.get('prenom', '')} {account.get('nom', '')}".strip()
+
+        # Les classes sont dans profile.classes (pas besoin d'un appel séparé)
+        profile_classes = account.get("profile", {}).get("classes", [])
+        classes = [
+            {
+                "id": str(c["id"]),
+                "name": c.get("libelle", c.get("code", str(c["id"]))),
+                "annee_scolaire": c.get("anneeScolaire", ""),
+            }
+            for c in profile_classes
+        ]
+        logger.info(f"ED login OK : id={account_id}, name={name}, classes={[c['name'] for c in classes]}")
         return {
             "token": token,
-            "account_id": account["id"],
-            "name": f"{account.get('prenom', '')} {account.get('nom', '')}".strip(),
+            "account_id": account_id,
+            "name": name,
+            "classes": classes,
         }
 
     def get_classes(self, token: str, enseignant_id: int) -> List[dict]:
@@ -152,7 +180,7 @@ class EcoleDirecteClient:
         """
         periode_id = f"A00{trimestre}"
         response = self._client.post(
-            f"{BASE_URL}/eleves/{eleve_id}/donneesbulletins.awp?verbe=get&v={API_VERSION}",
+            f"{DATA_BASE_URL}/eleves/{eleve_id}/donneesbulletins.awp?verbe=get&v={API_VERSION}",
             content=self._encode({"anneeScolaire": annee_scolaire, "idPeriode": periode_id}),
             headers={"Content-Type": "application/x-www-form-urlencoded", "X-Token": token},
         )
