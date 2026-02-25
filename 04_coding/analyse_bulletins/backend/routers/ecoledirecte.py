@@ -1,8 +1,10 @@
+from __future__ import annotations
 """
 Routes de synchronisation avec EcoleDirecte.
 Le token ED est recréé à chaque appel (credentials stockés chiffrés).
 """
 import uuid
+from typing import List, Tuple
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import get_db
@@ -15,7 +17,7 @@ from services.crypto import decrypt
 router = APIRouter(prefix="/api/ecoledirecte", tags=["ecoledirecte"])
 
 
-def _get_ed_client_and_token(teacher: models.Teacher) -> tuple[EcoleDirecteClient, str]:
+def _get_ed_client_and_token(teacher: models.Teacher) -> Tuple[EcoleDirecteClient, str]:
     """Décrypte les credentials et re-authentifie auprès d'EcoleDirecte."""
     password = decrypt(teacher.encrypted_password)
     client = EcoleDirecteClient()
@@ -27,7 +29,7 @@ def _get_ed_client_and_token(teacher: models.Teacher) -> tuple[EcoleDirecteClien
         raise HTTPException(status_code=502, detail=f"EcoleDirecte : {e}")
 
 
-@router.post("/sync-classes", response_model=list[schemas.ClasseOut])
+@router.post("/sync-classes", response_model=List[schemas.ClasseOut])
 def sync_classes(
     teacher: models.Teacher = Depends(get_current_teacher),
     db: Session = Depends(get_db),
@@ -72,7 +74,7 @@ def sync_classes(
     return synced
 
 
-@router.get("/classes", response_model=list[schemas.ClasseOut])
+@router.get("/classes", response_model=List[schemas.ClasseOut])
 def list_classes(
     teacher: models.Teacher = Depends(get_current_teacher),
     db: Session = Depends(get_db),
@@ -85,7 +87,7 @@ def list_classes(
     )
 
 
-@router.post("/classes/{classe_id}/sync-students", response_model=list[schemas.StudentOut])
+@router.post("/classes/{classe_id}/sync-students", response_model=List[schemas.StudentOut])
 def sync_students(
     classe_id: str,
     teacher: models.Teacher = Depends(get_current_teacher),
@@ -135,7 +137,7 @@ def sync_students(
     return synced
 
 
-@router.get("/classes/{classe_id}/students", response_model=list[schemas.StudentOut])
+@router.get("/classes/{classe_id}/students", response_model=List[schemas.StudentOut])
 def list_students(
     classe_id: str,
     teacher: models.Teacher = Depends(get_current_teacher),

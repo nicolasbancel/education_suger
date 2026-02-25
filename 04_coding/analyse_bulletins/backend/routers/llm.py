@@ -1,4 +1,6 @@
+from __future__ import annotations
 import uuid
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import get_db
@@ -10,7 +12,7 @@ from services.llm_service import generate_student_output, get_default_generation
 router = APIRouter(prefix="/api/llm", tags=["llm"])
 
 
-@router.post("/generate", response_model=list[schemas.LLMOutputOut])
+@router.post("/generate", response_model=List[schemas.LLMOutputOut])
 def generate(
     request: schemas.GenerateRequest,
     teacher: models.Teacher = Depends(get_current_teacher),
@@ -124,7 +126,7 @@ def update_output(
     return output
 
 
-@router.get("/outputs/{classe_id}", response_model=list[schemas.StudentWithData])
+@router.get("/outputs/{classe_id}", response_model=List[schemas.StudentWithData])
 def get_class_results(
     classe_id: str,
     trimestre: int,

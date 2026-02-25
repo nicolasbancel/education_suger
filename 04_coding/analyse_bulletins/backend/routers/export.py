@@ -1,7 +1,9 @@
+from __future__ import annotations
 """
 Export des résultats : CSV, DOCX, PDF.
 """
 import io
+from typing import Tuple, List
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
@@ -20,7 +22,7 @@ router = APIRouter(prefix="/api/export", tags=["export"])
 
 def _get_class_data(
     classe_id: str, trimestre: int, teacher: models.Teacher, db: Session
-) -> tuple[models.Classe, list[dict]]:
+) -> Tuple[models.Classe, List[dict]]:
     classe = db.query(models.Classe).filter(
         models.Classe.id == classe_id,
         models.Classe.teacher_id == teacher.id,

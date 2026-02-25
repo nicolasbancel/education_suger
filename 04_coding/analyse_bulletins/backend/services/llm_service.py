@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Service LLM — deux modes distincts :
   - Mode extraction  : sortie factuelle stricte (équivalent du bulletin)
