@@ -2,6 +2,7 @@
 Script de diagnostic pour tester la connexion EcoleDirecte.
 Usage : .venv/bin/python test_ed_login.py
 """
+
 import json
 import httpx
 from urllib.parse import quote
@@ -50,7 +51,9 @@ with httpx.Client(timeout=15.0, headers=HEADERS) as client:
         "uuid": "",
         "fa": [],
     }
-    body = f"data={quote(json.dumps(payload, separators=(',', ':'), ensure_ascii=False))}"
+    body = (
+        f"data={quote(json.dumps(payload, separators=(',', ':'), ensure_ascii=False))}"
+    )
 
     extra = {"Content-Type": "application/x-www-form-urlencoded"}
     if gtk:
@@ -71,7 +74,9 @@ with httpx.Client(timeout=15.0, headers=HEADERS) as client:
             print(f"\nConnexion reussie !")
             print(f"Token : {token[:40]}...")
             for a in data.get("data", {}).get("accounts", []):
-                print(f"  Compte : {a.get('typeCompte')} — {a.get('prenom')} {a.get('nom')}")
+                print(
+                    f"  Compte : {a.get('typeCompte')} — {a.get('prenom')} {a.get('nom')}"
+                )
         else:
             print(json.dumps(data, indent=2, ensure_ascii=False)[:500])
     except Exception:
