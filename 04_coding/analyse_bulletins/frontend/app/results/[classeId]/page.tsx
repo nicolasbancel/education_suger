@@ -63,6 +63,8 @@ export default function ResultsPage() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValues, setEditValues] = useState<Partial<LLMOutput>>({});
+  const [generateError, setGenerateError] = useState<string>("");
+  const [expandedStudents, setExpandedStudents] = useState<Set<string>>(new Set());
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
@@ -109,14 +111,29 @@ export default function ResultsPage() {
 
   async function generateAll() {
     setGenerating(true);
+    setGenerateError("");
     const studentIds = results.map((r) => r.student.id);
-    await fetch("/api/llm/generate", {
+    const res = await fetch("/api/llm/generate", {
       method: "POST",
       headers,
       body: JSON.stringify({ student_ids: studentIds, trimestre, custom_prompt: customPrompt }),
     });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: "Erreur inconnue" }));
+      const detail = Array.isArray(err.detail) ? err.detail.join("\n") : err.detail;
+      setGenerateError(detail || "La génération a échoué");
+    }
     await fetchResults();
     setGenerating(false);
+  }
+
+  function toggleExpand(studentId: string) {
+    setExpandedStudents((prev) => {
+      const next = new Set(prev);
+      if (next.has(studentId)) next.delete(studentId);
+      else next.add(studentId);
+      return next;
+    });
   }
 
   async function saveEdit(outputId: string) {
@@ -200,6 +217,14 @@ export default function ResultsPage() {
         </button>
       </div>
 
+      {/* Generate error */}
+      {generateError && (
+        <div className="mb-4 bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-800">
+          <strong>Erreur de génération :</strong>
+          <pre className="mt-1 whitespace-pre-wrap">{generateError}</pre>
+        </div>
+      )}
+
       {/* Job errors */}
       {job?.errors && job.errors.length > 0 && (
         <div className="mb-4 bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-sm text-yellow-800">
@@ -251,9 +276,12 @@ export default function ResultsPage() {
                     </span>
                   )}
                   {bulletin_lines.length > 0 && (
-                    <span className="ml-2 text-xs text-gray-400">
-                      {bulletin_lines.length} matières
-                    </span>
+                    <button
+                      onClick={() => toggleExpand(student.id)}
+                      className="ml-2 text-xs text-blue-500 hover:text-blue-700 underline"
+                    >
+                      {expandedStudents.has(student.id) ? "Masquer bulletin" : `Voir bulletin (${bulletin_lines.length} matières)`}
+                    </button>
                   )}
                 </div>
 
@@ -273,6 +301,38 @@ export default function ResultsPage() {
                   </button>
                 )}
               </div>
+
+              {/* Données bulletin (expandable) */}
+              {expandedStudents.has(student.id) && bulletin_lines.length > 0 && (
+                <div className="mt-3 border-t pt-3">
+                  {bulletin_lines.filter(l => l.subject === "BILAN").map(bilan => (
+                    <div key={bilan.id} className="mb-3 bg-blue-50 rounded-lg px-3 py-2 text-sm">
+                      <span className="font-medium text-blue-700">Bilan général</span>
+                      {bilan.average && <span className="ml-2 text-blue-600 font-semibold">{bilan.average}/20</span>}
+                      {bilan.appreciation && <p className="mt-1 text-gray-700 italic">{bilan.appreciation}</p>}
+                      {(bilan.absences ?? 0) > 0 && <span className="mt-1 block text-xs text-orange-600">{bilan.absences} absence(s) · {bilan.tardiness ?? 0} retard(s)</span>}
+                    </div>
+                  ))}
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-gray-500 border-b">
+                        <th className="text-left py-1 font-medium">Matière</th>
+                        <th className="text-right py-1 font-medium w-16">Moy.</th>
+                        <th className="text-left py-1 font-medium pl-3">Appréciation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {bulletin_lines.filter(l => l.subject !== "BILAN").map(line => (
+                        <tr key={line.id} className="border-b border-gray-50">
+                          <td className="py-1 text-gray-700">{line.subject}</td>
+                          <td className="text-right py-1 font-medium text-gray-800">{line.average ?? "—"}</td>
+                          <td className="pl-3 py-1 text-gray-500">{line.appreciation || "—"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
 
               {llm_output ? (
                 editingId === llm_output.id ? (
