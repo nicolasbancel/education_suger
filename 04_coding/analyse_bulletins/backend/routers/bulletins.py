@@ -1,13 +1,13 @@
 from __future__ import annotations
 """
-Routes pour le téléchargement et l'extraction des bulletins PDF.
-Le téléchargement tourne en background task avec suivi de progression.
+Routes pour la récupération des données de bulletins via l'API EcoleDirecte.
+Les données (notes, appréciations, vie scolaire) sont récupérées directement
+en JSON — plus de téléchargement PDF ni d'extraction LLM factuelle.
+La tâche tourne en background avec suivi de progression.
 """
-import os
-import time
 import uuid
+import time
 from typing import Dict, List
-from pathlib import Path
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from database import get_db
@@ -16,26 +16,18 @@ import schemas
 from routers.auth import get_current_teacher
 from services.ecoledirecte_client import EcoleDirecteClient, EcoleDirecteError
 from services.crypto import decrypt
-from services.pdf_extractor import extract_text_from_pdf
-from services.llm_service import extract_bulletin_data
 
 router = APIRouter(prefix="/api/bulletins", tags=["bulletins"])
 
 # Suivi des jobs en mémoire (suffisant pour MVP local mono-utilisateur)
 _jobs: Dict[str, schemas.JobStatus] = {}
 
-DATA_DIR = Path(os.getenv("DATA_DIR", "./data"))
+# Mapping période EcoleDirecte → numéro de trimestre
+_PERIODE_MAP = {"A001": 1, "A002": 2, "A003": 3}
 
 
-def _get_pdf_path(teacher_id: str, classe_id: str, trimestre: int, student_id: str) -> Path:
-    folder = DATA_DIR / teacher_id / classe_id / f"trimestre_{trimestre}"
-    folder.mkdir(parents=True, exist_ok=True)
-    return folder / f"{student_id}.pdf"
-
-
-def _download_and_extract_job(
+def _fetch_bulletins_job(
     job_id: str,
-    teacher_id: str,
     ed_login: str,
     encrypted_password: bytes,
     classe_id: str,
@@ -44,19 +36,20 @@ def _download_and_extract_job(
     annee_scolaire: str,
     db_url: str,
 ):
-    """Tâche de fond : télécharge les PDFs + extrait les données via LLM."""
+    """Tâche de fond : récupère les notes/appréciations via notes.awp + viescolaire.awp."""
     from sqlalchemy import create_engine
     from sqlalchemy.orm import sessionmaker
 
     engine = create_engine(db_url, connect_args={"check_same_thread": False})
-    Session = sessionmaker(bind=engine)
-    db = Session()
+    LocalSession = sessionmaker(bind=engine)
+    db = LocalSession()
 
     job = _jobs[job_id]
     job.total = len(students)
 
     password = decrypt(encrypted_password)
     client = EcoleDirecteClient()
+    periode_id = f"A00{trimestre}"
 
     try:
         ed_info = client.login(ed_login, password)
@@ -70,27 +63,26 @@ def _download_and_extract_job(
 
     for student in students:
         try:
-            # Téléchargement PDF
-            pdf_bytes = client.download_bulletin_pdf(
-                token,
-                int(student.ecoledirecte_id),
-                trimestre,
-                annee_scolaire,
-            )
-            pdf_path = _get_pdf_path(teacher_id, classe_id, trimestre, student.id)
-            pdf_path.write_bytes(pdf_bytes)
+            eleve_id = int(student.ecoledirecte_id)
 
-            # Extraction texte
-            text = extract_text_from_pdf(str(pdf_path))
-            if not text:
+            # Récupération notes + appréciations
+            notes_data = client.get_student_notes(token, eleve_id, annee_scolaire)
+            periodes = notes_data.get("periodes", [])
+            periode = next((p for p in periodes if p.get("idPeriode") == periode_id), None)
+
+            if not periode:
                 job.errors.append(
-                    f"{student.last_name} {student.first_name} : PDF illisible (texte vide)"
+                    f"{student.last_name} {student.first_name} : période {periode_id} introuvable"
                 )
                 job.progress += 1
                 continue
 
-            # Extraction LLM (mode factuel)
-            lines = extract_bulletin_data(text)
+            em = periode.get("ensembleMatieres", {})
+
+            # Récupération vie scolaire (absences/retards)
+            vs_data = client.get_student_vie_scolaire(token, eleve_id)
+            absences_total = _count_absences(vs_data, periode_id)
+            retards_total = _count_retards(vs_data, periode_id)
 
             # Suppression des lignes existantes pour ce trimestre
             db.query(models.BulletinLine).filter(
@@ -98,38 +90,76 @@ def _download_and_extract_job(
                 models.BulletinLine.trimestre == trimestre,
             ).delete()
 
-            for line in lines:
-                db.add(
-                    models.BulletinLine(
-                        id=str(uuid.uuid4()),
-                        student_id=student.id,
-                        trimestre=trimestre,
-                        subject=line.get("matiere", ""),
-                        appreciation=line.get("appreciation"),
-                        average=line.get("moyenne"),
-                        absences=line.get("absences"),
-                        tardiness=line.get("retards"),
-                        pdf_path=str(pdf_path),
-                    )
-                )
+            # Ligne de synthèse générale (bilan du PP)
+            db.add(models.BulletinLine(
+                id=str(uuid.uuid4()),
+                student_id=student.id,
+                trimestre=trimestre,
+                subject="BILAN",
+                appreciation=em.get("appreciationPP") or None,
+                average=_parse_moyenne(em.get("moyenneGenerale")),
+                absences=absences_total,
+                tardiness=retards_total,
+            ))
+
+            # Une ligne par matière
+            for disc in em.get("disciplines", []):
+                db.add(models.BulletinLine(
+                    id=str(uuid.uuid4()),
+                    student_id=student.id,
+                    trimestre=trimestre,
+                    subject=disc.get("discipline", disc.get("codeMatiere", "")),
+                    appreciation=disc.get("appreciationProfesseur") or None,
+                    average=_parse_moyenne(disc.get("moyenne")),
+                    absences=None,
+                    tardiness=None,
+                ))
+
             db.commit()
 
+        except EcoleDirecteError as e:
+            job.errors.append(f"{student.last_name} {student.first_name} : {e}")
         except Exception as e:
-            job.errors.append(
-                f"{student.last_name} {student.first_name} : {e}"
-            )
+            job.errors.append(f"{student.last_name} {student.first_name} : erreur inattendue — {e}")
         finally:
             job.progress += 1
-            # Délai pour ne pas surcharger EcoleDirecte
-            time.sleep(1.0)
+            time.sleep(0.5)  # ne pas surcharger EcoleDirecte
 
     client.close()
     db.close()
     job.status = "done"
 
 
-@router.post("/download/{classe_id}", response_model=schemas.JobStatus)
-def start_download(
+def _parse_moyenne(value: str) -> float:
+    """Convertit '14,69' ou '14.69' en float, retourne None si invalide."""
+    if not value:
+        return None
+    try:
+        return float(str(value).replace(",", "."))
+    except (ValueError, TypeError):
+        return None
+
+
+def _count_absences(vs_data: dict, periode_id: str) -> int:
+    """Compte les demi-journées d'absence sur la période."""
+    absences = vs_data.get("absences", [])
+    return sum(
+        1 for a in absences
+        if a.get("idPeriode") == periode_id or not a.get("idPeriode")
+    )
+
+
+def _count_retards(vs_data: dict, periode_id: str) -> int:
+    """Compte les retards sur la période."""
+    retards = vs_data.get("retards", [])
+    return sum(
+        1 for r in retards
+        if r.get("idPeriode") == periode_id or not r.get("idPeriode")
+    )
+
+
+@router.post("/fetch/{classe_id}", response_model=schemas.JobStatus)
+def start_fetch(
     classe_id: str,
     trimestre: int,
     background_tasks: BackgroundTasks,
@@ -137,7 +167,7 @@ def start_download(
     db: Session = Depends(get_db),
 ):
     """
-    Lance le téléchargement + extraction des bulletins d'une classe en arrière-plan.
+    Lance la récupération des bulletins d'une classe via l'API EcoleDirecte (background).
     Retourne un job_id pour suivre la progression via GET /jobs/{job_id}.
     """
     classe = db.query(models.Classe).filter(
@@ -151,7 +181,7 @@ def start_download(
     if not students:
         raise HTTPException(
             status_code=400,
-            detail="Aucun élève trouvé. Synchronisez d'abord les élèves via /ecoledirecte/classes/{id}/sync-students",
+            detail="Aucun élève trouvé. Synchronisez d'abord les élèves.",
         )
 
     job_id = str(uuid.uuid4())
@@ -161,9 +191,8 @@ def start_download(
 
     from database import DATABASE_URL
     background_tasks.add_task(
-        _download_and_extract_job,
+        _fetch_bulletins_job,
         job_id=job_id,
-        teacher_id=teacher.id,
         ed_login=teacher.ecoledirecte_login,
         encrypted_password=teacher.encrypted_password,
         classe_id=classe_id,
@@ -177,7 +206,7 @@ def start_download(
 
 @router.get("/jobs/{job_id}", response_model=schemas.JobStatus)
 def get_job_status(job_id: str):
-    """Polling de la progression d'un job de téléchargement."""
+    """Polling de la progression d'un job."""
     job = _jobs.get(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="Job introuvable")
@@ -191,7 +220,7 @@ def get_bulletin_lines(
     teacher: models.Teacher = Depends(get_current_teacher),
     db: Session = Depends(get_db),
 ):
-    """Retourne les lignes extraites du bulletin d'un élève."""
+    """Retourne les lignes de bulletin d'un élève pour un trimestre."""
     student = db.query(models.Student).filter(models.Student.id == student_id).first()
     if not student:
         raise HTTPException(status_code=404, detail="Élève introuvable")

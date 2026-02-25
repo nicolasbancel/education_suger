@@ -29,6 +29,7 @@ API_VERSION = "4.96.1"
 _BROWSER_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
+    "Origin": "https://www.ecoledirecte.com",
     "Referer": "https://www.ecoledirecte.com/",
     "sec-ch-ua": '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
     "sec-ch-ua-mobile": "?0",
@@ -171,42 +172,33 @@ class EcoleDirecteClient:
             for e in eleves
         ]
 
-    def download_bulletin_pdf(
-        self, token: str, eleve_id: int, trimestre: int, annee_scolaire: str = ""
-    ) -> bytes:
+    def get_student_notes(self, token: str, eleve_id: int, annee_scolaire: str = "") -> dict:
         """
-        Télécharge le bulletin PDF d'un élève pour un trimestre donné.
-        idPeriode : "A001" = T1, "A002" = T2, "A003" = T3.
+        Récupère les notes et appréciations d'un élève pour toutes les périodes.
+        Retourne le dict 'data' complet (clés: periodes, notes, parametrage...).
+        Chaque période (A001=T1, A002=T2, A003=T3) contient:
+          - ensembleMatieres.moyenneGenerale
+          - ensembleMatieres.appreciationPP  (appréciation du professeur principal)
+          - ensembleMatieres.decisionDuConseil
+          - ensembleMatieres.disciplines[]  (par matière: discipline, moyenne, appreciationProfesseur)
         """
-        periode_id = f"A00{trimestre}"
-        response = self._client.post(
-            f"{DATA_BASE_URL}/eleves/{eleve_id}/donneesbulletins.awp?verbe=get&v={API_VERSION}",
-            content=self._encode({"anneeScolaire": annee_scolaire, "idPeriode": periode_id}),
-            headers={"Content-Type": "application/x-www-form-urlencoded", "X-Token": token},
+        data = self._post(
+            f"/eleves/{eleve_id}/notes.awp?verbe=get&v={API_VERSION}",
+            {"anneeScolaire": annee_scolaire},
+            token=token,
         )
-        response.raise_for_status()
+        return data.get("data", {})
 
-        if "application/pdf" in response.headers.get("content-type", ""):
-            return response.content
-
-        data = response.json()
-        if data.get("code") not in (200, 201):
-            raise EcoleDirecteError(
-                f"Impossible de récupérer le bulletin : {data.get('message')}"
-            )
-
-        pdf_url = (
-            data.get("data", {}).get("url")
-            or data.get("data", {}).get("fichier", {}).get("url")
+    def get_student_vie_scolaire(self, token: str, eleve_id: int) -> dict:
+        """
+        Récupère la vie scolaire d'un élève (absences, retards, sanctions...).
+        """
+        data = self._post(
+            f"/eleves/{eleve_id}/viescolaire.awp?verbe=get&v={API_VERSION}",
+            {},
+            token=token,
         )
-        if pdf_url:
-            pdf_response = self._client.get(pdf_url, headers={"X-Token": token})
-            pdf_response.raise_for_status()
-            return pdf_response.content
-
-        raise EcoleDirecteError(
-            f"Format de réponse bulletin inattendu pour élève {eleve_id}, trimestre {trimestre}."
-        )
+        return data.get("data", {})
 
     def close(self):
         self._client.close()

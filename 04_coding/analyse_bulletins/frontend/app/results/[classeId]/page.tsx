@@ -99,7 +99,7 @@ export default function ResultsPage() {
 
   async function startDownload() {
     setDownloading(true);
-    const res = await fetch(`/api/bulletins/download/${classeId}?trimestre=${trimestre}`, {
+    const res = await fetch(`/api/bulletins/fetch/${classeId}?trimestre=${trimestre}`, {
       method: "POST",
       headers,
     });
@@ -181,7 +181,7 @@ export default function ResultsPage() {
             ? job
               ? `Téléchargement… ${job.progress}/${job.total}`
               : "Démarrage…"
-            : "1. Télécharger les bulletins"}
+            : "1. Récupérer les bulletins"}
         </button>
 
         <button
