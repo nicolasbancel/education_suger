@@ -1,8 +1,10 @@
+from __future__ import annotations
 """
 Routes de synchronisation avec EcoleDirecte.
 Le token ED est recréé à chaque appel (credentials stockés chiffrés).
 """
 import uuid
+from typing import List, Tuple
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import get_db
@@ -15,36 +17,37 @@ from services.crypto import decrypt
 router = APIRouter(prefix="/api/ecoledirecte", tags=["ecoledirecte"])
 
 
-def _get_ed_client_and_token(teacher: models.Teacher) -> tuple[EcoleDirecteClient, str]:
-    """Décrypte les credentials et re-authentifie auprès d'EcoleDirecte."""
+def _login_ed(teacher: models.Teacher) -> Tuple[EcoleDirecteClient, str, list]:
+    """Décrypte les credentials, re-authentifie et retourne (client, token, classes)."""
     password = decrypt(teacher.encrypted_password)
     client = EcoleDirecteClient()
     try:
         ed_info = client.login(teacher.ecoledirecte_login, password)
-        return client, ed_info["token"]
+        return client, ed_info["token"], ed_info.get("classes", [])
     except EcoleDirecteError as e:
         client.close()
         raise HTTPException(status_code=502, detail=f"EcoleDirecte : {e}")
 
 
-@router.post("/sync-classes", response_model=list[schemas.ClasseOut])
+def _get_ed_client_and_token(teacher: models.Teacher) -> Tuple[EcoleDirecteClient, str]:
+    """Décrypte les credentials et re-authentifie auprès d'EcoleDirecte."""
+    client, token, _ = _login_ed(teacher)
+    return client, token
+
+
+@router.post("/sync-classes", response_model=List[schemas.ClasseOut])
 def sync_classes(
     teacher: models.Teacher = Depends(get_current_teacher),
     db: Session = Depends(get_db),
 ):
     """
-    Récupère les classes depuis EcoleDirecte et les synchronise en base.
+    Récupère les classes depuis EcoleDirecte (via la réponse de login) et les synchronise en base.
     """
-    if not teacher.ed_account_id:
-        raise HTTPException(status_code=400, detail="account_id EcoleDirecte manquant")
+    client, _, ed_classes = _login_ed(teacher)
+    client.close()
 
-    client, token = _get_ed_client_and_token(teacher)
-    try:
-        ed_classes = client.get_classes(token, teacher.ed_account_id)
-    except EcoleDirecteError as e:
-        raise HTTPException(status_code=502, detail=str(e))
-    finally:
-        client.close()
+    if not ed_classes:
+        raise HTTPException(status_code=502, detail="Aucune classe trouvée dans la réponse EcoleDirecte")
 
     synced = []
     for ec in ed_classes:
@@ -72,7 +75,7 @@ def sync_classes(
     return synced
 
 
-@router.get("/classes", response_model=list[schemas.ClasseOut])
+@router.get("/classes", response_model=List[schemas.ClasseOut])
 def list_classes(
     teacher: models.Teacher = Depends(get_current_teacher),
     db: Session = Depends(get_db),
@@ -85,7 +88,7 @@ def list_classes(
     )
 
 
-@router.post("/classes/{classe_id}/sync-students", response_model=list[schemas.StudentOut])
+@router.post("/classes/{classe_id}/sync-students", response_model=List[schemas.StudentOut])
 def sync_students(
     classe_id: str,
     teacher: models.Teacher = Depends(get_current_teacher),
@@ -135,7 +138,7 @@ def sync_students(
     return synced
 
 
-@router.get("/classes/{classe_id}/students", response_model=list[schemas.StudentOut])
+@router.get("/classes/{classe_id}/students", response_model=List[schemas.StudentOut])
 def list_students(
     classe_id: str,
     teacher: models.Teacher = Depends(get_current_teacher),

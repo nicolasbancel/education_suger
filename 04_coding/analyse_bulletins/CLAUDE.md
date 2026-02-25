@@ -81,12 +81,25 @@ frontend/
 ### Auth flow
 Teacher logs in with EcoleDirecte credentials → backend verifies against ED API → stores encrypted credentials (Fernet) in SQLite → returns `session_token` (UUID) → frontend stores in `localStorage` → sent as `Authorization: Bearer <token>` header.
 
-### EcoleDirecte integration
-- No official API — reverse-engineered endpoints at `https://api.ecoledirecte.com/v3/`
-- `data=<urlencoded_json>` body format for all POST requests
-- `X-Token` header for authenticated requests
-- Login returns token + account list; teacher accounts have `typeCompte == "P"`
-- **The bulletin PDF download endpoint is the most uncertain** — see `services/ecoledirecte_client.py` for notes and fallback logic. Check https://github.com/EduWireApps/ecoledirecte-api-docs if it breaks.
+### EcoleDirecte integration (validé 2025/2026)
+
+Two distinct domains:
+- **Auth only**: `https://api.ecoledirecte.com/v3`
+- **All data**: `https://apip.ecoledirecte.com/v3`
+
+Auth flow (2 steps):
+1. GET `api.ecoledirecte.com/v3/login.awp?gtk=1&v=4.96.1` → reads cookie `GTK` (uppercase)
+2. POST `api.ecoledirecte.com/v3/login.awp?v=4.96.1` with header `X-GTK` + credentials
+
+Body format for all POST requests: `data=<url-encoded compact JSON>` (Content-Type: `application/x-www-form-urlencoded`)
+
+Validated endpoints:
+- Students of a class: `POST apip./v3/classes/{ecoledirecte_id}/eleves.awp?verbe=get` body: `data={}`
+- **Teacher's classes**: NOT a separate endpoint — they come from `account.profile.classes` in the login response
+
+Known teacher account: `typeCompte="P"`, `id=123`, classes: 6EME (id=4), 5EME groupe mixte (id=3)
+
+**Still unknown**: bulletin PDF download endpoint. The code currently tries `/eleves/{id}/donneesbulletins.awp` which returns 404. Need to capture the real request from `ecoledirecte.com/CarnetDeNotes` → select class → click student → click "Bulletin du Nème trimestre".
 
 ### LLM two-mode pipeline
 - **Extraction mode** (`extract_bulletin_data`): strict JSON output, no interpretation, null for missing fields

@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Extraction de texte depuis les bulletins PDF EcoleDirecte.
 Stratégie : pdfplumber en premier (meilleur sur PDF vectoriels),

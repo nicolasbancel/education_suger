@@ -1,3 +1,4 @@
+from __future__ import annotations
 """
 Routes pour le téléchargement et l'extraction des bulletins PDF.
 Le téléchargement tourne en background task avec suivi de progression.
@@ -5,6 +6,7 @@ Le téléchargement tourne en background task avec suivi de progression.
 import os
 import time
 import uuid
+from typing import Dict, List
 from pathlib import Path
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
@@ -20,7 +22,7 @@ from services.llm_service import extract_bulletin_data
 router = APIRouter(prefix="/api/bulletins", tags=["bulletins"])
 
 # Suivi des jobs en mémoire (suffisant pour MVP local mono-utilisateur)
-_jobs: dict[str, schemas.JobStatus] = {}
+_jobs: Dict[str, schemas.JobStatus] = {}
 
 DATA_DIR = Path(os.getenv("DATA_DIR", "./data"))
 
@@ -38,7 +40,7 @@ def _download_and_extract_job(
     encrypted_password: bytes,
     classe_id: str,
     trimestre: int,
-    students: list[models.Student],
+    students: List[models.Student],
     annee_scolaire: str,
     db_url: str,
 ):
@@ -182,7 +184,7 @@ def get_job_status(job_id: str):
     return job
 
 
-@router.get("/{student_id}", response_model=list[schemas.BulletinLineOut])
+@router.get("/{student_id}", response_model=List[schemas.BulletinLineOut])
 def get_bulletin_lines(
     student_id: str,
     trimestre: int,

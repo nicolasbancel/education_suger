@@ -1,22 +1,39 @@
+from __future__ import annotations
 """
 Client pour l'API EcoleDirecte (reverse-engineered).
 
 AVERTISSEMENT : Il n'existe pas d'API officielle publique.
-Ce client est basé sur la documentation communautaire :
-  https://github.com/EduWireApps/ecoledirecte-api-docs
+Les endpoints peuvent changer sans préavis.
 
-Les endpoints peuvent changer sans préavis. En cas d'échec,
-vérifier la doc communautaire et ajuster les routes.
+Authentification (validée 2025) :
+  1. GET  /v3/login.awp?gtk=1&v=4.96.1  → cookie GTK
+  2. POST /v3/login.awp?v=4.96.1        → header X-GTK + credentials → token
+
+Deux domaines distincts (observés en 2025) :
+  - api.ecoledirecte.com   → authentification uniquement
+  - apip.ecoledirecte.com  → toutes les données (classes, élèves, bulletins…)
 """
 import json
 import httpx
-from typing import Optional
+import logging
+from typing import List, Optional
 from urllib.parse import quote
 
-BASE_URL = "https://api.ecoledirecte.com/v3"
+logger = logging.getLogger(__name__)
 
-# Délai entre requêtes successives pour éviter le rate-limiting
-REQUEST_DELAY_SECONDS = 1.0
+AUTH_BASE_URL = "https://api.ecoledirecte.com/v3"   # login uniquement
+DATA_BASE_URL = "https://apip.ecoledirecte.com/v3"  # données
+API_VERSION = "4.96.1"
+
+# Headers communs qui imitent Chrome macOS
+_BROWSER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "https://www.ecoledirecte.com/",
+    "sec-ch-ua": '"Not:A-Brand";v="99", "Google Chrome";v="145", "Chromium";v="145"',
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": '"macOS"',
+}
 
 
 class EcoleDirecteError(Exception):
@@ -26,27 +43,29 @@ class EcoleDirecteError(Exception):
 class EcoleDirecteClient:
     def __init__(self):
         self._client = httpx.Client(
-            headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
+            headers=_BROWSER_HEADERS,
             timeout=30.0,
         )
 
-    def _encode(self, payload: dict) -> str:
+    def _encode(self, payload: dict) -> bytes:
         """Encode un dict en format `data=<urlencoded_json>` attendu par l'API."""
-        return f"data={quote(json.dumps(payload))}"
+        return f"data={quote(json.dumps(payload, separators=(',', ':'), ensure_ascii=False))}".encode()
 
-    def _post(self, path: str, payload: dict, token: Optional[str] = None) -> dict:
-        headers = {}
+    def _post(self, path: str, payload: dict, token: Optional[str] = None, base_url: str = DATA_BASE_URL) -> dict:
+        headers = {"Content-Type": "application/x-www-form-urlencoded"}
         if token:
             headers["X-Token"] = token
         response = self._client.post(
-            f"{BASE_URL}{path}",
+            f"{base_url}{path}",
             content=self._encode(payload),
             headers=headers,
         )
-        response.raise_for_status()
+        try:
+            response.raise_for_status()
+        except httpx.HTTPStatusError as e:
+            raise EcoleDirecteError(
+                f"EcoleDirecte HTTP {e.response.status_code} sur {path} : {e.response.text[:200]}"
+            )
         data = response.json()
         if data.get("code") not in (200, 201):
             raise EcoleDirecteError(
@@ -54,41 +73,74 @@ class EcoleDirecteClient:
             )
         return data
 
+    def _get_gtk(self) -> str:
+        """
+        Récupère le token GTK (cookie) requis avant le login.
+        Le cookie est nommé 'GTK' (majuscules).
+        """
+        response = self._client.get(f"{AUTH_BASE_URL}/login.awp?gtk=1&v={API_VERSION}")
+        return response.cookies.get("GTK", "")
+
     def login(self, username: str, password: str) -> dict:
         """
-        Authentification. Retourne {"token": str, "account_id": int, "name": str}.
+        Authentification en deux étapes (validée 2025).
+        Retourne {"token": str, "account_id": int, "name": str}.
         """
-        data = self._post(
-            "/login.awp?v=4",
-            {
+        gtk = self._get_gtk()
+
+        login_headers = {"Content-Type": "application/x-www-form-urlencoded"}
+        if gtk:
+            login_headers["X-GTK"] = gtk
+
+        response = self._client.post(
+            f"{AUTH_BASE_URL}/login.awp?v={API_VERSION}",
+            content=self._encode({
                 "identifiant": username,
                 "motdepasse": password,
                 "isReLogin": False,
                 "uuid": "",
                 "fa": [],
-            },
+            }),
+            headers=login_headers,
         )
+        response.raise_for_status()
+        data = response.json()
+        if data.get("code") not in (200, 201):
+            raise EcoleDirecteError(
+                f"EcoleDirecte error {data.get('code')} : {data.get('message', 'Erreur inconnue')}"
+            )
+
         token = data["token"]
         accounts = data["data"]["accounts"]
-
-        # Priorité au compte enseignant (typeCompte == "P")
         account = next(
             (a for a in accounts if a.get("typeCompte") == "P"),
             accounts[0],
         )
+        account_id = account["id"]
+        name = f"{account.get('prenom', '')} {account.get('nom', '')}".strip()
+
+        # Les classes sont dans profile.classes (pas besoin d'un appel séparé)
+        profile_classes = account.get("profile", {}).get("classes", [])
+        classes = [
+            {
+                "id": str(c["id"]),
+                "name": c.get("libelle", c.get("code", str(c["id"]))),
+                "annee_scolaire": c.get("anneeScolaire", ""),
+            }
+            for c in profile_classes
+        ]
+        logger.info(f"ED login OK : id={account_id}, name={name}, classes={[c['name'] for c in classes]}")
         return {
             "token": token,
-            "account_id": account["id"],
-            "name": f"{account.get('prenom', '')} {account.get('nom', '')}".strip(),
+            "account_id": account_id,
+            "name": name,
+            "classes": classes,
         }
 
-    def get_classes(self, token: str, enseignant_id: int) -> list[dict]:
-        """
-        Récupère les classes de l'enseignant.
-        Retourne une liste de {"id": str, "name": str, "annee_scolaire": str}.
-        """
+    def get_classes(self, token: str, enseignant_id: int) -> List[dict]:
+        """Récupère les classes de l'enseignant."""
         data = self._post(
-            f"/enseignants/{enseignant_id}/classes.awp?verbe=get&v=4",
+            f"/enseignants/{enseignant_id}/classes.awp?verbe=get&v={API_VERSION}",
             {},
             token=token,
         )
@@ -102,13 +154,10 @@ class EcoleDirecteClient:
             for c in classes
         ]
 
-    def get_students(self, token: str, classe_id: str) -> list[dict]:
-        """
-        Récupère les élèves d'une classe.
-        Retourne une liste de {"id": int, "first_name": str, "last_name": str}.
-        """
+    def get_students(self, token: str, classe_id: str) -> List[dict]:
+        """Récupère les élèves d'une classe."""
         data = self._post(
-            f"/classes/{classe_id}/eleves.awp?verbe=get&v=4",
+            f"/classes/{classe_id}/eleves.awp?verbe=get&v={API_VERSION}",
             {},
             token=token,
         )
@@ -127,35 +176,25 @@ class EcoleDirecteClient:
     ) -> bytes:
         """
         Télécharge le bulletin PDF d'un élève pour un trimestre donné.
-
-        NOTE : Endpoint incertain — les versions de l'API varient.
-        idPeriode : "A001" = trimestre 1, "A002" = T2, "A003" = T3.
-        Si cet endpoint échoue, vérifier :
-          https://github.com/EduWireApps/ecoledirecte-api-docs
+        idPeriode : "A001" = T1, "A002" = T2, "A003" = T3.
         """
         periode_id = f"A00{trimestre}"
-
         response = self._client.post(
-            f"{BASE_URL}/eleves/{eleve_id}/donneesbulletins.awp?verbe=get&v=4",
-            content=self._encode(
-                {"anneeScolaire": annee_scolaire, "idPeriode": periode_id}
-            ),
-            headers={"X-Token": token},
+            f"{DATA_BASE_URL}/eleves/{eleve_id}/donneesbulletins.awp?verbe=get&v={API_VERSION}",
+            content=self._encode({"anneeScolaire": annee_scolaire, "idPeriode": periode_id}),
+            headers={"Content-Type": "application/x-www-form-urlencoded", "X-Token": token},
         )
         response.raise_for_status()
 
-        # Si la réponse est un PDF directement
         if "application/pdf" in response.headers.get("content-type", ""):
             return response.content
 
-        # Sinon, chercher un lien vers le PDF dans la réponse JSON
         data = response.json()
         if data.get("code") not in (200, 201):
             raise EcoleDirecteError(
                 f"Impossible de récupérer le bulletin : {data.get('message')}"
             )
 
-        # Chercher l'URL du PDF dans la réponse (structure variable selon les versions)
         pdf_url = (
             data.get("data", {}).get("url")
             or data.get("data", {}).get("fichier", {}).get("url")
@@ -166,8 +205,7 @@ class EcoleDirecteClient:
             return pdf_response.content
 
         raise EcoleDirecteError(
-            f"Format de réponse bulletin inattendu pour l'élève {eleve_id}, trimestre {trimestre}. "
-            "Vérifier la documentation de l'API EcoleDirecte."
+            f"Format de réponse bulletin inattendu pour élève {eleve_id}, trimestre {trimestre}."
         )
 
     def close(self):
