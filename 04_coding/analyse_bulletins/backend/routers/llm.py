@@ -49,7 +49,10 @@ def generate(
             {
                 "matiere": l.subject,
                 "appreciation": l.appreciation,
+                "contenu": l.contenu,
                 "moyenne": l.average,
+                "moyenne_classe": l.average_class,
+                "rang": l.rang,
                 "absences": l.absences,
                 "retards": l.tardiness,
             }

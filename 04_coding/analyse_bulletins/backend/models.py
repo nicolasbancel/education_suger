@@ -45,11 +45,15 @@ class BulletinLine(Base):
     student_id = Column(String, ForeignKey("students.id"))
     trimestre = Column(Integer)
     subject = Column(String)
-    appreciation = Column(Text, nullable=True)
+    appreciation = Column(Text, nullable=True)   # appréciation du prof (décodée base64)
+    contenu = Column(Text, nullable=True)         # éléments travaillés (décodés base64)
     average = Column(Float, nullable=True)
+    average_class = Column(Float, nullable=True)
+    average_min = Column(Float, nullable=True)
+    average_max = Column(Float, nullable=True)
+    rang = Column(Integer, nullable=True)
     absences = Column(Integer, nullable=True)
     tardiness = Column(Integer, nullable=True)
-    pdf_path = Column(String, nullable=True)
     extracted_at = Column(DateTime, server_default=func.now())
 
 

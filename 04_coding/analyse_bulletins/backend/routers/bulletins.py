@@ -7,6 +7,7 @@ La tâche tourne en background avec suivi de progression.
 """
 import uuid
 import time
+import base64
 from typing import Dict, List
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
@@ -104,13 +105,25 @@ def _fetch_bulletins_job(
 
             # Une ligne par matière
             for disc in em.get("disciplines", []):
+                # Les appréciations sont dans disc["appreciations"] encodées en base64
+                # appreciations[0] = appréciation du prof
+                # appreciations[1] = contenus/éléments travaillés
+                raw_apprs = disc.get("appreciations", [])
+                appreciation = _decode_b64(raw_apprs[0]) if len(raw_apprs) > 0 else None
+                contenu = _decode_b64(raw_apprs[1]) if len(raw_apprs) > 1 else None
+
                 db.add(models.BulletinLine(
                     id=str(uuid.uuid4()),
                     student_id=student.id,
                     trimestre=trimestre,
                     subject=disc.get("discipline", disc.get("codeMatiere", "")),
-                    appreciation=disc.get("appreciationProfesseur") or None,
+                    appreciation=appreciation,
                     average=_parse_moyenne(disc.get("moyenne")),
+                    average_class=_parse_moyenne(disc.get("moyenneClasse")),
+                    average_min=_parse_moyenne(disc.get("moyenneMin")),
+                    average_max=_parse_moyenne(disc.get("moyenneMax")),
+                    rang=disc.get("rang"),
+                    contenu=contenu,
                     absences=None,
                     tardiness=None,
                 ))
@@ -128,6 +141,16 @@ def _fetch_bulletins_job(
     client.close()
     db.close()
     job.status = "done"
+
+
+def _decode_b64(value: str) -> str:
+    """Décode une chaîne base64 EcoleDirecte en texte UTF-8."""
+    if not value:
+        return None
+    try:
+        return base64.b64decode(value).decode("utf-8").strip() or None
+    except Exception:
+        return value.strip() or None
 
 
 def _parse_moyenne(value: str) -> float:

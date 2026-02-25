@@ -43,7 +43,12 @@ class BulletinLineOut(BaseModel):
     id: str
     subject: str
     appreciation: Optional[str]
+    contenu: Optional[str]
     average: Optional[float]
+    average_class: Optional[float]
+    average_min: Optional[float]
+    average_max: Optional[float]
+    rang: Optional[int]
     absences: Optional[int]
     tardiness: Optional[int]
 

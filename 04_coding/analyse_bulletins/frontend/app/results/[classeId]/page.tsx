@@ -14,7 +14,14 @@ interface BulletinLine {
   id: string;
   subject: string;
   appreciation: string | null;
+  contenu: string | null;
   average: number | null;
+  average_class: number | null;
+  average_min: number | null;
+  average_max: number | null;
+  rang: number | null;
+  absences: number | null;
+  tardiness: number | null;
 }
 
 interface LLMOutput {
@@ -317,16 +324,24 @@ export default function ResultsPage() {
                     <thead>
                       <tr className="text-gray-500 border-b">
                         <th className="text-left py-1 font-medium">Matière</th>
-                        <th className="text-right py-1 font-medium w-16">Moy.</th>
+                        <th className="text-right py-1 font-medium w-12">Élève</th>
+                        <th className="text-right py-1 font-medium w-12">Classe</th>
+                        <th className="text-right py-1 font-medium w-10">Rang</th>
                         <th className="text-left py-1 font-medium pl-3">Appréciation</th>
                       </tr>
                     </thead>
                     <tbody>
                       {bulletin_lines.filter(l => l.subject !== "BILAN").map(line => (
-                        <tr key={line.id} className="border-b border-gray-50">
-                          <td className="py-1 text-gray-700">{line.subject}</td>
-                          <td className="text-right py-1 font-medium text-gray-800">{line.average ?? "—"}</td>
-                          <td className="pl-3 py-1 text-gray-500">{line.appreciation || "—"}</td>
+                        <tr key={line.id} className="border-b border-gray-50 align-top">
+                          <td className="py-1 text-gray-700 font-medium">{line.subject}</td>
+                          <td className="text-right py-1 font-semibold text-gray-800">{line.average ?? "—"}</td>
+                          <td className="text-right py-1 text-gray-500">{line.average_class ?? "—"}</td>
+                          <td className="text-right py-1 text-gray-400">{line.rang ?? "—"}</td>
+                          <td className="pl-3 py-1 text-gray-600">
+                            {line.appreciation && <p>{line.appreciation}</p>}
+                            {line.contenu && <p className="text-gray-400 italic mt-0.5">{line.contenu}</p>}
+                            {!line.appreciation && !line.contenu && <span className="text-gray-300">—</span>}
+                          </td>
                         </tr>
                       ))}
                     </tbody>

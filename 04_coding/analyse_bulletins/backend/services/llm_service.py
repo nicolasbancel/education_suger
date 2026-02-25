@@ -108,12 +108,21 @@ def generate_student_output(
     """
     instructions = custom_prompt or DEFAULT_GENERATION_PROMPT
 
-    student_data_str = "\n".join(
-        f"- {line['matiere']} : moy={line.get('moyenne', 'N/A')}, "
-        f"appréciation='{line.get('appreciation', '')}', "
-        f"absences={line.get('absences', 0)}, retards={line.get('retards', 0)}"
-        for line in bulletin_lines
-    )
+    lines_parts = []
+    for line in bulletin_lines:
+        parts = [f"- {line['matiere']}"]
+        if line.get('moyenne') is not None:
+            cls = f" (classe: {line['moyenne_classe']})" if line.get('moyenne_classe') else ""
+            rang = f" rang {line['rang']}" if line.get('rang') else ""
+            parts.append(f"moy={line['moyenne']}{cls}{rang}")
+        if line.get('appreciation'):
+            parts.append(f"appréciation: {line['appreciation']}")
+        if line.get('contenu'):
+            parts.append(f"contenu: {line['contenu']}")
+        if line.get('absences'):
+            parts.append(f"absences={line['absences']}, retards={line.get('retards', 0)}")
+        lines_parts.append(" | ".join(parts))
+    student_data_str = "\n".join(lines_parts)
 
     response = client.messages.create(
         model=MODEL,
