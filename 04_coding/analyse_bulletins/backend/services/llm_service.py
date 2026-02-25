@@ -1,17 +1,15 @@
 from __future__ import annotations
 """
-Service LLM — deux modes distincts :
-  - Mode extraction  : sortie factuelle stricte (équivalent du bulletin)
-  - Mode génération  : appréciation / synthèse / récompense configurable par le professeur
+Service LLM — génération d'appréciations et de recommandations de récompense via OpenAI.
 """
 import os
 import json
 from typing import Optional, List
-import anthropic
+from openai import OpenAI
 
-client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "gpt-4o"
 
 # ─── Prompts par défaut ────────────────────────────────────────────────────────
 
@@ -59,7 +57,8 @@ Format de sortie (JSON strict) :
 {custom_instructions}
 
 DONNÉES DE L'ÉLÈVE (trimestre {trimestre}) :
-{student_data}"""
+{student_data}
+{evolution_section}"""
 
 
 # ─── Extraction factuelle ──────────────────────────────────────────────────────
@@ -69,18 +68,15 @@ def extract_bulletin_data(bulletin_text: str) -> List[dict]:
     Mode extraction : retourne les lignes structurées du bulletin.
     Lève une ValueError si le JSON retourné est invalide.
     """
-    response = client.messages.create(
+    response = client.chat.completions.create(
         model=MODEL,
         max_tokens=2000,
-        system=EXTRACTION_SYSTEM,
         messages=[
-            {
-                "role": "user",
-                "content": EXTRACTION_USER_TEMPLATE.format(bulletin_text=bulletin_text),
-            }
+            {"role": "system", "content": EXTRACTION_SYSTEM},
+            {"role": "user", "content": EXTRACTION_USER_TEMPLATE.format(bulletin_text=bulletin_text)},
         ],
     )
-    raw = response.content[0].text.strip()
+    raw = response.choices[0].message.content.strip()
     try:
         result = json.loads(raw)
         return result.get("lignes", [])
@@ -96,30 +92,83 @@ DEFAULT_GENERATION_PROMPT = """Instructions supplémentaires :
 - Vocabulaire adapté au niveau collège/lycée"""
 
 
+def _format_evolution(current_lines: List[dict], prev_data: dict) -> str:
+    """
+    Construit la section 'évolution' comparant T_prev et T_current matière par matière.
+    """
+    prev_t = prev_data["trimestre"]
+    curr_t = prev_t + 1
+    prev_by_subject = {l["matiere"]: l for l in prev_data["lines"]}
+
+    lines = [f"\nCONTEXTE TRIMESTRE PRÉCÉDENT (T{prev_t}) :"]
+
+    if prev_data.get("mention"):
+        lines.append(f"Mention T{prev_t} : {prev_data['mention']}")
+    if prev_data.get("appreciation_generale"):
+        lines.append(f"Appréciation générale T{prev_t} : {prev_data['appreciation_generale']}")
+
+    lines.append(f"\nÉvolution des moyennes par matière (T{prev_t} → T{curr_t}) :")
+    for line in current_lines:
+        matiere = line["matiere"]
+        if matiere == "BILAN":
+            continue
+        curr_moy = line.get("moyenne")
+        prev_line = prev_by_subject.get(matiere)
+        prev_moy = prev_line["moyenne"] if prev_line else None
+
+        if curr_moy is not None and prev_moy is not None:
+            delta = curr_moy - prev_moy
+            sign = "+" if delta >= 0 else ""
+            evolution = f"T{prev_t}={prev_moy} → T{curr_t}={curr_moy} ({sign}{delta:.2f})"
+        elif curr_moy is not None:
+            evolution = f"T{curr_t}={curr_moy} (pas de donnée T{prev_t})"
+        else:
+            continue
+
+        prev_appre = prev_line["appreciation"] if prev_line and prev_line.get("appreciation") else None
+        appre_str = f' | appréciation T{prev_t}: "{prev_appre}"' if prev_appre else ""
+        lines.append(f"- {matiere} : {evolution}{appre_str}")
+
+    return "\n".join(lines)
+
+
 def generate_student_output(
     prenom: str,
     nom: str,
     trimestre: int,
     bulletin_lines: List[dict],
     custom_prompt: Optional[str] = None,
+    prev_data: Optional[dict] = None,
 ) -> dict:
     """
     Mode génération : retourne appréciation, synthèse et suggestion de récompense.
+    Inclut l'évolution par rapport au trimestre précédent si prev_data est fourni.
     """
     instructions = custom_prompt or DEFAULT_GENERATION_PROMPT
 
-    student_data_str = "\n".join(
-        f"- {line['matiere']} : moy={line.get('moyenne', 'N/A')}, "
-        f"appréciation='{line.get('appreciation', '')}', "
-        f"absences={line.get('absences', 0)}, retards={line.get('retards', 0)}"
-        for line in bulletin_lines
-    )
+    lines_parts = []
+    for line in bulletin_lines:
+        parts = [f"- {line['matiere']}"]
+        if line.get('moyenne') is not None:
+            cls = f" (classe: {line['moyenne_classe']})" if line.get('moyenne_classe') else ""
+            rang = f" rang {line['rang']}" if line.get('rang') else ""
+            parts.append(f"moy={line['moyenne']}{cls}{rang}")
+        if line.get('appreciation'):
+            parts.append(f"appréciation: {line['appreciation']}")
+        if line.get('contenu'):
+            parts.append(f"contenu: {line['contenu']}")
+        if line.get('absences'):
+            parts.append(f"absences={line['absences']}, retards={line.get('retards', 0)}")
+        lines_parts.append(" | ".join(parts))
+    student_data_str = "\n".join(lines_parts)
 
-    response = client.messages.create(
+    evolution_section = _format_evolution(bulletin_lines, prev_data) if prev_data else ""
+
+    response = client.chat.completions.create(
         model=MODEL,
         max_tokens=1000,
-        system=GENERATION_SYSTEM,
         messages=[
+            {"role": "system", "content": GENERATION_SYSTEM},
             {
                 "role": "user",
                 "content": GENERATION_USER_TEMPLATE.format(
@@ -128,11 +177,12 @@ def generate_student_output(
                     trimestre=trimestre,
                     custom_instructions=instructions,
                     student_data=student_data_str,
+                    evolution_section=evolution_section,
                 ),
-            }
+            },
         ],
     )
-    raw = response.content[0].text.strip()
+    raw = response.choices[0].message.content.strip()
     try:
         result = json.loads(raw)
         return {

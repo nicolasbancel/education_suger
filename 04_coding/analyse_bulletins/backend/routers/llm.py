@@ -49,12 +49,51 @@ def generate(
             {
                 "matiere": l.subject,
                 "appreciation": l.appreciation,
+                "contenu": l.contenu,
                 "moyenne": l.average,
+                "moyenne_classe": l.average_class,
+                "rang": l.rang,
                 "absences": l.absences,
                 "retards": l.tardiness,
             }
             for l in lines
         ]
+
+        # Données du trimestre précédent (pour analyser l'évolution)
+        prev_data = None
+        if request.trimestre > 1:
+            prev_t = request.trimestre - 1
+            prev_lines = (
+                db.query(models.BulletinLine)
+                .filter(
+                    models.BulletinLine.student_id == student_id,
+                    models.BulletinLine.trimestre == prev_t,
+                )
+                .all()
+            )
+            prev_llm = (
+                db.query(models.LLMOutput)
+                .filter(
+                    models.LLMOutput.student_id == student_id,
+                    models.LLMOutput.trimestre == prev_t,
+                )
+                .first()
+            )
+            if prev_lines:
+                prev_bilan = next((l for l in prev_lines if l.subject == "BILAN"), None)
+                prev_data = {
+                    "trimestre": prev_t,
+                    "mention": prev_bilan.mention if prev_bilan else None,
+                    "appreciation_generale": prev_llm.general_appreciation if prev_llm else None,
+                    "lines": [
+                        {
+                            "matiere": l.subject,
+                            "moyenne": l.average,
+                            "appreciation": l.appreciation,
+                        }
+                        for l in prev_lines if l.subject != "BILAN"
+                    ],
+                }
 
         try:
             output = generate_student_output(
@@ -63,6 +102,7 @@ def generate(
                 trimestre=request.trimestre,
                 bulletin_lines=lines_data,
                 custom_prompt=request.custom_prompt,
+                prev_data=prev_data,
             )
         except Exception as e:
             errors.append(f"{student.last_name} {student.first_name} : LLM error — {e}")

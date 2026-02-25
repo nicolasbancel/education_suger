@@ -14,7 +14,17 @@ interface BulletinLine {
   id: string;
   subject: string;
   appreciation: string | null;
+  contenu: string | null;
   average: number | null;
+  average_class: number | null;
+  average_min: number | null;
+  average_max: number | null;
+  rang: number | null;
+  absences: number | null;
+  tardiness: number | null;
+  mention: string | null;
+  appreciation_vs: string | null;
+  appreciation_ce: string | null;
 }
 
 interface LLMOutput {
@@ -23,6 +33,27 @@ interface LLMOutput {
   synthesis: string | null;
   reward_suggestion: string | null;
   manually_edited: boolean;
+}
+
+interface VieScolaireEvent {
+  id: string;
+  event_type: string;
+  date: string | null;
+  display_date: string | null;
+  libelle: string | null;
+  motif: string | null;
+  justifie: boolean | null;
+  commentaire: string | null;
+}
+
+interface SanctionEncouragement {
+  id: string;
+  type_element: string | null;
+  date: string | null;
+  display_date: string | null;
+  libelle: string | null;
+  motif: string | null;
+  commentaire: string | null;
 }
 
 interface StudentWithData {
@@ -63,6 +94,10 @@ export default function ResultsPage() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValues, setEditValues] = useState<Partial<LLMOutput>>({});
+  const [generateError, setGenerateError] = useState<string>("");
+  const [expandedStudents, setExpandedStudents] = useState<Set<string>>(new Set());
+  const [vieScolaire, setVieScolaire] = useState<Record<string, VieScolaireEvent[]>>({});
+  const [sanctions, setSanctions] = useState<Record<string, SanctionEncouragement[]>>({});
 
   const headers = { Authorization: `Bearer ${token}`, "Content-Type": "application/json" };
 
@@ -99,7 +134,7 @@ export default function ResultsPage() {
 
   async function startDownload() {
     setDownloading(true);
-    const res = await fetch(`/api/bulletins/download/${classeId}?trimestre=${trimestre}`, {
+    const res = await fetch(`/api/bulletins/fetch/${classeId}?trimestre=${trimestre}`, {
       method: "POST",
       headers,
     });
@@ -109,14 +144,50 @@ export default function ResultsPage() {
 
   async function generateAll() {
     setGenerating(true);
+    setGenerateError("");
     const studentIds = results.map((r) => r.student.id);
-    await fetch("/api/llm/generate", {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ student_ids: studentIds, trimestre, custom_prompt: customPrompt }),
-    });
-    await fetchResults();
+    const BATCH_SIZE = 5;
+    const allErrors: string[] = [];
+
+    for (let i = 0; i < studentIds.length; i += BATCH_SIZE) {
+      const batch = studentIds.slice(i, i + BATCH_SIZE);
+      const res = await fetch("/api/llm/generate", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ student_ids: batch, trimestre, custom_prompt: customPrompt }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ detail: `Lot ${Math.floor(i / BATCH_SIZE) + 1} : erreur inconnue` }));
+        const detail = Array.isArray(err.detail) ? err.detail : [err.detail];
+        allErrors.push(...detail);
+      }
+      // Rafraîchit les résultats après chaque lot pour affichage progressif
+      await fetchResults();
+    }
+
+    if (allErrors.length > 0) setGenerateError(allErrors.join("\n"));
     setGenerating(false);
+  }
+
+  async function toggleExpand(studentId: string) {
+    setExpandedStudents((prev) => {
+      const next = new Set(prev);
+      if (next.has(studentId)) next.delete(studentId);
+      else next.add(studentId);
+      return next;
+    });
+    // Charger les données vie scolaire la première fois seulement
+    if (vieScolaire[studentId] !== undefined) return;
+    const [vsRes, sancRes] = await Promise.all([
+      fetch(`/api/bulletins/vie-scolaire/${studentId}?trimestre=${trimestre}`, { headers }),
+      fetch(`/api/bulletins/sanctions/${studentId}?trimestre=${trimestre}`, { headers }),
+    ]);
+    const [vsData, sancData] = await Promise.all([
+      vsRes.ok ? vsRes.json() : [],
+      sancRes.ok ? sancRes.json() : [],
+    ]);
+    setVieScolaire((prev) => ({ ...prev, [studentId]: vsData }));
+    setSanctions((prev) => ({ ...prev, [studentId]: sancData }));
   }
 
   async function saveEdit(outputId: string) {
@@ -181,7 +252,7 @@ export default function ResultsPage() {
             ? job
               ? `Téléchargement… ${job.progress}/${job.total}`
               : "Démarrage…"
-            : "1. Télécharger les bulletins"}
+            : "1. Récupérer les bulletins"}
         </button>
 
         <button
@@ -189,7 +260,7 @@ export default function ResultsPage() {
           disabled={generating || !hasData}
           className="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
         >
-          {generating ? "Génération en cours…" : "2. Générer les appréciations (LLM)"}
+          {generating ? "Génération en cours… (par lots de 5)" : "2. Générer les appréciations (LLM)"}
         </button>
 
         <button
@@ -199,6 +270,14 @@ export default function ResultsPage() {
           {showPrompt ? "Masquer le prompt" : "Configurer le prompt"}
         </button>
       </div>
+
+      {/* Generate error */}
+      {generateError && (
+        <div className="mb-4 bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-800">
+          <strong>Erreur de génération :</strong>
+          <pre className="mt-1 whitespace-pre-wrap">{generateError}</pre>
+        </div>
+      )}
 
       {/* Job errors */}
       {job?.errors && job.errors.length > 0 && (
@@ -251,9 +330,12 @@ export default function ResultsPage() {
                     </span>
                   )}
                   {bulletin_lines.length > 0 && (
-                    <span className="ml-2 text-xs text-gray-400">
-                      {bulletin_lines.length} matières
-                    </span>
+                    <button
+                      onClick={() => toggleExpand(student.id)}
+                      className="ml-2 text-xs text-blue-500 hover:text-blue-700 underline"
+                    >
+                      {expandedStudents.has(student.id) ? "Masquer bulletin" : `Voir bulletin (${bulletin_lines.length} matières)`}
+                    </button>
                   )}
                 </div>
 
@@ -273,6 +355,172 @@ export default function ResultsPage() {
                   </button>
                 )}
               </div>
+
+              {/* Données bulletin (expandable) */}
+              {expandedStudents.has(student.id) && bulletin_lines.length > 0 && (
+                <div className="mt-3 border-t pt-3">
+                  {bulletin_lines.filter(l => l.subject === "BILAN").map(bilan => (
+                    <div key={bilan.id} className="mb-3 bg-blue-50 rounded-lg px-3 py-2 text-sm">
+                      <span className="font-medium text-blue-700">Bilan général</span>
+                      {bilan.average && <span className="ml-2 text-blue-600 font-semibold">{bilan.average}/20</span>}
+                      {bilan.appreciation && <p className="mt-1 text-gray-700 italic">{bilan.appreciation}</p>}
+                      {(bilan.absences ?? 0) > 0 && <span className="mt-1 block text-xs text-orange-600">{bilan.absences} absence(s) · {bilan.tardiness ?? 0} retard(s)</span>}
+                    </div>
+                  ))}
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr className="text-gray-500 border-b">
+                        <th className="text-left py-1 font-medium">Matière</th>
+                        <th className="text-right py-1 font-medium w-12">Élève</th>
+                        <th className="text-right py-1 font-medium w-12">Classe</th>
+                        <th className="text-right py-1 font-medium w-20">Min – Max</th>
+                        <th className="text-left py-1 font-medium pl-3">Appréciation</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {bulletin_lines.filter(l => l.subject !== "BILAN").map(line => (
+                        <tr key={line.id} className="border-b border-gray-50 align-top">
+                          <td className="py-1 text-gray-700 font-medium">{line.subject}</td>
+                          <td className="text-right py-1 font-semibold text-gray-800">{line.average ?? "—"}</td>
+                          <td className="text-right py-1 text-gray-500">{line.average_class ?? "—"}</td>
+                          <td className="text-right py-1 text-gray-400">
+                            {line.average_min != null && line.average_max != null
+                              ? `${line.average_min} – ${line.average_max}`
+                              : "—"}
+                          </td>
+                          <td className="pl-3 py-1 text-gray-600">
+                            {line.appreciation && <p>{line.appreciation}</p>}
+                            {line.contenu && <p className="text-gray-400 italic mt-0.5">{line.contenu}</p>}
+                            {!line.appreciation && !line.contenu && <span className="text-gray-300">—</span>}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                    {(() => {
+                      const bilan = bulletin_lines.find(l => l.subject === "BILAN");
+                      if (!bilan?.average) return null;
+                      return (
+                        <tfoot>
+                          <tr className="border-t-2 border-gray-200 bg-gray-50 font-semibold text-sm">
+                            <td className="py-1.5 text-gray-700">Moyenne générale</td>
+                            <td className="text-right py-1.5 text-gray-900">{bilan.average}</td>
+                            <td className="text-right py-1.5 text-gray-600">{bilan.average_class ?? "—"}</td>
+                            <td className="text-right py-1.5 text-gray-500">
+                              {bilan.average_min != null && bilan.average_max != null
+                                ? `${bilan.average_min} – ${bilan.average_max}`
+                                : "—"}
+                            </td>
+                            <td />
+                          </tr>
+                        </tfoot>
+                      );
+                    })()}
+                  </table>
+
+                  {/* Vie scolaire : absences non justifiées, retards, sanctions */}
+                  {(() => {
+                    const events = vieScolaire[student.id] || [];
+                    const sancs = sanctions[student.id] || [];
+                    const absNonJust = events.filter(e => e.event_type === "absence" && e.justifie === false);
+                    const retards = events.filter(e => e.event_type === "retard");
+                    if (absNonJust.length === 0 && retards.length === 0 && sancs.length === 0) return null;
+                    return (
+                      <div className="mt-4 border-t pt-3 space-y-3">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Incidents / Vie scolaire</p>
+
+                        {absNonJust.length > 0 && (
+                          <div>
+                            <p className="text-xs font-medium text-red-600 mb-1">
+                              Absences non justifiées ({absNonJust.length})
+                            </p>
+                            <ul className="space-y-0.5">
+                              {absNonJust.map(e => (
+                                <li key={e.id} className="text-xs text-gray-600">
+                                  <span className="font-medium">{e.display_date || e.date}</span>
+                                  {e.libelle && <span className="text-gray-400"> · {e.libelle}</span>}
+                                  {e.motif && <span className="text-gray-500"> — {e.motif}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {retards.length > 0 && (
+                          <div>
+                            <p className="text-xs font-medium text-orange-600 mb-1">
+                              Retards ({retards.length})
+                            </p>
+                            <ul className="space-y-0.5">
+                              {retards.map(e => (
+                                <li key={e.id} className="text-xs text-gray-600">
+                                  <span className="font-medium">{e.display_date || e.date}</span>
+                                  {e.libelle && <span className="text-gray-400"> · {e.libelle}</span>}
+                                  {e.motif && <span className="text-gray-500"> — {e.motif}</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {sancs.length > 0 && (
+                          <div>
+                            <p className="text-xs font-medium text-red-800 mb-1">
+                              Sanctions / Incidents ({sancs.length})
+                            </p>
+                            <ul className="space-y-0.5">
+                              {sancs.map(s => (
+                                <li key={s.id} className="text-xs text-gray-600">
+                                  <span className="font-medium">{s.display_date || s.date}</span>
+                                  {s.type_element && <span className="text-gray-500"> · {s.type_element}</span>}
+                                  {s.libelle && <span className="text-gray-400"> — {s.libelle}</span>}
+                                  {s.motif && <span className="text-gray-500"> ({s.motif})</span>}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+
+                  {/* Bilan trimestre (après conseil de classe) */}
+                  {(() => {
+                    const bilan = bulletin_lines.find(l => l.subject === "BILAN");
+                    if (!bilan) return null;
+                    const hasData = bilan.appreciation || bilan.mention || bilan.appreciation_vs || bilan.appreciation_ce;
+                    if (!hasData) return null;
+                    return (
+                      <div className="mt-4 border-t pt-3">
+                        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Bilan trimestre</p>
+                        <div className="space-y-2 text-sm">
+                          {bilan.appreciation && (
+                            <div>
+                              <span className="font-semibold text-gray-700">Appréciation du professeur principal</span>
+                              <p className="mt-0.5 text-gray-600">{bilan.appreciation}</p>
+                            </div>
+                          )}
+                          <div>
+                            <span className="font-semibold text-gray-700">Mention du conseil</span>
+                            <p className="mt-0.5 text-gray-600">{bilan.mention ?? "Pas de récompense / mention"}</p>
+                          </div>
+                          {bilan.appreciation_vs && (
+                            <div>
+                              <span className="font-semibold text-gray-700">Appréciation Vie Scolaire</span>
+                              <p className="mt-0.5 text-gray-600">{bilan.appreciation_vs}</p>
+                            </div>
+                          )}
+                          {bilan.appreciation_ce && (
+                            <div>
+                              <span className="font-semibold text-gray-700">Appréciation du chef d&apos;établissement</span>
+                              <p className="mt-0.5 text-gray-600">{bilan.appreciation_ce}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              )}
 
               {llm_output ? (
                 editingId === llm_output.id ? (

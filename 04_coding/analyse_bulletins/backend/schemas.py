@@ -43,9 +43,17 @@ class BulletinLineOut(BaseModel):
     id: str
     subject: str
     appreciation: Optional[str]
+    contenu: Optional[str]
     average: Optional[float]
+    average_class: Optional[float]
+    average_min: Optional[float]
+    average_max: Optional[float]
+    rang: Optional[int]
     absences: Optional[int]
     tardiness: Optional[int]
+    mention: Optional[str]
+    appreciation_vs: Optional[str]
+    appreciation_ce: Optional[str]
 
     class Config:
         from_attributes = True
@@ -83,6 +91,35 @@ class StudentWithData(BaseModel):
     student: StudentOut
     bulletin_lines: List[BulletinLineOut]
     llm_output: Optional[LLMOutputOut]
+
+
+# --- Vie scolaire ---
+
+class VieScolaireEventOut(BaseModel):
+    id: str
+    event_type: str
+    date: Optional[str]
+    display_date: Optional[str]
+    libelle: Optional[str]
+    motif: Optional[str]
+    justifie: Optional[bool]
+    commentaire: Optional[str]
+
+    class Config:
+        from_attributes = True
+
+
+class SanctionEncouragementOut(BaseModel):
+    id: str
+    type_element: Optional[str]
+    date: Optional[str]
+    display_date: Optional[str]
+    libelle: Optional[str]
+    motif: Optional[str]
+    commentaire: Optional[str]
+
+    class Config:
+        from_attributes = True
 
 
 # --- Jobs (background tasks) ---
