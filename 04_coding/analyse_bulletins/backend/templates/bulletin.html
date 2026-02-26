@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+
+/* ─── Page ──────────────────────────────────────────── */
+@page {
+  size: A4 portrait;
+  margin: 1.8cm 1.5cm;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 9pt;
+  color: #1a1a1a;
+  line-height: 1.45;
+}
+
+/* ─── Student block ──────────────────────────────────── */
+.student {
+  page-break-after: always;
+}
+.student:last-child {
+  page-break-after: auto;
+}
+
+/* ─── Page meta ──────────────────────────────────────── */
+.page-meta {
+  font-size: 7.5pt;
+  color: #777;
+  text-align: right;
+  margin-bottom: 3pt;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Typography ─────────────────────────────────────── */
+h1 {
+  font-size: 15pt;
+  font-weight: bold;
+  color: #111;
+  padding-bottom: 5pt;
+  border-bottom: 1.5pt solid #444;
+  margin-bottom: 10pt;
+}
+
+h2 {
+  font-size: 12pt;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-top: 12pt;
+  margin-bottom: 5pt;
+}
+
+h3 {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #2c2c2c;
+  margin-top: 9pt;
+  margin-bottom: 3pt;
+  padding-left: 8pt;
+}
+
+h4 {
+  font-size: 9pt;
+  font-weight: bold;
+  font-style: italic;
+  color: #444;
+  margin-top: 6pt;
+  margin-bottom: 2pt;
+  padding-left: 14pt;
+}
+
+.label {
+  font-size: 8.5pt;
+  font-weight: bold;
+  margin-top: 4pt;
+  margin-bottom: 1pt;
+  padding-left: 14pt;
+  color: #222;
+}
+
+.body-text {
+  font-size: 8.5pt;
+  padding-left: 14pt;
+  margin-bottom: 3pt;
+  color: #333;
+}
+
+/* ─── Notes table ────────────────────────────────────── */
+table.notes {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 7.5pt;
+  margin-top: 5pt;
+  table-layout: fixed;
+}
+
+table.notes th,
+table.notes td {
+  border: 0.4pt solid #C2C2C2;
+  padding: 3pt 4pt;
+  vertical-align: top;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+table.notes thead tr {
+  background-color: #D8D8D8;
+}
+
+table.notes thead th {
+  font-weight: bold;
+  text-align: center;
+  color: #111;
+}
+
+table.notes thead th.left {
+  text-align: left;
+}
+
+table.notes tbody tr:nth-child(even) {
+  background-color: #F9F9F9;
+}
+
+table.notes td.num {
+  text-align: center;
+  white-space: nowrap;
+}
+
+table.notes tr.bilan td {
+  background-color: #EBEBEB !important;
+  font-weight: bold;
+}
+
+/* Column widths — total 18cm (A4 210mm − 2×1.5cm margins) */
+/* Matière(16.7%) | Élève(8.3%) | Classe(8.3%) | Prev(8.3%) | Δ(8.3%) | AppréciationT_n(25%) | AppréciationT_prev(25%) */
+.col-matiere { width: 16.7%; }
+.col-num     { width: 8.3%; }
+.col-appr    { width: 25%; }
+
+/* ─── Synthesis ──────────────────────────────────────── */
+.synthesis {
+  padding-left: 14pt;
+  font-size: 8.5pt;
+  color: #333;
+}
+
+.synthesis .syn-label {
+  font-weight: bold;
+  margin-top: 4pt;
+  margin-bottom: 1pt;
+  color: #1a1a1a;
+}
+
+.synthesis ul {
+  margin: 0 0 4pt 14pt;
+  padding: 0;
+}
+
+.synthesis li {
+  line-height: 1.45;
+  margin-bottom: 1pt;
+}
+
+/* ─── Vie scolaire ───────────────────────────────────── */
+.vs-section {
+  padding-left: 14pt;
+}
+
+.vs-sublabel {
+  font-size: 8.5pt;
+  font-weight: bold;
+  margin-top: 3pt;
+  margin-bottom: 1pt;
+  color: #333;
+}
+
+.vs-item {
+  font-size: 8.5pt;
+  padding-left: 10pt;
+  line-height: 1.4;
+  color: #444;
+}
+
+</style>
+</head>
+<body>
+
+{% for student in students %}
+<div class="student">
+
+  <p class="page-meta">{{ classe_name }} — Trimestre {{ trimestre }}</p>
+  <h1>{{ student.first_name }} {{ student.last_name }}</h1>
+
+  {# ══ Résultats ══════════════════════════════════════ #}
+  <h2>Résultats</h2>
+  <table class="notes">
+    <colgroup>
+      <col class="col-matiere">
+      <col class="col-num">
+      <col class="col-num">
+      <col class="col-num">
+      <col class="col-num">
+      <col class="col-appr">
+      <col class="col-appr">
+    </colgroup>
+    <thead>
+      <tr>
+        <th class="left">Matière</th>
+        <th>Élève T{{ trimestre }}</th>
+        <th>Classe T{{ trimestre }}</th>
+        <th>Élève {{ prev_label }}</th>
+        <th>Δ</th>
+        <th class="left">Appréciation T{{ trimestre }}</th>
+        <th class="left">Appréciation {{ prev_label }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in student.subjects %}
+      <tr>
+        <td>{{ line.subject }}</td>
+        <td class="num">{{ line.avg_tn }}</td>
+        <td class="num">{{ line.avg_class }}</td>
+        <td class="num">{{ line.avg_prev }}</td>
+        <td class="num" style="background-color: {{ line.delta_color }};">{{ line.delta_str }}</td>
+        <td>{{ line.appreciation_tn }}</td>
+        <td>{{ line.appreciation_prev }}</td>
+      </tr>
+      {% endfor %}
+      {# Ligne Moyenne générale (depuis BILAN) #}
+      <tr class="bilan">
+        <td><strong>Moyenne générale</strong></td>
+        <td class="num">{{ student.bilan.avg_tn }}</td>
+        <td class="num">{{ student.bilan.avg_class }}</td>
+        <td class="num">{{ student.bilan.avg_prev }}</td>
+        <td class="num" style="background-color: {{ student.bilan.delta_color }};">{{ student.bilan.delta_str }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  {# ══ Appréciations ══════════════════════════════════ #}
+  <h2>Appréciations</h2>
+
+  {# H3 : Trimestre précédent #}
+  {% if trimestre > 1 and student.bilan_prev %}
+  <h3>Trimestre précédent ({{ prev_label }})</h3>
+
+  {% if student.bilan_prev_appreciation %}
+  <p class="label">Appréciation du professeur principal</p>
+  <p class="body-text">{{ student.bilan_prev_appreciation }}</p>
+  {% endif %}
+
+  <p class="label">Mention du conseil</p>
+  <p class="body-text">{{ student.bilan_prev_mention }}</p>
+
+  {% if student.bilan_prev_ce %}
+  <p class="label">Appréciation du chef d'établissement</p>
+  <p class="body-text">{{ student.bilan_prev_ce }}</p>
+  {% endif %}
+  {% endif %}
+
+  {# H3 : Ce trimestre #}
+  <h3>Ce trimestre (T{{ trimestre }})</h3>
+
+  {# H4 : Incidents / Vie scolaire #}
+  {% if student.abs_non_just or student.retards or student.sanctions %}
+  <h4>Incidents / Vie scolaire</h4>
+  <div class="vs-section">
+    {% if student.abs_non_just %}
+    <p class="vs-sublabel">Absences non justifiées ({{ student.abs_non_just | length }})</p>
+    {% for e in student.abs_non_just %}
+    <p class="vs-item">• {{ e }}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% if student.retards %}
+    <p class="vs-sublabel">Retards ({{ student.retards | length }})</p>
+    {% for e in student.retards %}
+    <p class="vs-item">• {{ e }}</p>
+    {% endfor %}
+    {% endif %}
+
+    {% if student.sanctions %}
+    <p class="vs-sublabel">Sanctions / Encouragements ({{ student.sanctions | length }})</p>
+    {% for s in student.sanctions %}
+    <p class="vs-item">• {{ s }}</p>
+    {% endfor %}
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# H4 : Appréciation générale (LLM) #}
+  <h4>Appréciation générale</h4>
+  {% if student.llm %}
+
+  {% if student.llm.general_appreciation %}
+  <p class="label">Appréciation générale</p>
+  <p class="body-text">{{ student.llm.general_appreciation }}</p>
+  {% endif %}
+
+  {% if student.llm.synthesis_html %}
+  <p class="label">Synthèse</p>
+  <div class="synthesis">{{ student.llm.synthesis_html | safe }}</div>
+  {% endif %}
+
+  {% if student.llm.reward_suggestion %}
+  <p class="label">Récompense suggérée</p>
+  <p class="body-text">{{ student.llm.reward_suggestion }}</p>
+  {% endif %}
+
+  {% else %}
+  <p class="body-text">Aucune appréciation générée.</p>
+  {% endif %}
+
+</div>
+{% endfor %}
+
+</body>
+</html>
