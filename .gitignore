@@ -8,3 +8,38 @@
 *.jpeg
 *.fls
 *.synctex.gz
+
+# ── Données personnelles élèves ─────────────────────────────────────────────
+# Ne jamais committer — contiennent des noms/prénoms et données individuelles
+
+# Fiches individuelles de tenue de cahier (un fichier par élève, template exclu)
+**/note_cahiers_*.pdf
+**/note_cahiers_*.tex
+
+# CSV / JSON avec notes, appréciations, logs d'interrogation par élève
+**/tenue_cahier.csv
+**/toutes_notes*.json
+**/logbook_*.csv
+**/logbook_*.json
+**/*_logs.json
+**/ecoledirecte_*.csv
+**/ecoledirecte_*.xlsx
+**/appreciations/*.csv
+**/appreciations/*.xlsx
+**/carbon_footprint_students*
+**/liste_eleves.md
+
+# Fichiers et dossiers avec noms d'élèves visibles
+00_pedago/xx_semaines/eleves.pdf
+00_pedago/xx_semaines/eleves.tex
+00_pedago/03_prompts/prompts_ponctuels/Marie Dieval/
+00_pedago/toolbox/tests_logbook/test_faustine*.pdf
+00_pedago/toolbox/tests_logbook/test_faustine*.tex
+01_2526_6emes_maths/Kwyk/amar-salome_kwyk-#1_rapport.pdf
+01_2425_1ères_STD2A_maths/notes_persos_eleves.tex
+01_2425_3ème_CI_pc/chap4_atome/projet/eleves/
+01_2425_3ème_CI_pc/messages_eleves/
+01_2425_3ème_CI_pc/projets/copies_eleves/
+01_2425_3ème_CI_pc/ds/interro_2_rattrapage_thais.pdf
+01_2425_3ème_CI_pc/ds/interro_2_rattrapage_thais.tex
+02_2526_projets_scientifiques/empreinte_carbone/Foot print - Sohan.pdf

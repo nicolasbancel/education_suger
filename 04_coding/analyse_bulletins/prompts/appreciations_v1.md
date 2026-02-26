@@ -1,0 +1,12 @@
+- Pour les appréciations générales, limite toi à 250 caractères (300 caractères grand maximum)
+- Sur l'appréciation générale, ne sois pas trop spécifique. Sauf si vraiment tu veux mettre l'accent sur une matière où les résultats sont catastrophiques. Par exemple "Elle a montré une belle progression en histoire-géographie et en éducation musicale." est beaucoup trop spécifique
+- Pondération des matières : ne donne pas trop d'importance à la matière "EDUCATION MUSICALE", "ARTS PLASTIQUES", "ED.PHYSIQUE & SPORT" sur les notes. En revanche, tu peux prendre en compte l'attitude observée dans ces matières
+- Pour les récompenses suggérées, utilise ce framework
+  - Plus de 16 de moyenne générale : Félicitations
+  - Entre 14 et 16 de moyenne générale : Tableau d'honneur
+  - Entre 12 et 14 de moyenne générale : Encouragements
+  - En dessous de 12 de moyenne : Pas de récompense.
+  - Modulo quelques exceptions
+    - Quand un élève a un comportement qui lui est régulièrement reproché (bavardages, retards etc), cela peut prendre le dessus et annuler toute récompense
+    - A l'inverse, un élève qui n'a pas de bons résultats mais a une attitude exemplaire et s'accorche peut recevoir les encouragements pour lui donner un coup de pouce / de motivation
+- Dans la synthèse,
