@@ -32,7 +32,7 @@ Les notions déjà travaillées en classe sont les suivantes :
 15. Regroupement astucieux (addition)  
     - Compléments à l’unité ou à la dizaine (ex : 0,2 + 3,8)  
     - Au minimum 4 termes
-    - Ne mets pas côte à côte les termes qui doivent être regroupés astucieusement
+    - Ne mets pas côte à côte les facteurs qui doivent être regroupés astucieusement
 16. Distributivité
     - Uniquement des multiplications par une puissance de 10 + 1 ou -1 (Exemples : × 9, × 11, × 101, × 99, × 1001, × 999...)
     - Dans le cas d'un Y × 11 ou Y × 9 (et n'importe quel autre scénario de ce type), le facteur Y ne doit pas être trop complexe à ajouter ou à soustraire à 10 × Y 
