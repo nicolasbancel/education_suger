@@ -49,9 +49,9 @@ GENERATION_USER_TEMPLATE = """Rédige pour l'élève {prenom} {nom} les trois é
 
 Format de sortie (JSON strict) :
 {{
-  "appreciation_generale": "string (3-4 phrases)",
-  "synthese": "string (points forts / axes d'amélioration / alertes)",
-  "suggestion_recompense": "Félicitations | Tableau d'honneur | Encouragements | Mention neutre | Aucune"
+  "appreciation_generale": "string (maximum 250 caractères)",
+  "synthese": "Points forts: ...\\nAxes d'amélioration: ...\\nAlertes: ...",
+  "suggestion_recompense": "Félicitations | Tableau d'honneur | Encouragements | Aucune"
 }}
 
 {custom_instructions}
@@ -87,9 +87,38 @@ def extract_bulletin_data(bulletin_text: str) -> List[dict]:
 # ─── Génération synthétique ────────────────────────────────────────────────────
 
 DEFAULT_GENERATION_PROMPT = """Instructions supplémentaires :
-- Ton professionnel mais bienveillant
-- Longueur : concis (3-4 phrases pour l'appréciation, 2-3 points pour la synthèse)
-- Vocabulaire adapté au niveau collège/lycée"""
+
+TON ET STYLE
+- Ton professionnel et bienveillant, vocabulaire adapté au niveau collège/lycée.
+
+APPRÉCIATION GÉNÉRALE
+- Longueur stricte : 250 caractères maximum (300 en limite absolue).
+- Rester général : ne citer une matière précise que si les résultats y sont vraiment exceptionnels
+  (très bons ou catastrophiques). Éviter les formulations trop spécifiques comme
+  "Elle a progressé en histoire-géographie et en éducation musicale".
+- Les matières EDUCATION MUSICALE, ARTS PLASTIQUES, ED.PHYSIQUE & SPORT ne doivent pas peser
+  sur l'évaluation des résultats académiques. En revanche, l'attitude dans ces matières
+  peut être mentionnée si elle est marquante.
+
+RÉCOMPENSE SUGGÉRÉE
+Appliquer ce barème basé sur la moyenne générale :
+- Moyenne ≥ 16 → Félicitations
+- Moyenne ≥ 14 et < 16 → Tableau d'honneur
+- Moyenne ≥ 12 et < 14 → Encouragements
+- Moyenne < 12 → Aucune
+Exceptions :
+- Un comportement régulièrement reproché (bavardages, retards répétés, manque de travail signalé
+  dans plusieurs appréciations) peut annuler la récompense même si la moyenne est dans la tranche.
+- Un élève en difficulté mais avec une attitude exemplaire (effort visible, progression notable)
+  peut recevoir les Encouragements même sous 12, pour le motiver.
+
+SYNTHÈSE
+- 3 à 5 points courts (liste) : points forts, axes d'amélioration, alertes éventuelles.
+- Points forts : 1-2 éléments positifs (comportement, régularité, progression). Rester général.
+- Axes d'amélioration : 1-2 axes concrets et actionnables (pas de simples constats négatifs).
+- Alertes : signaler si absences/retards répétés, comportement problématique récurrent,
+  ou chute notable des résultats par rapport au trimestre précédent.
+- Ne pas répéter mot pour mot l'appréciation générale."""
 
 
 def _format_evolution(current_lines: List[dict], prev_data: dict) -> str:
