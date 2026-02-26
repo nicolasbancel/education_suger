@@ -200,6 +200,20 @@ export default function ResultsPage() {
     fetchResults();
   }
 
+  async function exportFile(format: "csv" | "docx" | "pdf") {
+    const res = await fetch(`/api/export/${classeId}/${format}?trimestre=${trimestre}`, { headers });
+    if (!res.ok) return;
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    const disposition = res.headers.get("Content-Disposition") || "";
+    const match = disposition.match(/filename="([^"]+)"/);
+    a.download = match ? match[1] : `export.${format}`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   const hasData = results.some((r) => r.bulletin_lines.length > 0);
   const hasOutputs = results.some((r) => r.llm_output);
 
@@ -218,24 +232,24 @@ export default function ResultsPage() {
         <div className="flex gap-2">
           {hasOutputs && (
             <>
-              <a
-                href={`/api/export/${classeId}/csv?trimestre=${trimestre}`}
+              <button
+                onClick={() => exportFile("csv")}
                 className="border rounded-lg px-3 py-2 text-sm hover:bg-gray-50"
               >
                 Export CSV
-              </a>
-              <a
-                href={`/api/export/${classeId}/docx?trimestre=${trimestre}`}
+              </button>
+              <button
+                onClick={() => exportFile("docx")}
                 className="border rounded-lg px-3 py-2 text-sm hover:bg-gray-50"
               >
                 Export DOCX
-              </a>
-              <a
-                href={`/api/export/${classeId}/pdf?trimestre=${trimestre}`}
+              </button>
+              <button
+                onClick={() => exportFile("pdf")}
                 className="border rounded-lg px-3 py-2 text-sm hover:bg-gray-50"
               >
                 Export PDF
-              </a>
+              </button>
             </>
           )}
         </div>
