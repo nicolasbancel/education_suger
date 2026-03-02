@@ -1,0 +1,221 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% --- tcolorbox setup ---
+\tcbuselibrary{theorems,skins,hooks}
+
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\definecolor{lavande}{RGB}{180,190,255}
+% --- Color palette (coherent: green = help/indication, red = required cells, blue = solutions) ---
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=4mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Suger Carbon Footprint - Transports}
+\author{N. Bancel}
+\date{January 30th 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Projets Scientifiques}{Année 2025-2026}{Classes de 6ème-5ème}
+{\let\newpage\relax\maketitle}
+
+\section{Introduction}
+
+\begin{Indication}
+  Quelques liens importants pour vous aider dans ce nouveau devoir : 
+  \begin{compactitem}
+    \item Le précédent devoir : \href{https://docs.google.com/spreadsheets/d/1dNwbzpJt8uUCMYMr-9A3AGU0R27vBdNBqc6oD62n8s8/edit?gid=2097997664#gid=2097997664}{Simulation of a calculation of a carbon footprint}.
+    \item 1ère video tutoriel : \href{https://www.loom.com/share/36719b97cfb243b8a52dcccf79004bbb}{[Suger Carbon Footprint] Using formulas in Google Sheet}.
+    \item 2ème video tutoriel : \href{https://www.loom.com/share/cb344bfb182c4cf0b42e95f2e58bca24}{[Suger Carbon Footprint] How to use the VLOOKUP formula}.
+  \end{compactitem}
+
+  \vspace{1em}
+
+  Nous allons analyser les réponses faites par les élèves de Suger au questionnaire qui leur a été envoyé par Google Form. Lié à leurs modes de transport pour venir à Suger. Il y a 3 moyens possibles de venir : 
+\begin{compactitem}
+  \item En voiture (seul ou avec des passagers). Une empreinte carbone est associée à ce mode de transport.
+  \item En transport en commun (bus, métro, RER). Une empreinte carbone est associée à ce mode de transport.
+  \item À pied ou à vélo. On considère qu'aucune empreinte carbone n'est associée à ce mode de transport.
+\end{compactitem}
+\end{Indication}
+
+
+
+\begin{questions}
+
+  \question Pour commencer, vérifier que vous avez accès à la nouvelle Google Sheet : \href{https://docs.google.com/spreadsheets/d/10JpgvZLnFr1NgJSxFhcqqPTsROaDkTe5g9hyvtTZHqY/edit?gid=490343518#gid=490343518}{[Scientific Projects] Simulation Carbon Footprint - Transports}
+   \question Vérifier que vous avez deux onglets (tabs) qui portent votre nom ([Votre prénom] Distances // [Votre prénom] Transport Carbon Footprint). Sinon, m'écrire sur EcoleDirecte. Dans l'onglet [Votre prénom] Transport Carbon Footprint, vous trouverez un tableau avec les réponses des élèves de Suger au questionnaire sur leurs modes de transport. Vous allez devoir analyser ces données pour calculer l'empreinte carbone totale liée aux transports des élèves de Suger.
+\end{questions}
+
+\section{Description de l'onglet \textrr{[Votre prénom] Distances}}
+
+Cet onglet répertorie les distances en kilomètres entre Suger et les différents quartiers / villes où habitent les élèves de Suger. Chaque ligne correspond à un quartier / une ville différente.
+\begin{compactitem}
+  \item Colonne A : Le quartier / la ville
+  \item Colonne B : La distance (en kilomètres) entre Suger et le quartier / la ville
+  \item Colonne C : La source (le lien) où a été trouvée cette distance 
+\end{compactitem}
+
+\section{Description de l'onglet \textrr{[Votre prénom] Transport Carbon Footprint}}
+
+\begin{compactitem}
+  \item Colonne A : l'élève qui a répondu
+  \item Colonne B : Sa classe
+  \item Colonne C : Combien de fois par semaine il ou elle vient à Suger 
+  \item Colonne D : Où est-ce qu'il ou elle habite (quartier / ville)
+  \item Colonne E : Le nombre de fois par semaine où la personne vient en marchant.
+  \item Colonne F : Le nombre de fois par semaine où la personne vient en transport en commun.
+  \item Colonne G : Le nombre de fois par semaine où la personne vient en voiture.
+  \item Colonne H : Quand la personne vient en voiture, combien d'autres élèves sont dans la voiture ? 
+\end{compactitem}
+
+\section{Distance entre le domicile et Suger}
+
+\begin{questions}
+  \question Dans la colonne \textrr{I "Distance"}, vous allez devoir remplir la distance (en kilomètres) entre le domicile de l'élève et Suger. En utilisant la formule VLOOKUP (ou RECHERCHEV) et les données dans l'onglet \textrr{[Votre prénom] Distances}, remplir la colonne I.
+  \question Certaines cases devraient renvoyer une erreur. 
+  \begin{parts}
+  \part Par exemple, l'élève qui habite à "Bois-d'Arcy", ou à "Thiais". A votre avis, pourquoi ? Ces villes sont présentes dans la table de référence mais pour autant, le VLOOKUP ne marche pas. Est-ce que c'est écrit \textbf{exactement} pareil ?
+  \part Il y a encore quelques problèmes. Par exemple pour l'élève "Suger Person \#20" qui habite à Croissy sur Seine. Pourquoi y a-t-il un message d'erreur ? Rajouter des données dans votre propre onglet \textrr{[Votre prénom] Distances} pour régler les problèmes qui persistent. Vous pouvez m'écrire si vous avez du mal à comprendre.
+  \end{parts}
+  \begin{Indication}
+    Pour trouver la distance entre deux lieux, vous pouvez utiliser Google Maps. Par exemple, pour trouver la distance entre Suger et Saint-Cloud, vous pouvez : 
+    \begin{compactitem}
+      \item Ouvrir Google Maps
+      \item Taper "Collège Lycée Suger" dans la barre de recherche
+      \item Cliquer sur "Itinéraire"
+      \item Taper "Saint-Cloud" dans le champ "Choisir un point de départ"
+      \item Regarder la distance indiquée (en km) pour un trajet en voiture.
+      \item Pour garder une trace de la source / du lien, vous avez 2 options : si vous êtes sur l'application, cliquer sur "Copier le lien". Et vous le collez sur Google Sheet. Si vous êtes dans un navigateur web, vous pouvez copier l'URL dans la barre d'adresse.
+    \end{compactitem}
+    \vspace{1em}
+    C'est ce lien que vous devez utiliser dans la colonne \textrr{C - Source} de votre onglet \textrr{[Prénom] Distances}. \\
+    
+    Quand dans le sondage, un élève a indiqué une zone et pas une ville (par exemple "Seine Saint Denis" ou "Other (if Paris, specify district):", choisissez vous-même un point de référence. Par exemple, la mairie de Paris pour Paris, ou le "centre" de la Seine Saint Denis (par exemple, Bobigny). Comme vous voulez, mais ne vous embêtez pas trop à chercher à être trop précis.
+  \end{Indication}
+\end{questions}
+
+\section{Empreinte carbone liée aux trajets en voiture}
+
+\begin{questions}
+  
+  \question Il faut maintenant déterminer combien de $kgs$ de $CO_2$ sont émis par kilomètre parcouru pour une voiture. Trouver une estimation de cette valeur et remplir
+  \begin{compactitem}
+    \item la cellule \textrr{R3} avec la valeur en $kgs$ de $CO_2$ émis par kilomètre pour une voiture (disons que c'est une voiture 5 places avec un moteur à essence).
+    \item la cellule \textrr{S3} avec le lien de la page web où vous avez trouvé l'information de la cellule \textrr{R3}
+  \end{compactitem}
+  \question Grâce à une formule qui utilise la valeur en \textrr{R3}, et la colonne \textrr{I - Distance}, remplir la colonne \textrr{J - [CAR] Carbon Footprint - 1 way} qui donne l'empreinte carbone (en $kgs$ de $CO_2$) pour un aller simple en voiture entre le domicile de l'élève et Suger.
+  \question Vous connaissez l'empreinte carbone pour un aller simple en voiture pour chaque élève, il va falloir maintenant déterminer l'empreinte carbone de cet élève par semaine quand il vient en voiture (c'est-à-dire remplir la colonne \textrr{K "[CAR] Carbon Footprint - per week"}). Faites attention à 3 choses : 
+      \begin{compactitem}
+    \item Votre formule doit prendre en compte la colonne \textrr{G}, qui indique le nombre de jours où l'élève vient en voiture à Suger par semaine.
+    \item Votre formule doit prendre en compte la colonne \textrr{H - Carpool coefficient}, qui indique le nombre d'élèves dans la voiture à chaque fois qu'il vient. \textbf{Indice} : si un trajet émet 6 kgs de $CO_2$ et qu'il y a 3 élèves (Carpool Coefficient = 3) dans la voiture (parce que les élèves veulent faire du covoiturage tous les jours), de combien de kgs de $CO_2$ est responsable chaque élève ? Quelle opération mathématique avez-vous faite pour trouver ce résultat ?
+    \item Vous devez aussi prendre en compte le fait que même si la personne vient 5 fois à Suger par semaine, cela ne représente pas le nombre de trajets qu'elle fait. Elle doit aller à Suger, mais elle doit aussi rentrer chez elle.
+\item \textrr{Vous allez normalement observer un message d'erreur pour certaines cellules} : cela correspond aux cas où l'élève ne vient jamais en voiture à Suger. Le carpool coefficient est dans ce cas égal à 0.
+Or on ne peut pas diviser quelque chose par 0. Donc il y a une erreur. Vous pourriez (1) ne pas mettre de formule et forcer une valeur de 0 dans la colonne. 
+Mais ce n'est pas une bonne stratégie car au sein de la colonne, vous aurez des cellules avec formules, et d'autres non.
+(2) La bonne méthode consiste à utiliser la fonction \verb|IFERROR| (ou \verb|SIERREUR| en français). Par exemple, si votre formule initiale est \verb|=A1/B1|, vous pouvez écrire \verb|=IFERROR(A1/B1;0)| pour dire "si jamais il y a une erreur dans \verb|A1/B1| parce que B1 vaut 0, alors mettre 0 à la place". Utiliser cette méthode pour régler les erreurs dans la colonne \textrr{K}.
+    \end{compactitem}
+\end{questions}
+
+\section{Empreinte carbone liée aux transports en commun}
+
+\begin{Indication}
+  Pour l'instant, pas besoin d'avancer sur le reste de la Google Sheet. Bravo d'être arrivés jusque là. Si vraiment vous voulez continuer à avancer, je vous mets l'énoncé mais vous n'êtes vraiment pas obligés, et vous ne serez pas pénalisés.
+\end{Indication}
+
+Utiliser la même démarche que pour la voiture pour remplir : 
+
+\begin{questions}
+  \question La cellule \textrr{R4} avec la valeur en $kgs$ de $CO_2$ émis par kilomètre pour un trajet en transport en commun (bus, métro, RER).
+\question La cellule \textrr{S4} avec le lien de la page web où vous avez trouvé l'information de la cellule \textrr{R4}
+\question La colonne \textrr{L - [PUBLIC TRANSPORT] Carbon Footprint - 1 way} grâce à une formule qui donne l'empreinte carbone (en $kgs$ de $CO_2$) pour un aller simple en transport en commun entre le domicile de l'élève et Suger.
+    \question La colonne \textrr{M - [PUBLIC TRANSPORT] Carbon Footprint - per week} qui donne l'empreinte carbone par semaine quand l'élève vient en transport en commun. Mêmes conseils que plus haut sur les choses auxquelles il faut faire attention (ça devrait être plus simple : il n'y a pas de notion de carpoool coefficient)
+  \end{questions}
+
+\section{Empreinte carbone totale liée aux transports}
+
+\begin{questions}
+  \question Grâce à une formule, remplir la colonne \textrr{N - Total Carbon Footprint - per week} qui donne l'empreinte carbone totale par semaine liée aux transports pour chaque élève (voiture + transport en commun).
+  \question Grâce à une formule, remplir la cellule \textrr{R8} qui donne l'empreinte carbone moyenne d'un élève de Suger sur une semaine.
+  \begin{Indication}
+    A votre avis : pourquoi est-ce qu'on calcule une moyenne ici ? Pourquoi on ne fait pas simplement la somme de chaque cellule de la colonne $N$, comme on le faisait pour l'inventaire des objets de Suger ?
+  \end{Indication}
+\question En cherchant sur Internet, déterminer le nombre de semaines scolaires dans une année. Remplir la cellule \textrr{R9} avec cette valeur, et la cellule \textrr{S9} avec le lien de la page web où vous avez trouvé cette information.
+\question Grâce à une formule, remplir la cellule \textrr{R10} qui donne l'empreinte carbone moyenne d'un élève de Suger sur une année scolaire.
+\question En cherchant sur Internet, déterminer le nombre d'élèves à Suger. Remplir la cellule \textrr{R11} avec cette valeur, et la cellule \textrr{S11} avec le lien de la page web où vous avez trouvé cette information.
+\question Grâce à une formule, remplir la cellule \textrr{R12} qui donne l'empreinte carbone totale annuelle des élèves de Suger liés à leur moyens de transport (en $kgs$ de $CO_2$).
+  \end{questions}
+
+  \begin{Indication}
+  \textrr{Question bonus : (vous pouvez stocker vos calculs dans une petite table que vous pouvez faire sur votre propre onlget)} : Tous les élèves de Cambridge International ont prévu de partir en voyage au Pays de Galle. Les 1ères A vont probablement partir aux Iles Canaries. Et les 1ères vont partir à Rome. En faisant des hypothèses sur le nombre d'élèves qui partent à chacun de ces voyages, et en faisant des recherches sur Internet sur les trajets en avion, déterminer l'empreinte carbone associée à chacun de ces voyage. Puis en déduire l'empreinte carbone totale des voyages scolaires de Suger cette année. Comparer cela à l'empreinte carbone que vous avez calculée liée aux déplacements des élèves pour venir à Suger sur une année. Bravo, vous avez terminé ce devoir !
+\end{Indication}
+
+\section{Barème}
+
+
+\renewcommand{\arraystretch}{1.7}
+{
+\centering
+\begin{longtable}{|L{0.2\textwidth}|L{0.65\textwidth}|c|}
+\hline
+\rowcolor{lavande}
+\textbf{Catégorie} & \textbf{Critère évalué} & \textbf{Points possibles} \\[2pt]
+\hline
+
+% ---------------- Anticipation ----------------
+Anticipation
+& Travail clairement anticipé : démarrage en avance, planification visible, absence de travail de dernière minute. Des traces de travail sur Google Sheet sont observables.
+& 5 \\
+\hline
+
+% ---------------- Contact enseignant ----------------
+Contact avec l’enseignant
+& Vous m'avez écrit ou posé des questions sur EcoleDirecte, ou directemnet via des commentaires sur Google Sheets. Les messages envoyés sont clairs, avec captures d'écran, ce que vous avez essayé, le message d'erreur que vous avez, des liens pour que je puisse comprendre et reproduire votre erreur.
+& 5 \\
+\hline
+
+% ---------------- Attitude + Effort ----------------
+Attitude + Effort
+& Je sens que vous avez essayé / que vous avez travaillé, même si vous n'y êtes pas arrivé. En classe, je vous sens activement engagés : vous posez des questions, vous aidez les autres, vous essayez de comprendre.
+& 5 \\
+\hline
+
+% ---------------- Formules ----------------
+VLOOKUP et autres formules
+& Bonne compréhension et utilisation de VLOOKUP (syntaxe, logique, paramètres) ainsi que des autres formules de base (SOMME, multiplication, division).
+& 4 \\
+\hline
+
+% ---------------- Sources ----------------
+Gestion des sources
+& Les sources utilisées sont pertinentes, et elles sont bien remplies à chaque fois que ça vous est demandé.
+& 1 \\
+\hline
+
+\end{longtable}
+}
+
+
+
+\end{document}

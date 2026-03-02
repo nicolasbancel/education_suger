@@ -3,9 +3,9 @@
 *.log
 *.fdb_latexmk
 *.out
-*.jpg
-*.png
-*.jpeg
+# *.jpg
+# *.png
+# *.jpeg
 *.fls
 *.synctex.gz
 
@@ -26,13 +26,13 @@
 **/ecoledirecte_*.xlsx
 **/appreciations/*.csv
 **/appreciations/*.xlsx
-**/carbon_footprint_students*
+**/carbon_footprint_students*.pdf
 **/liste_eleves.md
 
 # Fichiers et dossiers avec noms d'élèves visibles
 00_pedago/xx_semaines/eleves.pdf
 00_pedago/xx_semaines/eleves.tex
-00_pedago/03_prompts/prompts_ponctuels/Marie Dieval/
+#00_pedago/03_prompts/prompts_ponctuels/Marie Dieval/
 00_pedago/toolbox/tests_logbook/test_faustine*.pdf
 00_pedago/toolbox/tests_logbook/test_faustine*.tex
 01_2526_6emes_maths/Kwyk/amar-salome_kwyk-#1_rapport.pdf
