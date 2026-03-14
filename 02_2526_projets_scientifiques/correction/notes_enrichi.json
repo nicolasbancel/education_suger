@@ -1,0 +1,485 @@
+[
+  {
+    "prenom": "Anaëlle",
+    "nom": "Duvault",
+    "anticipation": {
+      "note": 5,
+      "appreciation": "Excellent sur l’anticipation. Tu as très bien compris l’importance de commencer tôt et surtout de laisser des traces de ton travail. On voit que tu t’es mise sur le devoir en avance et que tu avances régulièrement. C’est exactement l’état d’esprit attendu dans ce type de projet."
+    },
+    "interaction_teacher": {
+      "note": 4,
+      "appreciation": "Très bonnes interactions par email. Tes messages sont clairs, structurés, avec du contexte, des explications sur ce que tu as essayé et souvent des captures d’écran pour montrer où tu bloques. Cela rend les échanges très efficaces. En classe, tu pourrais parfois venir un peu plus me voir quand une question te bloque."
+    },
+    "attitude_effort": {
+      "note": 4,
+      "appreciation": "Très bonne attitude et beaucoup de sérieux dans le travail. Tu es volontaire et impliquée. Ton axe de progression est plutôt dans la dynamique de classe : essaie d’aller davantage vers d’autres élèves, proposer ton aide quand tu as compris et travailler aussi avec des personnes avec qui tu as moins l’habitude d’être."
+    },
+    "formulas_sources": {
+      "note": 4.5,
+      "appreciation": "Très bon travail sur les formules et la structure des feuilles. Les VLOOKUP sont bien utilisés, les liens entre cellules sont cohérents et les sources sont correctement renseignées. On voit une vraie progression dans ta compréhension de Google Sheets. Un axe d’amélioration important cependant serait d’aller plus loin dans l’interprétation des résultats : parfois, tu donnes le sentiment de ne pas saisir exactement ce que l'on fait, à quoi correspond le sens de chaque colonne dans laquelle on calcule des résultats, et à quoi correspondent les étapes intermédiaires. Ce sont des données / metriques pas évidentes à comprendre certes, mais il faut à chaque étape quand même se demander ce qu'on est en train de calculer, et pourquoi on le fait. Ca permet d'être encore plus lucide sur les formules qu'on est en train d'écrire."
+    },
+    "appreciation_generale": "Excellent trimestre. Tu as très bien compris les attentes du projet : anticiper, tenir au courant de ton avancée et structurer ton travail. Les formules sont bien maîtrisées et ton attitude est très positive. Continue sur cette dynamique, c’est du très bon travail.",
+    "note_finale": 17.5,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Sohantadeo",
+    "nom": "Favereau",
+    "anticipation": {
+      "note": 5,
+      "appreciation": "Excellent sur l’anticipation. Tu commences le travail tôt et j’ai régulièrement des traces de ton avancée bien avant les deadlines. C’est exactement l’état d’esprit attendu dans ce projet : avancer progressivement plutôt que tout faire au dernier moment."
+    },
+    "interaction_teacher": {
+      "note": 4,
+      "appreciation": "Très bonnes interactions par email : tes messages sont clairs, avec du contexte et souvent des captures d’écran pour expliquer où tu bloques. Les questions deviennent de plus en plus précises. Tu pourrais en revanche venir un peu plus me voir pendant le cours pour échanger et voir ce que tu pourrais faire ensuite."
+    },
+    "attitude_effort": {
+      "note": 5,
+      "appreciation": "Excellente attitude pendant les séances. Tu es volontaire, sérieux et prêt à aider tes camarades. On voit que tu t’impliques vraiment dans le projet. Essaie simplement de travailler parfois avec d’autres élèves pour mélanger un peu plus les groupes."
+    },
+    "formulas_sources": {
+      "note": 3.5,
+      "appreciation": "Très bon travail dans l’ensemble et bonne compréhension des formules. Quelques erreurs d’étourderie subsistent : une addition incorrecte dans la conclusion de la partie objets et l’utilisation trop systématique de IFERROR. Attention aussi à ne pas écrire des nombres en dur dans les formules et à utiliser des fonctions comme AVERAGE."
+    },
+    "appreciation_generale": "Très bon trimestre. Tu anticipes bien, les échanges par email sont efficaces et ton attitude en classe est très sérieuse. Il reste quelques petites erreurs techniques à corriger dans les formules, mais l’ensemble est solide. Continue comme ça.",
+    "note_finale": 17.5,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Harrison",
+    "nom": "Pick",
+    "anticipation": {
+      "note": 5,
+      "appreciation": "Très bonne anticipation. Tu t’es mis au travail bien en avance, ce qui m’a permis de suivre plus facilement ton avancée et de voir ce qui pouvait te bloquer au fur et à mesure. C’est exactement ce que j’attends dans ce projet. Continue comme ça."
+    },
+    "interaction_teacher": {
+      "note": 4,
+      "appreciation": "Très bonnes interactions avec moi, surtout par écrit. Tes messages sont de plus en plus clairs, avec du contexte et des captures d’écran quand c’est utile. En classe, c’est bien aussi, mais tu pourrais venir un peu plus me voir pour qu’on avance davantage ensemble."
+    },
+    "attitude_effort": {
+      "note": 4,
+      "appreciation": "Très bonne attitude et beaucoup de sérieux dans le travail. Tu avances bien et de manière autonome. Ton axe d’amélioration, c’est de travailler un peu plus avec d’autres élèves et de ne pas rester toujours avec les mêmes personnes ou trop isolé. Les projets scientifiques demandent aussi d’apprendre à collaborer."
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Très bon travail sur la partie « Objects / Inventory » avec une bonne maîtrise des VLOOKUP, des sommes et des multiplications. Attention toutefois au choix des sources : ChatGPT n’est pas une source fiable, il faut privilégier des données officielles comme celles du site de l’établissement. Sur la partie transports, pense à bien intégrer l’aller-retour en multipliant les distances par deux. L’usage de IFERROR doit rester ciblé aux situations où il existe un risque réel d’erreur, comme une division par zéro. Évite aussi d’écrire des valeurs en dur dans tes formules, comme diviser par 72 pour calculer une moyenne : utilise plutôt la fonction AVERAGE ou rends la formule dynamique."
+    },
+    "appreciation_generale": "Très bon trimestre dans l’ensemble. Tu anticipes bien, tu progresses dans la façon de communiquer avec moi et ton travail est sérieux. Il reste quelques points de vigilance sur certaines formules et sur le travail en groupe, mais la dynamique est très bonne. Continue comme ça.",
+    "note_finale": 17.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Manon",
+    "nom": "Remy",
+    "anticipation": {
+      "note": 5,
+      "appreciation": "Très bonne anticipation. Tu fais partie des rares élèves qui s’étaient mises très en avance sur la première partie du devoir maison, celle à rendre mi-janvier. C’est exactement ce que j’attends dans ce projet. Bravo, continue comme ça."
+    },
+    "interaction_teacher": {
+      "note": 4,
+      "appreciation": "Très bonnes interactions avec moi. Tes messages sont de plus en plus clairs, avec du contexte, et en classe tu viens me voir au bon rythme. Le point à travailler, c’est l’équilibre entre chercher par toi-même et m’écrire : parfois, tu pouvais encore trouver seule avant de me contacter."
+    },
+    "attitude_effort": {
+      "note": 4,
+      "appreciation": "Très bonne attitude et vrai sérieux dans le travail. Le binôme avec Romane fonctionne bien. Ton axe de progression, c’est d’aller davantage vers d’autres élèves, pas seulement ton groupe habituel, pour aider ceux qui avancent moins et apprendre aussi à travailler avec d’autres profils."
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Très bien sur la partie objets : VLOOKUP, sommes et multiplications sont bien compris. Je ne peux pas te mettre 5 car toute la partie sur l’empreinte carbone des iPads n’a pas été faite. Sur les transports, tu mélanges parfois les colonnes : en colonne M, tu remultiplies par I ce qu'il y a dans la colonne I (la distance) alors que c’était déjà fait en colonne L, donc tu multiplies 2 fois par I, ce qui gonfle énormément le résultat final. Il faut réussir à prendre du recul par rapport aux résultats : trouver des empreintes carbone par élève de ~300kgs par semaine, c'est énorme et ça doit éveiller les soupçons."
+    },
+    "appreciation_generale": "Très bon trimestre dans l’ensemble. Tu anticipes bien, tu progresses dans ta façon d’échanger avec moi et il y a beaucoup de sérieux dans ton travail. Il reste un peu de vigilance à avoir sur certaines formules et sur le fait de prendre du recul sur les résultats obtenus. Continue comme ça.",
+    "note_finale": 17.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Romane",
+    "nom": "Lacroix Ferrere",
+    "anticipation": {
+      "note": 3.5,
+      "appreciation": "Le début du trimestre manquait d’anticipation, mais il y a ensuite une amélioration nette dans ton engagement et ta régularité. Tu t’es davantage mise au travail sur la suite du projet. L’objectif maintenant est de garder ce rythme dès le départ."
+    },
+    "interaction_teacher": {
+      "note": 3.5,
+      "appreciation": "Quelques échanges par email, surtout sur la partie transports. J’aurais aimé que tu me tiennes davantage au courant de ton avancée sur l’ensemble du devoir. En revanche, pendant le cours, tu gères bien l’équilibre entre chercher seule et venir me poser des questions quand c’est nécessaire."
+    },
+    "attitude_effort": {
+      "note": 4,
+      "appreciation": "Très bonne attitude en classe. Tu es sérieuse, impliquée et dans un bon esprit avec tes camarades. On sent que tu fais des efforts pour avancer et aider quand c’est possible. Continue sur cette dynamique. En revanche la partie sur l'empreinte carbone des tablettes n'est pas faite dans la Sheet [Inventory / Objects]"
+    },
+    "formulas_sources": {
+      "note": 2,
+      "appreciation": "Bonne progression dans la compréhension des formules et de Google Sheets. Les bases comme les VLOOKUP ou les multiplications sont globalement maîtrisées. Il reste quelques erreurs de logique et des parties non finalisées, mais on voit clairement que tu as progressé et que la démarche est de plus en plus solide. Attention cependant à 2 points : [Inventory / Objects] : la valeur en K2 n'a pas de sens. Tu te trompes sur la formule. Tu fais une multiplication alors qu'il faut faire une SOMME entre les cellules H2 et H64. [Transports] Erreurs de calcul : Colonne J : Pourquoi multiplier par la colonne G (# de fois où trajet en voiture) ? On demande l'empreinte carbone liée à 1 aller, pas aux allers faits sur la semaine. Colonne K : tu multiplies une 2ème fois par la colonne G. Donc G (nombre de trajets par semaine) est pris en compte 2 fois. Même erreur pour le bus : tu prends en compte le # de trajets en bus par semaine à 2 endroits : dans la colonne L (où il ne devrait pas), et dans la colonne M. Du coup prends du recul ensuite : est-ce que N28 te semble plausible ? Cet élève génère 317.92 kgs de CO2 par semaine ? Sachant que la limite annuelle à respecter pour un humain est 2000 kgs CO2 générés par an. La moyenne en R8 est mal calculée : =(N2:N73)/72 ne renvoie pas une moyenne. (N2:N73) a au contraire un comportement très peu attendu. Il manque un SOMME() devant SUM(N2:N73)/72. Ou mieux : AVERAGE(N2:N73)."
+    },
+    "appreciation_generale": "Un trimestre globalement positif avec de vrais progrès, notamment dans ton attitude et ta compréhension des outils. Il faut maintenant gagner en anticipation et en rigueur dans la finalisation du travail. Continue à t’appuyer sur cette progression.",
+    "note_finale": 13.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Juan",
+    "nom": "Zamora",
+    "anticipation": {
+      "note": 4.5,
+      "appreciation": "C’est bien sur l’anticipation : tu t’es mis au travail en avance et j’avais des traces de ton travail avant la deadline. C’est exactement ce qui est attendu dans le projet. Continue à garder cette rigueur sur le fait de commencer tôt."
+    },
+    "interaction_teacher": {
+      "note": 2,
+      "appreciation": "Interaction trop faible avec moi. Je n’ai reçu aucun email de ta part sur le projet pendant le trimestre, et en classe tu viens très peu me demander du feedback. Même quand tu avances bien, j’attends que tu viennes vérifier, poser des questions et chercher à progresser au lieu de rester trop isolé."
+    },
+    "attitude_effort": {
+      "note": 4.5,
+      "appreciation": "Très bonne attitude et travail sérieux pendant le trimestre. Tu avances bien et tu fournis un vrai effort. Le point à améliorer, c’est de ne pas trop t’isoler ni travailler toujours avec les mêmes personnes. J’aimerais te voir davantage échanger avec d’autres élèves et avec moi."
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Résultat contrasté selon les parties. Sur « Objects / Inventory », la partie iPads n’est pas bien comprise : tu prends 1,31 comme annual carbon footprint of the construction of an iPad alors que ce n’est pas la bonne logique. Il fallait partir de 83,9 et le diviser par la durée de vie de l’iPad ; la valeur devait donc venir d’une formule cohérente avec ce que tu avais écrit au-dessus. Il faut aussi être plus vigilant sur les sources et ne pas reprendre ChatGPT sans vérifier derrière, car cela crée des incohérences. En revanche, la partie « Transports » est beaucoup mieux maîtrisée : les VLOOKUP sont corrects, les IFERROR sont bien utilisés, l’agencement des formules est propre et les recherches de sources sont sérieuses."
+    },
+    "appreciation_generale": "Bon trimestre dans l’ensemble. Tu anticipes bien, tu travailles sérieusement et la partie transports est réussie. En revanche, il faut absolument davantage interagir avec moi pour venir chercher du feedback et vérifier que ce que tu fais est cohérent. Ne reste pas trop sur tes acquis : tu as le niveau pour progresser encore.",
+    "note_finale": 15.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Ayaan",
+    "nom": "Corazza",
+    "anticipation": {
+      "note": 3,
+      "appreciation": "Tu t'es mis sur le devoir maison un peu tard (le 20 Janvier pour une deadline le 21). Mieux sur la 2ème partie du devoir"
+    },
+    "interaction_teacher": {
+      "note": 2.5,
+      "appreciation": "Par email : très peu d'interactions. 1 seule sur toute la durée du projet. Et pendant le cours, n'hésite pas à plus venir me voir Ayaan, pour soit me tenir au courant de tes avancées / vérifier que tu as juste, soit me poser des questions pour comprendre. La preuve sur la section suivante : tu as avancé tout seul mais en faisant des grosses erreurs de raisonnement ou de calcul sur les 2 devoirs."
+    },
+    "attitude_effort": {
+      "note": 4.5,
+      "appreciation": "Très bonne attitude en classe, tu es sérieux, appliqué, disposé à aider et travailler en groupe. Essaie de ne pas toujours rester avec le même groupe (Sohan, Juan et Evann) mais d'interagir avec d'autres membres du groupe (demander de l'aide, en donner)"
+    },
+    "formulas_sources": {
+      "note": 3,
+      "appreciation": "Sur le calcul de l'empreinte carbone des objets : la notion de Lifetime (per unit) (in years)' n'a pas été comprise ni prise en compte dans le calcul. Tu ne prends pas en compte et ne fait du coup aucune différence entre un objet qui dure 20 ans, et le même objet qui durerait 1 an parce que de piètre qualité. Il fallait diviser l'empreinte carbone par la lifetime. Puis dans la colonne H (carbon footprint per year), tu fais une multiplication qui n'a pas lieu d'être. Tu écris par exemple que pour 1 chaise : Carbon Footprint = 18.6 (colonne E). Donc pour la salle de 30 chaises : Carbon Footprint (Colonne F) = 558 (30*18.6). Puis ta conclusion est que annuellement la carbon footprint pour ces chaises est Colonne E * Colonne F. Donc : 10378,8 kgs. Mathématiquement ça n'a pas de sens. Il fallait diviser l'empreinte carbone totale (558) par le nombre d'années que dure 1 chaise (10 ans) : 558/10 = 5.58 kg/an. Puis même chose sur le devoir sur les Transports : tu ne prends pas du tout en compte le carpool coefficient. Si 4 personnes sont dans une même voiture, ça n'a pas la même empreinte carbone que si 1 seule personne est dedans. Attention à ne pas simplement enchainer des calculs mais comprendre réllement le sens des calculs mathématiques."
+    },
+    "appreciation_generale": "Très bonne attitude et vrai sérieux en classe, ce qui est un gros point fort. En revanche, tu dois davantage venir vérifier avec moi que ton raisonnement est juste, parce qu’il y a eu plusieurs erreurs importantes dans les calculs. Continue à t’impliquer comme tu le fais, mais prends plus l’habitude de confronter ton travail et de poser des questions.",
+    "note_finale": 13.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Lila",
+    "nom": "Rocher",
+    "anticipation": {
+      "note": 2,
+      "appreciation": "Il y a eu un peu d’anticipation sur la première partie du devoir, mais pas assez. Il faut vraiment mieux lire les emails, bien comprendre ce qui est attendu et te mettre au travail plus tôt. L’objectif est d’avoir un démarrage plus sérieux et plus régulier."
+    },
+    "interaction_teacher": {
+      "note": 3,
+      "appreciation": "Tu m’écris, donc il y a une base, mais tes messages doivent être mieux structurés, avec plus de contexte sur ce que tu as essayé. À l’inverse, relancer plusieurs fois sur la note n’aide pas. En classe, si je ne suis pas disponible, il faut rester active et aller chercher de l’aide auprès d’autres élèves."
+    },
+    "attitude_effort": {
+      "note": 3.5,
+      "appreciation": "Tu es volontaire et le binôme avec Anaëlle fonctionne bien. En revanche, attention à ne pas te fermer ou te décourager quand tu attends de l’aide. J’attends une attitude plus autonome dans ces moments-là et davantage d’ouverture vers d’autres groupes pour avancer."
+    },
+    "formulas_sources": {
+      "note": 2.5,
+      "appreciation": "Le travail montre une compréhension très partielle des formules. Sur « Objects / Inventory », tu récupères bien l’empreinte carbone avec un VLOOKUP, mais tu rentres ensuite la lifetime manuellement au lieu de la chercher avec une formule dans la bonne colonne. La colonne H (empreinte carbone annuelle) n’est pas remplie, donc la somme finale des objets n’est pas faite, et toute la partie sur les iPads manque. Sur « Transports », plusieurs villes restent en #N/A car les VLOOKUP ne sont pas corrigés. Tu multiplies systématiquement par 7 ou par 5 pour passer à la semaine, alors qu’il fallait utiliser la donnée du questionnaire (colonne G) propre à chaque élève. Sur les transports en commun, tu reproduis la même erreur et les formules ne correspondent pas toujours à ce que la colonne est censée calculer. Enfin, aucune conclusion n’est faite sur l’empreinte carbone totale des trajets."
+    },
+    "appreciation_generale": "Il y a une base de travail et de la bonne volonté, mais le projet reste trop incomplet et les erreurs importantes n’ont pas été corrigées. Il faut davantage anticiper, structurer tes questions et surtout chercher activement des solutions pour aller au bout du devoir.",
+    "note_finale": 11.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Mia",
+    "nom": "Malpeli",
+    "anticipation": {
+      "note": 2,
+      "appreciation": "Peu d’anticipation sur la première partie du devoir maison. Le travail n’a pas été engagé suffisamment tôt entre les séances. Il faut vraiment prendre l’habitude de t’y mettre en avance et d’avancer régulièrement pour ne pas te retrouver en difficulté."
+    },
+    "interaction_teacher": {
+      "note": 2,
+      "appreciation": "Tu m’écris très peu par email alors que c’était un critère important du projet. En classe aussi, tu ne viens pas beaucoup me voir pour poser des questions ou montrer où tu en es. Fais l’effort de te manifester davantage et de contextualiser tes questions pour que je puisse t’aider efficacement."
+    },
+    "attitude_effort": {
+      "note": 2,
+      "appreciation": "Le travail sur la partie objets est sérieux et montre des efforts, mais l’investissement global reste insuffisant. La partie transports est très incomplète et beaucoup d’éléments n’ont pas été traités. J’attends une attitude plus active en classe et une vraie volonté d’aller au bout du travail demandé."
+    },
+    "formulas_sources": {
+      "note": 3,
+      "appreciation": "Bonne compréhension globale des VLOOKUP et de l’organisation sur la partie objets, même si la conclusion finale n’a pas été faite. Sur les transports, plusieurs formules sont incorrectes ou non finalisées, avec des données non exploitées. Il faut gagner en rigueur et venir demander de l’aide pour corriger les erreurs."
+    },
+    "appreciation_generale": "Un travail contrasté : de bonnes bases sur la partie objets mais un investissement trop faible sur la suite du projet. Il faut davantage anticiper, poser des questions et aller au bout des consignes. J’attends un engagement plus fort pour progresser au prochain trimestre.",
+    "note_finale": 9.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Evann",
+    "nom": "Nguendi Kabiwa",
+    "anticipation": {
+      "note": 1,
+      "appreciation": "Aucune anticipation visible sur le trimestre. La première partie du devoir n’a pas été rendue et il n’y a pas eu de travail engagé en avance. Il faut vraiment commencer plus tôt et avancer régulièrement si tu veux pouvoir progresser sur ce type de projet."
+    },
+    "interaction_teacher": {
+      "note": 2.5,
+      "appreciation": "Aucun email envoyé pendant le trimestre pour poser des questions ou expliquer où tu en étais dans le devoir. En classe aussi, tu ne viens quasiment jamais me voir pour demander de l’aide. Il faut vraiment changer cela : expliquer ce que tu essaies de faire, poser des questions et montrer que tu cherches activement. C'est bien de travailler avec d'autres élèves mais j'ai besoin de voir comment tu progresses sur le fait de structurer et poser des questions"
+    },
+    "attitude_effort": {
+      "note": 1.5,
+      "appreciation": "Je te vois encore trop passif sur ce projet. J’ai l’impression que tu te reposes beaucoup sur l’aide de certains camarades pour avancer. J’attends un vrai investissement personnel : chercher, essayer, te tromper parfois, mais montrer que tu travailles réellement sur le projet."
+    },
+    "formulas_sources": {
+      "note": 2,
+      "appreciation": "Le travail est très incomplet. Sur la partie « Objects / Inventory », tu t’es arrêté avant d’appliquer la durée de vie des objets et la conclusion n’a pas été faite. La partie iPad manque aussi. Sur la partie transports, plusieurs villes ne sont pas ajoutées, certaines colonnes ne sont pas traitées et la conclusion semble copiée sans venir de tes propres calculs."
+    },
+    "appreciation_generale": "Le travail rendu est très incomplet et l’investissement reste trop faible. Au 1er trimestre tu étais beaucoup plus impliqué sur des sujets moins techniques (fresques du climat, aller compter des objets dans les salles etc). Mais tu n'es pas monté dans le train pour le travail sur Google Sheet et il y a des lacunes. J’attends beaucoup plus d’engagement : commencer le travail en avance, poser des questions et avancer par toi-même plutôt que de dépendre des autres. Il faut un vrai changement d’attitude au prochain trimestre.",
+    "note_finale": 7.0,
+    "classe": "6ème"
+  },
+  {
+    "prenom": "Victoria",
+    "nom": "Vannier",
+    "anticipation": {
+      "note": 3,
+      "appreciation": "Le début du trimestre manquait d’anticipation, notamment sur la partie « Objects / Inventory » où vous aviez pourtant plusieurs semaines pour avancer. En revanche, la deuxième partie du trimestre est excellente et montre un vrai changement dans ton organisation et ton implication. L’objectif maintenant est simple : démarrer avec ce niveau d’engagement dès le début."
+    },
+    "interaction_teacher": {
+      "note": 5,
+      "appreciation": "Excellent sur les interactions. Tes emails sont très bien structurés : ils sont clairs, polis, et tu donnes toujours le contexte de ce que tu as essayé de faire et de l’endroit où tu bloques. Tu me tiens aussi régulièrement au courant de ton avancée sur le devoir, ce qui me permet de bien suivre ton travail. En classe, tu es aussi très proactive. C’est exactement l’attitude attendue dans ce projet."
+    },
+    "attitude_effort": {
+      "note": 4.5,
+      "appreciation": "Très bonne attitude pendant les séances. Tu travailles sérieusement, tu es proactive et impliquée dans le projet. Le seul point à améliorer serait de varier un peu plus les groupes avec lesquels tu travailles. Tu es souvent avec Ysaline ; essaie aussi d’échanger davantage avec d’autres élèves, soit pour demander de l’aide soit pour en proposer."
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Très bon travail sur la partie « Objects / Inventory » : les calculs et les formules sont justes et la logique est bien comprise. Il pourrait être intéressant d’aller un peu plus loin dans l’interprétation des résultats, par exemple sur le fait que l’empreinte carbone des tablettes est du même ordre de grandeur que celle de tous les objets de l’établissement. Sur la partie transports, il manque le facteur aller-retour dans les distances et l’utilisation de IFERROR n’est pas toujours pertinente."
+    },
+    "appreciation_generale": "Un très bon trimestre au final, avec un changement très net entre le début et la fin. Les interactions avec moi sont excellentes, ton attitude est très proactive et le travail est globalement solide. Continue sur cette dynamique et essaie simplement de garder ce niveau d’engagement dès le début des projets.",
+    "note_finale": 16.5,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Charlie",
+    "nom": "Esmiol",
+    "anticipation": {
+      "note": 2.5,
+      "appreciation": "Sur la 1ère version du devoir (Empreinte Carbone des objets de Suger) il n'y a eu quasi aucune anticipation. Tu m'as écrit la veille de la deadline pour me poser une question. C'est mieux ensuite."
+    },
+    "interaction_teacher": {
+      "note": 3.5,
+      "appreciation": "Bien mieux sur la 2ème partie du trimestre. Tu poses des questions pertinentes aussi bien par email que pendant les cours. Bonne structure aussi d'email, c'est clair et concis (avec screenshot quand c'est nécessaire"
+    },
+    "attitude_effort": {
+      "note": 4.5,
+      "appreciation": "Excellente attitude au global. Je te trouve patient, très volontaire pour aider les autres et faire avancer le projet de tout le monde, tout en réussissant à ne pas être trop ralenti pour avancer toi-même sur le devoir. Attention à ne pas toujours travailler avec les mêmes élèves."
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Très bien sur la partie 'Inventaire des objets de Suger'. En revanche ta Google Sheet sur la partie Ipad notamment est exactement la même que celle de Owen. Je n'apprécie pas ce manque de transparence : si vous travaillez ensemble et vous alignez sur les sources et réponses, je veux être mis dans la boucle / tenu au courant. Sinon ça ne peut qu'éveiller mes soupçons sur votre investissement. Sur la partie 'Transport' : ton IF pour éviter la division par 0 fonctionne, mais il y avait mieux. IFERROR est plus pertinent : attention à bien suivre les consignes, demander de l'aide ou du feedback de ma part pour que je puisse justement t'aider à progresser. Carbon Footprint of public transportation : 0,015 kg/km. Tu as mis que la source était ChatGPT : ce n'est pas une source fiable. J'ai écrit un commentaire à ce sujet mais tu n'y as pas répondu."
+    },
+    "appreciation_generale": "Très bonne attitude au global et vraie volonté d’aider les autres, ce qui est précieux dans ce type de projet. Il y a aussi une nette progression dans les interactions avec moi. En revanche, il faut davantage anticiper et être plus rigoureux sur la transparence du travail fait en groupe et sur la fiabilité des sources utilisées. Continue dans cette dynamique sérieuse.",
+    "note_finale": 14.5,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Théo",
+    "nom": "Otterled",
+    "anticipation": {
+      "note": 4,
+      "appreciation": "C'est bien Théo, tu fais partie des rares élèves qui avaient anticipé et commencé la 1ère partie du devoir en avance. Vrai effort de prendre les devants, c'est bien, continue c'est une très belle qualité."
+    },
+    "interaction_teacher": {
+      "note": 3,
+      "appreciation": "Il y a de l'intéraction c'est bien mais en revanche tu as du mal à prendre en compte les retours que je te fais. On a beaucoup itéré sur la Google Sheet quand je te demandais d'utiliser des formules mais tu continuais à vouloir faire autant de copier coller qu'il y avait de lignes. C'était contre productif, ce n'était pas l'esprit de la question et pour autant tu résistais assez fort au retour / conseil que je te donnais. "
+    },
+    "attitude_effort": {
+      "note": 4.5,
+      "appreciation": "Très bonne attitude, tu es très sérieux Théo c'est bien. Essaie d'un peu plus travailler en groupe, aller chercher de l'aide auprès de camarades, pas seulement auprès de moi. Continue comme ça."
+    },
+    "formulas_sources": {
+      "note": 3,
+      "appreciation": "Objets / Inventory : la partie sur l'Ipad n'a pas été faite, les cases sont restées vides. Transports : il y a encore des #N/A présents dans ta Google Sheets (certaines villes n'ont pas été ajoutées (Croissy-sur-Seine / La Garenne-Colombes / Mareil-Marly / Louveciennes). Colonne J : Le IFERROR() n'est pas utile dans les multiplications ici, on s'en sert plutôt pour anticiper des divisions par 0. Le reste est plutôt bien et tu as l'air d'avoir compris comment fonctionnait Google Sheet "
+    },
+    "appreciation_generale": "Très bon trimestre dans l’ensemble, avec une vraie anticipation au début et beaucoup de sérieux dans le travail. Tu as de bonnes bases sur Google Sheets et une attitude très positive. Le point principal à travailler est la prise en compte des retours que je te fais : accepte davantage d’ajuster ta méthode quand je te guide, cela te fera progresser encore plus vite.",
+    "note_finale": 14.5,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Lara",
+    "nom": "Samaha",
+    "anticipation": {
+      "note": 2,
+      "appreciation": "Aucune anticipation au début du trimestre sur la 1ère partie du devoir mais c'était nettement mieux ensuite."
+    },
+    "interaction_teacher": {
+      "note": 4.5,
+      "appreciation": "Par email : c'est de mieux en mieux. Quelques questions posées, qui sont précises (avec screenshot, ou le contexte est clairement expliqué. En présentiel / en classe : c'est aussi de mieux en mieux, tu trouves le bon équilibre d'autonomie entre chercher par toi-même et venir me poser des questions."
+    },
+    "attitude_effort": {
+      "note": 4,
+      "appreciation": "Pas satisfaisant en début de trimestre (aucune avancée ni anticipation sur la 1ère partie du devoir) mais très bien en 2ème partie de trimestre. Continue comme ça c'est très bien."
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Partie 1 : Objects / Inventory. Tout est très bien à part la conclusion. Ce n'est pas K9=(K5+K7)*K8. Tu dois simplement multiplier l'empreinte carbone annuelle d'un iPad par le nombre d'élèves a Suger. Je ne sais pas pourquoi tu rajoutes 'Carbon Footprint of the construction of an iPad (in kg)' Partie 2 : Pas besoin de faire des IFERROR() sur des multiplications. On l'utilise quand il y a un risque que le résultat soit N/A - ce qui est commun avec les divisions. Mais globalement la 2ème partie est très réussie."
+    },
+    "appreciation_generale": "Le début du trimestre n’était pas satisfaisant, mais la suite montre une vraie progression dans ton implication, tes échanges avec moi et la qualité du travail. C’est une évolution très positive. Continue comme ça, en gardant cette dynamique plus sérieuse et en faisant attention aux petites erreurs de logique dans certaines formules.",
+    "note_finale": 14.5,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Owen",
+    "nom": "Diouf",
+    "anticipation": {
+      "note": 2,
+      "appreciation": "Pas beaucoup d'anticipation et de travail fait à la maison. Rien n'avait été fait sur la première partie du devoir (Inventaire) : je t'avais mis 0 sur l'anticipation, et 0 sur la section 'Interaction avec moi'"
+    },
+    "interaction_teacher": {
+      "note": 4,
+      "appreciation": "Beaucoup mieux sur la 2ème partie du trimestre (et quand on s'est mis à travailler sur l'empreinte carbone liée aux transports)"
+    },
+    "attitude_effort": {
+      "note": 3,
+      "appreciation": "Attitude qui a aussi beaucoup évolué et dans le bon sens. Assez difficile de prévoir quand tu vas te motiver pour travailler, c'est assez imprévisible : j'ai l'impression que le projet t'a d'un seul coup motivé à partir de la 2ème partie du trimestre et tu as du coup fait beaucoup de progrès sur le devoir + sur l'interaction avec les autres. Essaie d'être plus consistant + de travailler avec des personnes différentes (pas toujour Charlie, Alexandre etc)"
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Transports : Colonne J : il y a un décalage. Tu appliques en J4 (par exemple) la distance en I5. Donc ça décale. La personne en ligne 4 habite à Rueil (à 7.3 kms) mais tu lui calcules une empreinte carbone comme si il habitait à Vaucresson. Le résultat est donc faux. Très bonne compréhension et gestion des VLOOKUP() / IFERROR() / SOMME(), AVERAGE() sinon. Et très bon devoir sur la partie Inventaire des objets - il n'y a pas de faute."
+    },
+    "appreciation_generale": "Le trimestre est contrasté, avec un début très faible puis une vraie progression ensuite. Tu as beaucoup mieux interagi, tu t’es davantage mis au travail et cela s’est vu dans la qualité de certaines parties du devoir. L’objectif maintenant est d’être plus constant dès le début et de garder cette dynamique sur toute la durée d’un projet.",
+    "note_finale": 13.0,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Alexandre",
+    "nom": "Périssé Tremski",
+    "anticipation": {
+      "note": 3,
+      "appreciation": "Aucune anticipation au début du trimestre sur la 1ère partie du devoir mais c'était nettement mieux ensuite."
+    },
+    "interaction_teacher": {
+      "note": 4,
+      "appreciation": "De gros progrès là dessus Alexandre. Tu as beaucoup gagné en maturité dans ta façon d'interagir avec moi, autant par email (tu t'es mis à m'écrire plus souvent, avec des questions de plus en plus précises), que pendant les cours. Continue comme ça."
+    },
+    "attitude_effort": {
+      "note": 3,
+      "appreciation": "Ton axe d'amélioration principal. Ta motivation est trop imprévisible : tu es d'abord en résistance, envoies un email groupé avec Charlie, Ysaline, Owen, Théo, Sacha, Fatima et Inaya mi Janvier pour dire que vous ne comprenez rien mais je n'ai pas senti beaucoup d'efforts là dessus quand j'avais envoyé beaucoup d'emails de relance + fait des vidéos explicatives. Puis d'un seul coup (peut être que c'est la mauvaise note qui t'a réveillé) tu deviens un des élèves les plus pro actifs du cours sur le reste du trimestre : sois dans ton mode de fonctionnement le plus récent pendant tout le 3ème trimestre et tu vas voir à quel point tu vas progresser. Et attention à ne pas toujours travailler avec les mêmes élèves. Force toi à changer de groupe parfois."
+    },
+    "formulas_sources": {
+      "note": 3,
+      "appreciation": ""
+    },
+    "appreciation_generale": "Partie 1 du devoir : 'Objects / Inventory' : partie non terminée. Tu n'as pas rempli la colonne H dans laquelle tu fais le calcul final de l'empreinte carbone en fonction de la durée de vie des objets. Il manque aussi toutes les sources pour le travail sur l'empreinte carbone de vos tablettes (tu as mis des nombres dans les cases K5:K9 mais sans aucune justification. Partie 2 du devoir : 'Transports' : Colonne J : il y a un décalage. Tu appliques en J4 (par exemple) la distance de I5. Donc ça décale. La personne en ligne 4 habite à Rueil (à 7.3 kms) mais tu lui calcules une empreinte carbone comme si il habitait à Vaucresson. Attention à être vigilant",
+    "note_finale": 13.0,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Ysaline",
+    "nom": "Bertrand",
+    "anticipation": {
+      "note": 2,
+      "appreciation": "Le début de trimestre manquait clairement d’anticipation avec du travail fait très tard. En revanche, la deuxième partie du projet est bien meilleure et montre une organisation plus sérieuse. Continue dans cette direction et essaie de garder ce niveau d’anticipation dès le début."
+    },
+    "interaction_teacher": {
+      "note": 2.5,
+      "appreciation": "Tu m’as très peu sollicité pendant le trimestre, que ce soit par message ou en classe. J’aimerais te voir poser davantage de questions et expliquer ce que tu essaies de faire quand tu bloques. Cela me permettrait de mieux suivre ton raisonnement et de t’aider plus efficacement."
+    },
+    "attitude_effort": {
+      "note": 4,
+      "appreciation": "Bonne attitude et travail sérieux tout au long du projet. Le binôme avec Victoria fonctionne bien et vous êtes efficaces. Essaie maintenant d’interagir davantage avec d’autres élèves et d’aller aider autour de toi quand tu as compris, cela enrichira encore ton travail."
+    },
+    "formulas_sources": {
+      "note": 4,
+      "appreciation": "Bonne compréhension des formules et du fonctionnement de Google Sheets. Les VLOOKUP et la logique générale sont bien maîtrisés. Continue à garder cette rigueur dans l’organisation des formules et des sources."
+    },
+    "appreciation_generale": "Un trimestre qui se termine nettement mieux qu’il n’avait commencé. Le travail est sérieux, les outils sont bien compris et le binôme avec Victoria fonctionne bien. Le point principal à améliorer est l'anticipation et l’interaction avec moi : n’hésite pas à poser plus de questions et à montrer comment tu réfléchis face aux problèmes. Et sois honnête : un DM ne se fait pas à 23h en 15 minutes la veille de la deadline. J'aurais préféré un email honnête me disant que tu n'avais pas eu le temps / pas compris, me demander si c'était ok de me le rendre avec du retard etc plutôt que d'essayer d'occulter le sujet et faire faire le devoir par quelqu'un d'autre que toi. C'est aussi ça qui est important en Projets Scientifiques : apprendre à travailler en groupe, respecter des deadlines, anticiper, et arriver à communiquer avec des 'supérieurs' hierarchiques pour les tenir au courant quand une notion n'a pas été comprise / qu'on prend du retard etc.",
+    "note_finale": 12.5,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Sacha",
+    "nom": "Caillet Adam",
+    "anticipation": {
+      "note": 2,
+      "appreciation": "Assez peu d'anticipation au global. Il faut travailler ce point : on se met sur le travail tôt, on avance, on me tient au courant."
+    },
+    "interaction_teacher": {
+      "note": 3.5,
+      "appreciation": "Il y a du mieux sur les interactions Sacha : plus de questions posées par email, un peu plus d'envie et de recherche de faire mieux. Même sur les interactions avec tes camarades. C'est en net progrès, continue."
+    },
+    "attitude_effort": {
+      "note": 2,
+      "appreciation": "Le travail sur le calcul de l'empreinte carbone des objets de Suger n'est pas terminé : il manque toute la partie sur le calcul de l'impact des tablettes. Et au global, l'implication sur le projet est trop faible et trop imprévisible. Tu continues à beaucoup te laisser distraire."
+    },
+    "formulas_sources": {
+      "note": 2.5,
+      "appreciation": "La lifetime n'est pas extraite avec un VLOOKUP (on devait aller chercher cette information dans la colonne E ('Lifetime (per unit) (in years)') de la tab 'Carbon Footprint of each object'. Les valeurs pour les données sur l'empreinte carbone par kilomètre en fonction du mode de transport sont fausses et beaucoup trop élevées"
+    },
+    "appreciation_generale": "Il y a du progrès dans la façon dont tu interagis avec moi et avec les autres, et c’est positif. En revanche, le travail reste trop peu anticipé et pas assez abouti sur certaines parties importantes du devoir. Il faut gagner en régularité, aller au bout du travail demandé et continuer sur la dynamique plus sérieuse de cette fin de trimestre.",
+    "note_finale": 10.0,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Fatima",
+    "nom": "Sayah",
+    "anticipation": {
+      "note": 1,
+      "appreciation": "Pas d'anticipation sur la 1ère partie du devoir Fatima. Et pas non plus sur la 2ème. Je te mets 1/5 mais en réalité je n'ai vraiment aucune trace de travail fait en avance..."
+    },
+    "interaction_teacher": {
+      "note": 1,
+      "appreciation": "J'insiste beaucoup sur 2 types d'interaction : (1) par email pour me poser des questions entre les cours pour avancer sur le devoir (2) en présentiel, pendant le cours de projet scientifique. Sur (1) tu ne m'as pas envoyé le moindre email depuis le début de l'année à propos de questions que tu pourrais avoir sur le projet. (2) pendant le cours, il faut que tu viennes me voir et me poser des questions Fatima, essaie d'avancer à ton rythme sur certains éléments, de chercher par toi-même et de me poser des questions quand tu es bloquée."
+    },
+    "attitude_effort": {
+      "note": 4,
+      "appreciation": "Très bonne attitude dans l'ensemble, tu es investie et tu avances sur les Google Sheets. Attention à ne pas toujours travailler avec les mêmes personnes : tourne toi vers d'autres groupes, demande de l'aide et va aider d'autres personnes avec qui tu es moins habituée de travailler."
+    },
+    "formulas_sources": {
+      "note": 3.5,
+      "appreciation": "Partie 1 (Objets / Inventaire) : excellent travail là dessus, rien à redire. Partie 2 (Transports) : c'est très bien aussi Fatima. En revanche attention à challenger ses propres résultats et ses sources : 0,114 kg/km de CO2 pour les transports en commun vs 0,192 kg/km de CO2 pour la voiture c'est irréaliste. L'écart est beaucoup plus gros entre les transports en commun et la voiture. Le calcul de l'empreinte carbone finale n'est pas fait : cellule R12 restée vide."
+    },
+    "appreciation_generale": "Très bonne attitude et vrai investissement pendant les séances, ce qui est positif. En revanche, il faut absolument progresser sur l’anticipation et sur les interactions avec moi, surtout en dehors du cours. Le travail est globalement bon, mais j’attends que tu me sollicites davantage et que tu prennes l’habitude d’avancer plus tôt sur le devoir.",
+    "note_finale": 9.5,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Inaya",
+    "nom": "Njankeu",
+    "anticipation": {
+      "note": 1,
+      "appreciation": "Pas d'anticipation sur la 1ère partie du devoir maison, et je manque de données pour pouvoir l'évaluer dans la 2ème partie de trimestre."
+    },
+    "interaction_teacher": {
+      "note": 0.5,
+      "appreciation": "Aucune interaction enregistrée par email : tu ne m'as pas écrit du trimestre pour me poser une question sur le devoir, essayer de savoir comment avancer. Et pendant le cours, tu ne me poses pas de question non plus. Il y a un vrai besoin de progresser sur la pro activité Inaya. Sois volontaire, les projets scientifiques laissent de la liberté aussi bien sur les choses sur lesquelles travailler que sur beaucoup d'autres aspects : à toi de te mettre en mouvement"
+    },
+    "attitude_effort": {
+      "note": 3.5,
+      "appreciation": "J'ai l'impression que tu travailles plutôt bien avec le groupe de Fatimah, Lara, etc. Mais attention à ne pas trop reposer sur ce groupe pour avancer. Il faut pouvoir se mettre au travail par toi-même et aller chercher de l'information auprès d'autres élèves ou du professeur (moi)"
+    },
+    "formulas_sources": {
+      "note": 3,
+      "appreciation": "Sur la partie 'Transport' : ton IF() (colonne K) pour éviter la division par 0 fonctionne, mais il y avait mieux. IFERROR()est plus pertinent : attention à bien suivre les consignes, demander de l'aide ou du feedback de ma part pour que je puisse justement t'aider à progresser. Colonne M ([PUBLIC TRANSPORT] Carbon Footprint - per week) : là pour le coup le IFERROR() n'a pas d'intérêt. Et il est d'ailleurs mal écrit : tu ne dis pas ce que la formule doit faire s'il y a bien une erreur. =IFERROR(L10*F10) n'a aucune impact. D'ailleurs, tu fais une multiplication, il ne peut pas y avoir d'erreur sur une multiplication. IFERROR() avait du sens pour une division, quand il y a un risque de division par 0."
+    },
+    "appreciation_generale": "Tu as une attitude correcte en groupe, mais il faut beaucoup plus de mise en mouvement de ta part sur ce projet. L’anticipation et les interactions avec moi sont trop faibles, alors que c’est justement un point central en projets scientifiques. J’attends que tu viennes davantage poser des questions, montrer ce que tu fais et prendre plus d’initiatives dans ton travail.",
+    "note_finale": 8.0,
+    "classe": "5ème"
+  },
+  {
+    "prenom": "Adam",
+    "nom": "Truchy",
+    "anticipation": {
+      "note": 2,
+      "appreciation": "Il y a eu un début de travail sur la première partie du devoir, mais l’ensemble du trimestre manque clairement d’anticipation. Les deadlines n’ont pas vraiment été suivies et le travail n’a pas avancé régulièrement. Il faut commencer plus tôt et avancer de manière plus constante."
+    },
+    "interaction_teacher": {
+      "note": 1,
+      "appreciation": "Aucune interaction par email pendant le trimestre pour poser des questions sur le devoir. En classe aussi, tu ne viens presque jamais me voir. J’aimerais te voir davantage me montrer ce que tu essaies de faire et venir poser des questions quand tu bloques."
+    },
+    "attitude_effort": {
+      "note": 1,
+      "appreciation": "Je te sens parfois assez passif pendant les séances. On ne voit pas toujours que tu es vraiment en train de chercher ou d’essayer d’avancer sur le projet. Il faut t’impliquer davantage et prendre plus d’initiatives dans ton travail."
+    },
+    "formulas_sources": {
+      "note": 2,
+      "appreciation": "La première partie du devoir est restée incomplète : tu t’es arrêté avant le calcul final de l’empreinte carbone et toute la partie sur les tablettes manque. La partie sur les transports n’a pas été rendue. Le travail est donc très incomplet."
+    },
+    "appreciation_generale": "Le travail rendu est très incomplet et l’implication dans le projet reste trop faible. Il faut beaucoup plus d’investissement : commencer plus tôt, venir poser des questions et avancer régulièrement sur les documents. J’attends un vrai changement d’attitude pour le troisième trimestre.",
+    "note_finale": 6.0,
+    "classe": "5ème"
+  }
+]

@@ -1,0 +1,215 @@
+\documentclass[answers]{exam}
+
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+% Pour le tableau
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\tcbuselibrary{skins}
+
+% -----------------------------
+% Variables (valeurs par défaut — écrasées par gen_projet.py)
+% -----------------------------
+\newcommand{\varPrenom}{Prénom}
+\newcommand{\varNom}{Nom}
+\newcommand{\varClasse}{6ème}
+\newcommand{\varAnticipationNote}{--}
+\newcommand{\varAnticipationAppreciation}{Appréciation anticipation.}
+\newcommand{\varInteractionNote}{--}
+\newcommand{\varInteractionAppreciation}{Appréciation interaction enseignant.}
+\newcommand{\varAttitudeNote}{--}
+\newcommand{\varAttitudeAppreciation}{Appréciation attitude et effort.}
+\newcommand{\varFormulasNote}{--}
+\newcommand{\varFormulasAppreciation}{Appréciation formules et sources.}
+\newcommand{\varNoteFinale}{-- }
+\newcommand{\varAppreciationGenerale}{Appréciation générale de l'élève.}
+
+\title{Projets Scientifiques - Compte rendu}
+\author{Évaluation de \varPrenom{} \varNom{}}
+\date{Mars 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\definecolor{lavande}{RGB}{180,190,255}
+\definecolor{myindbg}{HTML}{DFF5EC} % vert clair
+\definecolor{myindfr}{HTML}{1F6F4A} % vert foncé
+\definecolor{noteRed}{RGB}{220,50,50}
+\definecolor{notePaleRed}{RGB}{255,180,180}
+\definecolor{noteYellow}{RGB}{255,230,100}
+\definecolor{notePaleGreen}{RGB}{180,230,180}
+\definecolor{noteDarkGreen}{RGB}{40,140,40}
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% -----------------------------
+% Commande de coloration conditionnelle des notes
+% -----------------------------
+\newcommand{\noteCell}[1]{%
+  \edef\argval{#1}%
+  \def\defaultval{--}%
+  \ifx\argval\defaultval
+    #1%
+  \else
+    \pgfmathtruncatemacro{\noteLevel}{ceil(\argval)}%
+    \ifcase\noteLevel
+      % 0
+      \cellcolor{noteRed}\textcolor{white}{\textbf{#1}}%
+    \or
+      % 0.5–1
+      \cellcolor{noteRed}\textcolor{white}{\textbf{#1}}%
+    \or
+      % 1.5–2
+      \cellcolor{notePaleRed}\textbf{#1}%
+    \or
+      % 2.5–3
+      \cellcolor{noteYellow}\textbf{#1}%
+    \or
+      % 3.5–4
+      \cellcolor{notePaleGreen}\textbf{#1}%
+    \or
+      % 4.5–5
+      \cellcolor{noteDarkGreen}\textcolor{white}{\textbf{#1}}%
+    \fi
+  \fi
+}
+
+\begin{document}
+
+\textbf{Collège Lycée Suger}
+\hfill
+\textbf{Projets Scientifiques} \\
+
+\textbf{Année 2025-2026}
+\hfill
+\textbf{Classe de \varClasse{}} \par
+
+{\let\newpage\relax\maketitle}
+
+\begin{tcolorbox}[
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=4mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm,
+]
+Le trimestre est allé en s'améliorant de bout en bout. C'est très bien, vous avancez bien. \\[6pt]
+\textbf{Ce que vous faites bien}
+\begin{compactitem}
+    \item De plus en plus de sérieux, et une atmosphère plus studieuse
+    \item Une très bonne maitrise au global de Google Sheet
+    \item Un projet mené proprement pour l'instant, avec une bonne répartition des tâches (succès du sondage : ~230 réponses, inventaire bien fait, entretien bien mené avec le chef de la cantine)
+\end{compactitem}
+\vspace{4pt}
+\textbf{Vos axes d'amélioration}
+\begin{compactitem}
+    \item Comprenez ce que vous faites : demandez-vous à quoi correspondent profondément chaque colonne. Ca veut dire quoi concrètement dans la vraie vie ?
+    \item On n'accepte pas d'avoir rien fait et laissé des colonnes entières vides. Du côté de l'élève qui a du mal : j'attends que vous vous manifestiez, cherchiez de l'aide, soyez pro actifs. Du côté des élèves qui ont de l'avance : identifiez les élèves qui ont du mal, et aidez les à avancer sur leur devoir, avec pédagogie, sans leur donner les réponses.
+    \item Challengez et interprétez vos résultats : demandez-vous si les valeurs que vous obtenez sont plausibles.
+\end{compactitem}
+\end{tcolorbox}
+
+\subsection*{Note}
+
+\renewcommand{\arraystretch}{1.7}
+
+\noindent
+\begin{longtable}{|L{0.14\textwidth}|L{0.57\textwidth}|>{\centering\arraybackslash}p{0.08\textwidth}|>{\centering\arraybackslash}p{0.1\textwidth}|}
+\hline
+\rowcolor{lavande}
+\textbf{Catégorie} & \textbf{Appréciation} & \textbf{Note} & \textbf{Barème} \\[2pt]
+\hline
+
+Anticipation
+  & \varAnticipationAppreciation{}
+  & \noteCell{\varAnticipationNote}
+  & 5 \\
+\hline
+
+Interaction avec l'enseignant
+  & \varInteractionAppreciation{}
+  & \noteCell{\varInteractionNote}
+  & 5 \\
+\hline
+
+Attitude et effort
+  & \varAttitudeAppreciation{}
+  & \noteCell{\varAttitudeNote}
+  & 5 \\
+\hline
+
+Formules et sources
+  & \varFormulasAppreciation{}
+  & \noteCell{\varFormulasNote}
+  & 5 \\
+\hline
+
+% ---------------- Total ----------------
+\rowcolor{gray!20}
+\textbf{Total} & & \textbf{\varNoteFinale{}} & \textbf{20} \\
+
+\hline
+
+\end{longtable}
+
+\subsection*{Bilan personnel}
+
+\begin{tcolorbox}[
+  colback=blue!5!white,
+  colframe=blue!70!black,
+  title=Résumé,
+  fonttitle=\bfseries,
+  boxsep=4pt,
+  arc=4pt,
+]
+\varAppreciationGenerale{}
+\end{tcolorbox}
+
+
+\subsection*{Rappel -- Barème de notation}
+
+\renewcommand{\arraystretch}{1.7}
+
+\noindent
+\begin{longtable}{|L{0.14\textwidth}|L{0.67\textwidth}|>{\centering\arraybackslash}p{0.1\textwidth}|}
+\hline
+\rowcolor{lavande}
+\textbf{Catégorie} & \textbf{Description} & \textbf{Barème} \\[2pt]
+\hline
+
+Anticipation
+  & L'élève a-t-il travaillé en avance et planifié son travail ? On attend une progression régulière visible dans l'historique Google Sheets, pas un travail fait au dernier moment. Un travail clairement anticipé avec planification visible donne 5/5.
+  & 5 \\
+\hline
+
+Interaction avec l'enseignant
+  & Qualité des échanges par email et en classe. On attend des messages clairs, contextualisés, avec des captures d'écran si nécessaire et une explication de ce qui a été essayé, et précisément ce qui vous bloque. En classe, j'attends que vous veniez me voir, me montriez votre avancée, me posiez des questions. Les retours de l'enseignant doivent être pris en compte. La forme compte aussi : dans vos emails, j'attends un peu de formalisme. Un bonjour, un s'il vous plaît, un merci, et j'attends aussi que vous me teniez au courant une fois que j'ai répondu (est-ce que ça a résolu votre problème ou est-ce que vous êtes toujours bloqués ?). Si vous n'avez pas besoin de mon aide, il est attendu que vous me teniez au courant de vos avancées quand même.
+  & 5 \\
+\hline
+
+Attitude et effort
+  & Implication générale pendant le projet : autonomie, persévérance, aide apportée aux camarades, capacité à solliciter de l'aide au bon moment. Un élève qui demande de l'aide intelligemment n'est pas pénalisé. Un élève qui prend du retard sur sa propre avancée pour aller aider les autres n'est pas pénalisé, au contraire.
+  & 5 \\
+\hline
+
+Formules et sources
+  & Maîtrise des formules Google Sheets (VLOOKUP, SOMME, multiplications, AVERAGE\ldots), compréhension de la logique derrière les calculs et qualité des sources utilisées. ChatGPT n'est pas une source en soi : vous pouvez uniquement vous en servir comme point d'entrée pour vous diriger vers d'autres sources. Éviter les valeurs en dur cachées dans des formules, et les IFERROR non justifiés. J'attends de percevoir que vous comprenez ce que vous faites, et n'êtes pas simplement en train d'enchaîner des formules les unes à la suite des autres.
+  & 5 \\
+\hline
+
+% ---------------- Total ----------------
+\rowcolor{gray!20}
+\textbf{Total} & \textbf{Note maximale possible} & \textbf{20} \\
+\hline
+
+\end{longtable}
+
+
+\end{document}
