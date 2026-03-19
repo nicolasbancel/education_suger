@@ -47,5 +47,6 @@
 # Projets scientifiques – correction : données personnelles élèves
 02_2526_projets_scientifiques/correction/notes_v*.json
 02_2526_projets_scientifiques/correction/notes_par_eleve.csv
+02_2526_projets_scientifiques/correction/resume_notes_par_classe.csv
 02_2526_projets_scientifiques/correction/evals_eleves/
 02_2526_projets_scientifiques/correction/scientific_projects_summary_urls.csv
