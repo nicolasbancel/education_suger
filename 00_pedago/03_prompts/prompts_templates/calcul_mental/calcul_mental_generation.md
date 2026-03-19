@@ -21,6 +21,7 @@ Les notions déjà travaillées en classe sont les suivantes :
         - 5 × 4 – 3 × 6 + 2 = 
         - 77 - 2 × 6 + 5 = 
         - 18 + 4 - 3 × 3 = 
+    - Inclus aussi des calculs où la priorisation implique aussi un enchaînement de soustraction et d'addition. Les élèves ont tendance à d'abord effectuer les additions (parce que c'est plus simple) plutôt que de traiter le calcul de gauche à droite. Par exemple, pour : 18 - 3 x 4 + 2, il font 18 - 12 + 2 (priorité à la multiplication), mais font ensuite 18 - 14 (en effectuant l'opération 12 + 2 d'abord, et mettant artificiellement des parenthèses : 18 - (12 + 2)), alors qu'il faut effectuer simplement le calcul de gauche à droite : 18 - 12 + 2 = 6 + 2 = 8.
 10. Multiplication par 4  
 11. Division par 4  
 12. Multiplication par 5  
