@@ -11,11 +11,11 @@ import subprocess
 # -----------------------------
 
 TEMPLATE_FILE = "projet_template.tex"
-JSON_FILE = "notes_enrichi.json"
+JSON_FILE = "notes_v3.json"
 OUTPUT_DIR = "evals_eleves"
 
 # Mets à True si tu veux limiter aux 2 premiers élèves pour tester
-ONLY_FIRST_TWO = True
+ONLY_FIRST_TWO = False
 
 
 # -----------------------------
@@ -27,21 +27,62 @@ VAR_MAP = {
     "varNom": lambda e: e.get("nom", ""),
     "varClasse": lambda e: e.get("classe", ""),
     "varAnticipationNote": lambda e: str(e.get("anticipation", {}).get("note", "")),
-    "varAnticipationAppreciation": lambda e: e.get("anticipation", {}).get("appreciation", ""),
-    "varInteractionNote": lambda e: str(e.get("interaction_teacher", {}).get("note", "")),
-    "varInteractionAppreciation": lambda e: e.get("interaction_teacher", {}).get("appreciation", ""),
+    "varAnticipationAppreciation": lambda e: escape_latex(
+        e.get("anticipation", {}).get("appreciation", "")
+    ),
+    "varInteractionNote": lambda e: str(
+        e.get("interaction_teacher", {}).get("note", "")
+    ),
+    "varInteractionAppreciation": lambda e: escape_latex(
+        e.get("interaction_teacher", {}).get("appreciation", "")
+    ),
     "varAttitudeNote": lambda e: str(e.get("attitude_effort", {}).get("note", "")),
-    "varAttitudeAppreciation": lambda e: e.get("attitude_effort", {}).get("appreciation", ""),
+    "varAttitudeAppreciation": lambda e: escape_latex(
+        e.get("attitude_effort", {}).get("appreciation", "")
+    ),
     "varFormulasNote": lambda e: str(e.get("formulas_sources", {}).get("note", "")),
-    "varFormulasAppreciation": lambda e: e.get("formulas_sources", {}).get("appreciation", ""),
+    "varFormulasAppreciation": lambda e: escape_latex(
+        e.get("formulas_sources", {}).get("appreciation", "")
+    ),
     "varNoteFinale": lambda e: str(e.get("note_finale", "")),
-    "varAppreciationGenerale": lambda e: e.get("appreciation_generale", ""),
+    "varAppreciationGenerale": lambda e: escape_latex(
+        e.get("appreciation_generale", "")
+    ),
+    "varLinkObjects": lambda e: build_href(e, "objects_inventory"),
+    "varLinkDistances": lambda e: build_href(e, "transport_distances"),
+    "varLinkTransport": lambda e: build_href(e, "transport_carbon"),
 }
 
 
 # -----------------------------
 # Utilitaires
 # -----------------------------
+
+
+def escape_latex(text: str) -> str:
+    """Échappe les caractères spéciaux LaTeX dans du texte brut."""
+    # Ordre important : & et \ d'abord
+    text = text.replace("&", "\\&")
+    text = text.replace("%", "\\%")
+    text = text.replace("$", "\\$")
+    text = text.replace("#", "\\#")
+    text = text.replace("_", "\\_")
+    text = text.replace("{", "\\{")
+    text = text.replace("}", "\\}")
+    text = text.replace("~", "\\textasciitilde{}")
+    text = text.replace("^", "\\textasciicircum{}")
+    return text
+
+
+def build_href(eleve: dict, key: str) -> str:
+    """Construit un \\href{url}{label} pour une entrée Google Sheets."""
+    entry = eleve.get("google_sheets", {}).get(key, {})
+    label = entry.get("label", "")
+    url = entry.get("url", "")
+    if label and url:
+        safe_url = url.replace("#", "\\#")
+        return f"\\href{{{safe_url}}}{{{label}}}"
+    return ""
 
 
 def slugify(text: str) -> str:
@@ -91,8 +132,8 @@ for eleve in eleves:
     nom = eleve.get("nom", "")
     slug = slugify(f"{prenom}_{nom}")
 
-    tex_filename = f"projet_{slug}.tex"
-    pdf_filename = f"projet_{slug}.pdf"
+    tex_filename = f"{slug}_suger_carbon_footprint_project.tex"
+    pdf_filename = f"{slug}_suger_carbon_footprint_project.pdf"
     tex_path = os.path.join(OUTPUT_DIR, tex_filename)
 
     print(f"\n=== {prenom} {nom} ===")
@@ -104,9 +145,7 @@ for eleve in eleves:
         tex_content = replace_var(tex_content, var_name, extractor(eleve))
 
     # Ajuster le chemin des packages (evals_eleves/ est un niveau plus bas)
-    tex_content = tex_content.replace(
-        "\\usepackage{../../", "\\usepackage{../../../"
-    )
+    tex_content = tex_content.replace("\\usepackage{../../", "\\usepackage{../../../")
 
     with open(tex_path, "w", encoding="utf-8") as out:
         out.write(tex_content)
