@@ -26,10 +26,29 @@
 \author{N. Bancel}
 \date{31 Mars 2026}
 
-% Mise en forme des solutions en bleu (sans cadre)
-\unframedsolutions
+% Mise en forme des solutions : cadre bleu de largeur constante (\textwidth),
+% indépendamment du fait que la solution soit dans un environnement parts ou non.
 \SolutionEmphasis{\color{blue}}
 \renewcommand{\solutiontitle}{\noindent}
+
+\makeatletter
+\renewenvironment{TheSolution}{%
+  \par\nobreak\vspace{\parskip}%
+  \noindent\hspace*{-\@totalleftmargin}%
+  \begin{tcolorbox}[
+    width=\textwidth,
+    colback=white,
+    colframe=blue,
+    boxrule=0.4pt,
+    arc=0pt,
+    left=6pt,right=6pt,top=6pt,bottom=6pt,
+    enhanced jigsaw,
+  ]%
+    \color{blue}\solutiontitle\ignorespaces
+}{%
+  \end{tcolorbox}%
+}
+\makeatother
 
 \begin{document}
 
