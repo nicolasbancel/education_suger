@@ -46,22 +46,49 @@ Donc
 
 ## Version abrégée (questions suivantes)
 
-Une fois que le raisonnement a été exposé une fois dans la correction, les comparaisons suivantes n'ont plus besoin du discours. On se contente de :
+Une fois que le raisonnement a été exposé une fois dans la correction, les comparaisons suivantes n'ont plus besoin du discours. Format à suivre, en **trois lignes aérées** avec `\\` :
 
-1. Mettre au même dénominateur (une ligne par fraction).
-2. Comparer les numérateurs.
-3. Conclure sur les fractions d'origine.
+1. **Ligne 1** : « On met au même dénominateur. » suivi de la ou des transformations inline.
+2. **Ligne 2** : comparaison des fractions de même dénominateur avec une justification courte entre parenthèses : `(même dénominateur, et 6 > 5)`.
+3. **Ligne 3** : conclusion avec « donc » et retour aux fractions d'origine.
+
+### Cas où une seule fraction doit être transformée (dénominateur de l'une est multiple de l'autre)
 
 ```latex
 \begin{solution}
-\[
-\frac{2}{3} = \frac{2 \times 4}{3 \times 4} = \frac{8}{12}
-\qquad\text{et}\qquad
-\frac{3}{4} = \frac{3 \times 3}{4 \times 3} = \frac{9}{12}
-\]
-Comme $8 < 9$, on a $\dfrac{2}{3} < \dfrac{3}{4}$.
+  On met au même dénominateur :
+  \[
+    \dfrac{3}{4} = \dfrac{3 \times 2}{4 \times 2} = \dfrac{6}{8}
+  \]
+  Les deux fractions ont le même dénominateur, et $6 > 5$, donc :
+  \[
+    \dfrac{6}{8} > \dfrac{5}{8}
+    \qquad\text{c'est-à-dire}\qquad
+    \dfrac{3}{4} > \dfrac{5}{8}.
+  \]
 \end{solution}
 ```
+
+### Cas où les deux fractions doivent être transformées
+
+```latex
+\begin{solution}
+  On met au même dénominateur. Ici, $7 \times 8 = 56$ fonctionne.
+  \[
+    \dfrac{4}{7} = \dfrac{4 \times 8}{7 \times 8} = \dfrac{32}{56}
+    \qquad\text{et}\qquad
+    \dfrac{5}{8} = \dfrac{5 \times 7}{8 \times 7} = \dfrac{35}{56}
+  \]
+  Les deux fractions ont le même dénominateur, et $32 < 35$, donc :
+  \[
+    \dfrac{32}{56} < \dfrac{35}{56}
+    \qquad\text{c'est-à-dire}\qquad
+    \dfrac{4}{7} < \dfrac{5}{8}.
+  \]
+\end{solution}
+```
+
+**Règle** : **toute fraction va en display `\[ ... \]`**, même une simple comparaison. La phrase de texte entre les deux blocs display ne contient que des entiers (« $32 < 35$ », « même dénominateur »). La comparaison des fractions équivalentes ET la conclusion sur les fractions d'origine tiennent dans un seul bloc display, reliés par `\qquad\text{c'est-à-dire}\qquad`.
 
 ## Pièges et points de vigilance
 

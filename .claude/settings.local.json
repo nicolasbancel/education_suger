@@ -6,7 +6,12 @@
       "Bash(ls 01_2526_6emes_maths/00_ds_dm/interro_3/*.jpg)",
       "Bash(ls \"01_2526_6emes_maths/Rentrée/\"*.jpg)",
       "Bash(git check-ignore:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(latexmk -pdf -interaction=nonstopmode 6eme_interro_7.tex)",
+      "Bash(pdfinfo 6eme_interro_7.pdf)",
+      "Bash(grep -n '\\\\$\\\\\\\\dfrac.*=.*\\\\\\\\dfrac.*\\\\$' 6eme_interro_7.tex)"
     ]
   }
 }
