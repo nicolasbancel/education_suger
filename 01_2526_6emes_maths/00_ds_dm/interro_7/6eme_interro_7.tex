@@ -22,6 +22,33 @@
   bottom=2mm
 }
 
+\definecolor{myerrbg}{HTML}{FDECEC}
+\definecolor{myerrfr}{HTML}{B22222}
+
+\newtcolorbox{Erreur}{
+  enhanced,
+  colback=myerrbg,
+  colframe=myerrfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm,
+  title=Les erreurs que vous faites,
+  fonttitle=\bfseries,
+  coltitle=white,
+  colbacktitle=myerrfr,
+  attach boxed title to top left={xshift=6mm, yshift=-3mm},
+  boxed title style={
+    colframe=myerrfr,
+    colback=myerrfr,
+    arc=2mm,
+    boxrule=0.4mm,
+  },
+}
+
 \title{Interrogation N°7}
 \author{N. Bancel}
 \date{31 Mars 2026}
@@ -57,6 +84,32 @@
  \begin{Indication}
 \consignesrendusujet{1h15}{1}
 \end{Indication}
+
+\begin{Erreur}
+Une erreur que je vois souvent dans vos copies, en particulier sur les additions de fractions. Beaucoup d'entre vous écrivent par exemple :
+\[
+  \dfrac{1}{6} + \dfrac{3}{4} = \dfrac{3 \times 6}{4 \times 6} = \dfrac{18}{24}
+\]
+comme si l'addition $\dfrac{1}{6} + \dfrac{3}{4}$ était égale à $\dfrac{18}{24}$.
+
+\textbf{C'est faux.} Ce qui vaut $\dfrac{18}{24}$, ce n'est pas l'addition entière, c'est seulement \textbf{un des deux termes de l'addition} : la fraction $\dfrac{3}{4}$ qu'on a mise au même dénominateur $24$.
+
+\textbf{Rappel important :} le signe $=$ ne s'utilise que pour relier deux choses qui sont \textbf{complètement équivalentes}. Quand on écrit $A = B = C$, ça veut dire que $A$, $B$ et $C$ ont tous la même valeur. On ne peut donc pas mettre un $=$ entre l'addition $\dfrac{1}{6} + \dfrac{3}{4}$ et $\dfrac{18}{24}$, parce que ce sont deux quantités différentes.
+
+\subsection{Autre exemple de mauvais usage du signe =}
+
+L'abscisse du point $A$ est égale à $\dfrac{7}{4}$ car : 
+\[
+  1 = \frac{4}{4} + \frac{3}{4} = \frac{7}{4}.
+\]
+\textit{Ecrire ça, c'est dire que}
+\[
+  1 = \frac{7}{4}.
+\]
+\textit{ce qui est faux.}
+
+
+\end{Erreur}
 
 \section*{Exercice 1 - Comparaisons de fractions (3 points)}
 
