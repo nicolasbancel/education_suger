@@ -9,7 +9,8 @@
       "Bash(cd:*)",
       "Bash(.venv/bin/python:*)",
       "Bash(pkill:*)",
-      "Bash(source .venv/bin/activate && python3 << 'EOF'\nfrom database import SessionLocal\nfrom models import Student, BulletinLine\n\ndb = SessionLocal\\(\\)\ns = db.query\\(Student\\).filter\\(Student.first_name.like\\('%alom%'\\)\\).first\\(\\)\n\n# Voir ce qu'on a dans la ligne BILAN pour les deux trimestres\nbilans = db.query\\(BulletinLine\\).filter\\(\n    BulletinLine.student_id == s.id,\n    BulletinLine.subject == \"BILAN\"\n\\).all\\(\\)\nfor b in bilans:\n    print\\(f\"T{b.trimestre} | avg={b.average} | absences={b.absences} | retards={b.tardiness}\"\\)\n    print\\(f\"  appreciation = {repr\\(b.appreciation\\)}\"\\)\n    print\\(f\"  contenu      = {repr\\(b.contenu\\)}\"\\)\ndb.close\\(\\)\nEOF)"
+      "Bash(source .venv/bin/activate && python3 << 'EOF'\nfrom database import SessionLocal\nfrom models import Student, BulletinLine\n\ndb = SessionLocal\\(\\)\ns = db.query\\(Student\\).filter\\(Student.first_name.like\\('%alom%'\\)\\).first\\(\\)\n\n# Voir ce qu'on a dans la ligne BILAN pour les deux trimestres\nbilans = db.query\\(BulletinLine\\).filter\\(\n    BulletinLine.student_id == s.id,\n    BulletinLine.subject == \"BILAN\"\n\\).all\\(\\)\nfor b in bilans:\n    print\\(f\"T{b.trimestre} | avg={b.average} | absences={b.absences} | retards={b.tardiness}\"\\)\n    print\\(f\"  appreciation = {repr\\(b.appreciation\\)}\"\\)\n    print\\(f\"  contenu      = {repr\\(b.contenu\\)}\"\\)\ndb.close\\(\\)\nEOF)",
+      "Bash(curl:*)"
     ]
   }
 }
