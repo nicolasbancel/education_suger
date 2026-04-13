@@ -3,9 +3,13 @@
 *.log
 *.fdb_latexmk
 *.out
-# *.jpg
-# *.png
-# *.jpeg
+# Images : exclues par défaut. Pour en forcer une : git add -f chemin/image.jpg
+*.jpg
+*.jpeg
+*.png
+*.JPG
+*.JPEG
+*.PNG
 *.fls
 *.synctex.gz
 
@@ -50,3 +54,9 @@
 02_2526_projets_scientifiques/correction/resume_notes_par_classe.csv
 02_2526_projets_scientifiques/correction/evals_eleves/
 02_2526_projets_scientifiques/correction/scientific_projects_summary_urls.csv
+
+# Dossiers / fichiers additionnels avec données élèves
+01_2526_6emes_maths/Rentrée/
+01_2526_6emes_maths/00_ds_dm/tenue_cahier/evals_eleves/
+02_2526_projets_scientifiques/empreinte_carbone/students_grades.json
+01_2526_6emes_maths/copie_maths_remplie.jpeg

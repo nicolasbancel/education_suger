@@ -1,0 +1,351 @@
+
+\documentclass{exam}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Interrogation N°7}
+\author{N. Bancel}
+\date{31 Mars 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+ \begin{Indication}
+\consignesrendusujet{1h15}{1}
+\end{Indication}
+
+\section*{Exercice 1 - Comparaisons de fractions (3 points)}
+
+\begin{questions}
+  \question[2] Comparer les fractions suivantes (utiliser le symbole $<$, $>$ ou $=$). Justifier à chaque fois.
+
+  \begin{parts}
+    \part[0.5] $\dfrac{4}{9}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{4}{5}$
+    \begin{solution}
+      Les deux fractions ont le même numérateur $4$. Plus le dénominateur est grand, plus la fraction est petite. Comme $9 > 5$, on a $\dfrac{4}{9} < \dfrac{4}{5}$.
+    \end{solution}
+
+    \part[0.5] $\dfrac{3}{4}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{5}{8}$
+    \begin{solution}
+      On met au même dénominateur. $\dfrac{3}{4} = \dfrac{3 \times 2}{4 \times 2} = \dfrac{6}{8}$. On compare $\dfrac{6}{8}$ et $\dfrac{5}{8}$ : comme $6 > 5$, on a $\dfrac{3}{4} > \dfrac{5}{8}$.
+    \end{solution}
+
+    \part[0.5] $\dfrac{7}{12}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{2}{3}$
+    \begin{solution}
+      On met au même dénominateur. $\dfrac{2}{3} = \dfrac{2 \times 4}{3 \times 4} = \dfrac{8}{12}$. On compare $\dfrac{7}{12}$ et $\dfrac{8}{12}$ : comme $7 < 8$, on a $\dfrac{7}{12} < \dfrac{2}{3}$.
+    \end{solution}
+
+    \part[0.5] $\dfrac{4}{7}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{5}{8}$
+    \begin{solution}
+      On met au même dénominateur. $7 \times 8 = 56$.
+
+      $\dfrac{4}{7} = \dfrac{4 \times 8}{7 \times 8} = \dfrac{32}{56}$ \quad et \quad $\dfrac{5}{8} = \dfrac{5 \times 7}{8 \times 7} = \dfrac{35}{56}$.
+
+      Comme $32 < 35$, on a $\dfrac{4}{7} < \dfrac{5}{8}$.
+    \end{solution}
+  \end{parts}
+
+  \question[1] Pour chacune des fractions suivantes, dire si elle est inférieure, égale ou supérieure à $1$. Justifier.
+
+  \begin{parts}
+    \part[0.5] $\dfrac{11}{9}$
+    \begin{solution}
+      $\dfrac{11}{9} > 1$ car le numérateur ($11$) est supérieur au dénominateur ($9$).
+    \end{solution}
+
+    \part[0.5] $\dfrac{11}{12}$
+    \begin{solution}
+      $\dfrac{11}{12} < 1$ car le numérateur ($11$) est inférieur au dénominateur ($12$).
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\section*{Exercice 2 - Simplification de fractions (3 points)}
+
+\begin{questions}
+  \question[3] Simplifier les fractions suivantes (donner la fraction irréductible).
+
+  \begin{parts}
+    \part[0.75] $\dfrac{12}{18}$
+    \begin{solution}
+      $\dfrac{12}{18} = \dfrac{12 \div 6}{18 \div 6} = \dfrac{2}{3}$
+    \end{solution}
+
+    \part[0.75] $\dfrac{35}{49}$
+    \begin{solution}
+      $\dfrac{35}{49} = \dfrac{35 \div 7}{49 \div 7} = \dfrac{5}{7}$
+    \end{solution}
+
+    \part[0.75] $\dfrac{24}{36}$
+    \begin{solution}
+      $\dfrac{24}{36} = \dfrac{24 \div 12}{36 \div 12} = \dfrac{2}{3}$
+    \end{solution}
+
+    \part[0.75] $\dfrac{45}{60}$
+    \begin{solution}
+      $\dfrac{45}{60} = \dfrac{45 \div 15}{60 \div 15} = \dfrac{3}{4}$
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\section*{Exercice 3 - Additions et soustractions de fractions (2 points)}
+
+\begin{questions}
+  \question[1.5] Calculer les opérations suivantes (donner le résultat sous la forme d'une fraction simplifiée si possible).
+
+  \begin{parts}
+    \part[0.5] $\dfrac{1}{6} + \dfrac{3}{4}$
+    \begin{solution}
+      On cherche un dénominateur commun : $6 \times 2 = 12$ et $4 \times 3 = 12$.
+
+      $\dfrac{1}{6} + \dfrac{3}{4} = \dfrac{1 \times 2}{6 \times 2} + \dfrac{3 \times 3}{4 \times 3} = \dfrac{2}{12} + \dfrac{9}{12} = \dfrac{11}{12}$
+    \end{solution}
+
+    \part[0.5] $\dfrac{5}{4} - \dfrac{12}{10}$
+    \begin{solution}
+      On cherche un dénominateur commun : $4 \times 5 = 20$ et $10 \times 2 = 20$.
+
+      $\dfrac{5}{4} - \dfrac{12}{10} = \dfrac{5 \times 5}{4 \times 5} - \dfrac{12 \times 2}{10 \times 2} = \dfrac{25}{20} - \dfrac{24}{20} = \dfrac{1}{20}$
+    \end{solution}
+
+    \part[1] $1 - \dfrac{3}{5} + \dfrac{1}{4}$
+    \begin{solution}
+      On cherche un dénominateur commun à $1$, $\dfrac{3}{5}$ et $\dfrac{1}{4}$. Le dénominateur commun est $20$.
+
+      $1 = \dfrac{20}{20}$, \quad $\dfrac{3}{5} = \dfrac{12}{20}$, \quad $\dfrac{1}{4} = \dfrac{5}{20}$
+
+      $\dfrac{20}{20} - \dfrac{12}{20} + \dfrac{5}{20} = \dfrac{20 - 12 + 5}{20} = \dfrac{13}{20}$
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\section*{Exercice 4 - Décomposition et encadrement (2 points)}
+
+\begin{questions}
+  \question[1] Décomposer chaque fraction sous la forme d'un entier et d'une fraction inférieure à $1$.
+
+  \begin{parts}
+    \part[0.5] $\dfrac{11}{4}$
+    \begin{solution}
+      $\dfrac{11}{4} = \dfrac{8}{4} + \dfrac{3}{4} = 2 + \dfrac{3}{4}$
+    \end{solution}
+
+    \part[0.5] $\dfrac{17}{5}$
+    \begin{solution}
+      $\dfrac{17}{5} = \dfrac{15}{5} + \dfrac{2}{5} = 3 + \dfrac{2}{5}$
+    \end{solution}
+  \end{parts}
+
+  \question[1] Encadrer chaque fraction entre deux entiers consécutifs.
+
+  \begin{parts}
+    \part[0.5] $\dfrac{13}{4}$
+    \begin{solution}
+      $\dfrac{12}{4} = 3$ et $\dfrac{16}{4} = 4$, et $12 < 13 < 16$, donc $3 < \dfrac{13}{4} < 4$.
+    \end{solution}
+
+    \part[0.5] $\dfrac{19}{7}$
+    \begin{solution}
+      $\dfrac{14}{7} = 2$ et $\dfrac{21}{7} = 3$, et $14 < 19 < 21$, donc $2 < \dfrac{19}{7} < 3$.
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\section*{Exercice 5 - Produit de fractions (2 points)}
+
+\begin{questions}
+  \question[2] Calculer les produits suivants. Donner le résultat sous la forme d'une fraction simplifiée si possible).
+
+  \begin{parts}
+    \part[1] $\dfrac{2}{3} \times \dfrac{5}{7}$
+    \begin{solution}
+      $\dfrac{2}{3} \times \dfrac{5}{7} = \dfrac{2 \times 5}{3 \times 7} = \dfrac{10}{21}$
+    \end{solution}
+
+    \part[1] $\dfrac{3}{4} \times \dfrac{8}{9}$
+    \begin{solution}
+      $\dfrac{3}{4} \times \dfrac{8}{9} = \dfrac{3 \times 8}{4 \times 9} = \dfrac{24}{36} = \dfrac{2}{3}$
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\section*{Exercice 6 - Lecture d'abscisses (3 points)}
+
+\begin{questions}
+
+  \question[0.75] Ecrire l'abscisse du point $A$ sous la forme d'une fraction. Justifier brièvement.
+
+\begin{tikzpicture}[>=latex, scale=1]
+  \draw[->] (-0.3,0) -- (10,0);
+  \foreach \x in {0,1,2,3,4} {
+    \draw (\x*2.2,0.15) -- (\x*2.2,-0.15);
+    \node[below] at (\x*2.2,-0.2) {\x};
+  }
+  % Subdivisions en quarts
+  \foreach \x in {0,1,2,3} {
+    \foreach \i in {1,2,3} {
+      \draw ({\x*2.2+\i*2.2/4},0.08) -- ({\x*2.2+\i*2.2/4},-0.08);
+    }
+  }
+  % Point A : 7/4 (entre 1 et 2, 3ème subdivision sur 4)
+  \fill[red] ({1*2.2+3*2.2/4},0) circle (2.5pt);
+  \node[above, red] at ({1*2.2+3*2.2/4},0.2) {$A$};
+\end{tikzpicture}
+
+  \begin{solution}
+    L'intervalle entre deux entiers est divisé en $4$ parts égales : chaque graduation vaut $\dfrac{1}{4}$. Le point $A$ se trouve $7$ graduations après $0$, donc $A$ a pour abscisse $\dfrac{7}{4}$.
+  \end{solution}
+
+  \question[0.75] Ecrire l'abscisse du point $B$ sous la forme d'une fraction. Justifier brièvement.
+
+\begin{tikzpicture}[>=latex, scale=1]
+  \draw[->] (-0.3,0) -- (10,0);
+  \foreach \x in {0,1,2,3,4} {
+    \draw (\x*2.2,0.15) -- (\x*2.2,-0.15);
+    \node[below] at (\x*2.2,-0.2) {\x};
+  }
+  % Subdivisions en tiers
+  \foreach \x in {0,1,2,3} {
+    \foreach \i in {1,2} {
+      \draw ({\x*2.2+\i*2.2/3},0.08) -- ({\x*2.2+\i*2.2/3},-0.08);
+    }
+  }
+  % Point B : 8/3 (entre 2 et 3, 2ème subdivision sur 3)
+  \fill[red] ({2*2.2+2*2.2/3},0) circle (2.5pt);
+  \node[above, red] at ({2*2.2+2*2.2/3},0.2) {$B$};
+\end{tikzpicture}
+
+  \begin{solution}
+    L'intervalle entre deux entiers est divisé en $3$ parts égales : chaque graduation vaut $\dfrac{1}{3}$. Le point $B$ se trouve $8$ graduations après $0$, donc $B$ a pour abscisse $\dfrac{8}{3}$.
+  \end{solution}
+
+  \question[0.75] Ecrire l'abscisse du point $C$ sous la forme d'une fraction. Justifier brièvement.
+
+\begin{tikzpicture}[>=latex, scale=1]
+  \draw[->] (-0.3,0) -- (10,0);
+  \foreach \x in {0,1,2,3} {
+    \draw (\x*2.8,0.15) -- (\x*2.8,-0.15);
+    \node[below] at (\x*2.8,-0.2) {\x};
+  }
+  % Subdivisions en cinquièmes
+  \foreach \x in {0,1,2} {
+    \foreach \i in {1,2,3,4} {
+      \draw ({\x*2.8+\i*2.8/5},0.08) -- ({\x*2.8+\i*2.8/5},-0.08);
+    }
+  }
+  % Point C : 7/5 (entre 1 et 2, 2ème subdivision sur 5)
+  \fill[red] ({1*2.8+2*2.8/5},0) circle (2.5pt);
+  \node[above, red] at ({1*2.8+2*2.8/5},0.2) {$C$};
+\end{tikzpicture}
+
+  \begin{solution}
+    L'intervalle entre deux entiers est divisé en $5$ parts égales : chaque graduation vaut $\dfrac{1}{5}$. Le point $C$ se trouve $7$ graduations après $0$, donc $C$ a pour abscisse $\dfrac{7}{5}$.
+  \end{solution}
+
+  \question[0.75] Ecrire l'abscisse du point $D$ sous la forme d'une fraction. Justifier brièvement.
+
+\begin{tikzpicture}[>=latex, scale=1]
+  \draw[->] (-0.3,0) -- (10,0);
+  \foreach \x in {0,1,2,3} {
+    \draw (\x*2.8,0.15) -- (\x*2.8,-0.15);
+    \node[below] at (\x*2.8,-0.2) {\x};
+  }
+  % Subdivisions en huitièmes
+  \foreach \x in {0,1,2} {
+    \foreach \i in {1,2,...,7} {
+      \draw ({\x*2.8+\i*2.8/8},0.08) -- ({\x*2.8+\i*2.8/8},-0.08);
+    }
+  }
+  % Point D : 13/8 (entre 1 et 2, 5ème subdivision sur 8)
+  \fill[red] ({1*2.8+5*2.8/8},0) circle (2.5pt);
+  \node[above, red] at ({1*2.8+5*2.8/8},0.2) {$D$};
+\end{tikzpicture}
+
+  \begin{solution}
+    L'intervalle entre deux entiers est divisé en $8$ parts égales : chaque graduation vaut $\dfrac{1}{8}$. Le point $D$ se trouve $13$ graduations après $0$, donc $D$ a pour abscisse $\dfrac{13}{8}$.
+  \end{solution}
+
+\end{questions}
+
+
+\section*{Exercice 7 - Problèmes (5 points)}
+
+\begin{Indication}
+Toute démarche, toute explication sera valorisée.
+\end{Indication}
+
+\begin{questions}
+  \question[2] Gertrude mange les $\dfrac{5}{8}$ d'un gâteau. Jean-Eudes mange les $\dfrac{7}{12}$ du même gâteau.
+
+  Qui est le plus gourmand ? \textbf{Justifier avec rigeur}.
+
+  \begin{solution}
+    \begin{Indication}
+
+Ce qui est attendu :
+\begin{compactitem}
+\item Trouver un dénominateur commun pour comparer les deux fractions
+\item Rédiger la conclusion avec une phrase
+\end{compactitem}
+
+    \end{Indication}
+
+    On cherche un dénominateur commun à $8$ et $12$. Le plus petit dénominateur commun est $24$.
+
+    $\dfrac{5}{8} = \dfrac{5 \times 3}{8 \times 3} = \dfrac{15}{24}$
+
+    $\dfrac{7}{12} = \dfrac{7 \times 2}{12 \times 2} = \dfrac{14}{24}$
+
+    Or $\dfrac{15}{24} > \dfrac{14}{24}$, donc $\dfrac{5}{8} > \dfrac{7}{12}$.
+
+    \textbf{Marion est la plus gourmande} car elle mange une plus grande part du gâteau que Sébastien.
+  \end{solution}
+
+  \question[3] Un réservoir contient $60$ litres d'eau. Jean-Michel prend une douche le matin et utilise $\dfrac{1}{4}$ du réservoir.
+
+  \begin{parts}
+    \part[1] Quel volume d'eau Jean-Michel a-t-il consommé ? Quel volume reste-t-il dans le réservoir après sa douche ?
+    \begin{solution}
+      Jean-Michel a consommé $\dfrac{1}{4} \times 60 = \dfrac{60}{4} = 15$ litres.
+
+      Il reste $60 - 15 = 45$ litres dans le réservoir après sa douche.
+    \end{solution}
+
+    \part[1] Puis Gontran prend à son tour une douche l'après-midi. Il utilise les $\dfrac{2}{5}$ du volume restant. Quel volume d'eau Gontran a-t-il utilisé ? Quel volume reste-t-il dans le réservoir après sa douche ?
+    \begin{solution}
+      Gontran a utilisé $\dfrac{2}{5} \times 45 = \dfrac{90}{5} = 18$ litres.
+
+      Il reste $45 - 18 = 27$ litres dans le réservoir après la douche de Gontran.
+    \end{solution}
+
+    \part[1] Pendant toute la journée, les deux énergumènes boivent aussi 7 litres d'eau. Au total, quel volume d'eau reste-t-il dans le réservoir ? [Bonus] A quelle fraction du volume initial cela correspond-il ?
+    \begin{solution}
+    \end{solution}
+  \end{parts}
+\end{questions}
+
+\end{document}

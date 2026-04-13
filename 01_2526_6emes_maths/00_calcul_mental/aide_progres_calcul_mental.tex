@@ -1,0 +1,547 @@
+\documentclass{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\usepackage{array}
+\usepackage[table]{xcolor}
+
+\tcbuselibrary{theorems,skins,hooks}
+
+\definecolor{myindbg}{HTML}{DFF5EC}
+\definecolor{myindfr}{HTML}{1F6F4A}
+
+\newtcolorbox{Indication}{
+  enhanced,
+  colback=myindbg,
+  colframe=myindfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+% Couleurs pour le code couleur de difficulté
+\definecolor{facile}{HTML}{C6EFCE}      % vert clair
+\definecolor{moyen}{HTML}{FFEB9C}       % jaune
+\definecolor{difficile}{HTML}{FFC7CE}   % rouge clair
+
+\title{Aide à la révision - Calcul mental}
+\author{N. Bancel}
+\date{Avril 2026}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+
+\begin{Indication}
+Ce document est un outil de révision pour le calcul mental. Il contient :
+\begin{compactitem}
+\item \textbf{Sections 1 et 2} -- Les tables de multiplication et d'addition, avec un code couleur par difficulté, et leur utilité pour les soustractions
+\item \textbf{Section 3} -- Des astuces pour anticiper le dernier chiffre et la parité (pair/impair) d'un résultat, pour les multiplications, additions et divisions
+\item \textbf{Section 4} -- Des astuces pour estimer l'ordre de grandeur d'un résultat (distributivité, multiplications et divisions par 10, 100, 1\,000)
+\item \textbf{Section 5} -- Un exercice d'entraînement reprenant toutes les questions des interrogations de l'année : pour chaque question, trouver la parité, le chiffre final et l'ordre de grandeur du résultat \textit{(sans calculer le résultat exact)}
+\end{compactitem}
+
+\vspace{0.5em}
+\textbf{Code couleur des tables (sections 1 et 2) :}
+\begin{compactitem}
+\item \colorbox{facile}{\strut\hspace{1em}} Facile -- résultat connu par c\oe ur ou très simple à retrouver
+\item \colorbox{moyen}{\strut\hspace{1em}} Moyen -- demande un petit effort de mémoire
+\item \colorbox{difficile}{\strut\hspace{1em}} Difficile -- les résultats les plus souvent oubliés
+\end{compactitem}
+\end{Indication}
+
+% =====================================================================
+\section*{\textcolor{blue!80!black}{1. Tables de multiplication}}
+% =====================================================================
+
+% Macro pour la couleur selon difficulté multiplication
+% Critère : produit de deux nombres <= 5 => facile, carrés et tables de 2/5/10 => facile,
+% un facteur <= 3 => moyen, sinon difficile (6x7, 7x8, 6x8, 7x9, 8x9, etc.)
+\newcommand{\mc}[3]{% #1=row, #2=col, #3=value
+  \ifnum#1=#2 % diagonale (carrés) => moyen
+    \cellcolor{moyen}#3%
+  \else
+    % Tables de 1, 2, 5, 10 => facile
+    \ifnum#1=1 \cellcolor{facile}#3%
+    \else\ifnum#2=1 \cellcolor{facile}#3%
+    \else\ifnum#1=2 \cellcolor{facile}#3%
+    \else\ifnum#2=2 \cellcolor{facile}#3%
+    \else\ifnum#1=5 \cellcolor{facile}#3%
+    \else\ifnum#2=5 \cellcolor{facile}#3%
+    \else\ifnum#1=10 \cellcolor{facile}#3%
+    \else\ifnum#2=10 \cellcolor{facile}#3%
+    \else
+      % Les deux facteurs <= 4 => moyen
+      \ifnum#1<5
+        \ifnum#2<5
+          \cellcolor{moyen}#3%
+        \else
+          % Un facteur <= 3, l'autre > 5 => moyen
+          \ifnum#1<4 \cellcolor{moyen}#3%
+          \else \cellcolor{difficile}#3%
+          \fi
+        \fi
+      \else
+        \ifnum#2<4 \cellcolor{moyen}#3%
+        \else \cellcolor{difficile}#3%
+        \fi
+      \fi
+    \fi\fi\fi\fi\fi\fi\fi\fi
+  \fi
+}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+\hline
+\cellcolor{gray!30}$\times$ & \cellcolor{gray!30}\textbf{1} & \cellcolor{gray!30}\textbf{2} & \cellcolor{gray!30}\textbf{3} & \cellcolor{gray!30}\textbf{4} & \cellcolor{gray!30}\textbf{5} & \cellcolor{gray!30}\textbf{6} & \cellcolor{gray!30}\textbf{7} & \cellcolor{gray!30}\textbf{8} & \cellcolor{gray!30}\textbf{9} & \cellcolor{gray!30}\textbf{10} \\
+\hline\hline
+\cellcolor{gray!30}\textbf{1} & \mc{1}{1}{1} & \mc{1}{2}{2} & \mc{1}{3}{3} & \mc{1}{4}{4} & \mc{1}{5}{5} & \mc{1}{6}{6} & \mc{1}{7}{7} & \mc{1}{8}{8} & \mc{1}{9}{9} & \mc{1}{10}{10} \\ \hline
+\cellcolor{gray!30}\textbf{2} & \mc{2}{1}{2} & \mc{2}{2}{4} & \mc{2}{3}{6} & \mc{2}{4}{8} & \mc{2}{5}{10} & \mc{2}{6}{12} & \mc{2}{7}{14} & \mc{2}{8}{16} & \mc{2}{9}{18} & \mc{2}{10}{20} \\ \hline
+\cellcolor{gray!30}\textbf{3} & \mc{3}{1}{3} & \mc{3}{2}{6} & \mc{3}{3}{9} & \mc{3}{4}{12} & \mc{3}{5}{15} & \mc{3}{6}{18} & \mc{3}{7}{21} & \mc{3}{8}{24} & \mc{3}{9}{27} & \mc{3}{10}{30} \\ \hline
+\cellcolor{gray!30}\textbf{4} & \mc{4}{1}{4} & \mc{4}{2}{8} & \mc{4}{3}{12} & \mc{4}{4}{16} & \mc{4}{5}{20} & \mc{4}{6}{24} & \mc{4}{7}{28} & \mc{4}{8}{32} & \mc{4}{9}{36} & \mc{4}{10}{40} \\ \hline
+\cellcolor{gray!30}\textbf{5} & \mc{5}{1}{5} & \mc{5}{2}{10} & \mc{5}{3}{15} & \mc{5}{4}{20} & \mc{5}{5}{25} & \mc{5}{6}{30} & \mc{5}{7}{35} & \mc{5}{8}{40} & \mc{5}{9}{45} & \mc{5}{10}{50} \\ \hline
+\cellcolor{gray!30}\textbf{6} & \mc{6}{1}{6} & \mc{6}{2}{12} & \mc{6}{3}{18} & \mc{6}{4}{24} & \mc{6}{5}{30} & \mc{6}{6}{36} & \mc{6}{7}{42} & \mc{6}{8}{48} & \mc{6}{9}{54} & \mc{6}{10}{60} \\ \hline
+\cellcolor{gray!30}\textbf{7} & \mc{7}{1}{7} & \mc{7}{2}{14} & \mc{7}{3}{21} & \mc{7}{4}{28} & \mc{7}{5}{35} & \mc{7}{6}{42} & \mc{7}{7}{49} & \mc{7}{8}{56} & \mc{7}{9}{63} & \mc{7}{10}{70} \\ \hline
+\cellcolor{gray!30}\textbf{8} & \mc{8}{1}{8} & \mc{8}{2}{16} & \mc{8}{3}{24} & \mc{8}{4}{32} & \mc{8}{5}{40} & \mc{8}{6}{48} & \mc{8}{7}{56} & \mc{8}{8}{64} & \mc{8}{9}{72} & \mc{8}{10}{80} \\ \hline
+\cellcolor{gray!30}\textbf{9} & \mc{9}{1}{9} & \mc{9}{2}{18} & \mc{9}{3}{27} & \mc{9}{4}{36} & \mc{9}{5}{45} & \mc{9}{6}{54} & \mc{9}{7}{63} & \mc{9}{8}{72} & \mc{9}{9}{81} & \mc{9}{10}{90} \\ \hline
+\cellcolor{gray!30}\textbf{10} & \mc{10}{1}{10} & \mc{10}{2}{20} & \mc{10}{3}{30} & \mc{10}{4}{40} & \mc{10}{5}{50} & \mc{10}{6}{60} & \mc{10}{7}{70} & \mc{10}{8}{80} & \mc{10}{9}{90} & \mc{10}{10}{100} \\ \hline
+\end{tabular}
+\end{center}
+
+% =====================================================================
+\section*{\textcolor{blue!80!black}{2. Addition}}
+% =====================================================================
+
+\subsection*{\textcolor{blue!60!black}{2.1 Tables d'addition}}
+
+% Raccourcis couleur pour le tableau d'addition
+\newcommand{\cg}[1]{\cellcolor{facile}#1}
+\newcommand{\cy}[1]{\cellcolor{moyen}#1}
+\newcommand{\crd}[1]{\cellcolor{difficile}#1}
+
+% Critères de difficulté :
+% Vert  : somme <= 10, OU +10, OU doubles (n+n)
+% Jaune : retenue mais un chiffre petit (2+9, 3+8, 3+9, 4+7, 4+8, 4+9, et symétriques)
+% Rouge : les deux >= 5 et pas doubles (5+6, 6+7, 7+8, 8+9, etc. et symétriques)
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+\hline
+\cellcolor{gray!30}$+$ & \cellcolor{gray!30}\textbf{1} & \cellcolor{gray!30}\textbf{2} & \cellcolor{gray!30}\textbf{3} & \cellcolor{gray!30}\textbf{4} & \cellcolor{gray!30}\textbf{5} & \cellcolor{gray!30}\textbf{6} & \cellcolor{gray!30}\textbf{7} & \cellcolor{gray!30}\textbf{8} & \cellcolor{gray!30}\textbf{9} & \cellcolor{gray!30}\textbf{10} \\
+\hline\hline
+\cellcolor{gray!30}\textbf{1}  & \cg{2} & \cg{3} & \cg{4} & \cg{5} & \cg{6} & \cg{7} & \cg{8} & \cg{9} & \cg{10} & \cg{11} \\ \hline
+\cellcolor{gray!30}\textbf{2}  & \cg{3} & \cg{4} & \cg{5} & \cg{6} & \cg{7} & \cg{8} & \cg{9} & \cg{10} & \cy{11} & \cg{12} \\ \hline
+\cellcolor{gray!30}\textbf{3}  & \cg{4} & \cg{5} & \cg{6} & \cg{7} & \cg{8} & \cg{9} & \cg{10} & \cy{11} & \cy{12} & \cg{13} \\ \hline
+\cellcolor{gray!30}\textbf{4}  & \cg{5} & \cg{6} & \cg{7} & \cg{8} & \cg{9} & \cg{10} & \cy{11} & \cy{12} & \cy{13} & \cg{14} \\ \hline
+\cellcolor{gray!30}\textbf{5}  & \cg{6} & \cg{7} & \cg{8} & \cg{9} & \cg{10} & \crd{11} & \crd{12} & \crd{13} & \crd{14} & \cg{15} \\ \hline
+\cellcolor{gray!30}\textbf{6}  & \cg{7} & \cg{8} & \cg{9} & \cg{10} & \crd{11} & \cg{12} & \crd{13} & \crd{14} & \crd{15} & \cg{16} \\ \hline
+\cellcolor{gray!30}\textbf{7}  & \cg{8} & \cg{9} & \cg{10} & \cy{11} & \crd{12} & \crd{13} & \cg{14} & \crd{15} & \crd{16} & \cg{17} \\ \hline
+\cellcolor{gray!30}\textbf{8}  & \cg{9} & \cg{10} & \cy{11} & \cy{12} & \crd{13} & \crd{14} & \crd{15} & \cg{16} & \crd{17} & \cg{18} \\ \hline
+\cellcolor{gray!30}\textbf{9}  & \cg{10} & \cy{11} & \cy{12} & \cy{13} & \crd{14} & \crd{15} & \crd{16} & \crd{17} & \cg{18} & \cg{19} \\ \hline
+\cellcolor{gray!30}\textbf{10} & \cg{11} & \cg{12} & \cg{13} & \cg{14} & \cg{15} & \cg{16} & \cg{17} & \cg{18} & \cg{19} & \cg{20} \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{\textcolor{blue!60!black}{2.2 Utilité pour les soustractions}}
+
+Quand vous posez une soustraction complexe, bien connaître les tables d'addition vous permet d'anticiper le chiffre des unités du résultat.
+
+\vspace{0.5em}
+Le principe : on cherche \textbf{quel chiffre, ajouté au chiffre qu'on soustrait, donne le chiffre des unités du nombre de départ}.
+
+\vspace{0.5em}
+\textbf{Exemples :}
+\begin{compactitem}
+\item $22\textcolor{red}{7} - \textcolor{red}{9}$ $\to$ quel chiffre ajouté à $\textcolor{red}{9}$ finit par $\textcolor{red}{7}$ ? On sait que $\textcolor{red}{8} + \textcolor{red}{9} = 17$. Donc le résultat finit par $\textcolor{red}{\textbf{8}}$ : $227 - 9 = 21\textcolor{red}{8}$.
+\item $35\textcolor{red}{4} - 1\textcolor{red}{6}$ $\to$ quel chiffre ajouté à $\textcolor{red}{6}$ finit par $\textcolor{red}{4}$ ? On sait que $\textcolor{red}{8} + \textcolor{red}{6} = 14$. Donc le résultat finit par $\textcolor{red}{\textbf{8}}$ : $354 - 16 = 33\textcolor{red}{8}$.
+\item $41\textcolor{red}{3} - \textcolor{red}{7}$ $\to$ quel chiffre ajouté à $\textcolor{red}{7}$ finit par $\textcolor{red}{3}$ ? On sait que $\textcolor{red}{6} + \textcolor{red}{7} = 13$. Donc le résultat finit par $\textcolor{red}{\textbf{6}}$ : $413 - 7 = 40\textcolor{red}{6}$.
+\item $1\,00\textcolor{red}{2} - 34\textcolor{red}{5}$ $\to$ quel chiffre ajouté à $\textcolor{red}{5}$ finit par $\textcolor{red}{2}$ ? On sait que $\textcolor{red}{7} + \textcolor{red}{5} = 12$. Donc le résultat finit par $\textcolor{red}{\textbf{7}}$ : $1\,002 - 345 = 65\textcolor{red}{7}$.
+\end{compactitem}
+
+\vspace{0.5em}
+Si vous connaissez bien vos tables d'addition, vous pouvez instantanément anticiper le dernier chiffre de n'importe quelle soustraction, même avec de grands nombres. Cela vous évite des erreurs d'étourderie !
+
+% =====================================================================
+\section*{\textcolor{blue!80!black}{3. Astuces mnémotechniques : anticiper le dernier chiffre}}
+% =====================================================================
+
+\begin{Indication}
+\textbf{Pourquoi c'est utile ?} Quand vous faites un calcul mental, vous pouvez vérifier votre résultat en regardant si le \textbf{dernier chiffre} (le chiffre des unités) est cohérent. C'est aussi très utile dans les soustractions posées : vous savez à l'avance quel chiffre vous devez trouver.
+\end{Indication}
+
+\begin{tcolorbox}[colback=red!8, colframe=red!70, boxrule=0.5mm, arc=3mm]
+\textbf{Important :} Les règles sur le dernier chiffre et pair/impair de cette section ne s'appliquent que pour les \textbf{nombres entiers}. Avec des nombres décimaux, le ``dernier chiffre'' n'a pas le même sens. Par exemple, $0{,}7 \times 10 = 7$ : on pourrait s'attendre à un résultat qui finit par $0$, mais $0{,}7$ n'est pas un entier.
+\end{tcolorbox}
+
+\subsection*{\textcolor{blue!60!black}{3.1 Pour les multiplications}}
+
+Pour trouver le dernier chiffre d'une multiplication, il suffit de multiplier les \textbf{chiffres des unités} des deux nombres. Le dernier chiffre de ce petit produit est le dernier chiffre du résultat final. Cela marche aussi pour les grands nombres !
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{gray!20}
+\textbf{Opération} & \textbf{Chiffres des unités} & \textbf{Dernier chiffre du résultat} \\
+\hline
+$3\textcolor{red}{7} \times 1\textcolor{red}{1} = 40\textcolor{red}{7}$ & $\textcolor{red}{7} \times \textcolor{red}{1} = 7$ & finit par $\textcolor{red}{\textbf{7}}$ \\
+\hline
+$1\textcolor{red}{3} \times 1\textcolor{red}{2} = 15\textcolor{red}{6}$ & $\textcolor{red}{3} \times \textcolor{red}{2} = 6$ & finit par $\textcolor{red}{\textbf{6}}$ \\
+\hline
+$1\textcolor{red}{4} \times \textcolor{red}{5} = 7\textcolor{red}{0}$ & $\textcolor{red}{4} \times \textcolor{red}{5} = 20$ & finit par $\textcolor{red}{\textbf{0}}$ \\
+\hline
+$\textcolor{red}{7} \times 1\textcolor{red}{6} = 11\textcolor{red}{2}$ & $\textcolor{red}{7} \times \textcolor{red}{6} = 42$ & finit par $\textcolor{red}{\textbf{2}}$ \\
+\hline
+$3\textcolor{red}{7} \times 2\textcolor{red}{0} = 74\textcolor{red}{0}$ & $\textcolor{red}{7} \times \textcolor{red}{0} = 0$ & finit par $\textcolor{red}{\textbf{0}}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Conclusion :} C'est exactement la même méthode que pour les additions (section 3.2b) : seuls les chiffres des unités comptent.
+
+\subsection*{\textcolor{blue!60!black}{3.2 Pour les additions}}
+
+\subsubsection*{\textcolor{blue}{a) Pair ou impair ?}}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|l|l|}
+\hline
+\rowcolor{gray!20}
+\textbf{Opération} & \textbf{Situation} & \textbf{Le résultat est\ldots} \\
+\hline
+\multirow{3}{*}{Addition} & Pair + Pair & Toujours \textbf{pair} \quad (ex: $6 + 8 = 14$) \\ \cline{2-3}
+ & Impair + Impair & Toujours \textbf{pair} \quad (ex: $7 + 9 = 16$) \\ \cline{2-3}
+ & Pair + Impair & Toujours \textbf{impair} \quad (ex: $6 + 7 = 13$) \\ \hline
+\multirow{3}{*}{Soustraction} & Pair $-$ Pair & Toujours \textbf{pair} \quad (ex: $14 - 8 = 6$) \\ \cline{2-3}
+ & Impair $-$ Impair & Toujours \textbf{pair} \quad (ex: $17 - 9 = 8$) \\ \cline{2-3}
+ & Pair $-$ Impair & Toujours \textbf{impair} \quad (ex: $14 - 7 = 7$) \\ \hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{\textcolor{blue}{b) Trouver le chiffre final exact}}
+
+Pour trouver le dernier chiffre d'une addition, il suffit d'additionner les \textbf{chiffres des unités} des deux nombres. Les dizaines, centaines, etc. n'ont aucune influence sur le chiffre des unités du résultat (les retenues ne changent pas le chiffre final).
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{gray!20}
+\textbf{Opération} & \textbf{Chiffres des unités} & \textbf{Dernier chiffre du résultat} \\
+\hline
+$22\textcolor{red}{4} + \textcolor{red}{8} = 23\textcolor{red}{2}$ & $\textcolor{red}{4} + \textcolor{red}{8} = 12$ & finit par $\textcolor{red}{\textbf{2}}$ \\
+\hline
+$15\textcolor{red}{7} + 3\textcolor{red}{6} = 19\textcolor{red}{3}$ & $\textcolor{red}{7} + \textcolor{red}{6} = 13$ & finit par $\textcolor{red}{\textbf{3}}$ \\
+\hline
+$48\textcolor{red}{9} + 4\textcolor{red}{7} = 53\textcolor{red}{6}$ & $\textcolor{red}{9} + \textcolor{red}{7} = 16$ & finit par $\textcolor{red}{\textbf{6}}$ \\
+\hline
+$1\,25\textcolor{red}{3} + 87\textcolor{red}{9} = 2\,13\textcolor{red}{2}$ & $\textcolor{red}{3} + \textcolor{red}{9} = 12$ & finit par $\textcolor{red}{\textbf{2}}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Conclusion :} Avant même de poser le calcul, vous pouvez savoir par quel chiffre le résultat doit se terminer. Si ce n'est pas le cas, c'est qu'il y a une erreur !
+
+\subsubsection*{\textcolor{blue}{c) Les compléments à 10}}
+
+À connaître par c\oe ur -- indispensable pour les soustractions :
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{gray!20}
+$1+9$ & $2+8$ & $3+7$ & $4+6$ & $5+5$ & $6+4$ & $7+3$ & $8+2$ & $9+1$ \\
+\hline
+10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 & 10 \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+
+\subsection*{\textcolor{blue!60!black}{3.3 Pour les divisions}}
+
+Diviser, c'est chercher le résultat d'une multiplication. Les règles sur le dernier chiffre des multiplications s'appliquent donc aussi aux divisions, mais \textbf{à l'envers} : on cherche quel chiffre, multiplié par le diviseur, donne le chiffre des unités du dividende.
+
+\subsubsection*{\textcolor{blue}{a) Pair ou impair ?}}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|}
+\hline
+\rowcolor{gray!20}
+\textbf{Situation} & \textbf{Le quotient est\ldots} \\
+\hline
+Pair $\div$ Pair & Peut être \textbf{pair ou impair} \quad (ex: $16 \div 4 = 4$ mais $12 \div 4 = 3$) \\
+\hline
+Pair $\div$ Impair & Toujours \textbf{pair} \quad (ex: $28 \div 7 = 4$) \\
+\hline
+Impair $\div$ Impair & Toujours \textbf{impair} \quad (ex: $63 \div 9 = 7$) \\
+\hline
+Impair $\div$ Pair & Impossible que le résultat soit un nombre entier \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection*{\textcolor{blue}{b) Le lien avec les tables de multiplication}}
+
+\begin{tcolorbox}[colback=red!8, colframe=red!70, boxrule=0.5mm, arc=3mm]
+\textbf{Attention :} Contrairement aux additions et multiplications, il n'y a \textbf{pas de méthode simple pour trouver} le dernier chiffre d'une division. Par exemple, $145 \div 5$ : plusieurs chiffres multipliés par $5$ donnent un résultat qui finit par $5$ ($1 \times 5 = 5$, $3 \times 5 = 15$, $5 \times 5 = 25$\ldots), donc on ne peut pas savoir lequel est le bon sans faire le calcul.
+
+\vspace{0.3em}
+\textbf{En revanche}, on peut utiliser les tables de multiplication pour \textbf{vérifier qu'on n'a pas faux}.
+\end{tcolorbox}
+
+\vspace{0.3em}
+\textit{Exemple :} Je calcule $14\textcolor{red}{5} \div \textcolor{red}{5}$ et je trouve $2\textcolor{red}{8}$. Est-ce possible ? Je vérifie : $\textcolor{red}{8} \times \textcolor{red}{5} = 4\textcolor{red}{0}$, qui finit par $\textcolor{red}{0}$. Or $145$ finit par $\textcolor{red}{5}$, pas par $\textcolor{red}{0}$. Donc $28$ \textbf{est faux} ! (Le bon résultat est $2\textcolor{red}{9}$, car $\textcolor{red}{9} \times \textcolor{red}{5} = 4\textcolor{red}{5}$ qui finit bien par $\textcolor{red}{5}$.)
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor{gray!20}
+\textbf{Opération} & \textbf{Si je trouve\ldots} & \textbf{Vérification} \\
+\hline
+$14\textcolor{red}{5} \div \textcolor{red}{5}$ & \ldots $2\textcolor{red}{8}$ & $\textcolor{red}{8} \times \textcolor{red}{5} = 4\textcolor{red}{0}$, finit par $\textcolor{red}{0} \neq \textcolor{red}{5}$ $\to$ \textrr{FAUX} \\
+\hline
+$42\textcolor{red}{8} \div \textcolor{red}{4}$ & \ldots $10\textcolor{red}{6}$ & $\textcolor{red}{6} \times \textcolor{red}{4} = 2\textcolor{red}{4}$, finit par $\textcolor{red}{4} \neq \textcolor{red}{8}$ $\to$ \textrr{FAUX} \\
+\hline
+$42\textcolor{red}{8} \div \textcolor{red}{4}$ & \ldots $10\textcolor{red}{7}$ & $\textcolor{red}{7} \times \textcolor{red}{4} = 2\textcolor{red}{8}$, finit par $\textcolor{red}{8} = \textcolor{red}{8}$ $\to$ \textbf{possible} \\
+\hline
+$62\textcolor{red}{0} \div \textcolor{red}{5}$ & \ldots $12\textcolor{red}{4}$ & $\textcolor{red}{4} \times \textcolor{red}{5} = 2\textcolor{red}{0}$, finit par $\textcolor{red}{0} = \textcolor{red}{0}$ $\to$ \textbf{possible} \\
+\hline
+\end{tabular}
+\end{center}
+
+% =====================================================================
+\section*{\textcolor{blue!80!black}{4. Astuces mnémotechniques : ordre de grandeur}}
+% =====================================================================
+
+Avant de calculer, demandez-vous toujours : \textbf{de quel ordre de grandeur devrait être le résultat ?} Si votre résultat final est très loin de cette estimation, c'est qu'il y a une erreur.
+
+\subsection*{\textcolor{blue!60!black}{4.1 Distributivité : arrondir pour estimer}}
+
+Quand on utilise la distributivité, on arrondit le nombre sur lequel on applique la distributivité pour estimer rapidement le résultat.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3cm}|>{\centering\arraybackslash}p{3cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Opération} & \textbf{On arrondit} & \textbf{Estimation} & \textbf{Résultat exact} \\
+\hline
+$3 \times 999$ & $999 \approx 1\,000$ & $\approx \textbf{3\,000}$ & $2\,997$ \\ \hline
+$6 \times 101$ & $101 \approx 100$ & $\approx \textbf{600}$ & $606$ \\ \hline
+$4 \times 498$ & $498 \approx 500$ & $\approx \textbf{2\,000}$ & $1\,992$ \\ \hline
+$7 \times 52$ & $52 \approx 50$ & $\approx \textbf{350}$ & $364$ \\ \hline
+$9 \times 1\,003$ & $1\,003 \approx 1\,000$ & $\approx \textbf{9\,000}$ & $9\,027$ \\ \hline
+\end{tabular}
+\end{center}
+
+\subsection*{\textcolor{blue!60!black}{4.2 Multiplications et divisions par 10, 100, 1\,000 avec des décimaux}}
+
+On arrondit le nombre décimal (ou le nombre compliqué) pour vérifier que le résultat est cohérent.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|>{\centering}p{3.5cm}|>{\centering}p{3.5cm}|>{\centering}p{3cm}|>{\centering\arraybackslash}p{3cm}|}
+\hline
+\rowcolor{gray!20}
+\textbf{Opération} & \textbf{On arrondit} & \textbf{Estimation} & \textbf{Résultat exact} \\
+\hline
+\rowcolor{gray!10} \multicolumn{4}{|c|}{\textit{Multiplications}} \\ \hline
+$42{,}47 \times 100$ & $42{,}47 \approx 40$ & $\approx \textbf{4\,000}$ & $4\,247$ \\ \hline
+$3{,}8 \times 1\,000$ & $3{,}8 \approx 4$ & $\approx \textbf{4\,000}$ & $3\,800$ \\ \hline
+$0{,}57 \times 100$ & $0{,}57 \approx 0{,}5$ & $\approx \textbf{50}$ & $57$ \\ \hline
+\rowcolor{gray!10} \multicolumn{4}{|c|}{\textit{Divisions}} \\ \hline
+$874 \div 10$ & $874 \approx 900$ & $\approx \textbf{90}$ & $87{,}4$ \\ \hline
+$5\,320 \div 100$ & $5\,320 \approx 5\,000$ & $\approx \textbf{50}$ & $53{,}2$ \\ \hline
+$62 \div 1\,000$ & $62 \approx 60$ & $\approx \textbf{0{,}06}$ & $0{,}062$ \\ \hline
+\end{tabular}
+\end{center}
+
+% =====================================================================
+\section*{\textcolor{blue!80!black}{5. Exercice d'entraînement}}
+% =====================================================================
+
+\begin{Indication}
+\textbf{Consigne :} Pour chaque opération, vous ne devez \textbf{pas} donner le résultat exact. Vous devez donner :
+\begin{compactitem}
+\item \textbf{Pair ou impair} : le résultat est-il pair ou impair ?
+\item \textbf{Chiffre final} : par quel chiffre (des unités) le résultat se termine-t-il ?
+\item \textbf{Ordre de grandeur} : le résultat est-il plus proche de 10, 20, 30, 40, 50, 100, 1\,000\ldots{} ?
+\end{compactitem}
+\vspace{0.3em}
+\textit{Les cases noires correspondent aux questions avec des nombres décimaux ou des divisions, pour lesquelles le chiffre final ne peut pas être facilement anticipé (voir section 3.3).}
+\end{Indication}
+
+\vspace{0.5em}
+
+% Raccourci pour cellules noires (questions décimales / divisions)
+\newcommand{\na}{\cellcolor{black}}
+
+\setlength{\extrarowheight}{0pt}
+\renewcommand{\arraystretch}{2.0}
+\small
+
+% Commande pour forcer la hauteur minimale de chaque ligne
+\newcommand{\rh}{\rule{0pt}{18pt}}
+
+\begin{longtable}{|>{\centering\arraybackslash}m{1cm}|>{\centering\arraybackslash}m{4.5cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{1.5cm}|>{\centering\arraybackslash}m{2.8cm}|}
+\hline
+\rowcolor{blue!15}
+\textbf{Interro} & \textbf{Question} & \textbf{Pair ou impair} & \textbf{Chiffre final} & \textbf{Ordre de grandeur} \\
+\hline
+\endfirsthead
+\hline
+\rowcolor{blue!15}
+\textbf{Interro} & \textbf{Question} & \textbf{Pair ou impair} & \textbf{Chiffre final} & \textbf{Ordre de grandeur} \\
+\hline
+\endhead
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°1}} \\ \hline
+1 & $19 + 6$ & & & \\ \hline
+1 & $278 - 5$ & & & \\ \hline
+1 & $234 + 99$ & & & \\ \hline
+1 & $1\,263 + 101$ & & & \\ \hline
+1 & $3\,974 - 1\,001$ & & & \\ \hline
+1 & $858 - 99$ & & & \\ \hline
+1 & $13\,891 + 8$ & & & \\ \hline
+1 & $967 + 21$ & & & \\ \hline
+1 & $7 + 6$ & & & \\ \hline
+1 & $2\,658 + 299$ & & & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°2}} \\ \hline
+2 & $234 + 99$ & & & \\ \hline
+2 & $1\,289 - 101$ & & & \\ \hline
+2 & $2\,789 - 1\,001$ & & & \\ \hline
+2 & $1\,828 - 399$ & & & \\ \hline
+2 & $9\,368 + 599$ & & & \\ \hline
+2 & $4{,}32 \times 100$ & \na & \na & \\ \hline
+2 & $9\,861 \div 1\,000$ & \na & \na & \\ \hline
+2 & $34 \times 100$ & & & \\ \hline
+2 & $89 \div 100$ & \na & \na & \\ \hline
+2 & $1{,}7 \times 1\,000$ & \na & \na & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°3}} \\ \hline
+3 & $7\,452 \div 1\,000$ & \na & \na & \\ \hline
+3 & $3\,504 - 201$ & & & \\ \hline
+3 & $4\,673 - 2\,001$ & & & \\ \hline
+3 & $8\,127 + 799$ & & & \\ \hline
+3 & $2{,}5 \times 1\,000$ & \na & \na & \\ \hline
+3 & $46 \times 100$ & & & \\ \hline
+3 & $0{,}37 \div 100$ & \na & \na & \\ \hline
+3 & $2{,}58 \times 1\,000$ & \na & \na & \\ \hline
+3 & $897 \div 1\,000$ & \na & \na & \\ \hline
+3 & $276 + 101$ & & & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interros N°4 et N°5}} \\ \hline
+4-5 & $41 \times 4$ & & & \\ \hline
+4-5 & $2{,}5 \times 6{,}68 \times 4$ & \na & \na & \\ \hline
+4-5 & $284 \div 4$ & & \na & \\ \hline
+4-5 & $21 + 3{,}1 + 79 + 0{,}9$ & \na & \na & \\ \hline
+4-5 & $2{,}58 \times 1\,000$ & \na & \na & \\ \hline
+4-5 & $4{,}06 \times 100$ & \na & \na & \\ \hline
+4-5 & $96 \div 4$ & & \na & \\ \hline
+4-5 & $25 + (7 - (3 + 2))$ & & & \\ \hline
+4-5 & $897 \div 1\,000$ & \na & \na & \\ \hline
+4-5 & $3 \times (10 - 2) + (7 - 4)$ & & & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°6}} \\ \hline
+6 & $40 + 5{,}8 + 0{,}2 + 9$ & \na & \na & \\ \hline
+6 & $76 \div 4$ & & \na & \\ \hline
+6 & $(12 - 3) \times 2 + 4$ & & & \\ \hline
+6 & $84\,162 \div 100$ & \na & \na & \\ \hline
+6 & $117 \times 4$ & & & \\ \hline
+6 & $88{,}6 \times 1\,000$ & \na & \na & \\ \hline
+6 & $12 \div 1\,000$ & \na & \na & \\ \hline
+6 & $4 + 2 \times (5 - 1)$ & & & \\ \hline
+6 & $34{,}18 \times 1\,000$ & \na & \na & \\ \hline
+6 & $0{,}5 \times 44 \times 4$ & \na & \na & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°7}} \\ \hline
+7 & $35 + 4{,}6 + 10 + 0{,}4$ & \na & \na & \\ \hline
+7 & $90 \div 5$ & & \na & \\ \hline
+7 & $(15 - 7) \times 3 + 5$ & & & \\ \hline
+7 & $64 \times 5$ & & & \\ \hline
+7 & $7{,}2 \times 1\,000$ & \na & \na & \\ \hline
+7 & $0{,}6 \times 5 + 27$ & \na & \na & \\ \hline
+7 & $865 \div 100$ & \na & \na & \\ \hline
+7 & $2{,}5 \times 6{,}68 \times 4$ & \na & \na & \\ \hline
+7 & $34{,}18 \times 1\,000$ & \na & \na & \\ \hline
+7 & $105 \div 5$ & & \na & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°8}} \\ \hline
+8 & $12\,004 \div 4$ & & \na & \\ \hline
+8 & $65 \times 5$ & & & \\ \hline
+8 & $4{,}2 + 4 + 13{,}8$ & \na & \na & \\ \hline
+8 & $(14 + 7) \times 4$ & & & \\ \hline
+8 & $3\,208 - 201$ & & & \\ \hline
+8 & $620 \div 5$ & & \na & \\ \hline
+8 & $2{,}5 \times 6{,}89 \times 4$ & \na & \na & \\ \hline
+8 & $127 + 399$ & & & \\ \hline
+8 & $4{,}72 \times 1\,000$ & \na & \na & \\ \hline
+8 & $(18 - 6) \times 2 + 3 \times 2$ & & & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°9}} \\ \hline
+9 & $145 \div 5$ & & \na & \\ \hline
+9 & $428 \div 4$ & & \na & \\ \hline
+9 & $7{,}2 \times 5$ & \na & \na & \\ \hline
+9 & $0{,}084 \times 1\,000$ & \na & \na & \\ \hline
+9 & $2{,}5 \times 6 \times 4 + 18$ & \na & \na & \\ \hline
+9 & $0{,}3 + 26 + 4{,}7$ & \na & \na & \\ \hline
+9 & $3\,406 + 199$ & & & \\ \hline
+9 & $127 + 399$ & & & \\ \hline
+9 & $23 \times 4$ & & & \\ \hline
+9 & $(17 - 6) \times 2 + 3 \times 2$ & & & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°10}} \\ \hline
+10 & $79 \times 9$ & & & \\ \hline
+10 & $813 \times 11$ & & & \\ \hline
+10 & $16 + 4 \times 2 + 5$ & & & \\ \hline
+10 & $5 \times 4 - 3 \times 6 + 2$ & & & \\ \hline
+10 & $3\,406 + 199$ & & & \\ \hline
+10 & $1\,504 - 399$ & & & \\ \hline
+10 & $2{,}5 \times 5{,}1254 \times 4$ & \na & \na & \\ \hline
+10 & $92{,}2 + 100 + 6{,}8$ & \na & \na & \\ \hline
+10 & $92 \div 4$ & & \na & \\ \hline
+10 & $74 \div 5$ & \na & \na & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°11}} \\ \hline
+11 & $17 \times 9$ & & & \\ \hline
+11 & $77 - 2 \times 6 + 5$ & & & \\ \hline
+11 & $18 + 4 - 3 \times 3$ & & & \\ \hline
+11 & $2 \times (3 + 8 \times 6)$ & & & \\ \hline
+11 & $22 \times 11$ & & & \\ \hline
+11 & $3 \times ((4 + 7) - 4 \times 2)$ & & & \\ \hline
+11 & $14 \times 101$ & & & \\ \hline
+11 & $4 \times 999$ & & & \\ \hline
+11 & $5 \times 4 - 3 \times 6 + 2$ & & & \\ \hline
+11 & $17 \times 11$ & & & \\ \hline
+
+\rowcolor{blue!8} \multicolumn{5}{|c|}{\textit{Interro N°12}} \\ \hline
+12 & $17 \times 9$ & & & \\ \hline
+12 & $3\,508 + 199$ & & & \\ \hline
+12 & $4{,}063 \times 100$ & \na & \na & \\ \hline
+12 & $(18 - 6) \times 2 + 3 \times 2$ & & & \\ \hline
+12 & $3 \times 999$ & & & \\ \hline
+12 & $24 \times 4$ & & & \\ \hline
+12 & $125 \div 5$ & & \na & \\ \hline
+12 & $2{,}5 \times 6 \times 4 \times 2$ & \na & \na & \\ \hline
+12 & $27 \times 11$ & & & \\ \hline
+12 & $5 \times 4 - 3 \times 6 + 2$ & & & \\ \hline
+
+\end{longtable}
+
+\normalsize
+
+\end{document}
