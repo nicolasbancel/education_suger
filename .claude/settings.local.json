@@ -11,7 +11,28 @@
       "Bash(git push:*)",
       "Bash(latexmk -pdf -interaction=nonstopmode 6eme_interro_7.tex)",
       "Bash(pdfinfo 6eme_interro_7.pdf)",
-      "Bash(grep -n '\\\\$\\\\\\\\dfrac.*=.*\\\\\\\\dfrac.*\\\\$' 6eme_interro_7.tex)"
+      "Bash(grep -n '\\\\$\\\\\\\\dfrac.*=.*\\\\\\\\dfrac.*\\\\$' 6eme_interro_7.tex)",
+      "Bash(ls:*)",
+      "Bash(kpsewhich:*)",
+      "Bash(pdftoppm -r 100 -f 3 -l 3 6eme_interro_7.pdf page3 -png)",
+      "Bash(pdftoppm -r 100 -f 1 -l 2 6eme_interro_7.pdf page1_2 -png)",
+      "Bash(pdftoppm -r 100 -f 2 -l 2 6eme_interro_7.pdf check -png)",
+      "Bash(latexmk -pdf -g -interaction=nonstopmode 6eme_interro_7.tex)",
+      "Bash(rm -f 6eme_interro_7.aux 6eme_interro_7.out 6eme_interro_7.pdf)",
+      "Bash(pdflatex -interaction=nonstopmode 6eme_interro_7.tex)",
+      "Bash(pdftoppm -r 200 -f 2 -l 2 6eme_interro_7.pdf check -png)",
+      "Bash(rm -f check*.png)",
+      "Bash(pdftoppm -r 150 -f 2 -l 2 6eme_interro_7.pdf check -png)",
+      "Bash(rm -f 01_2526_6emes_maths/00_ds_dm/interro_7/check*.png)",
+      "Bash(git commit -m 'interro 7 : retire les cadres autour des solutions:*)",
+      "Bash(pdftoppm -r 150 -f 2 -l 3 6eme_interro_7.pdf check -png)",
+      "Bash(pdftoppm -r 150 -f 5 -l 6 6eme_interro_7.pdf checkp -png)",
+      "Bash(rm -f check*.png checkp*.png)",
+      "Bash(pdftoppm -r 130 -f 2 -l 3 6eme_interro_7.pdf cv -png)",
+      "Bash(pdftoppm -r 130 -f 6 -l 7 6eme_interro_7.pdf cv -png)",
+      "Bash(pdftoppm -r 130 -f 1 -l 1 6eme_interro_7.pdf erreurbox -png)",
+      "Read(//private/etc/paths.d/**)",
+      "Read(//usr/local/texlive/2024/texmf-dist/scripts/latexmk/**)"
     ]
   }
 }
