@@ -33,8 +33,25 @@ A &= 45 - (16 + 8) + 4 \\
 
 ### Variantes
 - `align` (avec numérotation) : uniquement pour les démonstrations formelles où les lignes sont référencées.
-- `\[ ... \]` : pour un résultat isolé sans étapes intermédiaires.
-- `$...$` : **seule forme inline autorisée**. Pas de `\(...\)`, pas de double dollar.
+### `\dfrac` vs `\frac` — règle stricte
+
+- **`\dfrac`** (version display) : uniquement à l'intérieur d'un bloc `\[ ... \]` ou `align*`. Jamais en inline. Rendu gros, illisible quand coincé entre deux lignes de texte.
+- **`\frac`** (version adaptative) : autorisé en inline `$...$` **pour une mention unique et isolée** dans une phrase de texte courant (ex. `chaque graduation vaut $\frac{1}{4}$`, `il reste $\frac{1}{3}$ du volume`). Rendu petit, tient naturellement dans la ligne.
+- **Interdit dans tous les cas** : enchaîner plusieurs fractions inline (`$\frac{a}{b} = \frac{c}{d} = \frac{e}{f}$`) ou faire une comparaison de fractions inline (`$\frac{a}{b} < \frac{c}{d}$`). Toute relation `=`, `<`, `>`, `\leq`, `\geq`, `\neq` **entre fractions** va obligatoirement en `\[ ... \]`.
+- **Nombres entiers** inline : toujours OK (`$56$`, `$32 < 35$`, `$ABC$`).
+
+### Récapitulatif pratique
+
+| Contexte | Forme |
+|---|---|
+| Calcul enchaîné (plusieurs `=`) | `\[ ... \]` avec `\dfrac` |
+| Comparaison de deux fractions | `\[ ... \]` avec `\dfrac` |
+| Une seule fraction mentionnée en passant dans une phrase | `$\frac{...}{...}$` inline |
+| Nombres entiers, variables, inégalités entre entiers | `$...$` inline |
+
+### Exception unique
+
+Dans un `compactitem` qui présente **plusieurs méthodes côte à côte** (typiquement les deux méthodes de simplification), les items peuvent contenir des `\dfrac` inline chaînés pour préserver le parallèle visuel. C'est la seule exception documentée.
 
 ## 3. Emphase et couleurs
 
@@ -52,6 +69,36 @@ Toujours commencer la solution par la réponse en gras rouge, AVANT la démonstr
 \textbf{\textcolor{red}{[VRAI]}}. Les segments $[AG]$ et $[GE]$ ont le même codage, donc ...
 ```
 Terminer par la conclusion réaffirmée en gras : `\textbf{L'affirmation est vraie.}`
+
+## 3bis. Espacement vertical dans les solutions
+
+Laisser **respirer** une solution : insérer un `\\` en fin de phrase entre les blocs logiques, pour aérer le texte. Une solution trop compacte est difficile à lire pour un élève de 6ème.
+
+**À faire** :
+```latex
+\begin{solution}
+  On met au même dénominateur. $7 \times 8 = 56$. \\
+
+  $\dfrac{4}{7} = \dfrac{4 \times 8}{7 \times 8} = \dfrac{32}{56}$ \quad et \quad $\dfrac{5}{8} = \dfrac{5 \times 7}{8 \times 7} = \dfrac{35}{56}$. \\
+
+  Comme $32 < 35$, on a $\dfrac{4}{7} < \dfrac{5}{8}$.
+\end{solution}
+```
+
+**À éviter** (trop compact) :
+```latex
+\begin{solution}
+  On met au même dénominateur. $7 \times 8 = 56$.
+
+  $\dfrac{4}{7} = \dfrac{4 \times 8}{7 \times 8} = \dfrac{32}{56}$ \quad et \quad $\dfrac{5}{8} = \dfrac{5 \times 7}{8 \times 7} = \dfrac{35}{56}$.
+
+  Comme $32 < 35$, on a $\dfrac{4}{7} < \dfrac{5}{8}$.
+\end{solution}
+```
+
+Règle pratique : après chaque étape logique de la rédaction (énoncé de la méthode, calcul intermédiaire, conclusion), terminer la ligne par `\\` suivi d'une ligne vide. Ça force un saut de ligne ET un petit espace vertical supplémentaire.
+
+**Exceptions** : pas besoin de `\\` avant/après un bloc display `\[ ... \]` ou `align*` — ces environnements gèrent déjà leur propre espacement vertical.
 
 ## 4. Environnement `Indication` (boîte verte)
 

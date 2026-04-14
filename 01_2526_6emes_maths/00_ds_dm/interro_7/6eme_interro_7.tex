@@ -1,5 +1,5 @@
 
-\documentclass{exam}
+\documentclass[answers]{exam}
 \usepackage{../../../mypackages}
 \usepackage{../../../macros}
 
@@ -22,13 +22,60 @@
   bottom=2mm
 }
 
+\definecolor{myerrbg}{HTML}{FDECEC}
+\definecolor{myerrfr}{HTML}{B22222}
+
+\newtcolorbox{Erreur}{
+  enhanced,
+  colback=myerrbg,
+  colframe=myerrfr,
+  arc=6mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm,
+  title=Les erreurs que vous faites,
+  fonttitle=\bfseries,
+  coltitle=white,
+  colbacktitle=myerrfr,
+  attach boxed title to top left={xshift=6mm, yshift=-3mm},
+  boxed title style={
+    colframe=myerrfr,
+    colback=myerrfr,
+    arc=2mm,
+    boxrule=0.4mm,
+  },
+}
+
 \title{Interrogation N°7}
 \author{N. Bancel}
 \date{31 Mars 2026}
 
-% Mise en forme des solutions en bleu
+% Mise en forme des solutions : cadre bleu de largeur constante (\textwidth),
+% indépendamment du fait que la solution soit dans un environnement parts ou non.
 \SolutionEmphasis{\color{blue}}
 \renewcommand{\solutiontitle}{\noindent}
+
+\makeatletter
+\renewenvironment{TheSolution}{%
+  \par\nobreak\vspace{\parskip}%
+  \noindent\hspace*{-\@totalleftmargin}%
+  \begin{tcolorbox}[
+    width=\textwidth,
+    colback=white,
+    colframe=blue,
+    boxrule=0.4pt,
+    arc=0pt,
+    left=6pt,right=6pt,top=6pt,bottom=6pt,
+    enhanced jigsaw,
+  ]%
+    \color{blue}\solutiontitle\ignorespaces
+}{%
+  \end{tcolorbox}%
+}
+\makeatother
 
 \begin{document}
 
@@ -38,6 +85,32 @@
 \consignesrendusujet{1h15}{1}
 \end{Indication}
 
+\begin{Erreur}
+Une erreur que je vois souvent dans vos copies, en particulier sur les additions de fractions. Beaucoup d'entre vous écrivent par exemple :
+\[
+  \dfrac{1}{6} + \dfrac{3}{4} = \dfrac{3 \times 6}{4 \times 6} = \dfrac{18}{24}
+\]
+comme si l'addition $\dfrac{1}{6} + \dfrac{3}{4}$ était égale à $\dfrac{18}{24}$.
+
+\textbf{C'est faux.} Ce qui vaut $\dfrac{18}{24}$, ce n'est pas l'addition entière, c'est seulement \textbf{un des deux termes de l'addition} : la fraction $\dfrac{3}{4}$ qu'on a mise au même dénominateur $24$.
+
+\textbf{Rappel important :} le signe $=$ ne s'utilise que pour relier deux choses qui sont \textbf{complètement équivalentes}. Quand on écrit $A = B = C$, ça veut dire que $A$, $B$ et $C$ ont tous la même valeur. On ne peut donc pas mettre un $=$ entre l'addition $\dfrac{1}{6} + \dfrac{3}{4}$ et $\dfrac{18}{24}$, parce que ce sont deux quantités différentes.
+
+\subsection{Autre exemple de mauvais usage du signe =}
+
+L'abscisse du point $A$ est égale à $\dfrac{7}{4}$ car : 
+\[
+  1 = \frac{4}{4} + \frac{3}{4} = \frac{7}{4}.
+\]
+\textit{Ecrire ça, c'est dire que}
+\[
+  1 = \frac{7}{4}.
+\]
+\textit{ce qui est faux.}
+
+
+\end{Erreur}
+
 \section*{Exercice 1 - Comparaisons de fractions (3 points)}
 
 \begin{questions}
@@ -46,26 +119,70 @@
   \begin{parts}
     \part[0.5] $\dfrac{4}{9}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{4}{5}$
     \begin{solution}
-      Les deux fractions ont le même numérateur $4$. Plus le dénominateur est grand, plus la fraction est petite. Comme $9 > 5$, on a $\dfrac{4}{9} < \dfrac{4}{5}$.
+      On sait que pour comparer 2 fractions de dénominateurs différents, il faut les ramener au même dénominateur. Ici, $45$ fonctionne (c'est $9 \times 5$).
+      \[
+        \dfrac{4}{9} = \dfrac{4 \times 5}{9 \times 5} = \dfrac{20}{45}
+      \]
+      \[
+        \dfrac{4}{5} = \dfrac{4 \times 9}{5 \times 9} = \dfrac{36}{45}
+      \]
+      On sait comparer 2 fractions de même dénominateur : il suffit de comparer les numérateurs. Comme $20 < 36$, on a
+      \[
+        \dfrac{20}{45} < \dfrac{36}{45}
+      \]
+      Donc
+      \[
+        \dfrac{4}{9} < \dfrac{4}{5}.
+      \]
+
+      \textit{Remarque : les deux fractions ayant le même numérateur, on pouvait aussi remarquer directement que plus le dénominateur est grand, plus la fraction est petite. Comme $9 > 5$, on retrouve bien :}
+      \[
+        \dfrac{4}{9} < \dfrac{4}{5}.
+      \]
     \end{solution}
 
     \part[0.5] $\dfrac{3}{4}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{5}{8}$
     \begin{solution}
-      On met au même dénominateur. $\dfrac{3}{4} = \dfrac{3 \times 2}{4 \times 2} = \dfrac{6}{8}$. On compare $\dfrac{6}{8}$ et $\dfrac{5}{8}$ : comme $6 > 5$, on a $\dfrac{3}{4} > \dfrac{5}{8}$.
+      On met au même dénominateur :
+      \[
+        \dfrac{3}{4} = \dfrac{3 \times 2}{4 \times 2} = \dfrac{6}{8}
+      \]
+      Les deux fractions ont le même dénominateur, et $6 > 5$, donc :
+      \[
+        \dfrac{6}{8} > \dfrac{5}{8}
+        \qquad\text{c'est-à-dire}\qquad
+        \dfrac{3}{4} > \dfrac{5}{8}.
+      \]
     \end{solution}
 
     \part[0.5] $\dfrac{7}{12}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{2}{3}$
     \begin{solution}
-      On met au même dénominateur. $\dfrac{2}{3} = \dfrac{2 \times 4}{3 \times 4} = \dfrac{8}{12}$. On compare $\dfrac{7}{12}$ et $\dfrac{8}{12}$ : comme $7 < 8$, on a $\dfrac{7}{12} < \dfrac{2}{3}$.
+      On met au même dénominateur :
+      \[
+        \dfrac{2}{3} = \dfrac{2 \times 4}{3 \times 4} = \dfrac{8}{12}
+      \]
+      Les deux fractions ont le même dénominateur, et $7 < 8$, donc :
+      \[
+        \dfrac{7}{12} < \dfrac{8}{12}
+        \qquad\text{c'est-à-dire}\qquad
+        \dfrac{7}{12} < \dfrac{2}{3}.
+      \]
     \end{solution}
 
     \part[0.5] $\dfrac{4}{7}$ \hspace{0.5cm} et \hspace{0.5cm} $\dfrac{5}{8}$
     \begin{solution}
-      On met au même dénominateur. $7 \times 8 = 56$.
-
-      $\dfrac{4}{7} = \dfrac{4 \times 8}{7 \times 8} = \dfrac{32}{56}$ \quad et \quad $\dfrac{5}{8} = \dfrac{5 \times 7}{8 \times 7} = \dfrac{35}{56}$.
-
-      Comme $32 < 35$, on a $\dfrac{4}{7} < \dfrac{5}{8}$.
+      On met au même dénominateur. Ici, $7 \times 8 = 56$ fonctionne.
+      \[
+        \dfrac{4}{7} = \dfrac{4 \times 8}{7 \times 8} = \dfrac{32}{56}
+        \qquad\text{et}\qquad
+        \dfrac{5}{8} = \dfrac{5 \times 7}{8 \times 7} = \dfrac{35}{56}
+      \]
+      Les deux fractions ont le même dénominateur, et $32 < 35$, donc :
+      \[
+        \dfrac{32}{56} < \dfrac{35}{56}
+        \qquad\text{c'est-à-dire}\qquad
+        \dfrac{4}{7} < \dfrac{5}{8}.
+      \]
     \end{solution}
   \end{parts}
 
@@ -74,12 +191,18 @@
   \begin{parts}
     \part[0.5] $\dfrac{11}{9}$
     \begin{solution}
-      $\dfrac{11}{9} > 1$ car le numérateur ($11$) est supérieur au dénominateur ($9$).
+      On sait qu'une fraction est supérieure à $1$ si et seulement si son numérateur est strictement supérieur à son dénominateur. Ici, $11 > 9$, donc :
+      \[
+        \dfrac{11}{9} > 1.
+      \]
     \end{solution}
 
     \part[0.5] $\dfrac{11}{12}$
     \begin{solution}
-      $\dfrac{11}{12} < 1$ car le numérateur ($11$) est inférieur au dénominateur ($12$).
+      Ici, $11 < 12$, donc :
+      \[
+        \dfrac{11}{12} < 1.
+      \]
     \end{solution}
   \end{parts}
 \end{questions}
@@ -92,22 +215,32 @@
   \begin{parts}
     \part[0.75] $\dfrac{12}{18}$
     \begin{solution}
-      $\dfrac{12}{18} = \dfrac{12 \div 6}{18 \div 6} = \dfrac{2}{3}$
+      On peut simplifier la fraction de deux manières équivalentes.
+      \begin{compactitem}
+        \item \textbf{Méthode 1} (division par le facteur commun) : $\dfrac{12}{18} = \dfrac{12 \div 6}{18 \div 6} = \dfrac{2}{3}$ \\
+        \item \textbf{Méthode 2} (décomposition en facteurs et simplification) : $\dfrac{12}{18} = \dfrac{\cancel{6} \times 2}{\cancel{6} \times 3} = \dfrac{2}{3}$
+      \end{compactitem}
     \end{solution}
 
     \part[0.75] $\dfrac{35}{49}$
     \begin{solution}
-      $\dfrac{35}{49} = \dfrac{35 \div 7}{49 \div 7} = \dfrac{5}{7}$
+      \[
+        \frac{35}{49} = \frac{\cancel{7} \times 5}{\cancel{7} \times 7} = \frac{5}{7}
+      \]
     \end{solution}
 
     \part[0.75] $\dfrac{24}{36}$
     \begin{solution}
-      $\dfrac{24}{36} = \dfrac{24 \div 12}{36 \div 12} = \dfrac{2}{3}$
+      \[
+        \frac{24}{36} = \frac{\cancel{12} \times 2}{\cancel{12} \times 3} = \frac{2}{3}
+      \]
     \end{solution}
 
     \part[0.75] $\dfrac{45}{60}$
     \begin{solution}
-      $\dfrac{45}{60} = \dfrac{45 \div 15}{60 \div 15} = \dfrac{3}{4}$
+      \[
+        \frac{45}{60} = \frac{\cancel{15} \times 3}{\cancel{15} \times 4} = \frac{3}{4}
+      \]
     \end{solution}
   \end{parts}
 \end{questions}
@@ -120,25 +253,44 @@
   \begin{parts}
     \part[0.5] $\dfrac{1}{6} + \dfrac{3}{4}$
     \begin{solution}
-      On cherche un dénominateur commun : $6 \times 2 = 12$ et $4 \times 3 = 12$.
-
-      $\dfrac{1}{6} + \dfrac{3}{4} = \dfrac{1 \times 2}{6 \times 2} + \dfrac{3 \times 3}{4 \times 3} = \dfrac{2}{12} + \dfrac{9}{12} = \dfrac{11}{12}$
+      On sait que pour additionner 2 fractions de dénominateurs différents, il faut d'abord les ramener au même dénominateur. Ici, $12$ fonctionne. \\
+      \[
+        \dfrac{1}{6} = \dfrac{1 \times 2}{6 \times 2} = \dfrac{2}{12}
+        \qquad\text{et}\qquad
+        \dfrac{3}{4} = \dfrac{3 \times 3}{4 \times 3} = \dfrac{9}{12}
+      \]
+      Une fois les deux fractions au même dénominateur, on additionne les numérateurs et on garde le dénominateur commun :
+      \[
+        \dfrac{1}{6} + \dfrac{3}{4} = \dfrac{2}{12} + \dfrac{9}{12} = \dfrac{2 + 9}{12} = \dfrac{11}{12}
+      \]
     \end{solution}
 
     \part[0.5] $\dfrac{5}{4} - \dfrac{12}{10}$
     \begin{solution}
-      On cherche un dénominateur commun : $4 \times 5 = 20$ et $10 \times 2 = 20$.
-
-      $\dfrac{5}{4} - \dfrac{12}{10} = \dfrac{5 \times 5}{4 \times 5} - \dfrac{12 \times 2}{10 \times 2} = \dfrac{25}{20} - \dfrac{24}{20} = \dfrac{1}{20}$
+      On met au même dénominateur. Ici, $20$ fonctionne. \\
+      \[
+        \dfrac{5}{4} = \dfrac{5 \times 5}{4 \times 5} = \dfrac{25}{20}
+        \qquad\text{et}\qquad
+        \dfrac{12}{10} = \dfrac{12 \times 2}{10 \times 2} = \dfrac{24}{20}
+      \]
+      \[
+        \dfrac{5}{4} - \dfrac{12}{10} = \dfrac{25}{20} - \dfrac{24}{20} = \dfrac{25 - 24}{20} = \dfrac{1}{20}
+      \]
     \end{solution}
 
     \part[1] $1 - \dfrac{3}{5} + \dfrac{1}{4}$
     \begin{solution}
-      On cherche un dénominateur commun à $1$, $\dfrac{3}{5}$ et $\dfrac{1}{4}$. Le dénominateur commun est $20$.
-
-      $1 = \dfrac{20}{20}$, \quad $\dfrac{3}{5} = \dfrac{12}{20}$, \quad $\dfrac{1}{4} = \dfrac{5}{20}$
-
-      $\dfrac{20}{20} - \dfrac{12}{20} + \dfrac{5}{20} = \dfrac{20 - 12 + 5}{20} = \dfrac{13}{20}$
+      On met tout au même dénominateur. Ici, $20$ fonctionne. \\
+      \[
+        1 = \dfrac{20}{20}
+        \qquad
+        \dfrac{3}{5} = \dfrac{3 \times 4}{5 \times 4} = \dfrac{12}{20}
+        \qquad
+        \dfrac{1}{4} = \dfrac{1 \times 5}{4 \times 5} = \dfrac{5}{20}
+      \]
+      \[
+        1 - \dfrac{3}{5} + \dfrac{1}{4} = \dfrac{20}{20} - \dfrac{12}{20} + \dfrac{5}{20} = \dfrac{20 - 12 + 5}{20} = \dfrac{13}{20}
+      \]
     \end{solution}
   \end{parts}
 \end{questions}
@@ -151,12 +303,19 @@
   \begin{parts}
     \part[0.5] $\dfrac{11}{4}$
     \begin{solution}
-      $\dfrac{11}{4} = \dfrac{8}{4} + \dfrac{3}{4} = 2 + \dfrac{3}{4}$
+      Pour décomposer une fraction sous la forme d'un entier et d'une fraction inférieure à $1$, on écrit le numérateur comme la somme du plus grand multiple du dénominateur et du reste, puis on sépare en deux fractions. \\
+      Ici, le dénominateur est $4$. Le plus grand multiple de $4$ inférieur ou égal à $11$ est $8$. On écrit donc $11 = 8 + 3$ :
+      \[
+        \dfrac{11}{4} = \dfrac{8 + 3}{4} = \dfrac{8}{4} + \dfrac{3}{4} = 2 + \dfrac{3}{4}
+      \]
     \end{solution}
 
     \part[0.5] $\dfrac{17}{5}$
     \begin{solution}
-      $\dfrac{17}{5} = \dfrac{15}{5} + \dfrac{2}{5} = 3 + \dfrac{2}{5}$
+      Le plus grand multiple de $5$ inférieur ou égal à $17$ est $15$.
+      \[
+        \dfrac{17}{5} = \dfrac{15 + 2}{5} = \dfrac{15}{5} + \dfrac{2}{5} = 3 + \dfrac{2}{5}
+      \]
     \end{solution}
   \end{parts}
 
@@ -165,12 +324,22 @@
   \begin{parts}
     \part[0.5] $\dfrac{13}{4}$
     \begin{solution}
-      $\dfrac{12}{4} = 3$ et $\dfrac{16}{4} = 4$, et $12 < 13 < 16$, donc $3 < \dfrac{13}{4} < 4$.
+      On cherche deux multiples consécutifs de $4$ qui encadrent $13$. On a $12 = 3 \times 4$ et $16 = 4 \times 4$, et $12 < 13 < 16$. Donc :
+      \[
+        \dfrac{12}{4} < \dfrac{13}{4} < \dfrac{16}{4}
+        \qquad \text{c'est-à-dire} \qquad
+        3 < \dfrac{13}{4} < 4.
+      \]
     \end{solution}
 
     \part[0.5] $\dfrac{19}{7}$
     \begin{solution}
-      $\dfrac{14}{7} = 2$ et $\dfrac{21}{7} = 3$, et $14 < 19 < 21$, donc $2 < \dfrac{19}{7} < 3$.
+      On a $14 = 2 \times 7$ et $21 = 3 \times 7$, et $14 < 19 < 21$. Donc :
+      \[
+        \dfrac{14}{7} < \dfrac{19}{7} < \dfrac{21}{7}
+        \qquad \text{c'est-à-dire} \qquad
+        2 < \dfrac{19}{7} < 3.
+      \]
     \end{solution}
   \end{parts}
 \end{questions}
@@ -183,12 +352,25 @@
   \begin{parts}
     \part[1] $\dfrac{2}{3} \times \dfrac{5}{7}$
     \begin{solution}
-      $\dfrac{2}{3} \times \dfrac{5}{7} = \dfrac{2 \times 5}{3 \times 7} = \dfrac{10}{21}$
+      On sait que pour multiplier deux fractions, on multiplie les numérateurs entre eux et les dénominateurs entre eux :
+      \[
+        \dfrac{a}{b} \times \dfrac{c}{d} = \dfrac{a \times c}{b \times d}
+      \]
+      On applique cette formule :
+      \[
+        \dfrac{2}{3} \times \dfrac{5}{7} = \dfrac{2 \times 5}{3 \times 7} = \dfrac{10}{21}
+      \]
     \end{solution}
 
     \part[1] $\dfrac{3}{4} \times \dfrac{8}{9}$
     \begin{solution}
-      $\dfrac{3}{4} \times \dfrac{8}{9} = \dfrac{3 \times 8}{4 \times 9} = \dfrac{24}{36} = \dfrac{2}{3}$
+      \[
+        \dfrac{3}{4} \times \dfrac{8}{9} = \dfrac{3 \times 8}{4 \times 9} = \dfrac{24}{36}
+      \]
+      On simplifie la fraction obtenue :
+      \[
+        \dfrac{24}{36} = \dfrac{\cancel{12} \times 2}{\cancel{12} \times 3} = \dfrac{2}{3}
+      \]
     \end{solution}
   \end{parts}
 \end{questions}
@@ -217,7 +399,10 @@
 \end{tikzpicture}
 
   \begin{solution}
-    L'intervalle entre deux entiers est divisé en $4$ parts égales : chaque graduation vaut $\dfrac{1}{4}$. Le point $A$ se trouve $7$ graduations après $0$, donc $A$ a pour abscisse $\dfrac{7}{4}$.
+    L'intervalle entre deux entiers est divisé en $4$ parts égales : chaque graduation vaut donc $\frac{1}{4}$. Le point $A$ se trouve $7$ graduations après $0$, donc :
+    \[
+      A = \dfrac{7}{4}.
+    \]
   \end{solution}
 
   \question[0.75] Ecrire l'abscisse du point $B$ sous la forme d'une fraction. Justifier brièvement.
@@ -240,7 +425,10 @@
 \end{tikzpicture}
 
   \begin{solution}
-    L'intervalle entre deux entiers est divisé en $3$ parts égales : chaque graduation vaut $\dfrac{1}{3}$. Le point $B$ se trouve $8$ graduations après $0$, donc $B$ a pour abscisse $\dfrac{8}{3}$.
+    L'intervalle entre deux entiers est divisé en $3$ parts égales : chaque graduation vaut donc $\frac{1}{3}$. Le point $B$ se trouve $8$ graduations après $0$, donc :
+    \[
+      B = \dfrac{8}{3}.
+    \]
   \end{solution}
 
   \question[0.75] Ecrire l'abscisse du point $C$ sous la forme d'une fraction. Justifier brièvement.
@@ -263,7 +451,10 @@
 \end{tikzpicture}
 
   \begin{solution}
-    L'intervalle entre deux entiers est divisé en $5$ parts égales : chaque graduation vaut $\dfrac{1}{5}$. Le point $C$ se trouve $7$ graduations après $0$, donc $C$ a pour abscisse $\dfrac{7}{5}$.
+    L'intervalle entre deux entiers est divisé en $5$ parts égales : chaque graduation vaut donc $\frac{1}{5}$. Le point $C$ se trouve $7$ graduations après $0$, donc :
+    \[
+      C = \dfrac{7}{5}.
+    \]
   \end{solution}
 
   \question[0.75] Ecrire l'abscisse du point $D$ sous la forme d'une fraction. Justifier brièvement.
@@ -286,7 +477,10 @@
 \end{tikzpicture}
 
   \begin{solution}
-    L'intervalle entre deux entiers est divisé en $8$ parts égales : chaque graduation vaut $\dfrac{1}{8}$. Le point $D$ se trouve $13$ graduations après $0$, donc $D$ a pour abscisse $\dfrac{13}{8}$.
+    L'intervalle entre deux entiers est divisé en $8$ parts égales : chaque graduation vaut donc $\frac{1}{8}$. Le point $D$ se trouve $13$ graduations après $0$, donc :
+    \[
+      D = \dfrac{13}{8}.
+    \]
   \end{solution}
 
 \end{questions}
@@ -305,24 +499,27 @@ Toute démarche, toute explication sera valorisée.
 
   \begin{solution}
     \begin{Indication}
-
-Ce qui est attendu :
-\begin{compactitem}
-\item Trouver un dénominateur commun pour comparer les deux fractions
-\item Rédiger la conclusion avec une phrase
-\end{compactitem}
-
+      Ce qui est attendu :
+      \begin{compactitem}
+        \item Trouver un dénominateur commun pour comparer les deux fractions
+        \item Rédiger la conclusion avec une phrase
+      \end{compactitem}
     \end{Indication}
 
-    On cherche un dénominateur commun à $8$ et $12$. Le plus petit dénominateur commun est $24$.
+    Pour savoir qui est le plus gourmand, on compare les deux fractions $\frac{5}{8}$ et $\frac{7}{12}$. On les met au même dénominateur. Ici, $24$ fonctionne (c'est le plus petit multiple commun à $8$ et $12$).
+    \[
+      \dfrac{5}{8} = \dfrac{5 \times 3}{8 \times 3} = \dfrac{15}{24}
+      \qquad\text{et}\qquad
+      \dfrac{7}{12} = \dfrac{7 \times 2}{12 \times 2} = \dfrac{14}{24}
+    \]
+    Les deux fractions ont le même dénominateur, et $15 > 14$, donc :
+    \[
+      \dfrac{15}{24} > \dfrac{14}{24}
+      \qquad\text{c'est-à-dire}\qquad
+      \dfrac{5}{8} > \dfrac{7}{12}.
+    \]
 
-    $\dfrac{5}{8} = \dfrac{5 \times 3}{8 \times 3} = \dfrac{15}{24}$
-
-    $\dfrac{7}{12} = \dfrac{7 \times 2}{12 \times 2} = \dfrac{14}{24}$
-
-    Or $\dfrac{15}{24} > \dfrac{14}{24}$, donc $\dfrac{5}{8} > \dfrac{7}{12}$.
-
-    \textbf{Marion est la plus gourmande} car elle mange une plus grande part du gâteau que Sébastien.
+    \textbf{Gertrude est la plus gourmande} car elle mange une plus grande part du gâteau que Jean-Eudes.
   \end{solution}
 
   \question[3] Un réservoir contient $60$ litres d'eau. Jean-Michel prend une douche le matin et utilise $\dfrac{1}{4}$ du réservoir.
@@ -330,20 +527,41 @@ Ce qui est attendu :
   \begin{parts}
     \part[1] Quel volume d'eau Jean-Michel a-t-il consommé ? Quel volume reste-t-il dans le réservoir après sa douche ?
     \begin{solution}
-      Jean-Michel a consommé $\dfrac{1}{4} \times 60 = \dfrac{60}{4} = 15$ litres.
-
-      Il reste $60 - 15 = 45$ litres dans le réservoir après sa douche.
+      Jean-Michel a consommé le quart du réservoir :
+      \[
+        \dfrac{1}{4} \times 60 = \dfrac{60}{4} = 15 \text{ litres.}
+      \]
+      Il reste donc dans le réservoir :
+      \[
+        60 - 15 = 45 \text{ litres.}
+      \]
     \end{solution}
 
     \part[1] Puis Gontran prend à son tour une douche l'après-midi. Il utilise les $\dfrac{2}{5}$ du volume restant. Quel volume d'eau Gontran a-t-il utilisé ? Quel volume reste-t-il dans le réservoir après sa douche ?
     \begin{solution}
-      Gontran a utilisé $\dfrac{2}{5} \times 45 = \dfrac{90}{5} = 18$ litres.
-
-      Il reste $45 - 18 = 27$ litres dans le réservoir après la douche de Gontran.
+      Le volume restant avant la douche de Gontran est de $45$ litres. Gontran utilise les $\frac{2}{5}$ de ce volume :
+      \[
+        \dfrac{2}{5} \times 45 = \dfrac{2 \times 45}{5} = \dfrac{90}{5} = 18 \text{ litres.}
+      \]
+      Il reste donc dans le réservoir :
+      \[
+        45 - 18 = 27 \text{ litres.}
+      \]
     \end{solution}
 
     \part[1] Pendant toute la journée, les deux énergumènes boivent aussi 7 litres d'eau. Au total, quel volume d'eau reste-t-il dans le réservoir ? [Bonus] A quelle fraction du volume initial cela correspond-il ?
     \begin{solution}
+      Après les deux douches, il restait $27$ litres. On retire les $7$ litres bus dans la journée :
+      \[
+        27 - 7 = 20 \text{ litres.}
+      \]
+      Il reste donc $\textbf{20 litres}$ dans le réservoir à la fin de la journée. \\
+
+      \textbf{[Bonus]} Le volume initial était de $60$ litres. La fraction du volume initial correspondant aux $20$ litres restants est :
+      \[
+        \dfrac{20}{60} = \dfrac{\cancel{20} \times 1}{\cancel{20} \times 3} = \dfrac{1}{3}
+      \]
+      Il reste donc $\frac{1}{3}$ du volume initial.
     \end{solution}
   \end{parts}
 \end{questions}
