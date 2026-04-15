@@ -1,0 +1,122 @@
+\documentclass[a4paper,landscape,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=0cm]{geometry}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{arydshln}
+\usepackage{multirow}
+
+\setlength{\dashlinedash}{1.5pt}
+\setlength{\dashlinegap}{2pt}
+\setlength{\arrayrulewidth}{0.5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Padding intérieur 0.25 cm (horizontal via tabcolsep ; vertical via struts)
+\setlength{\tabcolsep}{0.25cm}
+\renewcommand{\arraystretch}{1}
+
+\pagestyle{empty}
+
+% ---------------------------------------------------------------
+% Dimensions
+% A4 paysage 29.7 × 21 cm, marge 0
+% 4 rectangles (2×2) de 14.85 × 10.5 cm chacun.
+% Header fixe 2.54 cm (3 lignes × 0.8467 cm).
+% Body = blockh - hdrh = 10.5 - 2.54 = 7.96 cm (avant petites retenues bordures).
+% ---------------------------------------------------------------
+\newlength{\blockw}  \setlength{\blockw}{14.85cm}
+\newlength{\blockh}  \setlength{\blockh}{10.5cm}
+% Largeur d'une demi-cellule p-column : (14.85/2) - 2×tabcolsep = 7.425 - 0.5 = 6.925 cm
+\newlength{\halfw}   \setlength{\halfw}{6.925cm}
+% Hauteur d'une sous-ligne du header
+\newlength{\subhdrh} \setlength{\subhdrh}{0.8467cm}
+% Hauteur de la zone questions (calibrée pour remplir la feuille)
+\newlength{\bodyh}   \setlength{\bodyh}{7.71cm}
+
+% ---------------------------------------------------------------
+% Strut vertical : force la hauteur exacte d'une sous-ligne du header
+% ET centre verticalement le texte dans la ligne.
+% Row total = height + depth = 0.51 + 0.33 = 0.84 cm ≈ hdrh/3
+% ---------------------------------------------------------------
+\newcommand{\hdrstrut}{\rule[-0.33cm]{0pt}{0.84cm}}
+
+% ---------------------------------------------------------------
+% Header : tableau 3×2
+% - Colonne gauche : NOM / Prénom / Date séparés par \cline{1-1}
+% - Colonne droite : "Note :" uniquement en ligne 1 ; lignes 2 et 3
+%   vides et SANS séparateur horizontal → la cellule Note apparaît
+%   visuellement fusionnée sur toute la hauteur du header.
+% - Grâce au strut, "Note :" est centré verticalement dans la ligne 1,
+%   donc à la même hauteur que "NOM :".
+% ---------------------------------------------------------------
+\newcommand{\headertable}{%
+  \fontsize{8}{10}\selectfont
+  \begin{tabular}{|p{\halfw}|p{\halfw}|}
+    \hline
+    \hdrstrut\textbf{NOM :}    & \hdrstrut\textbf{Note :} \\ \cline{1-1}
+    \hdrstrut\textbf{Prénom :} &                          \\ \cline{1-1}
+    \hdrstrut\textbf{Date :}   &                          \\ \hline
+  \end{tabular}%
+}
+
+% ---------------------------------------------------------------
+% Colonne de questions : 5 bullets centrés verticalement dans bodyh
+% ---------------------------------------------------------------
+\newcommand{\qcol}[5]{%
+  \parbox[t][\bodyh][t]{\halfw}{%
+    \fontsize{13}{16}\selectfont
+    \vspace*{\fill}
+    \begin{itemize}[leftmargin=6mm, itemsep=0.5cm, topsep=0pt, partopsep=0pt, label=\textbullet]
+      \item #1
+      \item #2
+      \item #3
+      \item #4
+      \item #5
+    \end{itemize}
+    \vspace*{\fill}
+  }%
+}
+
+\newcommand{\emptyqcol}{\qcol{\vphantom{X}}{\vphantom{X}}{\vphantom{X}}{\vphantom{X}}{\vphantom{X}}}
+
+% ---------------------------------------------------------------
+% Corps questions : 1 ligne × 2 colonnes, ligne verticale centrale
+% en pointillés (:).
+% ---------------------------------------------------------------
+\newcommand{\bodytable}[2]{%
+  \begin{tabular}{|p{\halfw}:p{\halfw}|}
+    #1 & #2 \\ \hline
+  \end{tabular}%
+}
+
+% ---------------------------------------------------------------
+% Bloc élève complet : header + body empilés sans gap vertical
+% ---------------------------------------------------------------
+\newcommand{\studentblock}[2]{%
+  \begin{tabular}{@{}c@{}}
+    \headertable \\[-\arrayrulewidth]
+    \bodytable{#1}{#2}
+  \end{tabular}%
+}
+
+\newcommand{\emptystudentblock}{\studentblock{\emptyqcol}{\emptyqcol}}
+
+% ===============================================================
+% DOCUMENT : 2 lignes × 2 colonnes de rectangles empilées sans gap
+% ===============================================================
+\begin{document}
+
+\noindent
+\begin{tabular}{@{}c@{}c@{}}
+  \emptystudentblock & \emptystudentblock \\[-\arrayrulewidth]
+  \emptystudentblock & \emptystudentblock
+\end{tabular}
+
+\end{document}
