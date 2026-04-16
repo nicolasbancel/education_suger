@@ -1,0 +1,144 @@
+\documentclass[a4paper,landscape,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=0cm]{geometry}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{arydshln}
+\usepackage{multirow}
+
+\setlength{\dashlinedash}{1.5pt}
+\setlength{\dashlinegap}{2pt}
+\setlength{\arrayrulewidth}{0.5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\setlength{\tabcolsep}{0.25cm}
+\renewcommand{\arraystretch}{1}
+
+\pagestyle{empty}
+
+% ---------------------------------------------------------------
+% Toggle réponses
+% Compiler sans argument  → énoncé seul
+% Compiler avec \def\showanswers{} → réponses en rouge gras
+% ---------------------------------------------------------------
+\ifdefined\showanswers
+  \newcommand{\q}[2]{#1 \textcolor{red}{\textbf{#2}}}
+\else
+  \newcommand{\q}[2]{#1}
+\fi
+
+% Paramètres de l'interrogation
+\newcommand{\interronum}{14}
+\newcommand{\interrodate}{16 Avril 2026}
+
+\newlength{\blockw}  \setlength{\blockw}{14.85cm}
+\newlength{\blockh}  \setlength{\blockh}{10.5cm}
+\newlength{\halfw}   \setlength{\halfw}{6.925cm}
+\newlength{\subhdrh} \setlength{\subhdrh}{0.8467cm}
+\newlength{\bodyh}   \setlength{\bodyh}{7.71cm}
+
+\newcommand{\hdrstrut}{\rule[-0.33cm]{0pt}{0.84cm}}
+
+\newcommand{\headertable}{%
+  \fontsize{8}{10}\selectfont
+  \begin{tabular}{|p{\halfw}|p{\halfw}|}
+    \hline
+    \hdrstrut\textbf{NOM :}    & \hdrstrut\textbf{Note :} \\ \cline{1-1}
+    \hdrstrut\textbf{Prénom :} &                          \\ \cline{1-1}
+    \hdrstrut\textbf{Date :} \textit{\interrodate{} --} \textbf{\textit{Interrogation \#\interronum}} &                          \\ \hline
+  \end{tabular}%
+}
+
+\newcommand{\qcol}[5]{%
+  \parbox[t][\bodyh][t]{\halfw}{%
+    \fontsize{13}{16}\selectfont
+    \vspace*{\fill}
+    \begin{itemize}[leftmargin=6mm, itemsep=0.5cm, topsep=0pt, partopsep=0pt, label=\textbullet]
+      \item #1
+      \item #2
+      \item #3
+      \item #4
+      \item #5
+    \end{itemize}
+    \vspace*{\fill}
+  }%
+}
+
+\newcommand{\bodytable}[2]{%
+  \begin{tabular}{|p{\halfw}:p{\halfw}|}
+    #1 & #2 \\ \hline
+  \end{tabular}%
+}
+
+\newcommand{\studentblock}[2]{%
+  \begin{tabular}{@{}c@{}}
+    \headertable \\[-\arrayrulewidth]
+    \bodytable{#1}{#2}
+  \end{tabular}%
+}
+
+\begin{document}
+
+\noindent
+\begin{tabular}{@{}c@{}c@{}}
+  % Version 1
+  \studentblock
+    {\qcol{\q{$36 - 5 \times 4 + 7 =$}{23}}
+          {\q{$7 \times 3 - 4 \times 5 + 6 =$}{7}}
+          {\q{$12 \div 1\,000 =$}{0,012}}
+          {\q{$53 - 6 \times (8 - 3) =$}{23}}
+          {\q{$43 \times 11 =$}{473}}}
+    {\qcol{\q{$63 \times 9 =$}{567}}
+          {\q{$1\,001 \times 47 =$}{47\,047}}
+          {\q{$0{,}5 \times 8{,}4 \times 4 \times 5 =$}{84}}
+          {\q{$4{,}7 + 12 + 5{,}3 + 8 =$}{30}}
+          {\q{$96 \div 4 =$}{24}}}
+  &
+  % Version 2
+  \studentblock
+    {\qcol{\q{$43 \times 11 =$}{473}}
+          {\q{$0{,}5 \times 8{,}4 \times 4 \times 5 =$}{84}}
+          {\q{$12 \div 1\,000 =$}{0,012}}
+          {\q{$96 \div 4 =$}{24}}
+          {\q{$63 \times 9 =$}{567}}}
+    {\qcol{\q{$36 - 5 \times 4 + 7 =$}{23}}
+          {\q{$4{,}7 + 12 + 5{,}3 + 8 =$}{30}}
+          {\q{$53 - 6 \times (8 - 3) =$}{23}}
+          {\q{$1\,001 \times 47 =$}{47\,047}}
+          {\q{$7 \times 3 - 4 \times 5 + 6 =$}{7}}}
+  \\[-\arrayrulewidth]
+  % Version 3
+  \studentblock
+    {\qcol{\q{$1\,001 \times 47 =$}{47\,047}}
+          {\q{$53 - 6 \times (8 - 3) =$}{23}}
+          {\q{$4{,}7 + 12 + 5{,}3 + 8 =$}{30}}
+          {\q{$7 \times 3 - 4 \times 5 + 6 =$}{7}}
+          {\q{$0{,}5 \times 8{,}4 \times 4 \times 5 =$}{84}}}
+    {\qcol{\q{$96 \div 4 =$}{24}}
+          {\q{$63 \times 9 =$}{567}}
+          {\q{$36 - 5 \times 4 + 7 =$}{23}}
+          {\q{$43 \times 11 =$}{473}}
+          {\q{$12 \div 1\,000 =$}{0,012}}}
+  &
+  % Version 4
+  \studentblock
+    {\qcol{\q{$96 \div 4 =$}{24}}
+          {\q{$12 \div 1\,000 =$}{0,012}}
+          {\q{$63 \times 9 =$}{567}}
+          {\q{$36 - 5 \times 4 + 7 =$}{23}}
+          {\q{$4{,}7 + 12 + 5{,}3 + 8 =$}{30}}}
+    {\qcol{\q{$43 \times 11 =$}{473}}
+          {\q{$7 \times 3 - 4 \times 5 + 6 =$}{7}}
+          {\q{$1\,001 \times 47 =$}{47\,047}}
+          {\q{$0{,}5 \times 8{,}4 \times 4 \times 5 =$}{84}}
+          {\q{$53 - 6 \times (8 - 3) =$}{23}}}
+\end{tabular}
+
+\end{document}
