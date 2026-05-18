@@ -108,6 +108,40 @@ Contextes observés (chap 5) : âge et taille, prix au marché, tours de montagn
 
 **Règle implicite** : les exemples sont **ancrés dans des situations de la vie d'un·e élève de 6ème** (sport, école, achats, animaux, monuments connus, etc.). Éviter les exemples abstraits ou décorrélés du quotidien.
 
+## Polices et tailles
+
+Convention typo des Google Docs de cours (à appliquer à tout contenu poussé via API) :
+
+| Élément | Police | Taille |
+|---|---|---|
+| Texte normal (paragraphes) | Montserrat | 12 pt |
+| Heading 3 | Montserrat | 14 pt |
+| Heading 2 | Montserrat | 16 pt |
+| Heading 1 | Montserrat | (à confirmer, probablement 18-20 pt) |
+
+**Implémentation API** : utiliser `updateTextStyle` avec `weightedFontFamily.fontFamily = "Montserrat"` et `fontSize.magnitude` adapté. Le simple `insertText` n'applique pas de style et fait hériter de la police par défaut du Doc — il faut donc systématiquement faire suivre par un `updateTextStyle` sur le range inséré.
+
+## Tableaux
+
+Convention pour les tableaux Google Docs natifs :
+
+| Élément | Valeur |
+|---|---|
+| Police | Montserrat |
+| Taille | 10 pt (plus petit que le texte courant) |
+| Alignement horizontal (toutes cellules) | Centré |
+| Alignement vertical (toutes cellules) | Centré (`contentAlignment: MIDDLE`) |
+| Marge intérieure (padding) | 0,1 cm sur les 4 côtés (≈ 2,83 pt) |
+| **Header (1ère ligne)** | Gras |
+| **Header (1ère ligne)** | Couleur de remplissage `#c9daf8` (bleu clair pastel) |
+
+**Implémentation API** : appliquer dans cet ordre après `insertTable` + remplissage des cellules :
+1. `updateTextStyle` Montserrat 10pt sur la plage du tableau
+2. `updateParagraphStyle alignment: CENTER` sur la plage du tableau
+3. `updateTableCellStyle contentAlignment: MIDDLE` + padding 2,83 pt sur toutes les cellules (`tableRange` couvrant n_rows × n_cols)
+4. `updateTableCellStyle backgroundColor: #c9daf8` sur la 1ère ligne (`rowSpan: 1`)
+5. `updateTextStyle bold: true` sur les cellules de la 1ère ligne
+
 ## Notations typographiques
 
 Constats :
