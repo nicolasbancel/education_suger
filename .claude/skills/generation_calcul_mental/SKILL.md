@@ -8,10 +8,15 @@ description: Génère une interrogation de calcul mental de 6ème (10 questions,
 ### Mode 1 — Générer une nouvelle interrogation
 
 ```
-/generation_calcul_mental <numéro_interro> <date> <notions_prioritaires>
+/generation_calcul_mental <numéro_interro> <date> "<consigne>"
 ```
 
-Exemple : `/generation_calcul_mental 14 "16 Avril 2026" "9, 16"`
+La `<consigne>` est un texte libre qui pilote le contenu de l'interro — voir la
+section « La consigne (3ᵉ argument) » ci-dessous.
+
+Exemples :
+- `/generation_calcul_mental 14 "16 Avril 2026" "9, 16"`
+- `/generation_calcul_mental 15 "13 Mai 2026" "8 questions sur les pourcentages, 1 distributivité, 1 priorités de calcul"`
 
 ### Mode 2 — Recompiler un devoir existant (énoncé + correction)
 
@@ -25,18 +30,47 @@ Dans ce mode, sauter directement à l'**Étape 3** (compilation).
 
 ---
 
+## La consigne (3ᵉ argument)
+
+Le 3ᵉ argument du Mode 1 est un **texte libre**. L'IA l'interprète et le classe dans
+l'un des régimes suivants (les combinaisons sont autorisées) :
+
+- **Notions prioritaires (accent)** — une liste de notions, par numéro ou par nom
+  (ex : `"9, 16"` ou `"priorités et distributivité"`). L'IA répartit librement les
+  10 questions en mettant l'accent sur ces notions.
+
+- **Répartition forcée (exacte)** — des comptes précis par notion
+  (ex : `"8 questions sur les pourcentages, 1 distributivité, 1 priorités de calcul"`).
+  L'IA génère **exactement** ces quantités. Le total **doit valoir 10** ; si ce n'est
+  pas le cas, **STOP** et demander une correction à l'utilisateur.
+
+- **Questions imposées** — des énoncés exacts à inclure tels quels
+  (ex : `"impose 32 × 99 et 1001 × 47"`). Ces énoncés apparaissent sans modification ;
+  les questions restantes complètent jusqu'à 10.
+
+- **Consigne vide** — accent par défaut sur les notions 9 à 16.
+
+Voir `references/pedagogie.md` pour la liste numérotée des notions et leurs contraintes.
+
+---
+
 ## Workflow — Mode 1 (nouvelle interrogation)
 
 ### Étape 1 — Générer et MONTRER les questions (STOP après cette étape)
 
 1. **Lire** le fichier de référence pédagogique : `references/pedagogie.md` (relatif à ce skill)
-2. **Générer 10 questions** en respectant toutes les contraintes de `references/pedagogie.md`
-   - Niveau 6ème, réalisable mentalement en < 30 secondes
+2. **Interpréter la consigne** (3ᵉ argument — voir la section dédiée) : déterminer le
+   régime (notions prioritaires, répartition forcée, questions imposées, ou combinaison).
+   - Si la consigne est une **répartition forcée**, vérifier que le total vaut **exactement 10**.
+     Sinon : **STOP**, signaler le total obtenu et demander une correction à l'utilisateur.
+   - **Reformuler l'interprétation** à l'utilisateur avant de générer les questions.
+3. **Générer 10 questions** en respectant toutes les contraintes de `references/pedagogie.md`
+   - Niveau 6ème, réalisable mentalement en < 30 secondes (< 50 s pour les pourcentages)
    - Difficulté progressive : 3 faciles, 4 moyennes, 3 difficiles
-   - Accent sur les notions prioritaires passées en argument
+   - Respecter la consigne passée en argument
    - Aucune question déjà présente dans l'historique des interros
-3. **Calculer les réponses** pour chaque question
-4. **Afficher les 10 questions** et **ATTENDRE la validation** :
+4. **Calculer les réponses** pour chaque question
+5. **Afficher les 10 questions** et **ATTENDRE la validation** :
 
 ```
 Questions proposées pour l'Interrogation #<N> :

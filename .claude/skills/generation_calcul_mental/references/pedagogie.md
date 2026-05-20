@@ -1,14 +1,16 @@
 # Génération d'interrogations de calcul mental – Mathématiques 6e
 
-Ce prompt génère des interrogations de calcul mental adaptées au niveau 6e.
+Document de référence du skill `generation_calcul_mental`. Les inputs d'une
+interrogation (numéro, date, consigne) sont passés en **arguments de la commande** —
+voir `SKILL.md`. Ce fichier ne contient aucune valeur à éditer.
 
-## Paramètres
+## Cadre
 
-- Nombre de questions : 10
-- Notions prioritaires
+- 10 questions par interrogation
+- Niveau 6e, réalisable mentalement : < 30 secondes par question (< 50 secondes pour les pourcentages)
+- Aucune technique écrite, pas de calculette
 
-Indiquez les numéros des notions sur lesquelles vous souhaitez insister (ex : `9, 14, 16`).
-Si vous laissez vide, l'IA répartira automatiquement les questions avec un accent sur les notions 9 à 16.
+## Liste des notions
 
 | # | Notion |
 |---|--------|
@@ -28,18 +30,7 @@ Si vous laissez vide, l'IA répartira automatiquement les questions avec un acce
 | 14 | Regroupement astucieux (multiplication) |
 | 15 | Regroupement astucieux (addition) |
 | 16 | Distributivité |
-
-- Notions prioritaires : 9, 16
-
-### Questions obligatoires à inclure
-
-Si vous souhaitez imposer certaines questions exactes dans l'interrogation, écrivez-les ci-dessous (une par ligne). Sinon, laissez vide.
-
-- $21 + 3 \times 10 - 6$
-- $1001 \times 47$
-- $32 \times 99$
-
-**Ne modifiez rien en dessous de cette ligne — les instructions ci-dessous sont destinées à l'IA.**
+| 17 | Pourcentages |
 
 ## Role
 
@@ -84,16 +75,31 @@ Les notions déjà travaillées en classe sont les suivantes :
 16. Distributivité
     - Uniquement des multiplications par une puissance de 10 + 1 ou -1 (Exemples : × 9, × 11, × 101, × 99, × 1001, × 999...)
     - Dans le cas d'un Y × 11 ou Y × 9 (et n'importe quel autre scénario de ce type), le facteur Y ne doit pas être trop complexe à ajouter ou à soustraire à 10 × Y
+    - Une multiplication par 9, 99, 199, ou par tout nombre proche d'une puissance de 10 relève de cette notion. Ex : « 4 × 999 » est une question de distributivité (et non de multiplication par 4) ; la correction doit présenter la méthode de distributivité.
+17. Pourcentages
+    - Pourcentages utilisés : 10 %, 20 %, 25 %, 40 %, 50 %, 60 %, 75 %, 80 %, 100 %
+    - Forme des questions : « X% de N » (ex : 25% de 200), sans aucune unité
+    - Les résultats doivent être des nombres entiers (tolérance : un décimal simple possible avec 10 %)
+    - Varier la taille des nombres ; pour 50 %, les nombres peuvent être grands (jusqu'à l'ordre de 10 000)
+    - Faisable mentalement en moins de 50 secondes par un élève de 6e / début 5e
+    - Exemples de calibration : 50% de 80 ; 25% de 120 ; 10% de 450 ; 20% de 250 ; 75% de 200 ; 80% de 200 ; 100% de 56
+    - Méthodes de calcul mental attendues (à mobiliser dans la correction) :
+        - Équivalences fractionnaires : 50 % = 1/2 ; 25 % = 1/4 ; 75 % = 3/4 ; 20 % = 1/5 ; 10 % = 1/10
+        - 20 % : diviser par 5 (= diviser par 10 puis multiplier par 2)
+        - 25 % : diviser par 4 (= diviser par 2 deux fois)
+        - 75 % : calculer 25 % puis multiplier par 3
+        - 80 % : calculer 10 % puis multiplier par 8
+        - 40 % et 60 % : à partir de 20 % (×2, ×3) ou de 10 %
 
 ## Objectif
 
 Génère **une nouvelle interrogation de calcul mental** respectant strictement les contraintes suivantes :
 
-- Le nombre de questions est celui indiqué dans la section "A remplir" en haut du document
+- Le nombre de questions est 10
 - **Le niveau de difficulté doit être équivalent à celui des interrogations précédentes, sans augmentation nette ni simplification excessive.**
-- Mettre un accent particulier sur les notions prioritaires indiquées dans la section "A remplir" en haut du document
-- Si aucune notion prioritaire n'est fournie, répartis les questions selon l'importance pédagogique générale, avec un accent sur les notions 9 à 16.
-- Les questions obligatoires indiquées dans la section "A remplir" doivent apparaître **exactement telles quelles**, sans modification.
+- Respecter la consigne passée en argument de la commande : notions prioritaires (accent), répartition forcée (comptes exacts par notion), ou questions imposées — voir `SKILL.md`.
+- Si aucune consigne n'est fournie, répartis les questions selon l'importance pédagogique générale, avec un accent sur les notions 9 à 16.
+- Les questions imposées éventuellement présentes dans la consigne doivent apparaître **exactement telles quelles**, sans modification.
 
 ## Référence de niveau
 
@@ -272,17 +278,6 @@ Interrogation N°1
 7 + 6
 2 658 + 299
 ```
-
-## Format de sortie attendu
-
-- Format texte sans caractères spéciaux, que je peux directement copier coller dans mon document d'interrogation, sans aucune mise en forme (type .txt)
-- Tu utiliseras les signes officiels pour les additions, les soustractions, les divisions (÷ et pas /), et les multiplications (× et pas la lettre x), et les décimales sont à écrire avec une virgule, pas un point.
-- Questions qui se suivent, avec numérotation (1. pour la 1ère question, 2. pour la 2ème question etc)
-- A la fin, explicite ce qui est évalué par chaque question, c'est un repère pour les parents et l'élève. Par exemple 1. Distributivité. Ces notions reprennent la liste des éléments du programme énoncés dans la section "Contexte pédagogique et contraintes"
-- Une multiplication par 9, 99, 199, ou par n'importe quel nombre proche d'une puisance de 10 teste nécessairement la distributivité. Si la question est 4 x 999, il est impératif de fournir la méthode associée à la distributivité, pas à la multiplication par 4.
-- A la fin de chaque question, il y a un espace, un signe = et un espace. Par exemple 2,5 × 29 × 4 =
-- **Aucune correction**, uniquement les énoncés
-
 
 # Robustesse
 
