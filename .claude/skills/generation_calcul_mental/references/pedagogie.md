@@ -77,19 +77,27 @@ Les notions déjà travaillées en classe sont les suivantes :
     - Dans le cas d'un Y × 11 ou Y × 9 (et n'importe quel autre scénario de ce type), le facteur Y ne doit pas être trop complexe à ajouter ou à soustraire à 10 × Y
     - Une multiplication par 9, 99, 199, ou par tout nombre proche d'une puissance de 10 relève de cette notion. Ex : « 4 × 999 » est une question de distributivité (et non de multiplication par 4) ; la correction doit présenter la méthode de distributivité.
 17. Pourcentages
-    - Pourcentages utilisés : 10 %, 20 %, 25 %, 40 %, 50 %, 60 %, 75 %, 80 %, 100 %
+    - Pourcentages directs (briques de base) : 1 %, 2 %, 3 %, 5 %, 10 %, 20 %, 25 %, 40 %, 50 %, 60 %, 75 %, 80 %, 100 %
+    - Pourcentages composites autorisés (par décomposition à partir des briques) :
+        - Par addition : 52 % = 50 % + 2 % ; 15 % = 10 % + 5 % ; 27 % = 25 % + 2 % ; 53 % = 50 % + 3 %
+        - Par complément à 100 % : 99 % = 100 % - 1 % ; 98 % = 100 % - 2 % ; 95 % = 100 % - 5 %
     - Forme des questions : « X% de N » (ex : 25% de 200), sans aucune unité
-    - Les résultats doivent être des nombres entiers (tolérance : un décimal simple possible avec 10 %)
+    - Les résultats doivent être des nombres entiers (tolérance : un décimal simple possible avec 1 %, 5 %, 10 %)
     - Varier la taille des nombres ; pour 50 %, les nombres peuvent être grands (jusqu'à l'ordre de 10 000)
     - Faisable mentalement en moins de 50 secondes par un élève de 6e / début 5e
-    - Exemples de calibration : 50% de 80 ; 25% de 120 ; 10% de 450 ; 20% de 250 ; 75% de 200 ; 80% de 200 ; 100% de 56
+    - Exemples de calibration : 50% de 80 ; 25% de 120 ; 10% de 450 ; 20% de 250 ; 75% de 200 ; 80% de 200 ; 100% de 56 ; 1% de 800 ; 5% de 400 ; 2% de 350 ; 52% de 200 ; 99% de 350 ; 15% de 80
     - Méthodes de calcul mental attendues (à mobiliser dans la correction) :
         - Équivalences fractionnaires : 50 % = 1/2 ; 25 % = 1/4 ; 75 % = 3/4 ; 20 % = 1/5 ; 10 % = 1/10
+        - 1 % : diviser par 100
+        - 2 % : calculer 1 % puis multiplier par 2 (ou 10 % puis diviser par 5)
+        - 3 % : calculer 1 % puis multiplier par 3
+        - 5 % : moitié de 10 %
         - 20 % : diviser par 5 (= diviser par 10 puis multiplier par 2)
         - 25 % : diviser par 4 (= diviser par 2 deux fois)
         - 75 % : calculer 25 % puis multiplier par 3
         - 80 % : calculer 10 % puis multiplier par 8
         - 40 % et 60 % : à partir de 20 % (×2, ×3) ou de 10 %
+        - Pourcentages composites : décomposer en briques de base (ex : 52 % = 50 % + 2 % ; 99 % = 100 % - 1 % ; 15 % = 10 % + 5 %)
 
 ## Objectif
 
@@ -109,6 +117,48 @@ Tu trouveras ci-dessous l'historique complet des interrogations précédentes. I
 - éviter toute montée ou baisse de difficulté
 
 ```
+Interrogation N°16
+
+25 % de 80 =
+10 % de 542 =
+50 % de 7 400 =
+60 % de 15 =
+25 % de 240 =
+
+20 % de 350 =
+23 - 4 × 5 + 8 =
+75 % de 160 =
+80 % de 250 =
+35 × 99 =
+
+Interrogation N°15
+
+24 × 5 =
+21 + 3 × 10 - 6 =
+32 × 99 =
+46 × 5 =
+25 × 11 =
+
+54 - 4 × 8 + 5 =
+0,5 × 7 × 4 × 6 =
+128 × 5 =
+5 × 9 - 3 × 4 + 6 =
+18 × 101 =
+
+Interrogation N°14
+
+36 - 5 × 4 + 7 =
+7 × 3 - 4 × 5 + 6 =
+12 ÷ 1 000 =
+53 - 6 × (8 - 3) =
+43 × 11 =
+
+63 × 9 =
+1 001 × 47 =
+0,5 × 8,4 × 4 × 5 =
+4,7 + 12 + 5,3 + 8 =
+96 ÷ 4 =
+
 Interrogation N°13
 
 8 × 6 − 3 × 5 + 4 =

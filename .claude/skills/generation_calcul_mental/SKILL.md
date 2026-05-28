@@ -90,6 +90,8 @@ Une fois les questions validées :
 
 1. **Lire le template** : `references/template.tex` (relatif à ce skill)
 2. **Créer 4 permutations** (shuffles) différentes des 10 questions
+   - **Règle des 2 premières** : dans chaque permutation, les positions 1 et 2 sont occupées par 2 questions **relativement faciles**. Le but est d'éviter qu'un élève tombe sur des questions dures dès le départ — tous les élèves doivent commencer par un démarrage abordable, quelle que soit la version.
+   - Les 8 positions restantes (3 à 10) sont shufflées librement et **doivent différer d'une version à l'autre**.
 3. **Pour chaque permutation** : questions 1–5 dans `\qcol` gauche, 6–10 dans `\qcol` droite
 4. **Écrire le fichier .tex** dans `01_2526_6emes_maths/00_calcul_mental/`
    - Nom : `interro_calcul_mental_<N>.tex`
