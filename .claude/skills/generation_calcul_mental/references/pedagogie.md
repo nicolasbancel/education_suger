@@ -117,7 +117,35 @@ Tu trouveras ci-dessous l'historique complet des interrogations précédentes. I
 - éviter toute montée ou baisse de difficulté
 
 ```
+Interrogation N°17
+
+10 % de 918 273 =
+50 % de 360 =
+7 × 101 =
+25 % de 120 =
+20 % de 450 =
+
+24 × 11 =
+75 % de 80 =
+52 % de 200 =
+98 % de 150 =
+45 × 9 =
+
 Interrogation N°16
+
+10 % de 230 =
+50 % de 480 =
+5 % de 60 =
+20 % de 150 =
+15 % de 80 =
+
+25 % de 160 =
+2 % de 400 =
+11 % de 300 =
+99 % de 200 =
+60 % de 200 =
+
+Interrogation N°15
 
 25 % de 80 =
 10 % de 542 =
@@ -131,7 +159,7 @@ Interrogation N°16
 80 % de 250 =
 35 × 99 =
 
-Interrogation N°15
+Interrogation N°15 - Archived
 
 24 × 5 =
 21 + 3 × 10 - 6 =

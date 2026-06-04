@@ -26,7 +26,8 @@ Exemples :
 
 Exemple : `/generation_calcul_mental 01_2526_6emes_maths/00_calcul_mental/interro_calcul_mental_14.tex`
 
-Dans ce mode, sauter directement à l'**Étape 3** (compilation).
+Dans ce mode, sauter directement à l'**Étape 3** (compilation) et **s'arrêter là** :
+ne pas exécuter l'Étape 4 (l'interro est déjà présente dans l'historique).
 
 ---
 
@@ -123,6 +124,32 @@ Afficher le corrigé texte :
 Corrigé — Interrogation #<N> :
  1. 8 × 6 − 3 × 5 + 4 = 37          (Priorités de calcul)
  ...
+```
+
+### Étape 4 — Consigner l'interro dans l'historique
+
+Une fois les 2 PDFs produits, **ajouter la nouvelle interrogation à l'historique**
+de `references/pedagogie.md` (section « Référence de niveau »), afin que les futures
+générations l'évitent et calibrent le niveau dessus.
+
+1. Insérer le bloc **en tête de l'historique** (juste après l'ouverture du bloc de
+   code ```` ``` ````, au-dessus de l'interro la plus récente).
+2. Format : l'en-tête `Interrogation N°<N>`, puis les **10 questions dans l'ordre
+   canonique** (1→10, sans les réponses), en **deux groupes de 5** séparés par une
+   ligne vide (questions 1–5, puis 6–10).
+3. Ne pas inclure les réponses ni la notation LaTeX : reprendre les énoncés en texte
+   simple (ex : `52 % de 200 =`).
+
+Exemple :
+```
+Interrogation N°17
+
+10 % de 918 273 =
+50 % de 360 =
+...
+
+24 × 11 =
+...
 ```
 
 ---
