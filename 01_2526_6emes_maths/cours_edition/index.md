@@ -22,6 +22,9 @@ Table de référence des cours de 6ème. Renseigner l'URL Google Doc et le statu
 | 08 | Angles | https://docs.google.com/document/d/139e6XdPX0td1eeo4TkYivDqYFRkbZOmI_CfXmr2LMeM/edit | | |
 | 09 | Triangles et quadrilatères | https://docs.google.com/document/d/1qbTtVsAALkAp_j_V7I5uXA6JtZ_gCKszd4Au1mFyzvU/edit | | |
 | 10 | Symétrie axiale | https://docs.google.com/document/d/1-3T-lFP3NLmpMXif-aoJcvVVuXNY7ye6Xy3r05GmNYY/edit | | |
+| 11 | (à préciser) | | | URL à fournir si chapitre existe |
+| 12 | Périmètres et aires | https://docs.google.com/document/d/1Y6x6Zpl_3reclqdDID-LZ8380SKgS5Y0CS1-D_nK4b0/edit | squelette | Créé 2026-05-19. **Version complète (sans trous)** : https://docs.google.com/document/d/1BqD3bKVlablbBJWzcqSwv28gU-tjU28U1C602P4XNe0/edit |
+| 14 | Programmation / Scratch | https://docs.google.com/document/d/1jEnVPMoEiL0XHnogYUqxdwcZmNtbAkEC3_ELtsbbaCA/edit | en_cours | Introduction + Setup rédigés le 2026-05-21. H3 "Exercices d'entraînement" et "Prise en main" encore vides. |
 
 ## Cours-modèle de référence
 

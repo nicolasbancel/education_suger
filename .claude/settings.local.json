@@ -32,7 +32,27 @@
       "Bash(pdftoppm -r 130 -f 6 -l 7 6eme_interro_7.pdf cv -png)",
       "Bash(pdftoppm -r 130 -f 1 -l 1 6eme_interro_7.pdf erreurbox -png)",
       "Read(//private/etc/paths.d/**)",
-      "Read(//usr/local/texlive/2024/texmf-dist/scripts/latexmk/**)"
+      "Read(//usr/local/texlive/2024/texmf-dist/scripts/latexmk/**)",
+      "Bash(git commit -m 'wip : settings claude, test.tex, recompile chapitre 5 proportionnalité:*)",
+      "mcp__claude_ai_Google_Drive__search_files",
+      "Read(//private/tmp/**)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 build_kahoot.py)",
+      "Bash(python3 build_kahoot2.py)",
+      "Bash(pdflatex -interaction=nonstopmode -halt-on-error interro_calcul_mental_template.tex)",
+      "Bash(open *)",
+      "Bash(pdfinfo *)",
+      "Bash(pdflatex -interaction=nonstopmode interro_calcul_mental_template.tex)",
+      "Bash(git commit *)",
+      "Bash(xxd /Users/nicolasbancel/git/education_suger/01_2526_6emes_maths/00_calcul_mental/generation_interro.md)",
+      "Bash(cp /Users/nicolasbancel/git/education_suger/01_2526_6emes_maths/00_calcul_mental/generation_interro.md /Users/nicolasbancel/git/education_suger/.claude/skills/generation_calcul_mental/references/pedagogie.md)",
+      "Bash(cp /Users/nicolasbancel/git/education_suger/01_2526_6emes_maths/00_calcul_mental/interro_calcul_mental_template.tex /Users/nicolasbancel/git/education_suger/.claude/skills/generation_calcul_mental/references/template.tex)",
+      "Bash(pdflatex -interaction=nonstopmode -halt-on-error interro_calcul_mental_14.tex)",
+      "Bash(pdflatex -interaction=nonstopmode -halt-on-error -jobname=interro_calcul_mental_14 \"\\\\def\\\\showanswers{}\\\\input{interro_calcul_mental_14.tex}\")",
+      "Bash(pdflatex -interaction=nonstopmode -halt-on-error interro_calcul_mental_15.tex)",
+      "Bash(mv interro_calcul_mental_15.pdf \"[6eme] Interrogation 15 - Enonce.pdf\")",
+      "Bash(pdflatex -interaction=nonstopmode -halt-on-error \"\\\\def\\\\showanswers{}\\\\input{interro_calcul_mental_15.tex}\")",
+      "Bash(mv interro_calcul_mental_15.pdf \"[6eme] Interrogation 15 - Correction.pdf\")"
     ]
   }
 }

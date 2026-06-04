@@ -70,3 +70,28 @@ Puis chaque méthode est ensuite détaillée.
 ## Transitions entre sections
 
 À documenter — pas encore d'observation systématique. Pour l'instant : passer d'une sous-section à l'autre via le simple Heading 3, sans phrase de transition explicite.
+
+## Conventions structurelles d'un chapitre (ajoutées 2026-05-19)
+
+Règles transverses à appliquer à tous les chapitres :
+
+### 1. Intro motivante en début de chapitre
+
+Chaque chapitre commence par un **paragraphe court** (3-6 lignes) qui répond à "à quoi ça sert ?" avec un ou deux exemples concrets du quotidien. La place : entre le H1 (titre du chapitre) et la première section H2.
+
+But : engager l'élève dès la 1ère ligne, contextualiser la notion avant de la formaliser.
+
+Exemple (chap 12) :
+> "Pour clôturer un jardin avec du grillage, il faut mesurer le contour du terrain : on parle de **périmètre**. Pour peindre un mur, il faut mesurer la surface à couvrir : on parle d'**aire**. […]"
+
+### 2. Exemples gradués (annoncer la difficulté)
+
+Quand une notion admet plusieurs exemples successifs, **annoncer explicitement le niveau** : "exemple simple", "exemple plus difficile", "cas à piège". L'élève sait où il en est dans la progression.
+
+À éviter : enchaîner 3 exemples sans marqueur, ce qui rend la perception de la difficulté implicite.
+
+### 3. Rappels inter-chapitres (quand pertinent)
+
+Quand une notion s'appuie sur un chapitre antérieur (ex : conversions d'aires ↔ conversions de longueurs ; calculs avec décimaux ↔ chap 1 ; pourcentages ↔ fractions chap 4), **inclure un encadré "Rappel"** explicite (gris pâle, voir `formatting_guide.md`).
+
+But : sécuriser l'élève qui aurait oublié, et faire le pont mental entre chapitres.
