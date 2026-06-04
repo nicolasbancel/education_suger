@@ -1,0 +1,144 @@
+\documentclass[a4paper,landscape,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=0cm]{geometry}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{arydshln}
+\usepackage{multirow}
+
+\setlength{\dashlinedash}{1.5pt}
+\setlength{\dashlinegap}{2pt}
+\setlength{\arrayrulewidth}{0.5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\setlength{\tabcolsep}{0.25cm}
+\renewcommand{\arraystretch}{1}
+
+\pagestyle{empty}
+
+% ---------------------------------------------------------------
+% Toggle réponses
+% Compiler sans argument  → énoncé seul
+% Compiler avec \def\showanswers{} → réponses en rouge gras
+% ---------------------------------------------------------------
+\ifdefined\showanswers
+  \newcommand{\q}[2]{#1 \textcolor{red}{\textbf{#2}}}
+\else
+  \newcommand{\q}[2]{#1}
+\fi
+
+% Paramètres de l'interrogation
+\newcommand{\interronum}{15}
+\newcommand{\interrodate}{21 Mai 2026}
+
+\newlength{\blockw}  \setlength{\blockw}{14.85cm}
+\newlength{\blockh}  \setlength{\blockh}{10.5cm}
+\newlength{\halfw}   \setlength{\halfw}{6.925cm}
+\newlength{\subhdrh} \setlength{\subhdrh}{0.8467cm}
+\newlength{\bodyh}   \setlength{\bodyh}{7.71cm}
+
+\newcommand{\hdrstrut}{\rule[-0.33cm]{0pt}{0.84cm}}
+
+\newcommand{\headertable}{%
+  \fontsize{8}{10}\selectfont
+  \begin{tabular}{|p{\halfw}|p{\halfw}|}
+    \hline
+    \hdrstrut\textbf{NOM :}    & \hdrstrut\textbf{Note :} \\ \cline{1-1}
+    \hdrstrut\textbf{Prénom :} &                          \\ \cline{1-1}
+    \hdrstrut\textbf{Date :} \textit{\interrodate{} --} \textbf{\textit{Interrogation \#\interronum}} &                          \\ \hline
+  \end{tabular}%
+}
+
+\newcommand{\qcol}[5]{%
+  \parbox[t][\bodyh][t]{\halfw}{%
+    \fontsize{13}{16}\selectfont
+    \vspace*{\fill}
+    \begin{itemize}[leftmargin=6mm, itemsep=0.5cm, topsep=0pt, partopsep=0pt, label=\textbullet]
+      \item #1
+      \item #2
+      \item #3
+      \item #4
+      \item #5
+    \end{itemize}
+    \vspace*{\fill}
+  }%
+}
+
+\newcommand{\bodytable}[2]{%
+  \begin{tabular}{|p{\halfw}:p{\halfw}|}
+    #1 & #2 \\ \hline
+  \end{tabular}%
+}
+
+\newcommand{\studentblock}[2]{%
+  \begin{tabular}{@{}c@{}}
+    \headertable \\[-\arrayrulewidth]
+    \bodytable{#1}{#2}
+  \end{tabular}%
+}
+
+\begin{document}
+
+\noindent
+\begin{tabular}{@{}c@{}c@{}}
+  % Version 1 : ordre 1,2,3,4,5 / 6,7,8,9,10
+  \studentblock
+    {\qcol{\q{$25\,\% \text{ de } 80 =$}{20}}
+          {\q{$10\,\% \text{ de } 542 =$}{54,2}}
+          {\q{$50\,\% \text{ de } 7\,400 =$}{3\,700}}
+          {\q{$60\,\% \text{ de } 15 =$}{9}}
+          {\q{$25\,\% \text{ de } 240 =$}{60}}}
+    {\qcol{\q{$20\,\% \text{ de } 350 =$}{70}}
+          {\q{$23 - 4 \times 5 + 8 =$}{11}}
+          {\q{$75\,\% \text{ de } 160 =$}{120}}
+          {\q{$80\,\% \text{ de } 250 =$}{200}}
+          {\q{$35 \times 99 =$}{3\,465}}}
+  &
+  % Version 2 : ordre 8,3,10,5,1 / 6,2,9,4,7
+  \studentblock
+    {\qcol{\q{$75\,\% \text{ de } 160 =$}{120}}
+          {\q{$50\,\% \text{ de } 7\,400 =$}{3\,700}}
+          {\q{$35 \times 99 =$}{3\,465}}
+          {\q{$25\,\% \text{ de } 240 =$}{60}}
+          {\q{$25\,\% \text{ de } 80 =$}{20}}}
+    {\qcol{\q{$20\,\% \text{ de } 350 =$}{70}}
+          {\q{$10\,\% \text{ de } 542 =$}{54,2}}
+          {\q{$80\,\% \text{ de } 250 =$}{200}}
+          {\q{$60\,\% \text{ de } 15 =$}{9}}
+          {\q{$23 - 4 \times 5 + 8 =$}{11}}}
+  \\[-\arrayrulewidth]
+  % Version 3 : ordre 6,1,9,2,7 / 10,5,3,8,4
+  \studentblock
+    {\qcol{\q{$20\,\% \text{ de } 350 =$}{70}}
+          {\q{$25\,\% \text{ de } 80 =$}{20}}
+          {\q{$80\,\% \text{ de } 250 =$}{200}}
+          {\q{$10\,\% \text{ de } 542 =$}{54,2}}
+          {\q{$23 - 4 \times 5 + 8 =$}{11}}}
+    {\qcol{\q{$35 \times 99 =$}{3\,465}}
+          {\q{$25\,\% \text{ de } 240 =$}{60}}
+          {\q{$50\,\% \text{ de } 7\,400 =$}{3\,700}}
+          {\q{$75\,\% \text{ de } 160 =$}{120}}
+          {\q{$60\,\% \text{ de } 15 =$}{9}}}
+  &
+  % Version 4 : ordre 4,10,7,8,2 / 3,9,1,6,5
+  \studentblock
+    {\qcol{\q{$60\,\% \text{ de } 15 =$}{9}}
+          {\q{$35 \times 99 =$}{3\,465}}
+          {\q{$23 - 4 \times 5 + 8 =$}{11}}
+          {\q{$75\,\% \text{ de } 160 =$}{120}}
+          {\q{$10\,\% \text{ de } 542 =$}{54,2}}}
+    {\qcol{\q{$50\,\% \text{ de } 7\,400 =$}{3\,700}}
+          {\q{$80\,\% \text{ de } 250 =$}{200}}
+          {\q{$25\,\% \text{ de } 80 =$}{20}}
+          {\q{$20\,\% \text{ de } 350 =$}{70}}
+          {\q{$25\,\% \text{ de } 240 =$}{60}}}
+\end{tabular}
+
+\end{document}

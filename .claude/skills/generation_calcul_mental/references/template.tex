@@ -25,6 +25,21 @@
 \pagestyle{empty}
 
 % ---------------------------------------------------------------
+% Toggle réponses : si \showanswers est défini (via \def\showanswers{}
+% en ligne de commande), les réponses s'affichent en rouge gras.
+% Sinon, seul l'énoncé apparaît.
+% ---------------------------------------------------------------
+\ifdefined\showanswers
+  \newcommand{\q}[2]{#1 \textcolor{red}{\textbf{#2}}}
+\else
+  \newcommand{\q}[2]{#1}
+\fi
+
+% Paramètres de l'interrogation (à personnaliser par le skill)
+\newcommand{\interronum}{0}
+\newcommand{\interrodate}{}
+
+% ---------------------------------------------------------------
 % Dimensions
 % A4 paysage 29.7 × 21 cm, marge 0
 % 4 rectangles (2×2) de 14.85 × 10.5 cm chacun.
@@ -62,7 +77,7 @@
     \hline
     \hdrstrut\textbf{NOM :}    & \hdrstrut\textbf{Note :} \\ \cline{1-1}
     \hdrstrut\textbf{Prénom :} &                          \\ \cline{1-1}
-    \hdrstrut\textbf{Date :}   &                          \\ \hline
+    \hdrstrut\textbf{Date :} \textit{\interrodate{} --} \textbf{\textit{Interrogation \#\interronum}} &                          \\ \hline
   \end{tabular}%
 }
 

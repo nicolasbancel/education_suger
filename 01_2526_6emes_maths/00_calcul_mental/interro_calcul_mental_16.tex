@@ -1,0 +1,144 @@
+\documentclass[a4paper,landscape,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=0cm]{geometry}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{arydshln}
+\usepackage{multirow}
+
+\setlength{\dashlinedash}{1.5pt}
+\setlength{\dashlinegap}{2pt}
+\setlength{\arrayrulewidth}{0.5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\setlength{\tabcolsep}{0.25cm}
+\renewcommand{\arraystretch}{1}
+
+\pagestyle{empty}
+
+% ---------------------------------------------------------------
+% Toggle réponses
+% Compiler sans argument  → énoncé seul
+% Compiler avec \def\showanswers{} → réponses en rouge gras
+% ---------------------------------------------------------------
+\ifdefined\showanswers
+  \newcommand{\q}[2]{#1 \textcolor{red}{\textbf{#2}}}
+\else
+  \newcommand{\q}[2]{#1}
+\fi
+
+% Paramètres de l'interrogation
+\newcommand{\interronum}{16}
+\newcommand{\interrodate}{28 Mai 2026}
+
+\newlength{\blockw}  \setlength{\blockw}{14.85cm}
+\newlength{\blockh}  \setlength{\blockh}{10.5cm}
+\newlength{\halfw}   \setlength{\halfw}{6.925cm}
+\newlength{\subhdrh} \setlength{\subhdrh}{0.8467cm}
+\newlength{\bodyh}   \setlength{\bodyh}{7.71cm}
+
+\newcommand{\hdrstrut}{\rule[-0.33cm]{0pt}{0.84cm}}
+
+\newcommand{\headertable}{%
+  \fontsize{8}{10}\selectfont
+  \begin{tabular}{|p{\halfw}|p{\halfw}|}
+    \hline
+    \hdrstrut\textbf{NOM :}    & \hdrstrut\textbf{Note :} \\ \cline{1-1}
+    \hdrstrut\textbf{Prénom :} &                          \\ \cline{1-1}
+    \hdrstrut\textbf{Date :} \textit{\interrodate{} --} \textbf{\textit{Interrogation \#\interronum}} &                          \\ \hline
+  \end{tabular}%
+}
+
+\newcommand{\qcol}[5]{%
+  \parbox[t][\bodyh][t]{\halfw}{%
+    \fontsize{13}{16}\selectfont
+    \vspace*{\fill}
+    \begin{itemize}[leftmargin=6mm, itemsep=0.5cm, topsep=0pt, partopsep=0pt, label=\textbullet]
+      \item #1
+      \item #2
+      \item #3
+      \item #4
+      \item #5
+    \end{itemize}
+    \vspace*{\fill}
+  }%
+}
+
+\newcommand{\bodytable}[2]{%
+  \begin{tabular}{|p{\halfw}:p{\halfw}|}
+    #1 & #2 \\ \hline
+  \end{tabular}%
+}
+
+\newcommand{\studentblock}[2]{%
+  \begin{tabular}{@{}c@{}}
+    \headertable \\[-\arrayrulewidth]
+    \bodytable{#1}{#2}
+  \end{tabular}%
+}
+
+\begin{document}
+
+\noindent
+\begin{tabular}{@{}c@{}c@{}}
+  % Version 1 : positions 1-2 = Q1,Q2 (faciles) ; reste shufflé : 7,4,9 / 3,6,8,10,5
+  \studentblock
+    {\qcol{\q{$10\,\% \text{ de } 230 =$}{23}}
+          {\q{$50\,\% \text{ de } 480 =$}{240}}
+          {\q{$5\,\% \text{ de } 60 =$}{3}}
+          {\q{$20\,\% \text{ de } 150 =$}{30}}
+          {\q{$15\,\% \text{ de } 80 =$}{12}}}
+    {\qcol{\q{$25\,\% \text{ de } 160 =$}{40}}
+          {\q{$2\,\% \text{ de } 400 =$}{8}}
+          {\q{$11\,\% \text{ de } 300 =$}{33}}
+          {\q{$99\,\% \text{ de } 200 =$}{198}}
+          {\q{$60\,\% \text{ de } 200 =$}{120}}}
+  &
+  % Version 2 : positions 1-2 = Q2,Q1 (faciles) ; reste shufflé : 8,10,5 / 9,3,7,4,6
+  \studentblock
+    {\qcol{\q{$50\,\% \text{ de } 480 =$}{240}}
+          {\q{$10\,\% \text{ de } 230 =$}{23}}
+          {\q{$11\,\% \text{ de } 300 =$}{33}}
+          {\q{$99\,\% \text{ de } 200 =$}{198}}
+          {\q{$60\,\% \text{ de } 200 =$}{120}}}
+    {\qcol{\q{$15\,\% \text{ de } 80 =$}{12}}
+          {\q{$25\,\% \text{ de } 160 =$}{40}}
+          {\q{$5\,\% \text{ de } 60 =$}{3}}
+          {\q{$20\,\% \text{ de } 150 =$}{30}}
+          {\q{$2\,\% \text{ de } 400 =$}{8}}}
+  \\[-\arrayrulewidth]
+  % Version 3 : positions 1-2 = Q1,Q2 (faciles) ; reste shufflé : 5,6,10 / 8,9,4,7,3
+  \studentblock
+    {\qcol{\q{$10\,\% \text{ de } 230 =$}{23}}
+          {\q{$50\,\% \text{ de } 480 =$}{240}}
+          {\q{$60\,\% \text{ de } 200 =$}{120}}
+          {\q{$2\,\% \text{ de } 400 =$}{8}}
+          {\q{$99\,\% \text{ de } 200 =$}{198}}}
+    {\qcol{\q{$11\,\% \text{ de } 300 =$}{33}}
+          {\q{$15\,\% \text{ de } 80 =$}{12}}
+          {\q{$20\,\% \text{ de } 150 =$}{30}}
+          {\q{$5\,\% \text{ de } 60 =$}{3}}
+          {\q{$25\,\% \text{ de } 160 =$}{40}}}
+  &
+  % Version 4 : positions 1-2 = Q2,Q1 (faciles) ; reste shufflé : 4,7,6 / 10,5,3,8,9
+  \studentblock
+    {\qcol{\q{$50\,\% \text{ de } 480 =$}{240}}
+          {\q{$10\,\% \text{ de } 230 =$}{23}}
+          {\q{$20\,\% \text{ de } 150 =$}{30}}
+          {\q{$5\,\% \text{ de } 60 =$}{3}}
+          {\q{$2\,\% \text{ de } 400 =$}{8}}}
+    {\qcol{\q{$99\,\% \text{ de } 200 =$}{198}}
+          {\q{$60\,\% \text{ de } 200 =$}{120}}
+          {\q{$25\,\% \text{ de } 160 =$}{40}}
+          {\q{$11\,\% \text{ de } 300 =$}{33}}
+          {\q{$15\,\% \text{ de } 80 =$}{12}}}
+\end{tabular}
+
+\end{document}
