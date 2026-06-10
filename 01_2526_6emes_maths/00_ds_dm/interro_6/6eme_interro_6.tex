@@ -1,5 +1,5 @@
 
-\documentclass{exam}
+\documentclass[answers]{exam}
 \usepackage{../../../mypackages}
 \usepackage{../../../macros}
 
@@ -74,6 +74,26 @@ Ce qui est attendu :
     \end{solution}
 
     \question[1] \textbf{Cercle circonscrit} Qu'est ce que le cercle circonscrit d'un triangle ABC ? Comment le construit-on ?
+      \begin{solution}
+        \begin{Indication}
+Ce qui est attendu :
+\begin{compactitem}
+\item Le cercle passe par les trois sommets du triangle (pas par les milieux des côtés).
+\item Le centre est l'intersection des médiatrices des côtés, et pas des bissectrices ni des hauteurs.
+\end{compactitem}
+        \end{Indication}
+
+      Le cercle circonscrit d'un triangle $ABC$ est \textbf{le cercle qui passe par les trois sommets $A$, $B$ et $C$ du triangle}. \\
+
+      Son centre $O$ est le point d'intersection des \textbf{médiatrices des côtés du triangle}. En effet, ces trois médiatrices se coupent en un même point, situé à égale distance des trois sommets. \\
+
+      Pour le construire :
+      \begin{compactenum}
+        \item On trace la médiatrice de deux des côtés, par exemple $[AB]$ et $[BC]$.
+        \item Leur point d'intersection est le centre $O$ du cercle circonscrit.
+        \item On trace le cercle de centre $O$ et de rayon $OA$ : il passe alors par $A$, $B$ et $C$, car $OA = OB = OC$.
+      \end{compactenum}
+      \end{solution}
   \end{questions}
 
 \pagebreak
@@ -96,8 +116,12 @@ Ce qui est attendu :
 
       \end{Indication}
 
-      
-
+      Pour construire le symétrique d'une figure par rapport à la droite $(d)$, on construit le symétrique de chacun de ses sommets, puis on les relie dans le même ordre :
+      \begin{compactenum}
+        \item Pour chaque sommet, on compte les carreaux qui le séparent de l'axe $(d)$.
+        \item On reporte le point de l'autre côté de $(d)$, à la même distance, sur la perpendiculaire à $(d)$ : le segment qui relie un point à son symétrique est perpendiculaire à l'axe et coupé en son milieu par celui-ci.
+        \item On relie les symétriques obtenus dans le même ordre que la figure de départ.
+      \end{compactenum}
       \end{solution}
 
 
@@ -120,8 +144,17 @@ Ce qui est attendu :
 \end{compactitem}
 
       \end{Indication}
-      
 
+      On construit séparément le symétrique du triangle $ABC$ et celui de la droite $(d_2)$ par rapport à l'axe $(d_1)$. \\
+
+      \textbf{Symétrique du triangle $ABC$} : on construit le symétrique de chacun des sommets $A$, $B$, $C$, qu'on nomme $A'$, $B'$, $C'$.
+      \begin{compactenum}
+        \item Pour chaque sommet, on trace à l'équerre la perpendiculaire à $(d_1)$ passant par ce sommet.
+        \item On reporte au compas, de l'autre côté de $(d_1)$, la même distance entre le sommet et l'axe : on obtient son symétrique.
+        \item On relie $A'$, $B'$ et $C'$ pour obtenir le triangle symétrique, et on reporte les codages de longueurs et d'angles.
+      \end{compactenum}
+
+      \textbf{Symétrique de la droite $(d_2)$} : une droite est définie par deux points. On choisit donc deux points quelconques sur $(d_2)$, on construit le symétrique de chacun par la méthode ci-dessus, puis on trace la droite passant par ces deux symétriques.
 
 \end{solution}
 
@@ -145,7 +178,42 @@ Bien analyser la figure ci-dessous, et vous en servir pour répondre aux questio
 \end{questions}
 
 \begin{solution}
-xxxx
+\textbf{a)} On se place dans le triangle $ABC$. \\
+
+\textbf{On sait que} dans tout triangle, la somme des mesures des angles est égale à $180^\circ$. \\
+
+\textbf{Sur la figure}, on lit $\widehat{ACB} = 75^\circ$ et $\widehat{ABC} = 35^\circ$. \textbf{Donc} :
+\begin{align*}
+\widehat{BAC} + \widehat{ABC} + \widehat{ACB} &= 180^\circ \\
+\widehat{BAC} &= 180^\circ - \widehat{ABC} - \widehat{ACB} \\
+\widehat{BAC} &= 180^\circ - 35^\circ - 75^\circ \\
+\widehat{BAC} &= 70^\circ
+\end{align*}
+
+\textbf{b)} \textbf{Les angles à la base d'un triangle isocèle ont la même mesure.} \\
+
+\textbf{c)} On se place dans le triangle $ABD$. \\
+
+\textbf{Sur la figure}, le codage indique que $\widehat{ADB} = 90^\circ$ (angle droit en $D$) et que $AD = BD$ (les côtés $[AD]$ et $[BD]$ portent le même codage). \textbf{Le triangle $ABD$ est donc rectangle et isocèle en $D$.} \\
+
+\textbf{Or} les angles à la base d'un triangle isocèle ont la même mesure (question b)) : ainsi $\widehat{BAD} = \widehat{ABD}$. \\
+
+Dans le triangle $ABD$, la somme des angles vaut $180^\circ$ :
+\begin{align*}
+\widehat{BAD} + \widehat{ABD} + \widehat{ADB} &= 180^\circ \\
+\widehat{BAD} + \widehat{BAD} + 90^\circ &= 180^\circ && \text{car } \widehat{ABD} = \widehat{BAD} \\
+2 \times \widehat{BAD} &= 90^\circ \\
+\widehat{BAD} &= 45^\circ
+\end{align*}
+
+\textbf{d)} \textbf{Sur la figure}, la demi-droite $[AB)$ est située à l'intérieur de l'angle $\widehat{CAD}$ : cet angle est donc la somme des angles $\widehat{CAB}$ et $\widehat{BAD}$. \textbf{Donc} :
+\begin{align*}
+\widehat{CAD} &= \widehat{CAB} + \widehat{BAD} \\
+\widehat{CAD} &= 70^\circ + 45^\circ && \text{d'après les questions a) et c)} \\
+\widehat{CAD} &= 115^\circ
+\end{align*}
+
+\textbf{L'angle $\widehat{CAD}$ mesure $115^\circ$ : c'est un angle obtus}, car sa mesure est comprise entre $90^\circ$ et $180^\circ$.
 \end{solution}
 
 \pagebreak
@@ -163,5 +231,37 @@ Toute démarche, toute explication de "comment vous auriez résolu l'exercice si
   \question[1] \just Que peut-on en déduire sur la nature du triangle $HIJ$ ?
   \question[1] \just En déduire le périmètre du triangle $HIJ$. \textit{Pour rappel, le périmètre d'un polygone est la somme des longueurs des côtés de ce polygone}.
 \end{questions}
+
+\begin{solution}
+\textbf{a)} On se place dans le triangle $HIJ$. \\
+
+\textbf{On sait que} dans tout triangle, la somme des mesures des angles est égale à $180^\circ$. \\
+
+\textbf{Sur la figure}, on lit $\widehat{HIJ} = 60^\circ$ et $\widehat{IJH} = 60^\circ$. \textbf{Donc} :
+\begin{align*}
+\widehat{IHJ} + \widehat{HIJ} + \widehat{IJH} &= 180^\circ \\
+\widehat{IHJ} &= 180^\circ - \widehat{HIJ} - \widehat{IJH} \\
+\widehat{IHJ} &= 180^\circ - 60^\circ - 60^\circ \\
+\widehat{IHJ} &= 60^\circ
+\end{align*}
+
+\textbf{b)} Les trois angles du triangle $HIJ$ ont la même mesure :
+\[
+\widehat{IHJ} = \widehat{HIJ} = \widehat{IJH} = 60^\circ.
+\]
+\textbf{Or} un triangle dont les trois angles ont la même mesure est équilatéral. \textbf{Donc le triangle $HIJ$ est équilatéral.} \\
+
+\textbf{c)} \textbf{On sait que} le triangle $HIJ$ est équilatéral (question b)) : ses trois côtés ont donc la même longueur. \\
+
+\textbf{Sur la figure}, on lit $HI = 2.4~\text{cm}$. \textbf{Donc} $HI = IJ = HJ = 2.4~\text{cm}$. \\
+
+Le périmètre du triangle $HIJ$ est la somme des longueurs de ses côtés :
+\begin{align*}
+\mathcal{P} &= HI + IJ + HJ \\
+\mathcal{P} &= 2.4 + 2.4 + 2.4 \\
+\mathcal{P} &= 3 \times 2.4 \\
+\mathcal{P} &= 7.2~\text{cm}
+\end{align*}
+\end{solution}
 
 \end{document}

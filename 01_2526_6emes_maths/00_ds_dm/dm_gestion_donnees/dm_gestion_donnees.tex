@@ -1,0 +1,176 @@
+\documentclass{exam}
+\usepackage{../../../mypackages}
+\usepackage{../../../macros}
+
+% --- tcolorbox setup ---
+\tcbuselibrary{theorems,skins,hooks}
+
+
+% Colonne p{} alignée à gauche et qui wrappe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\definecolor{lavande}{RGB}{180,190,255}
+
+\definecolor{myindbg}{HTML}{DFF5EC} % vert clair
+\definecolor{myindfr}{HTML}{1F6F4A} % vert foncé
+
+% --- New blue palette ---
+\definecolor{mybluebg}{HTML}{E7F1FF} % bleu clair
+\definecolor{mybluefr}{HTML}{1E4FA3} % bleu foncé
+
+% --- Parametric tcolorbox: 2 args = background, frame ---
+\newtcolorbox{Indication}[2]{%
+  enhanced,
+  colback=#1,
+  colframe=#2,
+  arc=4mm,
+  rounded corners,
+  boxrule=0.6mm,
+  left=3mm,
+  right=3mm,
+  top=2mm,
+  bottom=2mm
+}
+
+\title{Données et Google Sheet. Le duo du bonheur}
+\author{N. Bancel}
+\date{Juin 2026}
+
+% Mise en forme des solutions en bleu
+\SolutionEmphasis{\color{blue}}
+\renewcommand{\solutiontitle}{\noindent}
+
+
+\newcommand{\figinline}[2]{%
+\begin{minipage}{#1\linewidth}
+  \centering
+  \includegraphics[width=\linewidth]{#2}
+\end{minipage}%
+}
+
+\begin{document}
+
+\dsheader{Collège Lycée Suger}{Mathématiques}{Année 2025-2026}{Classe de 6ème}
+{\let\newpage\relax\maketitle}
+
+\section{Introduction - Prérequis}
+
+\begin{Indication}{myindbg}{myindfr}
+  Ce devoir se fait sur une feuille de calcul (Google Sheets) préparée à l'avance et partagée avec chaque élève. Il faudra y saisir des données, tracer un graphique et calculer des statistiques (moyenne, maximum, minimum, étendue).
+  \begin{compactitem}
+    \item Chaque élève reçoit, sur son Google Drive personnel, une feuille de calcul partagée. Le document porte le nom "[Prénom] Devoir maison - Gestion des données". Se connecter sur Google Drive avec son adresse Gmail pour l'ouvrir. \textrr{Ne pas créer sa propre feuille : travailler uniquement sur celle qui a été partagée.}
+    \item En bas de l'écran apparaissent plusieurs onglets. Pour ce devoir, on utilise "Calcul Mental" et "Rapport du GIEC" (cliquer sur un onglet pour changer de feuille).
+  \end{compactitem}
+\par
+\textbf{Comment rendre ce devoir.} Il y a deux choses à rendre : (1) la \textrr{feuille de calcul} (partagée avec l'enseignant) et (2) une \textrr{copie double}, sur laquelle les réponses rédigées (observations et interprétations) sont écrites en numérotant bien chaque question. \\
+
+\par
+\textbf{Petit rappel.} La moyenne d'une liste de nombres, c'est la somme de tous les nombres divisée par le nombre de nombres. Par exemple, la moyenne de 6, 8 et 10 vaut 
+  \[
+  \frac{6 + 8 + 10}{3} = \frac{24}{3} = 8
+  \]
+\end{Indication}
+
+\section{Exercice 1 - Suivre ses notes de calcul mental}
+
+On ouvre l'onglet "Calcul Mental". La colonne A liste déjà toutes les interrogations, de "Interro 1" à "Interro 17".
+
+\begin{questions}
+  \question Dans la colonne B ("Note (/10)"), en face de chaque interrogation, saisir la note obtenue, sur 10 (aller chercher l'historique de vos notes sur EcoleDirecte). Cliquer sur Entrée après chaque note. \textbb{Laisser la case vide en cas d'absence à une interrogation : on ne met pas zéro.}
+
+  \question Tracer un graphique pour suivre l'évolution des notes au fil de l'année.
+  \begin{parts}
+    \part Sélectionner la plage de cellules $A1$ à $B18$ (les titres compris) : cliquer sur la cellule $A1$ et faire glisser jusqu'à la cellule $B18$.
+    \part Cliquer sur l'icône \textrr{+} en haut à droite de l'écran, puis sur \textrr{Graphique}.
+    \part Choisir le type \textrr{"Graphique en courbes"}.
+    \part Vérifier les axes : ils devraient avoir automatiquement pris les noms de la colonne A et de la colonne B.
+  \end{parts}
+
+  \question Observer le graphique et répondre par écrit :
+  \begin{parts}
+    \part Décrire l'évolution des notes. Globalement, est-ce que vous avez progressé au cours de l'année ? Est-ce que vous avez réussi à maintenir un certain niveau ?
+    \part Quelle a été la meilleure interrogation ? Et la moins bonne ?
+    \part En identifiant les interrogations les moins réussies, êtes-vous capable de trouver des points communs entre elles ? Par exemple
+      \begin{compactitem}
+        \item A chaque fois, vous butez sur la même notion (la noter)
+        \item Ces interrogations arrivent au même moment dans l'année (phase où vous aviez moins de motivation ? Phase où vous arriviez moins bien à gérer la quantité de travail ?)
+        \item Vous avez simplement régulièremnet de petits accidents (fautes d'étourderies ou d'attention)
+      \end{compactitem}
+  \end{parts}
+
+  \question Calculer maintenant des statistiques. Dans l'onglet "Calcul Mental", la colonne D contient déjà des étiquettes (Moyenne des interrogations, Objectif de note, etc.). Les résultats s'écrivent dans les cellules \textrr{E2, E3, E4 et E5}, juste à côté.
+  \begin{parts}
+    \part \textbf{Cellule $E2$ - Moyenne des interrogations.} D'abord, calculer cette moyenne à la main sur la copie : additionner toutes les notes, puis diviser par le nombre d'interrogations réellement passées. Ensuite, vérifier dans la feuille : cliquer sur la cellule $E2$ et entrer une formule qui permet de calculer cette moyenne.
+    \begin{compactitem}
+      \item Ne pas oublier de commencer la formule par un signe égal : \verb|=|
+      \item Si vous ne connaissez pas la formule google sheet de la moyenne, lisez la documentation Google : \href{https://support.google.com/docs/answer/3093615?hl=fr}{MOYENNE})
+      \item Le calcul à la main et le résultat de la feuille sont-ils identiques ? (ils doivent l'être)
+    \end{compactitem} 
+    \part \textbf{Cellule $E3$ - Objectif de note.} Choisir un objectif de note (par exemple 7 sur 10) : la note minimale que vous visiez à chaque contrôle. Écrire ce nombre dans la cellule $E3$.
+    \part \textbf{Cellule $E4$ - Nombre de notes supérieures à l'objectif.} Compter d'abord à la main combien de notes sont supérieures à l'objectif. Puis vérifier dans la feuille : cliquer sur $E4$ et taper \verb|=COUNTIF(B2:B18;">="&E3)| puis Entrée. Explication :
+    \begin{compactitem}
+      \item \verb|COUNTIF| est une fonction qui compte le nombre de cellules d'une plage qui respectent une condition.
+      \item \verb|B2:B18| est la plage de cellules où sont les notes.
+      \item \verb|">="&E3| est la condition : on veut compter les cellules qui sont supérieures ou égales à la valeur de $E3$ (l'objectif). Le \verb|&| permet de faire le lien entre la condition et la cellule $E3$. (Et on met un signe ">=" car on accepte les valeurs égales à l'objectif.
+    \end{compactitem} 
+    \part \textbf{Cellule $E5$ - Nombre de notes} Pour que les statistiques soient correctes, on veut être certain de bien compter le nombre d'interrogations faites (si vous avez été absent à quelques interrogations, cette valeur ne vaut pas 17). Indication : la formule qui permet de compter le nombre de cellules non vides dans un ensemble de données est la formule \verb|=COUNTA()|. 
+    \part \textbf{Cellule $E6$ - Pourcentage de notes supérieures à l'objectif.} On veut savoir quelle part des interrogations dépasse l'objectif. Le calcul est : nombre de notes au-dessus de l'objectif, divisé par le nombre total d'interrogations passées. Quelle formule doit-on écrire dans la cellule $E6$ pour faire ce calcul ? 
+      \begin{compactitem}
+      \item Si vous êtes sur tablette : multiplier le résultat de $E6$ par 100 pour voir cette statistique sous la forme d'un pourcentage
+      \item Si vous êtes sur un ordinateur : cliquer sur l'icône "123" et changer le format de la cellule $E6$ en "Pourcentage" : cela affichera directement le résultat sous la forme d'un pourcentage.
+    \end{compactitem}
+  \end{parts}
+\end{questions}
+
+\begin{Indication}{myindbg}{myindfr}
+  Ce travail consiste à résumer toute une année de notes en quelques nombres. C'est ça, faire des statistiques : prendre beaucoup de données (ici, toutes les notes) et en sortir quelques chiffres qui parlent (une moyenne, un pourcentage). Le graphique, lui, raconte l'histoire de la progression d'un seul coup d'œil.
+\end{Indication}
+
+\section{Exercice 2 - Le réchauffement climatique}
+
+\begin{Indication}{myindbg}{myindfr}
+  Le GIEC (Groupe d'experts intergouvernemental sur l'évolution du climat ; en anglais "IPCC") est un organisme créé en 1988. Il rassemble des centaines de scientifiques du monde entier et travaille sur les enjeux climatiques.
+  \begin{compactitem}
+    \item Le GIEC ne fait pas lui-même d'expériences : son travail est de \textrr{lire, vérifier et résumer} des milliers d'études scientifiques sur le climat, pour dire ce que l'on sait vraiment.
+    \item Il publie régulièrement des rapports qui permettent au pays de comprendre les enjeux climatiques et de fixer des objectifs. 
+    \item Les données de cet exercice viennent exactement de ce genre de travail : chaque année, on mesure de combien la température moyenne de la Terre a changé.
+  \par
+  Dans cet exercice, nous allons reconstruire la courbe sur laquelle se base un des objectifs les plus importants de ces 10 dernières années : limiter le réchauffement de la terre à moins de 1,5 \(^\circ\text{C}\) (par rapport à la période 1850-1900)
+  \end{compactitem}
+\end{Indication}
+
+Ouvrir l'onglet "Rapport du GIEC". Ce tableau vient d'un vrai jeu de données scientifiques. Pour chaque année, de 1850 à aujourd'hui, la colonne B donne l'écart annuel de température moyenne de la Terre par rapport à la période 1850-1900 (l'époque d'avant les grandes usines). Concrètement,
+\begin{compactitem}
+    \item Si la valeur d'une cellule de la colonne C vaut 1, cela signifie que la température moyenne de la Terre cette année-là était 1 \(^\circ\text{C}\) plus chaude que la moyenne de la période 1850-1900.
+    \item Si la valeur d'une cellule de la colonne C vaut -1, cela signifie que la température moyenne de la Terre cette année-là était 1 \(^\circ\text{C}\) plus froide que la moyenne de la période 1850-1900.
+  \end{compactitem}
+
+\begin{questions}
+  \question Tracer la courbe de ce réchauffement.
+  \begin{parts}
+    \part Sélectionner la cellule $A1$ et glisser jusqu'à la cellule $C178$ (la dernière ligne de données).
+    \part Cliquer sur l'icône \textrr{+} en haut à droite de l'écran, puis sur \textrr{Graphique}, et choisir le \textrr{"Graphique en courbes"}.
+    \part Vérifier les axes : ils devraient avoir pris les noms de la colonne A (l'année) et de la colonne C (la différence de température en \(^\circ\text{C}\)).
+  \end{parts}
+
+  \question Observer la courbe et répondre par écrit :
+  \begin{parts}
+    \part Décrire la tendance générale de la courbe entre 1850 et aujourd'hui. Que se passe-t-il ?
+    \part Quelle est l'année la plus chaude (celle où la différence est la plus grande) ? De combien de degrés était-elle plus chaude par rapport à la période 1850-1900 ? Stocker cette valeur dans la cellule $G9$. Utiliser la formule : \verb|=MAX()|.
+    \part Les scientifiques du GIEC parlent souvent d'un seuil important : $+1,5$ \(^\circ\text{C}\). À partir de quelle année la différence dépasse-t-elle ce seuil pour la première fois ?
+  \end{parts}
+\end{questions}
+
+\begin{Indication}{mybluebg}{mybluefr}
+  Cette courbe est l'une des plus regardées au monde. Si vous voulez la voir "pour de vrai", vous pouvez consulter le dernier \href{https://www.ipcc.ch/report/ar6/syr/downloads/report/IPCC_AR6_SYR_LongerReport.pdf}{Rapport du GIEC (2003)} (cliquer sur le lien). C'est le premier graphique en haut à gauche, à la page 9 (donc le tout premier de ce rapport de 81 pages). Le seuil de $+1,5$ \(^\circ\text{C}\) est celui que les pays ont promis de ne pas dépasser lors de l'Accord de Paris (2015). C'est-à-dire : que la terre ne se réchauffe pas de plus de 1,5 \(^\circ\text{C}\) par rapport à la température qu'il faisait avant la révolution industrielle. La courbe montre à quel point c'est devenu difficile à tenir. Savoir lire un graphique, ça aide à mieux comprendre les enjeux de notre époque.
+\end{Indication}
+
+\begin{center}
+  \figinline{0.5}{screenshot_giec.jpg}
+\end{center}
+
+
+
+\textit{Les données (brutes) viennent de la base de données suivante : \href{https://www.metoffice.gov.uk/hadobs/hadcrut5/data/HadCRUT.5.1.0.0/download.html}{Met Office Hadley Centre observations datasets} // 1er jeu de données : HadCRUT5 analysis time series: ensemble means and uncertainties // Global (NH+SH)/2 // Annual}
+
+\end{document}

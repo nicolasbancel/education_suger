@@ -108,18 +108,33 @@ Contextes observés (chap 5) : âge et taille, prix au marché, tours de montagn
 
 **Règle implicite** : les exemples sont **ancrés dans des situations de la vie d'un·e élève de 6ème** (sport, école, achats, animaux, monuments connus, etc.). Éviter les exemples abstraits ou décorrélés du quotidien.
 
-## Polices et tailles
+## Polices, tailles, couleurs et alignement
 
-Convention typo des Google Docs de cours (à appliquer à tout contenu poussé via API) :
+Convention typo **complète** des Google Docs de cours (à appliquer à tout contenu poussé via API). Mise à jour 2026-05-19.
 
-| Élément | Police | Taille |
-|---|---|---|
-| Texte normal (paragraphes) | Montserrat | 12 pt |
-| Heading 3 | Montserrat | 14 pt |
-| Heading 2 | Montserrat | 16 pt |
-| Heading 1 | Montserrat | (à confirmer, probablement 18-20 pt) |
+| Élément | Police | Gras | Taille | Couleur | Alignement | Numérotation |
+|---|---|---|---|---|---|---|
+| **Heading 1** (titre du chapitre) | Montserrat | ✓ | 20 pt | `#000000` noir | **Centré** | — |
+| **Heading 2** (grandes parties) | Montserrat | ✓ | 16 pt | `#0000ff` bleu pur | (défaut, gauche) | **Romaine manuelle** : "I. ", "II. ", "III. " écrits en dur dans le texte |
+| **Heading 3** (sous-sections) | Montserrat | ✓ | 14 pt | `#ff00ff` magenta | (défaut, gauche) | **Arabe manuelle** : "1. ", "2. ", … écrits dans le texte. Compteur **réinitialisé à chaque H2** (donc il peut y avoir plusieurs "1." dans le doc, séparés par leurs sections). Pas de préfixe romain ("I.1") — juste le chiffre. |
+| Texte normal (paragraphes) | Montserrat | (non) | 12 pt | (défaut, noir) | (défaut, gauche) | — |
 
-**Implémentation API** : utiliser `updateTextStyle` avec `weightedFontFamily.fontFamily = "Montserrat"` et `fontSize.magnitude` adapté. Le simple `insertText` n'applique pas de style et fait hériter de la police par défaut du Doc — il faut donc systématiquement faire suivre par un `updateTextStyle` sur le range inséré.
+**Pourquoi numérotation manuelle** : la numérotation auto Docs (`createParagraphBullets` avec preset UPPER_ROMAN) se casse facilement quand on modifie une section enfant via `write-section`. Voir `pedagogie/erreurs_types.md` (entrée 2026-05-18). La numérotation manuelle survit aux éditions.
+
+**Implémentation API** : pour chaque heading, appliquer dans un `updateTextStyle` les 4 propriétés :
+```json
+{
+  "bold": true,
+  "weightedFontFamily": {"fontFamily": "Montserrat"},
+  "fontSize": {"magnitude": <size>, "unit": "PT"},
+  "foregroundColor": {"color": {"rgbColor": {"red": R, "green": G, "blue": B}}}
+}
+```
+avec `fields: "bold,weightedFontFamily,fontSize,foregroundColor"`.
+
+Pour H1 : également un `updateParagraphStyle` avec `alignment: "CENTER"`.
+
+Le simple `insertText` n'applique aucun style — toujours faire suivre par les `updateTextStyle` et `updateParagraphStyle` adaptés sur le range inséré.
 
 ## Tableaux
 
@@ -141,6 +156,110 @@ Convention pour les tableaux Google Docs natifs :
 3. `updateTableCellStyle contentAlignment: MIDDLE` + padding 2,83 pt sur toutes les cellules (`tableRange` couvrant n_rows × n_cols)
 4. `updateTableCellStyle backgroundColor: #c9daf8` sur la 1ère ligne (`rowSpan: 1`)
 5. `updateTextStyle bold: true` sur les cellules de la 1ère ligne
+
+### Règle : tableau présent dans une image source → reconstruire en natif
+
+Quand on s'inspire d'une ressource pédagogique (PDF, photo de page de cours, screenshot) qui contient un **tableau** que l'on souhaite intégrer dans le Doc :
+
+**Ne PAS** insérer l'image du tableau via `gdoc_insert_image.py`.
+
+**À FAIRE** : lire visuellement le contenu du tableau dans la source, recomposer un CSV à partir des données extraites, et l'insérer en **tableau Docs natif** via `gdoc_insert_table.py`. Le tableau aura ainsi la convention typo standard (header bleu, données centrées, Montserrat 10pt) — cohérent avec le reste du cours, modifiable par l'utilisateur, et plus net visuellement qu'une capture d'écran.
+
+S'applique aussi aux **tableaux de conversion**, **tableaux de formules**, **tableaux de valeurs** rencontrés dans Yvan Monka, manuels scolaires, photos de cours existants. La règle ne s'applique PAS aux schémas géométriques, figures, dessins — ceux-ci doivent rester en images via `gdoc_insert_image.py`.
+
+## Exercices dans le cours
+
+Convention de présentation des exercices (et de leurs corrections) dans le Doc du cours.
+
+**Règle 1 — Texte par défaut.** Quand un exercice peut être restitué sous forme de texte (énoncé seul + données numériques + question), **toujours le rédiger en texte** dans le Doc plutôt qu'en image. Plus modifiable, plus lisible, cohérent avec le reste du cours.
+
+**Règle 2 — Screenshot quand image indispensable.** Si l'exercice contient une **figure géométrique**, un **schéma annoté**, ou un **tableau de valeurs riche** qu'il serait fastidieux de retranscrire fidèlement en texte, alors **screenshoter** depuis la source (PDF, photo de manuel) via le workflow `_crops/` (voir section "Workflow screenshots"). Insérer ensuite l'image via `gdoc_insert_image.py`.
+
+**Règle 3 — Espace blanc en dessous (obligatoire).** Pour permettre à l'élève de **faire l'exercice ou écrire la correction directement dans le Doc imprimé**, laisser **un espace blanc de quelques lignes** sous chaque énoncé. En pratique : insérer 3 à 6 paragraphes vides après l'énoncé (ajustable selon la nature de l'exercice : 3 lignes pour un calcul simple, 6+ pour une rédaction).
+
+**Cas particulier — tableau à compléter** : si l'exercice est un tableau à remplir (ex : tableau de conversion vide), utiliser `gdoc_insert_table.py` avec des cellules vides plutôt qu'un screenshot. Cela garde la convention typo et permet à l'élève de remplir directement s'il édite en ligne.
+
+## Encadrés
+
+Convention transverse à tous les cours. 5 types d'encadrés, tous implémentés via une **table Google Docs 1×1** avec fond, bordure et padding `0,15 cm`. Le label (titre de l'encadré) est inséré dans la cellule en gras, suivi du contenu en texte normal.
+
+| Type | Fond | Bordure | Label | Usage |
+|---|---|---|---|---|
+| **A. À retenir** | `#fff2cc` (jaune pâle) | `#ffa500` orange, épaisse | "À RETENIR" gras orange centré | Fin de chaque grande section — synthèse formules / règles clés à mémoriser |
+| **B. Définition** | `#e8f4f8` (bleu très pâle) | `#0000ff` bleu (assorti H2) | "Définition" gras bleu | Notion clé à mémoriser (périmètre, aire, π, formules nommées) |
+| **C. Méthode** | `#d9ead3` (vert pâle) | `#38761d` vert moyen | "Méthode" gras vert | Procédure pas-à-pas, en général numérotée |
+| **D. Rappel** | `#f0f0f0` (gris pâle) | `#999999` gris | "Rappel" italique gris | Lien explicite avec un chapitre précédent (ex : "rappel du chap 4 sur les fractions") |
+| **E. Attention** | `#ffe5e5` (rouge pâle) | `#cc0000` rouge | "⚠ Attention" gras rouge | Piège fréquent / erreur classique (ex : conversions d'aires à 2 rangs vs 1) |
+
+**Justification du code couleur** : aligné sur la palette existante des headings (H2 bleu → encadré Définition bleu, H3 magenta → C en vert pour distinguer méthode de sous-section). Jaune/gris/rouge sont les codes universels (highlight / aside / warning).
+
+**Implémentation API** : utiliser `~/.claude/scripts/gdoc_insert_box.py` qui crée la table 1×1 et applique le styling complet en une commande :
+```
+gdoc_insert_box.py <URL> \
+    --section "<section>" \
+    --after-text "<phrase d'ancrage>" \
+    --type {a-retenir,definition,methode,rappel,attention} \
+    --content "<texte du corps>" \
+    --account perso
+```
+
+Le label ("À RETENIR", "Définition", etc.) est ajouté automatiquement — ne pas l'écrire dans `--content`.
+
+## Interligne et espacement (révisé 2026-05-19)
+
+### Espace avant les paragraphes à trous (privilégier sur l'interligne 1,5)
+
+L'**interligne** uniforme 1,5 ne sert à rien sur un paragraphe d'une seule ligne (cas typique des trous). Préférer un **espace avant** le paragraphe (`paragraphStyle.spaceAbove`), qui crée une vraie zone d'écriture libre au-dessus.
+
+| Contenu | Méthode | Valeur API |
+|---|---|---|
+| **Paragraphes contenant `…………` (trous à remplir)** | Interligne simple (100) + `spaceAbove: 12pt` | `lineSpacing: 100` + `spaceAbove: {magnitude: 12, unit: "PT"}` |
+| **Paragraphes texte continu (sans trous)** | Interligne simple (100), pas d'espace supplémentaire | `lineSpacing: 100` |
+
+**Détection automatique** : `gdoc.py write-section` détecte les paragraphes contenant `…………` (séquence d'ellipses) et leur applique `spaceAbove: 12pt` automatiquement. Pas besoin de flag manuel.
+
+L'ancienne convention "interligne 1,5 sur tout le texte à trous" est **dépréciée** : ça gaspille de la place verticale sur les paragraphes longs sans aider à l'écriture.
+
+## Indentation hiérarchique (ajoutée 2026-05-19)
+
+Les Headings Google Docs n'ont pas d'indentation native. Pour créer une vraie hiérarchie visuelle, appliquer `paragraphStyle.indentStart` selon le niveau :
+
+| Niveau | Indentation gauche | Cas concret |
+|---|---|---|
+| H1 (titre chapitre) | 0 pt (centré) | "Chapitre 12 - …" |
+| H2 (grande section) | 0 pt | "I. Périmètres" |
+| H3 (sous-section) | 18 pt | "1. Unités de longueur" |
+| Paragraphes texte sous H3 | 36 pt | Définitions, méthodes, énoncés |
+| **Sous-éléments numérotés** (`1. `, `2. `, `a. `, `b. `) | 54 pt | Étapes de méthode, sous-questions d'exercice |
+
+**Détection automatique** : `gdoc.py write-section` détecte les paragraphes commençant par `[a-z]\. ` ou `[0-9]+\. ` et leur applique `indentStart: 54pt`. Idem dans `gdoc_insert_box.py` (contenu des encadrés).
+
+## Design des Exemples et Exercices (ajouté 2026-05-19)
+
+Pour distinguer visuellement Exemples résolus et Exercices d'application **sans saturer le doc en couleur**, convention "Option B" : label gras + barre verticale colorée à gauche, **pas d'encadré complet**.
+
+| Type | Label | Couleur (label + barre) | Largeur barre |
+|---|---|---|---|
+| **Exemple N (descripteur)** | "Exemple N (...)" en gras | `#1c4587` (bleu marine) | 3 pt |
+| **Exercice ...** | "Exercice ..." en gras | `#b45f06` (orange foncé) | 3 pt |
+
+**Implémentation API** :
+- `updateTextStyle` sur le préfixe (jusqu'au `:` ou jusqu'à la fin du label) avec `bold: true` + `foregroundColor`
+- `updateParagraphStyle.borderLeft` sur le paragraphe entier avec `color` + `width: 3pt` + `dashStyle: SOLID` + `padding: 6pt`
+
+**Détection automatique** dans `gdoc.py write-section` :
+- Paragraphes commençant par `Exemple ` (avec espace) → style Exemple
+- Paragraphes commençant par `Exercice ` (avec espace) → style Exercice
+
+## Tableaux multi-questions (révisé 2026-05-19)
+
+Quand un même tableau de résolution sert pour plusieurs sous-questions (a, b, c…) ou exemples consécutifs, **mettre une seule table avec N lignes vides** au lieu de N tables séparées. C'est plus économe visuellement, plus rapide à parcourir, et plus simple côté API.
+
+Exemple : exercice "Compléter a. 5,6 m = … cm  /  b. 28 dm = … dam" → **1 tableau de 2 lignes vides** (1 ligne pour a, 1 ligne pour b), pas 2 tables séparées.
+
+## Interligne (ancienne section, dépréciée)
+
+Voir "Interligne et espacement" ci-dessus. Le flag `--line-spacing 150` reste disponible dans `gdoc.py write-section` pour cas particuliers, mais la valeur par défaut (100) + détection automatique du `spaceAbove` sur lignes à trous est désormais la convention.
 
 ## Notations typographiques
 

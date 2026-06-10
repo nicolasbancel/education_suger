@@ -1,0 +1,45 @@
+N° de l'exercice;N° de question;Sous-question;Nombre de points maximal;Barème
+Exercice 1;Question 1;;1,5;-1,5 si oubli de la perpendicularité, du passage par le milieu, ou du fait que c'est une droite
+Exercice 1;Question 1;;;-1 si "forme un angle droit" sans préciser avec quoi (terme de perpendicularité absent)
+Exercice 1;Question 1;;;-1 si "droite perpendiculaire" sans dire à quoi elle est perpendiculaire
+Exercice 1;Question 1;;;-0,5 si la phrase n'est pas syntaxiquement correcte, ou si la définition n'est clairement pas intégrée
+Exercice 1;Question 2;;1,5;-1,5 si oubli du partage de l'angle en deux angles de même mesure
+Exercice 1;Question 2;;;-1,5 si l'angle coupé n'est pas explicitement mentionné
+Exercice 1;Question 2;;;-1,5 si droite ou demi-droite non mentionnée
+Exercice 1;Question 2;;;-0,5 si "deux parties égales" au lieu de "deux angles de même mesure"
+Exercice 1;Question 2;;;-0,5 si la phrase n'est pas syntaxiquement correcte
+Exercice 1;Question 3;;1;0,5/1 si le cercle passant par les trois sommets est correctement défini mais la construction est absente ou fausse
+Exercice 1;Question 3;;;-0,5 si oubli que le cercle passe par les trois sommets A, B et C
+Exercice 1;Question 3;;;-0,5 si la construction n'utilise pas l'intersection des médiatrices (confond avec bissectrices ou hauteurs)
+Exercice 2;Question 1;;3;-0,5 par point mal positionné, -1 si point franchement faux
+Exercice 2;Question 1;;;1,5/3 si la symétrie globale est respectée mais les points sont régulièrement un peu mal placés
+Exercice 2;Question 1;;;-0,25 à -1 si la figure n'est pas soignée (traits pas droits)
+Exercice 2;Question 2;;5;-1 si les perpendiculaires à l'axe ne sont pas faites à l'équerre ou sont incorrectes
+Exercice 2;Question 2;;;-0,5 par légende manquante (nom du point symétrique, codage de longueur, codage d'angle), jusqu'à -2 si régulièrement manquantes
+Exercice 2;Question 2;;;-1 (au global) si les points symétriques sont obtenus en reportant la distance à la règle au lieu du compas
+Exercice 2;Question 2;;;-0,5 si un codage de longueur est porté sur une droite (une droite n'a pas de longueur)
+Exercice 2;Question 2;;;-1 si le symétrique de la droite (d2) n'est pas tracé
+Exercice 2;Question 2;;;-0,5 si un seul point de (d2) est reporté (2e point non choisi pour tracer la droite symétrique)
+Exercice 2;Question 2;;;jusqu'à -1,5 si la figure est sale ou si les traits de construction sont aussi visibles que la figure finale
+Exercice 3;Question 1;;1,5;-0,75 si la valeur (70°) est donnée sans justification
+Exercice 3;Question 1;;;-0,5 si la propriété "dans un triangle, la somme des angles vaut 180°" n'est pas citée
+Exercice 3;Question 1;;;-0,5 si erreur de calcul mais démarche correcte
+Exercice 3;Question 2;;0,5;0 si la propriété "les angles à la base d'un triangle isocèle ont la même mesure" n'est pas correctement énoncée
+Exercice 3;Question 2;;;-0,25 si formulation vague ("ils sont égaux" sans préciser "même mesure")
+Exercice 3;Question 3;;1,5;-0,5 si le triangle dans lequel on raisonne (ABD) n'est pas précisé
+Exercice 3;Question 3;;;-0,5 si le caractère isocèle (AD = BD) n'est pas justifié à partir du codage
+Exercice 3;Question 3;;;-0,5 si l'angle droit en D n'est pas lu sur la figure / pas utilisé
+Exercice 3;Question 3;;;-0,5 si la valeur (45°) est donnée sans justification
+Exercice 3;Question 4;;1,5;-0,5 si la décomposition CAD = CAB + BAD n'est pas justifiée
+Exercice 3;Question 4;;;-0,5 si la valeur (115°) est donnée sans réutiliser les questions a) et c)
+Exercice 3;Question 4;;;-0,5 si la nature de l'angle (obtus) n'est pas précisée ou est fausse
+Exercice 4;Question 1;;1;0,25/1 si la valeur (60°) est donnée sans justification
+Exercice 4;Question 1;;;-0,5 si la propriété "somme des angles d'un triangle = 180°" n'est pas citée
+Exercice 4;Question 1;;;-0,5 si erreur de calcul mais démarche correcte
+Exercice 4;Question 2;;1;0,25/1 si "équilatéral" est donné sans justification
+Exercice 4;Question 2;;;-0,5 si ne dit pas que les trois angles sont égaux (à 60°)
+Exercice 4;Question 2;;;-0,5 si conclut "isocèle" au lieu d'équilatéral
+Exercice 4;Question 3;;1;0,25/1 si la valeur (7,2 cm) est donnée sans justification
+Exercice 4;Question 3;;;-0,5 si n'utilise pas le fait que les trois côtés sont égaux (triangle équilatéral)
+Exercice 4;Question 3;;;-0,5 si oubli de l'unité (cm)
+Exercice 4;Question 3;;;-0,25 si erreur de calcul mais démarche correcte
