@@ -66,3 +66,10 @@
 
 # Liens Google Sheets contenant données élèves
 01_2526_6emes_maths/00_ds_dm/dm_gestion_donnees/google_sheets_links.md
+
+# Agent de correction de DM numériques — sorties nominatives (générique, tout DM)
+# La grille (barème) et les templates .tex restent versionnables : pas de PII.
+**/correction/faits/
+**/correction/corrections/
+**/correction/_tableau_de_bord.md
+**/correction/emails*.json
