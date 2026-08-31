@@ -1,0 +1,22 @@
+{
+  "titre": "Manuel maths 4e",
+  "isbn": "9782095069728",
+
+  "_comment_url": "Le segment numerique de l'URL (1788275964) est un cache-buster : si les telechargements se mettent a renvoyer 404, recopier une URL d'image fraiche depuis le navigateur et remplacer base_url ci-dessous. Le reste du script n'a pas a etre touche.",
+  "base_url": "https://static.prod.educlever.io/filer2/iC56fruFLQCSaeaHPPHWug/1788275964/solaire/9782095069728/assets/Pages",
+
+  "_comment_gabarit": "Piege du site : le numero de page est sur 4 chiffres avec zeros de tete (0106), mais le folio n'en a AUCUN (102, 96, 6).",
+  "gabarit": "pages-{page:04d}-folio-{folio:d}.jpg",
+
+  "_comment_folio": "folio = page + folio_offset, relation constante verifiee sur tout l'ouvrage.",
+  "folio_offset": -4,
+
+  "page_min": 5,
+  "page_max": 308,
+
+  "largeur_attendue": 1600,
+  "hauteur_attendue": 2255,
+
+  "_comment_chapitres": "Rempli en phase 3 : [{\"num\": 3, \"titre\": \"Utiliser les nombres rationnels\", \"folio_debut\": 96, \"folio_fin\": 111}]",
+  "chapitres": []
+}

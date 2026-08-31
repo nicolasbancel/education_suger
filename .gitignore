@@ -73,3 +73,12 @@
 **/correction/corrections/
 **/correction/_tableau_de_bord.md
 **/correction/emails*.json
+
+# ── Manuel scolaire sous licence ─────────────────────────────────────────────
+# Contenu éditeur (licence acquise, usage personnel de préparation de cours).
+# Le dépôt est PUBLIC : ni les pages JPG, ni les PDF reconstitués n'y ont leur place.
+# Seuls extract_manuel.py et manuel_4eme.json sont versionnés.
+01_2627_4emes_maths/extract_manuel/pages/
+01_2627_4emes_maths/extract_manuel/pdf/
+**/extract_manuel/**/*.pdf
+**/extract_manuel/**/*.jpg
