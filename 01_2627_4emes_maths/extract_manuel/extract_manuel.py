@@ -5,11 +5,16 @@ Moteur générique : tout ce qui est propre à un manuel donné vit dans un fich
 de configuration JSON (URL, gabarit de nom de fichier, bornes, chapitres).
 Pour extraire un autre manuel au même format, on écrit un nouveau JSON.
 
-Usage :
-    python3 extract_manuel.py download                 # tout le manuel
-    python3 extract_manuel.py download --pages 105-115 # une plage
-    python3 extract_manuel.py pdf --sortie pdf/test.pdf
-    python3 extract_manuel.py chapitres
+Usage courant :
+    python3 extract_manuel.py download                  # telecharge les pages
+    python3 extract_manuel.py pdf --purge               # assemble, puis efface les JPG
+    python3 extract_manuel.py chapitres                 # decoupe un PDF par chapitre
+    python3 extract_manuel.py extraire 102 103          # ressort des pages en JPG
+
+Aucune etape ne reencode quoi que ce soit : le JPG d'origine est recopie tel quel
+dans le PDF (/DCTDecode), et 'extraire' le ressort octet pour octet. C'est ce qui
+permet a 'pdf --purge' d'effacer les JPG sans rien perdre — il ne le fait
+d'ailleurs qu'apres avoir compare les empreintes MD5 une a une.
 
 Usage personnel de préparation de cours (manuel sous licence acquise).
 """
@@ -168,6 +173,11 @@ def commande_download(cfg, args):
 
 # ── Fabrication des PDF ──────────────────────────────────────────────────────
 
+def page_de_nom(cfg, chemin):
+    """Numero de page lu dans le nom du fichier (pages-0106-folio-102.jpg -> 106)."""
+    return int(re.search(r"pages-(\d+)", chemin.name).group(1))
+
+
 def pages_disponibles(cfg, folio_debut=None, folio_fin=None):
     """Chemins des JPG présents, triés par numéro de page croissant."""
     debut = page_de_folio(cfg, folio_debut) if folio_debut else cfg["page_min"]
@@ -188,10 +198,68 @@ def fabriquer_pdf(chemins, sortie):
         sys.exit("img2pdf est absent. Installer avec :  pip3 install --user img2pdf")
 
     sortie.parent.mkdir(parents=True, exist_ok=True)
+    # outputstream : img2pdf ecrit directement dans le fichier au lieu de construire
+    # tout le PDF en memoire (sur 304 pages, cela evite un pic de ~400 Mo de RAM).
     with open(sortie, "wb") as f:
-        f.write(img2pdf.convert([str(c) for c in chemins]))
+        img2pdf.convert([str(c) for c in chemins], outputstream=f)
     poids = sortie.stat().st_size / 1024 / 1024
     print(f"  {sortie.relative_to(RACINE)} — {len(chemins)} pages, {poids:.1f} Mo")
+
+
+def verifier_pdf(pdf, chemins):
+    """Chaque JPG est-il present dans le PDF, octet pour octet ?
+
+    C'est le feu vert avant toute suppression : on ne se fie pas au fait que le
+    PDF "a l'air" correct, on compare les empreintes MD5 du fichier source et du
+    flux image reellement stocke dans le PDF. Tant que ce n'est pas verifie, les
+    originaux restent sur le disque.
+    """
+    import hashlib
+    import pikepdf
+
+    with pikepdf.open(pdf) as doc:
+        if len(doc.pages) != len(chemins):
+            print(f"  ! {len(doc.pages)} pages dans le PDF pour {len(chemins)} images")
+            return False
+        for page, chemin in zip(doc.pages, chemins):
+            images = list(page.images.values())
+            if len(images) != 1:
+                print(f"  ! {chemin.name} : {len(images)} images dans la page du PDF")
+                return False
+            if hashlib.md5(images[0].read_raw_bytes()).digest() != \
+               hashlib.md5(chemin.read_bytes()).digest():
+                print(f"  ! {chemin.name} : les octets du PDF different de l'original")
+                return False
+    return True
+
+
+def poser_folios(pdf, folio_initial):
+    """Inscrit la numerotation du manuel dans le PDF.
+
+    Deux effets : le lecteur PDF affiche "102" la ou il affichait "98" (les
+    numeros de page collent enfin a ceux imprimes sur le manuel), et le PDF
+    devient autonome — 'extraire' et 'chapitres' y lisent le folio de depart au
+    lieu de le deviner, ce qui marche aussi pour un PDF partiel.
+    """
+    import pikepdf
+
+    with pikepdf.open(pdf, allow_overwriting_input=True) as doc:
+        doc.Root.PageLabels = pikepdf.Dictionary(
+            Nums=[0, pikepdf.Dictionary(S=pikepdf.Name.D, St=folio_initial)]
+        )
+        doc.docinfo["/FolioInitial"] = str(folio_initial)
+        doc.save(pdf)
+
+
+def lire_folio_initial(cfg, pdf):
+    """Folio de la premiere page du PDF, lu dans ses metadonnees."""
+    import pikepdf
+
+    with pikepdf.open(pdf) as doc:
+        valeur = doc.docinfo.get("/FolioInitial")
+        if valeur is not None:
+            return int(str(valeur))
+    return folio_de_page(cfg, cfg["page_min"])
 
 
 def commande_pdf(cfg, args):
@@ -201,7 +269,23 @@ def commande_pdf(cfg, args):
     sortie = Path(args.sortie) if args.sortie else DOSSIER_PDF / "manuel_complet.pdf"
     if not sortie.is_absolute():
         sortie = RACINE / sortie
+    premier_folio = folio_de_page(cfg, page_de_nom(cfg, chemins[0]))
     fabriquer_pdf(chemins, sortie)
+
+    if not args.purge:
+        poser_folios(sortie, premier_folio)
+        return 0
+
+    print("\n  Vérification octet par octet avant suppression des originaux…")
+    if not verifier_pdf(sortie, chemins):
+        print("  Vérification ÉCHOUÉE : les JPG sont conservés.")
+        return 1
+    poids = sum(c.stat().st_size for c in chemins) / 1024 / 1024
+    for c in chemins:
+        c.unlink()
+    print(f"  {len(chemins)} images vérifiées puis supprimées ({poids:.0f} Mo libérés).")
+    poser_folios(sortie, premier_folio)
+    print("  Les pages restent récupérables : commande 'extraire'.")
     return 0
 
 
@@ -211,19 +295,71 @@ def ardoise(texte):
     return re.sub(r"[^a-z0-9]+", "_", sans_accent.lower()).strip("_")[:60]
 
 
+def pdf_source(args):
+    """Le PDF global, source de verite une fois les JPG purges."""
+    chemin = Path(args.depuis) if getattr(args, "depuis", None) else DOSSIER_PDF / "manuel_complet.pdf"
+    if not chemin.is_absolute():
+        chemin = RACINE / chemin
+    if not chemin.exists():
+        sys.exit(f"PDF introuvable : {chemin}. Lancer 'pdf' d'abord.")
+    return chemin
+
+
 def commande_chapitres(cfg, args):
+    """Decoupe le PDF global en un PDF par chapitre, sans reencodage.
+
+    On decoupe le PDF plutot que de repartir des JPG : les pages y sont deja et
+    pikepdf recopie les flux images tels quels, donc le resultat est identique a
+    l'original meme quand le dossier pages/ a ete purge.
+    """
+    import pikepdf
+
     chapitres = cfg.get("chapitres") or []
     if not chapitres:
         sys.exit("Aucun chapitre dans la configuration. Remplir la clé 'chapitres' "
                  "du JSON (num, titre, folio_debut, folio_fin).")
+    source = pdf_source(args)
     DOSSIER_PDF.mkdir(exist_ok=True)
-    for ch in chapitres:
-        chemins = pages_disponibles(cfg, ch["folio_debut"], ch["folio_fin"])
-        if not chemins:
-            print(f"  ! chapitre {ch['num']} : aucune page téléchargée, ignoré")
-            continue
-        sortie = DOSSIER_PDF / f"ch{ch['num']:02d}_{ardoise(ch['titre'])}.pdf"
-        fabriquer_pdf(chemins, sortie)
+    premier_folio = lire_folio_initial(cfg, source)
+
+    with pikepdf.open(source) as doc:
+        for ch in chapitres:
+            debut = ch["folio_debut"] - premier_folio
+            fin = ch["folio_fin"] - premier_folio
+            if debut < 0 or fin >= len(doc.pages):
+                print(f"  ! chapitre {ch['num']} : folios hors du PDF, ignoré")
+                continue
+            extrait = pikepdf.new()
+            for page in doc.pages[debut:fin + 1]:
+                extrait.pages.append(page)
+            sortie = DOSSIER_PDF / f"ch{ch['num']:02d}_{ardoise(ch['titre'])}.pdf"
+            extrait.save(sortie)
+            poser_folios(sortie, ch["folio_debut"])
+            poids = sortie.stat().st_size / 1024 / 1024
+            print(f"  {sortie.name} — folios {ch['folio_debut']}-{ch['folio_fin']}, "
+                  f"{fin - debut + 1} pages, {poids:.1f} Mo")
+    return 0
+
+
+def commande_extraire(cfg, args):
+    """Ressort une page en JPG d'origine depuis le PDF (pour un Google Doc, etc.)."""
+    import pikepdf
+
+    source = pdf_source(args)
+    premier_folio = lire_folio_initial(cfg, source)
+    with pikepdf.open(source) as doc:
+        for folio in args.folios:
+            index = folio - premier_folio
+            if not 0 <= index < len(doc.pages):
+                print(f"  ! folio {folio} hors du PDF")
+                continue
+            image = list(doc.pages[index].images.values())[0]
+            destination = Path(args.dossier) / f"folio-{folio}.jpg"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            # read_raw_bytes rend le flux JPEG tel qu'il est stocke : aucun
+            # decodage, aucun reencodage, le fichier est celui d'origine.
+            destination.write_bytes(image.read_raw_bytes())
+            print(f"  {destination}  ({destination.stat().st_size / 1024:.0f} Ko)")
     return 0
 
 
@@ -241,8 +377,16 @@ def main():
 
     p_pdf = sous.add_parser("pdf", help="assembler toutes les pages en un PDF")
     p_pdf.add_argument("--sortie", help="chemin du PDF produit")
+    p_pdf.add_argument("--purge", action="store_true",
+                       help="supprimer les JPG une fois vérifiés dans le PDF")
 
-    sous.add_parser("chapitres", help="produire un PDF par chapitre")
+    p_ch = sous.add_parser("chapitres", help="découper le PDF en un PDF par chapitre")
+    p_ch.add_argument("--depuis", help="PDF source (défaut : pdf/manuel_complet.pdf)")
+
+    p_ex = sous.add_parser("extraire", help="ressortir une page en JPG depuis le PDF")
+    p_ex.add_argument("folios", nargs="+", type=int, help="numéro(s) de folio")
+    p_ex.add_argument("--depuis", help="PDF source (défaut : pdf/manuel_complet.pdf)")
+    p_ex.add_argument("--dossier", default=".", help="dossier de destination")
 
     args = parseur.parse_args()
     cfg = charger_config(args.config)
@@ -251,6 +395,7 @@ def main():
         "download": commande_download,
         "pdf": commande_pdf,
         "chapitres": commande_chapitres,
+        "extraire": commande_extraire,
     }[args.commande](cfg, args)
 
 
