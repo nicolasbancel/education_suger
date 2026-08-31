@@ -322,23 +322,80 @@ def commande_chapitres(cfg, args):
     DOSSIER_PDF.mkdir(exist_ok=True)
     premier_folio = lire_folio_initial(cfg, source)
 
+    total = 0
     with pikepdf.open(source) as doc:
         for ch in chapitres:
             debut = ch["folio_debut"] - premier_folio
             fin = ch["folio_fin"] - premier_folio
             if debut < 0 or fin >= len(doc.pages):
-                print(f"  ! chapitre {ch['num']} : folios hors du PDF, ignoré")
+                print(f"  ! {ch.get('slug', ch.get('titre'))} : folios hors du PDF, ignoré")
                 continue
             extrait = pikepdf.new()
             for page in doc.pages[debut:fin + 1]:
                 extrait.pages.append(page)
-            sortie = DOSSIER_PDF / f"ch{ch['num']:02d}_{ardoise(ch['titre'])}.pdf"
+            # Un sous-dossier par theme, un fichier par slug ; a defaut de slug on
+            # retombe sur le titre translittere, pour rester utilisable avec la
+            # config d'un autre manuel.
+            dossier = DOSSIER_PDF / ch["theme"] if ch.get("theme") else DOSSIER_PDF
+            dossier.mkdir(parents=True, exist_ok=True)
+            sortie = dossier / f"{ch.get('slug') or ardoise(ch['titre'])}.pdf"
             extrait.save(sortie)
             poser_folios(sortie, ch["folio_debut"])
             poids = sortie.stat().st_size / 1024 / 1024
-            print(f"  {sortie.name} — folios {ch['folio_debut']}-{ch['folio_fin']}, "
-                  f"{fin - debut + 1} pages, {poids:.1f} Mo")
+            total += poids
+            chemin = sortie.relative_to(DOSSIER_PDF)
+            print(f"  {str(chemin):72s} folios {ch['folio_debut']:>3}-{ch['folio_fin']:<3} "
+                  f"{fin - debut + 1:>3} p.  {poids:5.1f} Mo")
+    print(f"\n  {len(chapitres)} sections, {total:.0f} Mo au total")
     return 0
+
+
+def commande_signets(cfg, args):
+    """Pose un signet par section dans le PDF global.
+
+    Permet de sauter directement au bon chapitre depuis le panneau lateral du
+    lecteur PDF, sans dupliquer la moindre page.
+    """
+    import pikepdf
+
+    chapitres = cfg.get("chapitres") or []
+    if not chapitres:
+        sys.exit("Aucune section dans la configuration.")
+    source = pdf_source(args)
+    premier_folio = lire_folio_initial(cfg, source)
+
+    with pikepdf.open(source, allow_overwriting_input=True) as doc:
+        with doc.open_outline() as plan:
+            plan.root.clear()
+            themes = {}
+            for ch in chapitres:
+                index = ch["folio_debut"] - premier_folio
+                if not 0 <= index < len(doc.pages):
+                    continue
+                entree = pikepdf.OutlineItem(ch["titre"], index)
+                theme = ch.get("theme")
+                if not theme:
+                    plan.root.append(entree)
+                    continue
+                if theme not in themes:
+                    # Le signet du theme pointe sur la premiere page de sa premiere
+                    # section : cliquer "Espace et geometrie" ouvre le chapitre 13.
+                    parent = pikepdf.OutlineItem(libelle_theme(cfg, theme), index)
+                    plan.root.append(parent)
+                    themes[theme] = parent
+                themes[theme].children.append(entree)
+        doc.save(source)
+    print(f"  {len(chapitres)} signets posés dans {source.name}")
+    return 0
+
+
+def libelle_theme(cfg, theme):
+    """Libelle lisible du theme, pris dans la config ; a defaut deduit du slug."""
+    libelle = (cfg.get("themes") or {}).get(theme)
+    if libelle:
+        return libelle
+    texte = re.sub(r"^\d+_", "", theme).replace("_", " ")
+    return texte[:1].upper() + texte[1:]
 
 
 def commande_extraire(cfg, args):
@@ -383,6 +440,9 @@ def main():
     p_ch = sous.add_parser("chapitres", help="découper le PDF en un PDF par chapitre")
     p_ch.add_argument("--depuis", help="PDF source (défaut : pdf/manuel_complet.pdf)")
 
+    p_si = sous.add_parser("signets", help="poser un signet par section dans le PDF global")
+    p_si.add_argument("--depuis", help="PDF source (défaut : pdf/manuel_complet.pdf)")
+
     p_ex = sous.add_parser("extraire", help="ressortir une page en JPG depuis le PDF")
     p_ex.add_argument("folios", nargs="+", type=int, help="numéro(s) de folio")
     p_ex.add_argument("--depuis", help="PDF source (défaut : pdf/manuel_complet.pdf)")
@@ -395,6 +455,7 @@ def main():
         "download": commande_download,
         "pdf": commande_pdf,
         "chapitres": commande_chapitres,
+        "signets": commande_signets,
         "extraire": commande_extraire,
     }[args.commande](cfg, args)
 

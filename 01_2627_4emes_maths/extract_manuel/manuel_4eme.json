@@ -1,22 +1,193 @@
 {
   "titre": "Manuel maths 4e",
   "isbn": "9782095069728",
-
   "_comment_url": "Le segment numerique de l'URL (1788275964) est un cache-buster : si les telechargements se mettent a renvoyer 404, recopier une URL d'image fraiche depuis le navigateur et remplacer base_url ci-dessous. Le reste du script n'a pas a etre touche.",
   "base_url": "https://static.prod.educlever.io/filer2/iC56fruFLQCSaeaHPPHWug/1788275964/solaire/9782095069728/assets/Pages",
-
   "_comment_gabarit": "Piege du site : le numero de page est sur 4 chiffres avec zeros de tete (0106), mais le folio n'en a AUCUN (102, 96, 6).",
   "gabarit": "pages-{page:04d}-folio-{folio:d}.jpg",
-
   "_comment_folio": "folio = page + folio_offset, relation constante verifiee sur tout l'ouvrage.",
   "folio_offset": -4,
-
   "page_min": 5,
   "page_max": 308,
-
   "largeur_attendue": 1600,
   "hauteur_attendue": 2255,
-
-  "_comment_chapitres": "Rempli en phase 3 : [{\"num\": 3, \"titre\": \"Utiliser les nombres rationnels\", \"folio_debut\": 96, \"folio_fin\": 111}]",
-  "chapitres": []
+  "_comment_themes": "Libelle affiche pour chaque theme dans les signets du PDF global.",
+  "themes": {
+    "01_nombres_et_calculs": "Nombres et calculs",
+    "02_organisation_gestion_donnees_fonctions": "Organisation et gestion de données, fonctions",
+    "03_grandeurs_et_mesures": "Grandeurs et mesures",
+    "04_espace_et_geometrie": "Espace et géométrie",
+    "05_ressources_transversales": "Ressources transversales"
+  },
+  "_comment_chapitres": "Une entree par section du manuel. 'theme' donne le sous-dossier, 'slug' le nom du fichier PDF, 'titre' le libelle du signet dans le PDF global. Bornes en folios (= numeros imprimes sur les pages).",
+  "chapitres": [
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "01_multiplier_diviser_nombres_decimaux_relatifs",
+      "titre": "Chapitre 1 — Multiplier, diviser des nombres décimaux relatifs",
+      "folio_debut": 24,
+      "folio_fin": 37
+    },
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "02_utiliser_distributivite",
+      "titre": "Chapitre 2 — Utiliser la distributivité",
+      "folio_debut": 38,
+      "folio_fin": 51
+    },
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "03_utiliser_nombres_rationnels",
+      "titre": "Chapitre 3 — Utiliser les nombres rationnels",
+      "folio_debut": 52,
+      "folio_fin": 67
+    },
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "04_multiplier_diviser_nombres_rationnels",
+      "titre": "Chapitre 4 — Multiplier, diviser des nombres rationnels",
+      "folio_debut": 68,
+      "folio_fin": 81
+    },
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "05_utiliser_puissances_racine_carree",
+      "titre": "Chapitre 5 — Utiliser les puissances et la racine carrée",
+      "folio_debut": 82,
+      "folio_fin": 97
+    },
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "06_utiliser_nombres_premiers",
+      "titre": "Chapitre 6 — Utiliser les nombres premiers",
+      "folio_debut": 98,
+      "folio_fin": 111
+    },
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "07_mettre_probleme_en_equation",
+      "titre": "Chapitre 7 — Mettre un problème en équation",
+      "folio_debut": 112,
+      "folio_fin": 125
+    },
+    {
+      "theme": "01_nombres_et_calculs",
+      "slug": "projets_scratch_01_02",
+      "titre": "Projets Scratch 1 et 2",
+      "folio_debut": 126,
+      "folio_fin": 127
+    },
+    {
+      "theme": "02_organisation_gestion_donnees_fonctions",
+      "slug": "08_traiter_donnees_statistiques",
+      "titre": "Chapitre 8 — Traiter des données statistiques",
+      "folio_debut": 128,
+      "folio_fin": 141
+    },
+    {
+      "theme": "02_organisation_gestion_donnees_fonctions",
+      "slug": "09_utiliser_notions_probabilites",
+      "titre": "Chapitre 9 — Utiliser des notions de probabilités",
+      "folio_debut": 142,
+      "folio_fin": 155
+    },
+    {
+      "theme": "02_organisation_gestion_donnees_fonctions",
+      "slug": "10_utiliser_proportionnalite",
+      "titre": "Chapitre 10 — Utiliser la proportionnalité",
+      "folio_debut": 156,
+      "folio_fin": 171
+    },
+    {
+      "theme": "02_organisation_gestion_donnees_fonctions",
+      "slug": "11_utiliser_notion_fonction",
+      "titre": "Chapitre 11 — Utiliser la notion de fonction",
+      "folio_debut": 172,
+      "folio_fin": 185
+    },
+    {
+      "theme": "02_organisation_gestion_donnees_fonctions",
+      "slug": "projets_scratch_03_04",
+      "titre": "Projets Scratch 3 et 4",
+      "folio_debut": 186,
+      "folio_fin": 187
+    },
+    {
+      "theme": "03_grandeurs_et_mesures",
+      "slug": "12_calculer_grandeurs_mesurables",
+      "titre": "Chapitre 12 — Calculer avec des grandeurs mesurables",
+      "folio_debut": 188,
+      "folio_fin": 203
+    },
+    {
+      "theme": "03_grandeurs_et_mesures",
+      "slug": "projets_scratch_05_06",
+      "titre": "Projets Scratch 5 et 6",
+      "folio_debut": 204,
+      "folio_fin": 205
+    },
+    {
+      "theme": "04_espace_et_geometrie",
+      "slug": "13_representer_espace",
+      "titre": "Chapitre 13 — Représenter l'espace",
+      "folio_debut": 206,
+      "folio_fin": 219
+    },
+    {
+      "theme": "04_espace_et_geometrie",
+      "slug": "14_utiliser_cas_egalite_triangles",
+      "titre": "Chapitre 14 — Utiliser les cas d'égalité des triangles",
+      "folio_debut": 220,
+      "folio_fin": 233
+    },
+    {
+      "theme": "04_espace_et_geometrie",
+      "slug": "15_utiliser_theoreme_thales_reciproque",
+      "titre": "Chapitre 15 — Utiliser le théorème de Thalès et sa réciproque",
+      "folio_debut": 234,
+      "folio_fin": 247
+    },
+    {
+      "theme": "04_espace_et_geometrie",
+      "slug": "16_travailler_triangles_rectangles",
+      "titre": "Chapitre 16 — Travailler dans des triangles rectangles",
+      "folio_debut": 248,
+      "folio_fin": 263
+    },
+    {
+      "theme": "04_espace_et_geometrie",
+      "slug": "17_transformer_figures_translation",
+      "titre": "Chapitre 17 — Transformer des figures par translation",
+      "folio_debut": 264,
+      "folio_fin": 277
+    },
+    {
+      "theme": "04_espace_et_geometrie",
+      "slug": "projets_scratch_07_08",
+      "titre": "Projets Scratch 7 et 8",
+      "folio_debut": 278,
+      "folio_fin": 279
+    },
+    {
+      "theme": "05_ressources_transversales",
+      "slug": "taches_complexes_transversales",
+      "titre": "Tâches complexes transversales",
+      "folio_debut": 280,
+      "folio_fin": 286
+    },
+    {
+      "theme": "05_ressources_transversales",
+      "slug": "projets_epi",
+      "titre": "Projets d'EPI",
+      "folio_debut": 287,
+      "folio_fin": 290
+    },
+    {
+      "theme": "05_ressources_transversales",
+      "slug": "corriges_exercices",
+      "titre": "Corrigés des exercices",
+      "folio_debut": 291,
+      "folio_fin": 301
+    }
+  ]
 }
