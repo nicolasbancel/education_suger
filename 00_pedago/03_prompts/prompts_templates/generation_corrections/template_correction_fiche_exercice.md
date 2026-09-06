@@ -64,7 +64,7 @@ Template obligatoire : [INSERER TEMPLATE LATEX 03_prompts/contraintes/contrainte
 - Tu dois respecter strictement les consignes de rédactions définies dans le fichier suivant :
 
 [INSERER CONTRAINTES LATEX
-03_prompts/contraintes/contraintes_redaction_maths.md]
+00_conventions/redaction_maths.md]
 
 # Justifications attendues
 

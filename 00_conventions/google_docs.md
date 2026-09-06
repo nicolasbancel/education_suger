@@ -181,6 +181,10 @@ Convention de présentation des exercices (et de leurs corrections) dans le Doc 
 
 ## Encadrés
 
+> Le **choix** du bloc (quand utiliser Théorie plutôt qu'Astuce, pourquoi le jaune est
+> réservé à À retenir) est décrit dans [`blocs_de_cours.md`](blocs_de_cours.md). Cette
+> section-ci ne donne que les valeurs de mise en forme côté Google Docs.
+
 Convention transverse à tous les cours. 5 types d'encadrés, tous implémentés via une **table Google Docs 1×1** avec fond, bordure et padding `0,15 cm`. Le label (titre de l'encadré) est inséré dans la cellule en gras, suivi du contenu en texte normal.
 
 | Type | Fond | Bordure | Label | Usage |
@@ -265,8 +269,8 @@ Voir "Interligne et espacement" ci-dessus. Le flag `--line-spacing 150` reste di
 
 Constats :
 
-- **Virgule décimale** : `1,20 mètres` (français standard — à respecter, ne pas écrire `1.20`)
-  - ⚠️ Le chap 5 contient en réalité `1.20 mètres` (avec point) — **à vérifier avec l'auteur** si c'est volontaire ou un défaut à corriger systématiquement.
+- **Virgule décimale** : `1,20 mètres` (français standard, ne pas écrire `1.20`). Les Docs de cours sont des cours de **mathématiques**, donc la virgule s'applique. Voir `latex.md` pour la règle complète : virgule en maths, point en physique-chimie.
+  - Le chap 5 contient encore `1.20 mètres` (avec point) : c'est un **défaut à corriger** lors d'un prochain passage sur ce Doc.
 - **Apostrophe typographique** `'` (et non droite `'`) : `l'âge`, `d'application`
 - **Symbole euro** : collé au nombre, `5€` (sans espace)
 - **Pourcentage** : `40%`, `84%` (sans espace avant `%`)

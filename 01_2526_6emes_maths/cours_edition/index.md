@@ -28,4 +28,4 @@ Table de référence des cours de 6ème. Renseigner l'URL Google Doc et le statu
 
 ## Cours-modèle de référence
 
-URL du cours-modèle utilisé pour extraire le `formatting_guide.md` : _à fournir par l'utilisateur_.
+URL du cours-modèle utilisé pour extraire le `00_conventions/google_docs.md` : _à fournir par l'utilisateur_.

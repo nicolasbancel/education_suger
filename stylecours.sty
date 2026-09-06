@@ -1,0 +1,413 @@
+% =====================================================================
+%  stylecours.sty - Style commun des documents de cours
+%  N. Bancel
+%
+%  CE QUE C'EST : un fichier de style LaTeX. Pas un programme qu'on lance :
+%  un bloc de definitions qu'un document .tex charge au debut. Il n'a AUCUN
+%  effet sur les Google Docs (pour eux, voir 00_conventions/google_docs.md
+%  et les scripts gdoc_*.py de ~/.claude/scripts/).
+%
+%  OU SONT LES CONVENTIONS ECRITES : dans 00_conventions/ (voir son README).
+%  Ce fichier-ci est l'IMPLEMENTATION du style ; 00_conventions/ en est la
+%  documentation. Il vit a la racine, avec mypackages.sty et macros.sty,
+%  parce que 156 fichiers .tex du repo chargent deja ces deux-la depuis la
+%  racine, a cinq profondeurs de chemin differentes.
+%
+%  USAGE (depuis un dossier a 2 niveaux, ex. 01_2627_4emes_maths/00_calcul_mental/) :
+%
+%      \documentclass[11pt]{exam}
+%      \usepackage{../../mypackages}
+%      \usepackage{../../macros}
+%      \usepackage{../../stylecours}
+%
+%  IMPORTANT : charger mypackages ET macros AVANT stylecours. Ce fichier
+%  suppose que tcolorbox, tikz, colortbl, titlesec, multirow et hyperref
+%  sont deja disponibles (ils le sont via mypackages).
+%
+%  CE QU'IL DEFINIT
+%    - la palette de couleurs (section "Palette")
+%    - 5 encadres : theorie, astuce, attention, aretenir, exemple
+%    - 2 environnements d'exercices a pointilles : exos, exostrois
+%    - la macro \compensation pour les schemas de calcul en 2 etapes
+%    - la macro \distrib pour le schema flechee de la distributivite
+%    - la macro \mc pour colorer une table de multiplication par difficulte
+%    - la macro \prog pour l'etiquette de niveau de programme
+%
+%  POUR MODIFIER LE RENDU D'UN ENCADRE dans tous les documents a la fois,
+%  c'est ici et nulle part ailleurs.
+% =====================================================================
+\ProvidesPackage{stylecours}[2026/09/06 Style commun des cours de maths]
+
+\RequirePackage{needspace}   % evite les titres orphelins en bas de page
+\usetikzlibrary{arrows.meta, positioning, calc}
+\tcbuselibrary{theorems, skins, hooks, breakable}
+
+% Pas de cadre rouge autour des liens du sommaire
+\hypersetup{hidelinks}
+
+% Exposants a la francaise (1re, 4e, ...) : non fourni par babel english
+\providecommand{\up}[1]{\textsuperscript{#1}}
+
+% Sommaire en francais
+\AtBeginDocument{\renewcommand{\contentsname}{Sommaire}}
+
+% ---------------------------------------------------------------------
+% Espacements : on ecrit de VRAIES lignes vides dans le source, jamais de
+% \vspace a la main. C'est \parskip qui donne l'air entre deux paragraphes.
+%
+% \parindent vaut 0 (fixe dans macros.sty) : sans \parskip, deux paragraphes
+% consecutifs seraient collés et indiscernables.
+%
+% Les display skips (l'air autour d'un \[ ... \] ou d'un align) sont reduits :
+% par defaut LaTeX en met beaucoup trop pour un cours ou les calculs suivent
+% immediatement la phrase qui les annonce.
+% ---------------------------------------------------------------------
+\AtBeginDocument{%
+  \setlength{\parskip}{5pt plus 1.5pt minus 1pt}%
+  \setlength{\abovedisplayskip}{4pt plus 1.5pt minus 1.5pt}%
+  \setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 2pt}%
+  \setlength{\belowdisplayshortskip}{5pt plus 2pt minus 2pt}%
+}
+
+% ---------------------------------------------------------------------
+% Palette
+% ---------------------------------------------------------------------
+\definecolor{cmbleu}{HTML}{1F4E79}      % titres de partie
+\definecolor{cmmagenta}{HTML}{A64D79}   % titres de section
+\definecolor{thbg}{HTML}{E8F4F8}        % fond Theorie
+\definecolor{thfr}{HTML}{2E75B6}        % bordure Theorie
+\definecolor{asbg}{HTML}{D9EAD3}        % fond Astuce
+\definecolor{asfr}{HTML}{38761D}        % bordure Astuce
+\definecolor{atbg}{HTML}{FFE5E5}        % fond Attention
+\definecolor{atfr}{HTML}{CC0000}        % bordure Attention
+\definecolor{rebg}{HTML}{FFF2CC}        % fond A retenir
+\definecolor{refr}{HTML}{E69138}        % bordure A retenir
+\definecolor{exbleu}{HTML}{1C4587}      % barre des exemples
+\definecolor{exorange}{HTML}{B45F06}    % barre des exercices
+\definecolor{entete}{HTML}{C9DAF8}      % entete de tableau
+\definecolor{exfond}{HTML}{F2F6FC}      % fond des exemples
+\definecolor{exoborder}{HTML}{E69138}   % bordure fine des series d'exercices
+
+% Code couleur de difficulte (tables de multiplication et d'addition)
+\definecolor{facile}{HTML}{C6EFCE}      % vert clair
+\definecolor{moyen}{HTML}{FFEB9C}       % jaune
+\definecolor{difficile}{HTML}{FFC7CE}   % rouge clair
+
+% ---------------------------------------------------------------------
+% Styles de titres
+% ---------------------------------------------------------------------
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{cmbleu}}{\thesection.}{0.6em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{cmmagenta}}{\thesubsection}{0.6em}{}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+% ---------------------------------------------------------------------
+% Etiquette de niveau de programme
+%   \prog{6} -> pastille grise "Programme 6e", poussee a droite de la ligne.
+%   Usage : \section[Titre]{Titre \prog{6}}
+%   L'argument optionnel garde le sommaire et les signets PDF propres :
+%   l'etiquette n'apparait que dans le corps du document.
+% ---------------------------------------------------------------------
+\definecolor{progbg}{HTML}{ECECEC}   % fond de la pastille de programme
+\definecolor{progfg}{HTML}{595959}   % texte de la pastille de programme
+\newcommand{\prog}[1]{%
+  \hfill
+  \tikz[baseline=(pg.base)]{%
+    \node[rectangle, rounded corners=2.5pt, fill=progbg, text=progfg,
+          inner xsep=5pt, inner ysep=2.5pt,
+          font=\normalfont\footnotesize\bfseries] (pg) {Programme #1\up{e}};}%
+}
+
+% ---------------------------------------------------------------------
+% Encadres
+%   Chacun accepte un argument optionnel passe tel quel a tcolorbox.
+%   Exemple pour changer le titre : \begin{aretenir}[title={Mon titre}]
+% ---------------------------------------------------------------------
+\newtcolorbox{theorie}[1][]{
+  enhanced, breakable, colback=thbg, colframe=thfr, boxrule=0.5mm,
+  arc=3mm, left=3mm, right=3mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries, title={Théorie}, #1
+}
+
+\newtcolorbox{astuce}[1][]{
+  enhanced, breakable, colback=asbg, colframe=asfr, boxrule=0.5mm,
+  arc=3mm, left=3mm, right=3mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries, title={Astuce}, #1
+}
+
+\newtcolorbox{attention}[1][]{
+  enhanced, breakable, colback=atbg, colframe=atfr, boxrule=0.5mm,
+  arc=3mm, left=3mm, right=3mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries, title={Attention}, #1
+}
+
+\newtcolorbox{aretenir}[1][]{
+  enhanced, breakable, colback=rebg, colframe=refr, boxrule=0.6mm,
+  arc=3mm, left=3mm, right=3mm, top=2mm, bottom=2mm,
+  fonttitle=\bfseries, title={À retenir}, #1
+}
+
+% ---------------------------------------------------------------------
+% Exemple : crochet lateral + badge, façon manuel scolaire.
+%
+%   \begin{exemple}{Exemple 2}{à quoi ça sert}
+%       ...
+%   \end{exemple}
+%
+% Le crochet s'ouvre en haut et se referme en bas : on voit d'un coup d'oeil
+% ou l'exemple commence et ou il finit. Si le bloc est coupe par un saut de
+% page, le crochet reste ouvert du cote de la coupure (overlay first /
+% middle / last), ce qui signale que l'exemple continue page suivante.
+% ---------------------------------------------------------------------
+\definecolor{exbadgebg}{HTML}{DCE6F5}   % fond du badge "Exemple N"
+
+\newcommand{\exbracketfull}{%
+  \draw[exbleu, line width=1.8pt, rounded corners=5pt]
+    ([shift={(11pt,-1pt)}]frame.north west) --
+    ([shift={(3pt,-1pt)}]frame.north west) --
+    ([shift={(3pt,1pt)}]frame.south west) --
+    ([shift={(11pt,1pt)}]frame.south west);
+}
+\newcommand{\exbrackettop}{%
+  \draw[exbleu, line width=1.8pt, rounded corners=5pt]
+    ([shift={(11pt,-1pt)}]frame.north west) --
+    ([shift={(3pt,-1pt)}]frame.north west) --
+    ([shift={(3pt,0pt)}]frame.south west);
+}
+\newcommand{\exbracketmid}{%
+  \draw[exbleu, line width=1.8pt]
+    ([shift={(3pt,0pt)}]frame.north west) --
+    ([shift={(3pt,0pt)}]frame.south west);
+}
+\newcommand{\exbracketbot}{%
+  \draw[exbleu, line width=1.8pt, rounded corners=5pt]
+    ([shift={(3pt,0pt)}]frame.north west) --
+    ([shift={(3pt,1pt)}]frame.south west) --
+    ([shift={(11pt,1pt)}]frame.south west);
+}
+
+% Badge "Exemple N" sur pastille arrondie
+\newcommand{\exbadge}[1]{%
+  \tikz[baseline=(xb.base)]{%
+    \node[fill=exbadgebg, rounded corners=2.5pt, inner xsep=5pt, inner ysep=2pt]
+      (xb) {\footnotesize\bfseries\textcolor{exbleu}{#1}};}%
+}
+
+\newtcolorbox{exemple}[2]{
+  enhanced, breakable, blanker,
+  left=18pt, right=0pt, top=4pt, bottom=4pt,
+  before={\par\needspace{4.5\baselineskip}\vspace{11pt}}, after skip=10pt,
+  overlay unbroken={\exbracketfull},
+  overlay first={\exbrackettop},
+  overlay middle={\exbracketmid},
+  overlay last={\exbracketbot},
+  % \nointerlineskip apres le \par : quand un calcul (align, \[...\]) suit
+  % DIRECTEMENT le titre, TeX ouvre un paragraphe vide qui coute une ligne
+  % entiere (13,6 pt) avant meme l'\abovedisplayskip. Mesure faite le
+  % 2026-09-06 : 32 pt d'air sans, 20 pt avec. Ne PAS ajouter de rattrapage
+  % negatif en plus : le texte des exemples qui commencent par une phrase
+  % vient alors chevaucher le badge.
+  before upper={\hspace*{-4pt}\exbadge{#1}\;\textbf{#2}\par\nointerlineskip\vspace{3pt}}
+}
+
+% ---------------------------------------------------------------------
+% Pastille de couleur pour une legende (ex. code couleur de difficulte).
+%   \pastille{facile}  \pastille{moyen}  \pastille{difficile}
+% Dimensionnee en ex, sans profondeur et sans \strut : elle n'a donc AUCUN
+% effet sur l'interligne, meme dans une liste serree (compactitem).
+% ---------------------------------------------------------------------
+\newcommand{\pastille}[1]{%
+  {\setlength{\fboxsep}{0pt}\setlength{\fboxrule}{0.3pt}%
+   \fcolorbox{black!35}{#1}{\rule{0pt}{1.1ex}\hspace{1.7ex}}}%
+}
+
+% ---------------------------------------------------------------------
+% Exercices : bloc a fond pale, calculs numerotes a. b. c., aucun filet
+%
+%   \begin{exos}      ... 2 colonnes, hauteur de ligne 1.9
+%   \begin{exos}[3.2] ... 2 colonnes, lignes plus hautes (fractions)
+%   \begin{exostrois} ... 3 colonnes
+%
+% Chaque case s'ecrit \ex{$calcul$}, les cases sont separees par &.
+% La lettre (a., b., c., ...) est ajoutee AUTOMATIQUEMENT dans l'ordre de
+% lecture, ligne par ligne. Le compteur repart de a. a chaque serie.
+% Interet : pouvoir dire "on corrige le c." en classe.
+% ---------------------------------------------------------------------
+\newcolumntype{L}{>{\raggedright\arraybackslash}p{0.42\linewidth}}
+\newcolumntype{M}{>{\raggedright\arraybackslash}p{0.27\linewidth}}
+
+\newcounter{exoitem}
+\newcommand{\ex}[1]{%
+  \stepcounter{exoitem}%
+  \textcolor{exorange}{\bfseries\alph{exoitem}.}~~#1\;=\;\dotfill
+}
+
+\newcommand{\avous}{%
+  {\bfseries\textcolor{exorange}{À vous de jouer}}\par\vspace{4pt}
+}
+
+\newenvironment{exos}[1][1.9]{%
+  \setcounter{exoitem}{0}%
+  \begin{tcolorbox}[enhanced, breakable, colback=white, colframe=exoborder,
+      boxrule=0.6pt, arc=2mm, left=4mm, right=4mm, top=3mm, bottom=3mm,
+      before={\par\needspace{3\baselineskip}\vspace{11pt}}, after skip=9pt]
+  \avous
+  \renewcommand{\arraystretch}{#1}
+  \begin{tabular}{@{}L@{\hspace{0.05\linewidth}}L@{}}
+}{%
+  \end{tabular}
+  \end{tcolorbox}
+}
+
+\newenvironment{exostrois}[1][1.9]{%
+  \setcounter{exoitem}{0}%
+  \begin{tcolorbox}[enhanced, breakable, colback=white, colframe=exoborder,
+      boxrule=0.6pt, arc=2mm, left=4mm, right=4mm, top=3mm, bottom=3mm,
+      before={\par\needspace{3\baselineskip}\vspace{11pt}}, after skip=9pt]
+  \avous
+  \renewcommand{\arraystretch}{#1}
+  \begin{tabular}{@{}M@{\hspace{0.035\linewidth}}M@{\hspace{0.035\linewidth}}M@{}}
+}{%
+  \end{tabular}
+  \end{tcolorbox}
+}
+
+% ---------------------------------------------------------------------
+% Serie d'exercices a contenu libre : meme habillage que \begin{exos}
+% (bordure fine, titre "A vous de jouer"), mais on ecrit ce qu'on veut
+% dedans — un tableau a remplir, des questions redigees, un schema.
+% Utiliser \exl{a} pour numeroter un item a la main, dans la meme couleur
+% que la numerotation automatique des series ordinaires.
+% ---------------------------------------------------------------------
+\newcommand{\exl}[1]{\textcolor{exorange}{\bfseries #1.}}
+
+% L'argument optionnel est passe tel quel a tcolorbox : par defaut le bloc peut
+% se couper entre deux pages, [unbreakable] le garde d'un seul tenant (utile
+% quand une consigne et son tableau ne doivent pas etre separes).
+\newenvironment{exoslibre}[1][breakable]{%
+  \begin{tcolorbox}[enhanced, #1, colback=white, colframe=exoborder,
+      boxrule=0.6pt, arc=2mm, left=4mm, right=4mm, top=3mm, bottom=3mm,
+      before={\par\needspace{3\baselineskip}\vspace{11pt}}, after skip=9pt]
+  \avous
+}{%
+  \end{tcolorbox}
+}
+
+% ---------------------------------------------------------------------
+% Schema de compensation (calcul en deux etapes)
+%   #1 = calcul de depart      #2 = resultat final
+%   #3 = etape intermediaire   #4 = 1re fleche   #5 = 2e fleche
+%   Exemple : \compensation{2\,658 + 299}{2\,957}{2\,958}{+\,300}{-\,1}
+% ---------------------------------------------------------------------
+\newcommand{\compensation}[5]{%
+\begin{center}
+\begin{tikzpicture}[>={Stealth[length=2.6mm]}]
+  % Positions RELATIVES : la largeur du calcul de depart varie d'un exemple a
+  % l'autre. Avec des coordonnees fixes, le schema se decale et n'est plus
+  % centre dans le bloc.
+  \node[anchor=west] (A) at (0,0) {$#1\;=\;$};
+  \node[anchor=west] (R) at ([xshift=3.9cm]A.east) {$\mathbf{#2}$};
+  \coordinate (cmid) at ($(A.east)!0.5!(R.west)$);
+  \node[draw=exbleu, thick, rounded corners=2pt, inner sep=4pt, anchor=north]
+       (M) at ([yshift=-1.15cm]cmid) {$#3$};
+  % Etiquettes AU MILIEU de chaque fleche (pos=0.5), avec un fond blanc qui
+  % masque le trait : sinon l'etiquette de droite chevauche le resultat.
+  \draw[->, thick, exbleu] (A.south east) --
+       node[pos=0.5, fill=white, draw=exbleu, rounded corners=2pt,
+            inner sep=2.5pt, font=\small] {$#4$} (M.north west);
+  \draw[->, thick, exbleu] (M.north east) --
+       node[pos=0.5, fill=white, draw=exbleu, rounded corners=2pt,
+            inner sep=2.5pt, font=\small] {$#5$} (R.south west);
+\end{tikzpicture}
+\end{center}
+}
+
+% ---------------------------------------------------------------------
+% Schema de distributivite (les deux fleches numerotees)
+%   \distrib[op]{k}{a}{b}   ->   k x (a op b) = (k x a) op (k x b)
+%   op vaut + par defaut ; passer [-] pour la version soustraction.
+%   Reprend le schema du Chapitre 0 de 6eme : une fleche par produit, avec
+%   son numero d'ordre, pour montrer que le facteur k se distribue sur
+%   CHACUN des deux termes de la parenthese (l'oubli du 2e est l'erreur
+%   classique).
+% ---------------------------------------------------------------------
+\newcommand{\distrib}[4][+]{%
+% \makebox[\linewidth] centre le schema sans l'espace de l'environnement
+% center (\topsep), qui creait un trou visible au-dessus et au-dessous.
+\par\addvspace{6pt}\noindent\makebox[\linewidth]{%
+\begin{tikzpicture}[>={Stealth[length=2.2mm]}, inner sep=0pt,
+  % le numero d'ordre : un petit disque cercle, pose au-dessus d'un terme
+  distribnum/.style={circle, draw=exbleu, line width=0.5pt, inner sep=0.6pt,
+                     font=\scriptsize\bfseries, text=exbleu, fill=white}]
+  % --- membre de gauche : k x ( a op b )
+  \node                    (k)  at (0,0)  {$\textcolor{cmmagenta}{\mathbf{#2}}$};
+  \node[right=1.5pt of k]  (t1)           {$\times$};
+  \node[right=1.5pt of t1] (po)           {$($};
+  \node[right=0.5pt of po] (a)            {$#3$};
+  \node[right=2.5pt of a]  (op)           {$#1$};
+  \node[right=2.5pt of op] (b)            {$#4$};
+  \node[right=0.5pt of b]  (pc)           {$)$};
+  % --- membre de droite : ( k x a ) op ( k x b )
+  \node[right=8pt of pc]   (eq)           {$=$};
+  \node[right=8pt of eq]   (r1)
+       {$(\textcolor{cmmagenta}{\mathbf{#2}} \times #3)$};
+  \node[right=3pt of r1]   (op2)          {$#1$};
+  \node[right=3pt of op2]  (r2)
+       {$(\textcolor{cmmagenta}{\mathbf{#2}} \times #4)$};
+  % --- les deux fleches : la 2e passe au-dessus de la 1re.
+  %     shorten > : la pointe s'arrete au-dessus du terme, sans le toucher.
+  %     Le numero est pose SUR la fleche, au milieu, comme les etiquettes de
+  %     \compensation : meme langage visuel dans tout le document.
+  \draw[->, semithick, exbleu, shorten >=2pt]
+       (k.north) .. controls +(66:0.44) and +(124:0.34) ..
+       node[pos=0.40, distribnum] {1} (a.north);
+  \draw[->, semithick, exbleu, shorten >=2pt]
+       (k.north) .. controls +(80:0.92) and +(108:0.72) ..
+       node[pos=0.5, distribnum] {2} (b.north);
+  % --- a droite, les numeros surmontent chaque produit
+  \node[distribnum] at ([yshift=0.28cm]r1.north) {1};
+  \node[distribnum] at ([yshift=0.28cm]r2.north) {2};
+\end{tikzpicture}}%
+\par\addvspace{5pt}%
+}
+
+% ---------------------------------------------------------------------
+% Coloration d'une cellule de table de multiplication selon sa difficulte
+%   \mc{ligne}{colonne}{valeur}
+%   Criteres : tables de 1, 2, 5, 10 = facile ; carres = moyen ;
+%   un facteur <= 3 = moyen ; le reste (6x7, 7x8, 8x9...) = difficile
+% ---------------------------------------------------------------------
+\newcommand{\mc}[3]{%
+  \ifnum#1=#2 % diagonale (carres) => moyen
+    \cellcolor{moyen}#3%
+  \else
+    \ifnum#1=1 \cellcolor{facile}#3%
+    \else\ifnum#2=1 \cellcolor{facile}#3%
+    \else\ifnum#1=2 \cellcolor{facile}#3%
+    \else\ifnum#2=2 \cellcolor{facile}#3%
+    \else\ifnum#1=5 \cellcolor{facile}#3%
+    \else\ifnum#2=5 \cellcolor{facile}#3%
+    \else\ifnum#1=10 \cellcolor{facile}#3%
+    \else\ifnum#2=10 \cellcolor{facile}#3%
+    \else
+      \ifnum#1<5
+        \ifnum#2<5
+          \cellcolor{moyen}#3%
+        \else
+          \ifnum#1<4 \cellcolor{moyen}#3%
+          \else \cellcolor{difficile}#3%
+          \fi
+        \fi
+      \else
+        \ifnum#2<4 \cellcolor{moyen}#3%
+        \else \cellcolor{difficile}#3%
+        \fi
+      \fi
+    \fi\fi\fi\fi\fi\fi\fi\fi
+  \fi
+}
+
+\endinput

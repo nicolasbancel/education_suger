@@ -27,7 +27,7 @@ NOTES : Template à remplir
 
 - Tu dois suivre les contraintes suivantes sur la façon de rédiger la correction en Maths
 
-[INSERER CONTRAINTE REDACTION MATHS `03_prompts/contraintes/contraintes_redaction_maths.md`]
+[INSERER CONTRAINTE REDACTION MATHS `00_conventions/redaction_maths.md`]
 
 [CONTRAINTE ECRIRE / LIBRAIRIES LATEX]
 

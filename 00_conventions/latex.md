@@ -1,6 +1,6 @@
 # Général - Formatting
 
-- Quand tu traites avec des nombres décimaux, utilise un point, pas une virgule. Donc $2.4$ et pas $2{,}4$
+- **Séparateur décimal : il dépend de la matière.** Virgule en mathématiques, point en physique-chimie. Voir les sections "Général - Equations et Maths" et "Physique" ci-dessous.
 - Utilise des balises \begin{solution} et \end{solution} pour encadrer la réponse
 - Si tu veux énumérer des points, utilise des balises \begin{compactenum}
 - Si tu veux lister des points, utilise des balises \begin{compactitem}
@@ -16,6 +16,11 @@
 - Ecris les accents normalement : "périodique" plutôt que "p\'eriodique". "être déduit" plutôt que "\^etre d\'eduit".
 
 # Général - Equations et Maths
+
+- **Nombres décimaux : virgule.** Écrire `$2{,}4$` et non `$2.4$`. Les accolades autour de la virgule sont obligatoires : en mode mathématique, LaTeX traite la virgule comme une ponctuation et ajoute une espace après, ce qui donnerait `2, 4`. Les accolades la neutralisent.
+- **Pourquoi la virgule en maths** : le cours parle en permanence du *décalage de la virgule* (multiplier ou diviser par 10, 100, 1 000). Un point à l'écran contredirait ce qui est dit et écrit au tableau.
+- **Séparateur de milliers : espace fine, dès 4 chiffres.** Écrire `$1\,000$`, `$3\,974$`, `$918\,273$`. Jamais `$1000$` collé, et surtout jamais `$1,000$` (format anglais : en français cette virgule se lit comme une décimale). En mode mathématique, `\,` produit l'espace fine insécable de la typographie française.
+- Le séparateur de milliers ne s'applique **pas** aux nombres qui ne sont pas des quantités : une année (`en 2026`), un numéro de page, un identifiant.
 
 - Les formules mathématiques centrées doivent utiliser [\ xxx \] tandis que au sein d'une même ligne, je veux que tu utilises $ xxx $ et pas (\ xxx \).
 - Quand plusieurs équations se suivent, utilise le mode \begin{align*} \end{align*}
@@ -36,6 +41,10 @@
 - Pour les formules de molécules, tu utiliseras des formes du type de \ce{NH3}
 
 # Physique
+
+- **Nombres décimaux : point.** Écrire `\SI{7.82}{...}` et non `\SI{7,82}{...}`. C'est la convention du package `siunitx` et celle des sciences expérimentales.
+- **Séparateur de milliers : rien à faire.** `siunitx` insère l'espace fine tout seul : `\SI{47047}{\meter}` s'affiche `47 047 m`. Ne pas écrire `\,` à la main dans un `\SI{}{}`.
+
 - Pour écrire des valeurs numériques avec des unités, je veux que tu utilises la balise `\SI{}{}`. Par exemple : `\SI{7.82}{g\per\cubic\centi\meter}`
 -  Tu utiliseras les unités de fraction avec ce mode : \unit[per-mode = symbol]{\meter\per\second}
 - Quand tu écris des formules et que tu veux mettre des unités, je veux que tu respectes ce format. 

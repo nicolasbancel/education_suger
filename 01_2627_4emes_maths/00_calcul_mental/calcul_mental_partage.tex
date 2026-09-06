@@ -1,0 +1,56 @@
+% =====================================================================
+%  Calcul mental - version diffusable
+%
+%  Meme contenu que rappels_calcul_mental_6e_5e.tex : les deux documents
+%  chargent _contenu_calcul_mental.tex. Ce qui change ici, et seulement
+%  ici : ni nom d'auteur, ni etablissement, ni classe, ni annee.
+%  Le niveau n'apparait que sous forme d'etiquette de programme
+%  (\prog{6}, \prog{5}) posee sur chaque titre de partie.
+%
+%  Toute correction de CONTENU se fait dans _contenu_calcul_mental.tex,
+%  jamais ici : les deux versions restent ainsi synchronisees.
+% =====================================================================
+\documentclass[11pt]{exam}
+\usepackage{../../mypackages}
+\usepackage{../../macros}
+
+\usepackage{../../stylecours}   % encadres, exercices, palette, schemas
+
+\title{Calcul mental : méthodes et exercices}
+\author{}
+\date{}
+
+% Les metadonnees du PDF sont vidées elles aussi : sans cela, hyperref y
+% recopierait le titre et l'auteur du document.
+\hypersetup{pdfauthor={}, pdftitle={Calcul mental : méthodes et exercices},
+            pdfsubject={}, pdfcreator={}}
+
+\begin{document}
+{\let\newpage\relax\maketitle}
+
+\begin{aretenir}[title={À quoi sert ce document ?}]
+Le calcul mental n'est pas un don : c'est un ensemble d'\textbf{astuces} qui reposent
+toutes sur quelques propriétés des opérations. Une fois ces propriétés comprises,
+la plupart des calculs deviennent rapides.
+
+Chaque partie porte une étiquette qui indique la classe où la notion est
+\textbf{au programme} --- ou consolidée, pour ce qui vient de l'école élémentaire
+(références : les repères annuels de progression d'éduscol, cycles 3 et 4). Chaque
+partie suit toujours le même plan :
+
+\begin{compactitem}
+\item la \textbf{théorie} (la règle et pourquoi elle fonctionne) ;
+\item plusieurs \textbf{exemples} résolus, détaillés étape par étape ;
+\item une série de calculs à faire, sous le titre \textbf{À vous de jouer}.
+\end{compactitem}
+
+\textbf{Consigne générale pour tous les exercices :} calculer \textbf{mentalement},
+sans poser l'opération et sans calculatrice.
+\end{aretenir}
+
+\tableofcontents
+\newpage
+
+\input{_contenu_calcul_mental}
+
+\end{document}

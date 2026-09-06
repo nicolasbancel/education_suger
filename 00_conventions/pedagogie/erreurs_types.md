@@ -53,7 +53,7 @@ Historique des erreurs ou maladresses commises par Claude lors de la rédaction 
 
 **Contexte** : 1er push de la section "Graphique linéaire", chap 6. Le tableau a été rédigé en format texte avec séparateurs `|` au lieu d'un vrai tableau Google Docs natif.
 
-**Règle généralisée** : pour tout tableau dans un cours, **toujours utiliser `gdoc_insert_table.py`** (qui produit un tableau natif Docs stylé selon les conventions de `formatting_guide.md`). **Jamais** rédiger un tableau en pipes texte dans le contenu passé à `gdoc.py write-section` — c'est inesthétique et nécessite une conversion manuelle.
+**Règle généralisée** : pour tout tableau dans un cours, **toujours utiliser `gdoc_insert_table.py`** (qui produit un tableau natif Docs stylé selon les conventions de `google_docs.md`). **Jamais** rédiger un tableau en pipes texte dans le contenu passé à `gdoc.py write-section` — c'est inesthétique et nécessite une conversion manuelle.
 
 **Cas d'application** : toute insertion de données tabulaires (tableau de valeurs, comparaisons, tableau de proportionnalité, etc.).
 
@@ -91,7 +91,7 @@ Voir aussi `pedagogie/langage.md` (section "Consignes d'exercice : verbes à l'i
 
 L'utilisateur a dû les énoncer après-coup.
 
-**Cause racine** : `gdoc.py read` retourne uniquement le texte. La V1 du `formatting_guide.md` a été construite à partir de cette lecture surfacique et avait des TODOs "à confirmer" qui n'ont jamais été comblés. Claude s'est contenté de l'incomplet.
+**Cause racine** : `gdoc.py read` retourne uniquement le texte. La V1 du `google_docs.md` a été construite à partir de cette lecture surfacique et avait des TODOs "à confirmer" qui n'ont jamais été comblés. Claude s'est contenté de l'incomplet.
 
 **Règle généralisée — extraction des conventions visuelles** :
 1. À la première session sur un projet de cours (et après chaque ajout d'un nouveau type de bloc), **inspecter le JSON brut** d'au moins un Doc existant pour extraire : couleurs (`textStyle.foregroundColor`), gras (`textStyle.bold`), alignements (`paragraphStyle.alignment`), tailles (`textStyle.fontSize`).
@@ -101,7 +101,7 @@ L'utilisateur a dû les énoncer après-coup.
 **Sous-erreur connexe — interprétation des options AskUserQuestion** : quand l'utilisateur choisit une option du type *"Réinitialisée à chaque H2 (I.1, I.2, I.3, I.4 / II.1, II.2, II.3)"*, le contenu entre parenthèses est un **exemple illustratif de la logique**, pas la convention typographique exacte. Confirmer le rendu exact (formatage du préfixe) avant d'implémenter, surtout pour les éléments qui apparaîtront dans le rendu final.
 
 **Cas d'application** :
-- Toute nouvelle session de création de Doc → vérifier que `formatting_guide.md` est exhaustif (pas de "à confirmer" résiduel).
+- Toute nouvelle session de création de Doc → vérifier que `google_docs.md` est exhaustif (pas de "à confirmer" résiduel).
 - Toute lecture de Doc existant → si on doit reproduire le style, faire une inspection JSON, pas une lecture texte.
 
 ---
@@ -144,7 +144,7 @@ Implémenté dans `gdoc_insert_table.py` à compter du 2026-05-19 (liste `reques
 
 `lineSpacing` reste pertinent pour des paragraphes **multi-lignes** où on veut aérer entre les lignes (rare en cours à trous).
 
-`gdoc.py write-section` détecte désormais automatiquement les paragraphes contenant `…………` et leur applique `spaceAbove: 12pt`. Voir `formatting_guide.md` section "Interligne et espacement".
+`gdoc.py write-section` détecte désormais automatiquement les paragraphes contenant `…………` et leur applique `spaceAbove: 12pt`. Voir `google_docs.md` section "Interligne et espacement".
 
 **Cas d'application** : tout push qui contient des lignes à trous → on n'a plus besoin de spécifier `--line-spacing 150` manuellement (la détection est automatique).
 
@@ -156,7 +156,7 @@ Implémenté dans `gdoc_insert_table.py` à compter du 2026-05-19 (liste `reques
 
 **Cause** : Google Docs n'applique pas d'indentation par défaut aux Headings. Et les paragraphes commençant par `N. ` ou `lettre. ` ne sont pas reconnus comme sous-éléments — Docs les voit comme du texte normal.
 
-**Règle généralisée** : appliquer `paragraphStyle.indentStart` explicite selon le niveau hiérarchique. Voir `formatting_guide.md` section "Indentation hiérarchique" pour les valeurs exactes (H3 = 18, texte = 36, sous-éléments = 54 pt).
+**Règle généralisée** : appliquer `paragraphStyle.indentStart` explicite selon le niveau hiérarchique. Voir `google_docs.md` section "Indentation hiérarchique" pour les valeurs exactes (H3 = 18, texte = 36, sous-éléments = 54 pt).
 
 `gdoc.py write-section` et `gdoc_insert_box.py` détectent désormais automatiquement les paragraphes commençant par `N. ` ou `lettre. ` et leur appliquent `indentStart: 54pt`.
 
@@ -170,7 +170,7 @@ Implémenté dans `gdoc_insert_table.py` à compter du 2026-05-19 (liste `reques
 
 **Règle généralisée** :
 1. **5 encadrés "à fond coloré"** suffisent (À retenir / Définition / Méthode / Rappel / Attention).
-2. Pour les **Exemples** et **Exercices** : pas d'encadré complet. Juste **label gras + couleur + barre verticale colorée à gauche** (`paragraphStyle.borderLeft`). Convention dite "Option B" — voir `formatting_guide.md`.
+2. Pour les **Exemples** et **Exercices** : pas d'encadré complet. Juste **label gras + couleur + barre verticale colorée à gauche** (`paragraphStyle.borderLeft`). Convention dite "Option B" — voir `google_docs.md`.
 
 **Principe** : pour éviter la fatigue visuelle, n'utiliser un encadré complet **que quand le contenu est de nature différente du texte courant** (à retenir, méthode, attention, etc.). Pour les exemples et exercices, qui sont une **continuation du texte courant** avec une nature différente (à comprendre, à faire), un repère visuel léger suffit.
 
@@ -196,3 +196,53 @@ Implémenté dans `gdoc_insert_table.py` à compter du 2026-05-19 (liste `reques
 **Avant tout `write-section` itératif** : demander à l'utilisateur s'il a modifié manuellement le Doc depuis le dernier push. Si oui, basculer obligatoirement sur des opérations chirurgicales.
 
 **Cas d'application** : toute session d'itération sur une section existante. Particulièrement critique en fin de chapitre quand l'utilisateur ajuste et personnalise au fur et à mesure.
+
+---
+
+### 2026-09-06 — Accents encodés en séquences LaTeX (`\'e`) au lieu de caractères directs
+
+**Contexte** : rédaction de `01_2627_4emes_maths/00_calcul_mental/rappels_calcul_mental_6e_5e.tex`, document de rappels de calcul mental pour la 4ème (environ 1 400 lignes).
+
+**Ce que Claude a écrit** : `La \textbf{commutativit\'e} est la propri\'et\'e qui permet de…`, `\`A vous de jouer`, `fa\c cons`, `c\oe ur`. Au total 407 séquences dans le document, plus 3 dans `stylecours.sty`.
+
+**Correction de l'utilisateur** : "pourquoi tu encodes les accents avec des `\'e` alors que é existe ? Même chose pour `\`A`".
+
+**Règle généralisée** : écrire les accents en **caractères directs** (é, è, ê, à, À, ç, œ, î, ô, ù) dans tout fichier LaTeX, `.tex` comme `.sty`. `\usepackage[utf8]{inputenc}` et `[T1]{fontenc}` sont chargés par `mypackages.sty`, donc l'UTF-8 fonctionne partout. La règle existait **déjà** dans `00_conventions/latex.md`, section "Général - Rédaction".
+
+**Cause racine** : Claude n'avait pas lu `latex.md` avant de rédiger. Au démarrage de la session, seul le skill `edition_cours` était chargé, et il ne pointe que vers les conventions Google Docs de la 6ème. `latex.md` s'appelait alors `contraintes_redaction_latex.md` et était enterré dans `00_pedago/03_prompts/contraintes/`, sans qu'aucun index ne le signale.
+
+**Correctif structurel appliqué le même jour** : le fichier a été déplacé dans `00_conventions/latex.md` et le dossier est désormais référencé dans le `CLAUDE.md` à la racine, donc chargé automatiquement à chaque session.
+
+**Cas d'application** : tout document LaTeX. Avant de rédiger, lire `00_conventions/latex.md` en plus des fichiers de `pedagogie/`. Plus généralement : **vérifier quel fichier de conventions s'applique au format de sortie visé** (LaTeX ou Google Docs) avant d'écrire la première ligne.
+
+---
+
+### 2026-09-06 — Faire juger un design sur des blocs isolés au lieu d'une page entière
+
+**Contexte** : refonte de l'habillage des exemples et des séries d'exercices du document de calcul mental de 4ème.
+
+**Ce que Claude a fait** : produit une maquette montrant chaque variante **isolément**, un bloc à la fois, et demandé à l'utilisateur de choisir. L'utilisateur a choisi le fond plein, qui était effectivement le plus lisible **vu seul**.
+
+**Ce qui s'est passé ensuite** : appliqué au vrai document, le résultat était une pile de six aplats colorés (Théorie, Astuce, Attention, À retenir, Exemple, Exercices) sans aucune hiérarchie. Retour de l'utilisateur : "ce qui me pose problème maintenant c'est que ce ne sont que des box partout en fait".
+
+**Règle généralisée** : un choix de mise en page ne se juge **jamais sur un bloc isolé**. Toujours produire la maquette sous forme de **page complète et réaliste**, avec la densité réelle du document : plusieurs exemples qui s'enchaînent, un avertissement, une série d'exercices, un titre de section. La question n'est pas "ce bloc est-il joli" mais "qu'est-ce que ça donne cinq fois de suite sur une page".
+
+**Aggravant** : la règle existait déjà dans ce fichier (entrée du 2026-05-19, "Sur-utilisation des encadrés colorés"), qui disait explicitement que les exemples et exercices ne devaient **pas** avoir d'encadré complet. Elle n'a pas été relue avant de proposer les variantes.
+
+**Cas d'application** : toute proposition de mise en page, LaTeX ou Google Docs. Voir `blocs_de_cours.md` pour la grammaire retenue au terme de cet épisode.
+
+---
+
+### 2026-09-06 — Propriété mathématique nommée à tort (distributivité au lieu d'associativité)
+
+**Contexte** : encadré Théorie de la section sur la compensation (`±99`, `±101`), document de calcul mental 4ème.
+
+**Ce que Claude a écrit** : "Cette astuce n'est rien d'autre que la **distributivité** appliquée à l'écriture du nombre", avec $n + 299 = n + (300 - 1) = (n + 300) - 1$.
+
+**Correction de l'utilisateur** : "tu es sûr que c'est la distributivité qui est utilisée, là ? pour moi c'est juste une réécriture".
+
+**Pourquoi c'était faux** : la distributivité est $k \times (a+b) = k \times a + k \times b$. Il n'y a aucune multiplication ici. Ce qui est réellement à l'œuvre, c'est une **réécriture** du nombre ($299 = 300 - 1$) suivie de l'**associativité de l'addition**. Et le cas de la soustraction est encore différent : $n - (100-1) = n - 100 + 1$ relève du changement de signe devant la parenthèse, pas de l'associativité — c'est d'ailleurs le piège classique de l'élève, qui mérite d'être dit.
+
+**Règle généralisée** : ne **jamais** nommer une propriété mathématique sans vérifier qu'elle s'applique littéralement au calcul écrit. Dans un cours, un nom de propriété est un contrat : l'élève va le réutiliser. Si le nom exact n'est pas certain, décrire le mécanisme en mots ("on remplace, puis on enchaîne") plutôt que de risquer une étiquette fausse.
+
+**Cas d'application** : tout encadré Théorie, toute justification de méthode. Vérifier en particulier les quatre noms qui se confondent facilement : commutativité, associativité, distributivité, élément neutre.

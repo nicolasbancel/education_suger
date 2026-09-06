@@ -92,6 +92,6 @@ Quand une notion admet plusieurs exemples successifs, **annoncer explicitement l
 
 ### 3. Rappels inter-chapitres (quand pertinent)
 
-Quand une notion s'appuie sur un chapitre antérieur (ex : conversions d'aires ↔ conversions de longueurs ; calculs avec décimaux ↔ chap 1 ; pourcentages ↔ fractions chap 4), **inclure un encadré "Rappel"** explicite (gris pâle, voir `formatting_guide.md`).
+Quand une notion s'appuie sur un chapitre antérieur (ex : conversions d'aires ↔ conversions de longueurs ; calculs avec décimaux ↔ chap 1 ; pourcentages ↔ fractions chap 4), **inclure un encadré "Rappel"** explicite (gris pâle, voir `google_docs.md`).
 
 But : sécuriser l'élève qui aurait oublié, et faire le pont mental entre chapitres.

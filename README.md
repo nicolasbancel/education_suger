@@ -1,5 +1,14 @@
 # Repo contenant à la fois des contenus de cours, des annales, et des outils de correction automatique
 
+## Conventions de rédaction
+
+Toutes les conventions (formatage LaTeX, formatage Google Docs, pédagogie) sont dans
+**[`00_conventions/`](00_conventions/README.md)**. Son README contient la carte complète :
+quel fichier vit où, et à quoi il s'applique.
+
+Le style visuel des documents LaTeX est implémenté dans trois fichiers `.sty` à la racine :
+`mypackages.sty`, `macros.sty` et `stylecours.sty`.
+
 
 ## Liens de cours
 

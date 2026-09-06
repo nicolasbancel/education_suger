@@ -18,11 +18,11 @@ Ne PAS activer pour : génération d'interros, fiches d'exercices (séparé), co
 Avant toute proposition de contenu, lire dans l'ordre **tous** ces fichiers du repo :
 
 1. `01_2526_6emes_maths/cours_edition/index.md` — résoudre nom du chapitre → URL Google Doc.
-2. `01_2526_6emes_maths/cours_edition/formatting_guide.md` — hiérarchie de titres, polices (Montserrat 12/14/16), conventions tableaux, mise en exergue, notations.
-3. `01_2526_6emes_maths/cours_edition/pedagogie/langage.md` — vocabulaire, registre, infinitif vs impératif.
-4. `01_2526_6emes_maths/cours_edition/pedagogie/structure.md` — séquence pédagogique (inductif/déductif).
-5. `01_2526_6emes_maths/cours_edition/pedagogie/exemples.md` — choix d'exemples, ancrage quotidien.
-6. `01_2526_6emes_maths/cours_edition/pedagogie/erreurs_types.md` — **TRÈS IMPORTANT** : historique des erreurs déjà commises. RELIRE pour ne pas les refaire.
+2. `00_conventions/google_docs.md` — hiérarchie de titres, polices (Montserrat 12/14/16), conventions tableaux, mise en exergue, notations.
+3. `00_conventions/pedagogie/langage.md` — vocabulaire, registre, infinitif vs impératif.
+4. `00_conventions/pedagogie/structure.md` — séquence pédagogique (inductif/déductif).
+5. `00_conventions/pedagogie/exemples.md` — choix d'exemples, ancrage quotidien.
+6. `00_conventions/pedagogie/erreurs_types.md` — **TRÈS IMPORTANT** : historique des erreurs déjà commises. RELIRE pour ne pas les refaire.
 
 Annoncer à l'utilisateur en une phrase : "Mémoire chargée — conventions + erreurs_types. On peut démarrer."
 
@@ -81,8 +81,8 @@ Lire le contenu actuel de la section ciblée :
 ## Étape 3 — Proposer du contenu, itérer
 
 Discuter avec l'utilisateur. Toutes les propositions doivent **respecter en simultané** :
-- Le formatting (`formatting_guide.md`)
-- Les conventions pédagogiques (`pedagogie/*.md`)
+- Le formatting (`00_conventions/google_docs.md`)
+- Les conventions pédagogiques (`00_conventions/pedagogie/*.md`)
 - Le registre 6ème (vocabulaire concret, exemples ancrés dans le quotidien)
 
 Itérer jusqu'à validation explicite ("OK", "push", "vas-y").
@@ -144,7 +144,7 @@ Avant tout `write-section` itératif, **demander à l'utilisateur** : *"Tu as fa
 ```
 Le script applique automatiquement Montserrat 12pt, nettoie les bullets hérités, et **alerte** si la numérotation auto des H2 voisins est cassée. Lire le retour — s'il contient `⚠️`, signaler à l'utilisateur **avant de continuer**.
 
-**Choix du `--line-spacing`** (voir `formatting_guide.md` section "Interligne") :
+**Choix du `--line-spacing`** (voir `00_conventions/google_docs.md` section "Interligne") :
 - `--line-spacing 100` (défaut) : texte sans trous (intro, définition complète, etc.)
 - `--line-spacing 150` : texte avec trous à remplir par l'élève (cours à trous, exercices) — laisse de la place pour écrire
 
@@ -174,7 +174,7 @@ CSV : 1ère ligne = en-têtes. Le script applique la convention complète (heade
     --content "<texte du corps>" \
     --account perso
 ```
-Voir `formatting_guide.md` section "Encadrés" pour le détail des 5 types (couleurs, usages). Le script applique automatiquement le label, les couleurs de fond/bordure et la typo. Ne PAS écrire le label ("À RETENIR", "Définition", etc.) dans `--content` — il est ajouté automatiquement.
+Voir `00_conventions/google_docs.md` section "Encadrés" pour le détail des 5 types (couleurs, usages). Le script applique automatiquement le label, les couleurs de fond/bordure et la typo. Ne PAS écrire le label ("À RETENIR", "Définition", etc.) dans `--content` — il est ajouté automatiquement.
 
 Usage type :
 - `--type a-retenir` à la fin d'une grande section pour synthétiser les formules/règles clés.
@@ -207,10 +207,10 @@ Avant de conclure, demander explicitement :
 > "On a fini ce bloc. Y a-t-il un retour, une correction ou une règle que tu veux que je logge dans `pedagogie/` pour ne pas refaire l'erreur ?"
 
 Si oui : identifier le fichier cible et ajouter une entrée datée (format `YYYY-MM-DD — Titre court`) :
-- `pedagogie/langage.md` — vocabulaire, registre, tournures
-- `pedagogie/structure.md` — séquence des blocs (Déf → Méthode → Exemple)
-- `pedagogie/exemples.md` — types et progression des exemples
-- `pedagogie/erreurs_types.md` — incidents techniques ou pédagogiques à ne pas refaire
+- `00_conventions/pedagogie/langage.md` — vocabulaire, registre, tournures
+- `00_conventions/pedagogie/structure.md` — séquence des blocs (Déf → Méthode → Exemple)
+- `00_conventions/pedagogie/exemples.md` — types et progression des exemples
+- `00_conventions/pedagogie/erreurs_types.md` — incidents techniques ou pédagogiques à ne pas refaire
 
 Suivre le template existant du fichier ciblé.
 
