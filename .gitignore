@@ -82,3 +82,14 @@
 01_2627_4emes_maths/extract_manuel/pdf/
 **/extract_manuel/**/*.pdf
 **/extract_manuel/**/*.jpg
+
+# Identifiants et listes d'eleves exportes d'EcoleDirecte (nom + prenom
+# des eleves, parfois identifiants de connexion). Ajoutes le 2026-09-06
+# apres les avoir trouves non ignores dans un repo public.
+**/identifiants/
+**/carton_eleve-*.pdf
+**/liste_eleve-*.pdf
+
+# Corrections nominatives de DS/DM : un dossier ou un fichier JSON par
+# eleve, plus les adresses e-mail des familles
+**/00_ds_dm/*/correction/
